@@ -1,0 +1,18 @@
+key,value
+build_id,20261024-093722
+slate_id,135562
+week,8
+title,NFL Classic Player Selection Board (Slate #135562 • Week 8 Main • 10 Games)
+lock_time,"Sun Oct 25, 2026 • 1:00 PM ET"
+generated_at,2026-10-24 09:37 AM ET (mode=both)
+active_version,v6 LOCKED • 11 SIGNALS
+total_players,510
+active_signals,11
+salary_cap,60000
+candidates_tested,57
+n_wk3_7,1928
+n_wk4_7,1528
+updater_bot,@fd-board-updater
+updater_bot_id,3d16d616-921d-472e-a9ef-bf156bbd1391
+pregame_schedule,"Right before kickoff: Thu 7:55 PM ET (TNF), Sun 12:35 PM ET (Main 1pm), Sun 3:45 PM ET (Late 4pm), Sun 7:55 PM ET (SNF), Mon 7:55 PM ET (MNF)"
+postgame_schedule,"Right after games finish: Thu 11:45 PM ET (TNF), Sun 11:50 PM ET (Sun Main+SNF), Tue 12:15 AM ET (Full Week Final) + Tue 9:30 AM ET Weekly Audit"

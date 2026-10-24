@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20261024-093722" />
+  <link rel="stylesheet" href="styles.css?v=20261024-094824" />
 </head>
 <body>
   <!-- TOP FANDUEL-STYLE HEADER BAR -->
@@ -85,6 +85,7 @@
             <button class="pos-tab" data-pos="TE">TE</button>
             <button class="pos-tab" data-pos="FLEX">FLEX</button>
             <button class="pos-tab" data-pos="DEF">DEF</button>
+            <button class="pos-tab sleeper-tab" data-pos="SLEEPERS" id="pos-tab-sleepers" title="Show all low/mid-salary sleeper & breakout targets">🔥 SLEEPERS &amp; BREAKOUTS (<span id="sleeper-tab-count">24</span>)</button>
           </div>
 
           <div class="fd-search-filters">
@@ -92,9 +93,9 @@
               <input type="text" id="player-search" placeholder="Search player, team, or sleeper signal..." autocomplete="off" />
             </div>
 
-            <label class="toggle-chip" title="Filter to low/mid-salary sleeper breakout targets">
+            <label class="toggle-chip sleeper-toggle-chip" title="Filter any position tab to low/mid-salary sleeper breakout targets">
               <input type="checkbox" id="filter-sleepers" />
-              <span>Sleepers Only</span>
+              <span>🔥 Sleepers Only (<strong id="sleeper-chip-count">24</strong>)</span>
             </label>
 
             <label class="toggle-chip" title="Hide players who are Out / IR / Doubtful or have 0 projection">
@@ -409,8 +410,9 @@
 
             <select id="hist-filter-outcome" aria-label="Filter by Outcome">
               <option value="ALL" selected>All Outcomes</option>
+              <option value="SLEEPERS_ALL">🔥 All Pre-Game Sleepers</option>
+              <option value="SLEEPER_HITS">🔥 Sleeper Hits (Sleeper + ≥14 Actual Pts)</option>
               <option value="OUR_BEAT_FD">Our Proj Closer than FD (Win)</option>
-              <option value="SLEEPER_HITS">Sleeper Hits (Sleeper + ≥14 Actual Pts)</option>
               <option value="BIG_BOOMS">20+ Point Actual Scorers</option>
               <option value="BIG_MISSES">Largest Projection Misses (|Error| ≥ 10)</option>
             </select>
@@ -562,6 +564,6 @@
     </div>
   </div>
 
-  <script src="app.js?v=20261024-093722"></script>
+  <script src="app.js?v=20261024-094824"></script>
 </body>
 </html>

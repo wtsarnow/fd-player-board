@@ -344,6 +344,27 @@ code {
   border-color: var(--fd-blue);
   color: #fff;
 }
+.pos-tab.sleeper-tab {
+  border-color: rgba(0, 208, 132, 0.55);
+  background: rgba(0, 208, 132, 0.1);
+  color: var(--fd-green);
+}
+.pos-tab.sleeper-tab:hover {
+  border-color: var(--fd-green);
+  background: rgba(0, 208, 132, 0.2);
+  color: #fff;
+}
+.pos-tab.sleeper-tab.active {
+  background: var(--fd-green);
+  border-color: var(--fd-green);
+  color: #051610;
+  box-shadow: 0 0 12px rgba(0, 208, 132, 0.35);
+}
+.sleeper-toggle-chip {
+  border-color: rgba(0, 208, 132, 0.45);
+  background: rgba(0, 208, 132, 0.08);
+  color: #a7f3d0;
+}
 
 .fd-search-filters {
   display: flex;

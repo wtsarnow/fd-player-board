@@ -344,6 +344,9 @@
     setTxt('hdr-opt-val', allSummary.our_opt_actual ? `${allSummary.our_opt_actual} pts` : '—');
     setTxt('hdr-lock-time', `Lock: ${m.lock_time || '—'}`);
 
+    const nSleepers = DB.players.filter(p => p.isSleeperBool && !['O', 'IR', 'D', 'OUT'].includes(p.status) && p.ourProjNum > 0).length;
+    setTxt('sleeper-tab-count', String(nSleepers));
+    setTxt('sleeper-chip-count', String(nSleepers));
     setTxt('player-count-badge', String(DB.players.length));
     setTxt('total-player-count', String(DB.players.length));
     setTxt('csv-hist-players-count', `${DB.histPlayers.length.toLocaleString()} rows`);
@@ -454,9 +457,9 @@
       if (STATE.activeOnly && (['O', 'IR', 'D', 'OUT'].includes(p.status) || p.ourProjNum <= 0)) {
         return false;
       }
-      if (STATE.sleepersOnly && !p.isSleeperBool) return false;
+      if ((STATE.sleepersOnly || STATE.posFilter === 'SLEEPERS') && !p.isSleeperBool) return false;
       if (STATE.gameFilter !== 'ALL' && p.game !== STATE.gameFilter) return false;
-      if (STATE.posFilter !== 'ALL') {
+      if (STATE.posFilter !== 'ALL' && STATE.posFilter !== 'SLEEPERS') {
         if (STATE.posFilter === 'FLEX') {
           if (!['RB', 'WR', 'TE'].includes(p.pos)) return false;
         } else if (STATE.posFilter === 'DEF') {
@@ -1013,6 +1016,7 @@
       if (STATE.histWeek === 'COMPLETED' && !r.isCompleted) return false;
       if (STATE.histWeek !== 'COMPLETED' && STATE.histWeek !== 'ALL' && String(r.week) !== STATE.histWeek) return false;
       if (STATE.histPos !== 'ALL' && r.pos !== STATE.histPos) return false;
+      if (STATE.histOutcome === 'SLEEPERS_ALL' && !r.isSleeperBool) return false;
       if (STATE.histOutcome === 'OUR_BEAT_FD' && !r.ourBeatFdBool) return false;
       if (STATE.histOutcome === 'SLEEPER_HITS' && !(r.isSleeperBool && (r.actualNum ?? 0) >= 14)) return false;
       if (STATE.histOutcome === 'BIG_BOOMS' && (r.actualNum ?? -1) < 20) return false;
@@ -1298,10 +1302,19 @@
       btnRefresh.addEventListener('click', () => loadAllCSVData(true));
     }
 
-    // Position filter tabs
+    // Position filter tabs (including 🔥 SLEEPERS & BREAKOUTS)
     document.querySelectorAll('#pos-tabs .pos-tab').forEach(btn => {
       btn.addEventListener('click', () => {
-        STATE.posFilter = btn.getAttribute('data-pos');
+        const nextPos = btn.getAttribute('data-pos');
+        STATE.posFilter = nextPos;
+        const slpEl = document.getElementById('filter-sleepers');
+        if (nextPos === 'SLEEPERS') {
+          STATE.sleepersOnly = true;
+          if (slpEl) slpEl.checked = true;
+        } else if (nextPos === 'ALL' && slpEl && slpEl.checked) {
+          STATE.sleepersOnly = false;
+          slpEl.checked = false;
+        }
         document.querySelectorAll('#pos-tabs .pos-tab').forEach(b => b.classList.toggle('active', b === btn));
         renderPlayerTable();
       });

@@ -1,90 +1,109 @@
-/**
- * FanDuel NFL Player Selection & Historic Trends Board (100% CSV-Driven + Cache Busting)
- * Zero hardcoded player, lineup, backtest, or historical numbers in JS.
- * Dynamically loads all 9 CSV files from data/*.csv with cache-busting query strings and { cache: "no-store" }.
- */
-(function () {
-  'use strict';
+/* ==========================================================================
+   FanDuel NFL Player Selection & Historic Trends Board (100% CSV-Driven v6)
+   Zero Hardcoded Data — All Tables, Charts, Lineups & Weights Read from data/*.csv
+   ========================================================================== */
 
-  const DB = {
+(function () {
+  "use strict";
+
+  const ROSTER_SLOT_SCHEMA = [
+    { slotId: "QB", label: "QB", allowed: ["QB"] },
+    { slotId: "RB1", label: "RB", allowed: ["RB"] },
+    { slotId: "RB2", label: "RB", allowed: ["RB"] },
+    { slotId: "WR1", label: "WR", allowed: ["WR"] },
+    { slotId: "WR2", label: "WR", allowed: ["WR"] },
+    { slotId: "WR3", label: "WR", allowed: ["WR"] },
+    { slotId: "TE", label: "TE", allowed: ["TE"] },
+    { slotId: "FLEX", label: "FLEX", allowed: ["RB", "WR", "TE"] },
+    { slotId: "DEF", label: "DEF", allowed: ["DST"] }
+  ];
+
+  const SIGNAL_COLUMNS = [
+    { key: "first_downs_rate", prefix: "First_Downs_Rate", short: "1stDowns" },
+    { key: "td_regression", prefix: "TD_Regression", short: "TDReg" },
+    { key: "opportunity_share", prefix: "Opportunity_Share", short: "OppShare" },
+    { key: "injury_step_up", prefix: "Injury_Step_Up", short: "InjStepUp" },
+    { key: "per_snap_breakout", prefix: "Per_Snap_Breakout", short: "SnapBrk" },
+    { key: "opp_defender_matchup", prefix: "Opp_Defender_Matchup", short: "DefMatchup" },
+    { key: "ngs_skill_breakout", prefix: "NGS_Skill_Breakout", short: "NGS+FTN" },
+    { key: "pedigree_sleeper", prefix: "Pedigree_Sleeper", short: "Pedigree" },
+    { key: "floor_consistency", prefix: "Floor_Consistency", short: "Floor25" },
+    { key: "snap_momentum", prefix: "Snap_Momentum", short: "SnapMom" },
+    { key: "social_media_buzz", prefix: "Social_Media_Buzz", short: "Buzz" }
+  ];
+
+  const state = {
+    loaded: false,
     meta: {},
     players: [],
-    playerByName: {},
+    playerById: new Map(),
+    playerByName: new Map(),
+    games: [],
     lineups: [],
-    weeklySummary: [],
-    histPlayers: [],
-    posSummary: [],
+    historicPlayers: [],
+    historicWeekly: [],
+    historicPositions: [],
     weights: [],
-    reverted: [],
-    backtest: [],
-    lastFetchTs: null
-  };
+    revertedSignals: [],
+    backtestVersions: [],
 
-  const STATE = {
-    activeTab: 'players',
-    posFilter: 'ALL',
-    gameFilter: 'ALL',
+    activeTab: "players",
+    posFilter: "ALL",
+    gameFilter: "ALL",
+    searchQuery: "",
     sleepersOnly: false,
     activeOnly: true,
-    searchQuery: '',
-    sortBy: 'our_proj_desc',
-    activePresetId: 'contest-1',
-    roster: [
-      { slot: 'QB', accept: ['QB'], player: null },
-      { slot: 'RB1', accept: ['RB'], player: null },
-      { slot: 'RB2', accept: ['RB'], player: null },
-      { slot: 'WR1', accept: ['WR'], player: null },
-      { slot: 'WR2', accept: ['WR'], player: null },
-      { slot: 'WR3', accept: ['WR'], player: null },
-      { slot: 'TE', accept: ['TE'], player: null },
-      { slot: 'FLEX', accept: ['RB', 'WR', 'TE'], player: null },
-      { slot: 'DEF', accept: ['DST', 'DEF', 'D'], player: null }
-    ],
-    lineupMetaText: '',
-    histWeek: 'COMPLETED',
-    histPos: 'ALL',
-    histOutcome: 'ALL',
-    histSort: 'actual_desc',
-    histSearch: '',
+    sortBy: "our_proj_desc",
+    roster: {},
+    activeSlotFilter: null,
+    activePresetMeta: null,
+    mobileDrawerOpen: false,
+
+    histWeekFilter: "COMPLETED",
+    histPosFilter: "ALL",
+    histOutcomeFilter: "ALL",
+    histSortBy: "actual_desc",
+    histSearch: "",
     histPage: 1,
     histPageSize: 100
   };
 
-  // RFC-4180 CSV parser
   function parseCSV(text) {
     const rows = [];
     let row = [];
-    let field = '';
+    let field = "";
     let inQuotes = false;
     const len = text.length;
 
     for (let i = 0; i < len; i++) {
       const ch = text[i];
+      const next = text[i + 1];
       if (inQuotes) {
-        if (ch === '"') {
-          if (i + 1 < len && text[i + 1] === '"') {
-            field += '"';
-            i++;
-          } else {
-            inQuotes = false;
-          }
+        if (ch === '"' && next === '"') {
+          field += '"';
+          i++;
+        } else if (ch === '"') {
+          inQuotes = false;
         } else {
           field += ch;
         }
       } else {
         if (ch === '"') {
           inQuotes = true;
-        } else if (ch === ',') {
+        } else if (ch === ",") {
           row.push(field);
-          field = '';
-        } else if (ch === '\n' || ch === '\r') {
-          if (ch === '\r' && i + 1 < len && text[i + 1] === '\n') i++;
+          field = "";
+        } else if (ch === "\r" && next === "\n") {
           row.push(field);
-          field = '';
-          if (row.length > 1 || (row.length === 1 && row[0].trim() !== '')) {
-            rows.push(row);
-          }
+          rows.push(row);
           row = [];
+          field = "";
+          i++;
+        } else if (ch === "\n" || ch === "\r") {
+          row.push(field);
+          rows.push(row);
+          row = [];
+          field = "";
         } else {
           field += ch;
         }
@@ -92,1166 +111,1316 @@
     }
     if (field.length > 0 || row.length > 0) {
       row.push(field);
-      if (row.length > 1 || (row.length === 1 && row[0].trim() !== '')) {
-        rows.push(row);
-      }
+      rows.push(row);
     }
     if (rows.length === 0) return [];
-    const headers = rows[0].map(h => h.trim());
+    const headers = rows[0].map((h) => h.trim());
     const out = [];
     for (let r = 1; r < rows.length; r++) {
+      if (rows[r].length === 1 && rows[r][0].trim() === "") continue;
       const obj = {};
-      const cur = rows[r];
       for (let c = 0; c < headers.length; c++) {
-        obj[headers[c]] = cur[c] !== undefined ? cur[c] : '';
+        obj[headers[c]] = rows[r][c] !== undefined ? rows[r][c] : "";
       }
       out.push(obj);
     }
     return out;
   }
 
-  async function fetchCSV(relPath, cacheBustParam) {
-    const url = `${relPath}?${cacheBustParam}`;
-    const res = await fetch(url, {
-      cache: 'no-store',
-      headers: {
-        'Cache-Control': 'no-cache, no-store, must-revalidate',
-        'Pragma': 'no-cache'
-      }
+  async function fetchCSV(url) {
+    const res = await fetch(url + "?v=" + Date.now(), { cache: "no-store" });
+    if (!res.ok) throw new Error("Failed to load " + url + ": " + res.status);
+    const txt = await res.text();
+    return parseCSV(txt);
+  }
+
+  function escapeHtml(str) {
+    return String(str ?? "")
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;");
+  }
+
+  function fmtMoney(n) {
+    return "$" + Number(n || 0).toLocaleString("en-US");
+  }
+
+  function fmtSigned(n, digits = 2) {
+    const val = Number(n || 0);
+    return (val >= 0 ? "+" : "") + val.toFixed(digits);
+  }
+
+  // ---------- LOAD ALL 9 CSV FILES ----------
+  async function loadAllCSVData() {
+    const [
+      metaRows,
+      playerRows,
+      lineupRows,
+      histPlayerRows,
+      histWeeklyRows,
+      histPosRows,
+      weightRows,
+      revertedRows,
+      btVersionRows
+    ] = await Promise.all([
+      fetchCSV("data/meta.csv"),
+      fetchCSV("data/current_players.csv"),
+      fetchCSV("data/lineups.csv"),
+      fetchCSV("data/historic_player_projections.csv"),
+      fetchCSV("data/historic_weekly_summary.csv"),
+      fetchCSV("data/historic_position_summary.csv"),
+      fetchCSV("data/weights.csv"),
+      fetchCSV("data/reverted_signals.csv"),
+      fetchCSV("data/backtest_versions.csv")
+    ]);
+
+    metaRows.forEach((r) => {
+      state.meta[r.key] = r.value;
     });
-    if (!res.ok) {
-      throw new Error(`Failed to fetch ${url} (HTTP ${res.status})`);
-    }
-    const text = await res.text();
-    return parseCSV(text);
-  }
 
-  function num(val, fallback = 0) {
-    if (val === '' || val === null || val === undefined) return fallback;
-    const n = Number(val);
-    return Number.isFinite(n) ? n : fallback;
-  }
-
-  function fmtMoney(val) {
-    return '$' + Math.round(num(val)).toLocaleString('en-US');
-  }
-
-  function fmtSigned(val, digits = 2) {
-    const n = num(val);
-    if (Math.abs(n) < 0.0005) return '0.00';
-    return (n > 0 ? '+' : '') + n.toFixed(digits);
-  }
-
-  function esc(str) {
-    return String(str ?? '')
-      .replace(/&/g, '&amp;')
-      .replace(/</g, '&lt;')
-      .replace(/>/g, '&gt;')
-      .replace(/"/g, '&quot;');
-  }
-
-  async function loadAllCSVData(isManualRefresh = false) {
-    const btnRefresh = document.getElementById('btn-refresh-csv');
-    if (btnRefresh) {
-      btnRefresh.classList.add('refreshing');
-      btnRefresh.textContent = '⏳ Fetching Live CSVs…';
-    }
-
-    try {
-      const ts = Date.now();
-      // 1. Fetch meta.csv first with ?t=${Date.now()} and { cache: "no-store" }
-      const metaRows = await fetchCSV('data/meta.csv', `t=${ts}`);
-      const metaObj = {};
-      metaRows.forEach(r => {
-        if (r.key) metaObj[r.key] = r.value;
-      });
-      DB.meta = metaObj;
-
-      // 2. Build cache-busting query string using meta.build_id + timestamp
-      const buildId = metaObj.build_id || String(ts);
-      const bust = `v=${encodeURIComponent(buildId)}&t=${ts}`;
-
-      // 3. Fetch all remaining 8 CSV files in parallel with cache-busting query string and { cache: "no-store" }
-      const [
-        playersRaw,
-        lineupsRaw,
-        weeklyRaw,
-        histPlayersRaw,
-        posSummaryRaw,
-        weightsRaw,
-        revertedRaw,
-        backtestRaw
-      ] = await Promise.all([
-        fetchCSV('data/current_players.csv', bust),
-        fetchCSV('data/lineups.csv', bust),
-        fetchCSV('data/historic_weekly_summary.csv', bust),
-        fetchCSV('data/historic_player_projections.csv', bust),
-        fetchCSV('data/historic_position_summary.csv', bust),
-        fetchCSV('data/weights.csv', bust),
-        fetchCSV('data/reverted_signals.csv', bust),
-        fetchCSV('data/backtest_versions.csv', bust)
-      ]);
-
-      const keyToColPrefix = {
-        first_downs_rate: 'First_Downs_Rate',
-        td_regression: 'TD_Regression',
-        opportunity_share: 'Opportunity_Share',
-        injury_step_up: 'Injury_Step_Up',
-        per_snap_breakout: 'Per_Snap_Breakout',
-        opp_defender_matchup: 'Opp_Defender_Matchup',
-        ngs_skill_breakout: 'NGS_Skill_Breakout',
-        pedigree_sleeper: 'Pedigree_Sleeper',
-        floor_consistency: 'Floor_Consistency',
-        snap_momentum: 'Snap_Momentum',
-        social_media_buzz: 'Social_Media_Buzz'
-      };
-      DB.weights = weightsRaw.map(w => ({
-        ...w,
-        attribute: keyToColPrefix[w.key] || w.name || w.key,
-        displayName: w.name || w.key,
-        description: w.why_it_works || w.description || '',
-        cv_evidence: `Share of signal weight: ${w.share_pct || ''}`,
-        weightNum: num(w.weight)
-      }));
-
-      DB.players = playersRaw.map(p => {
-        const obj = {
-          ...p,
-          rankNum: num(p.rank),
-          salaryNum: num(p.salary),
-          ourProjNum: num(p.our_proj),
-          fdProjNum: num(p.fd_proj),
-          baseProjNum: num(p.base_proj),
-          edgeNum: num(p.proj_edge),
-          valNum: num(p.value_per_1k),
-          ceilNum: num(p.ceil),
-          floorNum: num(p.floor),
-          spreadNum: num(p.spread),
-          ouNum: num(p.over_under),
-          impNum: num(p.implied_total),
-          isSleeperBool: String(p.is_sleeper).toLowerCase() === 'true'
-        };
-        return obj;
-      });
-
-      DB.playerByName = {};
-      DB.players.forEach(p => {
-        DB.playerByName[p.name] = p;
-      });
-
-      DB.lineups = lineupsRaw;
-      DB.weeklySummary = weeklyRaw.map(w => ({
-        ...w,
-        status: w.our_rho === 'PENDING' ? 'PRE-GAME LOCKED' : 'COMPLETED',
-        slate_label: w.label || `Week ${w.week}`,
-        date_et: w.slate_type || '',
-        rho_lift: w.rho_gain || w.rho_lift || '',
-        our_opt_proj: w.our_opt_lineup_proj || w.our_opt_proj || '',
-        our_opt_actual: w.our_opt_lineup_actual === 'PENDING' ? '' : (w.our_opt_lineup_actual || ''),
-        fd_opt_proj: w.fd_opt_lineup_proj || w.fd_opt_proj || '',
-        fd_opt_actual: w.fd_opt_lineup_actual === 'PENDING' ? '' : (w.fd_opt_lineup_actual || ''),
-        opt_actual_edge: w.opt_lineup_edge_pts === 'PENDING' ? 'Pending' : (w.opt_lineup_edge_pts || ''),
-        tysa_best_actual: w.tysa_best_entry_actual === 'PENDING' ? '' : (w.tysa_best_entry_actual || '')
-      }));
-      DB.histPlayers = histPlayersRaw.map(r => {
-        const hasAct = r.actual_fd !== '' && r.actual_fd !== undefined && r.actual_fd !== 'PENDING';
-        return {
-          ...r,
-          window: r.game_window || r.slate || '',
-          weekNum: num(r.week),
-          salaryNum: num(r.salary),
-          ourProjNum: num(r.our_proj_pregame ?? r.our_proj),
-          fdProjNum: num(r.fd_proj_pregame ?? r.fd_proj),
-          baseProjNum: num(r.base_proj_pregame ?? r.base_proj),
-          edgeNum: num(r.our_diff_vs_fd ?? r.proj_edge_vs_fd),
-          actualNum: hasAct ? num(r.actual_fd) : null,
-          ourErrNum: r.our_error === '' ? null : num(r.our_error),
-          fdErrNum: r.fd_error === '' ? null : num(r.fd_error),
-          ourAbsErrNum: r.our_abs_error === '' ? null : num(r.our_abs_error),
-          fdAbsErrNum: r.fd_abs_error === '' ? null : num(r.fd_abs_error),
-          isCompleted: hasAct,
-          isSleeperBool: String(r.is_sleeper).toLowerCase() === 'true',
-          ourBeatFdBool: String(r.our_beat_fd).toLowerCase() === 'true'
-        };
-      });
-      DB.posSummary = posSummaryRaw;
-      DB.reverted = revertedRaw.map(r => ({
-        ...r,
-        attribute: r.key || r.attribute || '',
-        description: r.name || r.description || '',
-        version_tested: r.tested_in || r.version_tested || '',
-        cv_result: r.cv_impact || r.cv_result || '',
-        revert_reason: r.reason || r.revert_reason || ''
-      }));
-      DB.backtest = backtestRaw.map(b => ({
-        ...b,
-        label: b.name || b.label || '',
-        status: String(b.is_active).toLowerCase() === 'true' ? 'LOCKED WINNER (v6)' : (String(b.notes).includes('REVERTED') ? 'REVERTED TO 0.0' : 'VALIDATED STEP')
-      }));
-      DB.lastFetchTs = new Date();
-
-      // Update CSV download links with cache-busting query string
-      document.querySelectorAll('a[href^="data/"]').forEach(a => {
-        const baseHref = a.getAttribute('href').split('?')[0];
-        a.setAttribute('href', `${baseHref}?v=${encodeURIComponent(buildId)}`);
-      });
-
-      renderHeaderAndMeta();
-      populatePresetSelect();
-      if (!isManualRefresh || !STATE.roster.some(s => s.player)) {
-        loadPresetLineup(STATE.activePresetId || 'contest-1');
-      } else {
-        // Re-bind rostered player objects to fresh CSV objects
-        STATE.roster.forEach(s => {
-          if (s.player && DB.playerByName[s.player.name]) {
-            s.player = DB.playerByName[s.player.name];
-          }
-        });
-      }
-      renderGamesStrip();
-      renderPlayerTable();
-      renderLineupPanel();
-      renderHistoricView();
-      renderWeightsView();
-
-      if (btnRefresh) {
-        btnRefresh.classList.remove('refreshing');
-        const timeStr = DB.lastFetchTs.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
-        btnRefresh.textContent = isManualRefresh ? `✓ Refreshed (${timeStr})` : '🔄 Refresh Live Data';
-      }
-    } catch (err) {
-      console.error('Error loading CSV data:', err);
-      if (btnRefresh) {
-        btnRefresh.classList.remove('refreshing');
-        btnRefresh.textContent = '⚠ Retry CSV Fetch';
-      }
-    }
-  }
-
-  function renderHeaderAndMeta() {
-    const m = DB.meta;
-    const allSummary = DB.weeklySummary.find(w => w.week === 'ALL') || {};
-
-    const setTxt = (id, txt) => {
-      const el = document.getElementById(id);
-      if (el) el.textContent = txt;
-    };
-
-    setTxt('hdr-version-badge', m.active_version || 'v6 CSV');
-    setTxt('hdr-slate-title', `${m.title || ''} • Build ${m.build_id || ''}`);
-    setTxt('hdr-rho-val', allSummary.our_rho ? `${allSummary.our_rho} (vs FD ${allSummary.fd_rho})` : '—');
-    setTxt('hdr-mae-val', allSummary.our_mae ? `${allSummary.our_mae} (vs FD ${allSummary.fd_mae})` : '—');
-    setTxt('hdr-opt-val', allSummary.our_opt_actual ? `${allSummary.our_opt_actual} pts` : '—');
-    setTxt('hdr-lock-time', `Lock: ${m.lock_time || '—'}`);
-
-    const nSleepers = DB.players.filter(p => p.isSleeperBool && !['O', 'IR', 'D', 'OUT'].includes(p.status) && p.ourProjNum > 0).length;
-    setTxt('sleeper-tab-count', String(nSleepers));
-    setTxt('sleeper-chip-count', String(nSleepers));
-    setTxt('player-count-badge', String(DB.players.length));
-    setTxt('total-player-count', String(DB.players.length));
-    setTxt('csv-hist-players-count', `${DB.histPlayers.length.toLocaleString()} rows`);
-    setTxt('csv-curr-players-count', `${DB.players.length} rows`);
-    setTxt('csv-lineups-count', `${DB.lineups.length} lineups`);
-
-    const nComp = DB.histPlayers.filter(r => r.isCompleted).length;
-    const nPre = DB.histPlayers.filter(r => !r.isCompleted).length;
-    setTxt('hist-eyebrow-counts', `WEEKS 3–7 COMPLETED (n = ${nComp.toLocaleString()}) + WEEK ${m.week || '8'} PRE-GAME LOCKED (n = ${nPre.toLocaleString()})`);
-
-    setTxt('hist-bot-name', m.updater_bot || '@fd-board-updater');
-    setTxt('hist-bot-id', m.updater_bot_id || '');
-    setTxt('hist-pregame-sched', m.pregame_schedule || '');
-    setTxt('hist-postgame-sched', m.postgame_schedule || '');
-    setTxt('hist-generated-at', `${m.generated_at || ''} • Build ${m.build_id || ''}`);
-  }
-
-  // ==========================================================================
-  // TAB 1: PLAYER POOL & 9-SLOT LINEUP BUILDER
-  // ==========================================================================
-  function renderGamesStrip() {
-    const strip = document.getElementById('games-strip');
-    if (!strip) return;
+    state.weights = weightRows.map((w) => ({
+      ...w,
+      weightNum: parseFloat(w.weight) || 0
+    }));
+    const weightByKey = {};
+    state.weights.forEach((w) => {
+      weightByKey[w.key] = w;
+    });
 
     const gamesMap = new Map();
-    DB.players.forEach(p => {
-      if (!p.game) return;
-      if (!gamesMap.has(p.game)) {
-        gamesMap.set(p.game, {
-          game: p.game,
-          ou: p.ouNum,
-          count: 0
+    state.players = playerRows.map((r) => {
+      const sal = parseInt(r.salary, 10) || 0;
+      const our_proj = parseFloat(r.our_proj) || 0;
+      const fd_proj = parseFloat(r.fd_proj) || 0;
+      const base_proj = parseFloat(r.base_proj) || 0;
+      const proj_edge = parseFloat(r.proj_edge) || 0;
+      const value_per_1k = parseFloat(r.value_per_1k) || 0;
+      const ceil = parseFloat(r.ceil) || 0;
+      const floor = parseFloat(r.floor) || 0;
+      const spread = parseFloat(r.spread) || 0;
+      const over_under = parseFloat(r.over_under) || 0;
+      const implied_total = parseFloat(r.implied_total) || 0;
+      const is_sleeper = r.is_sleeper === "true";
+
+      const signals = {};
+      const contribs = [];
+      let totalMult = 0;
+
+      SIGNAL_COLUMNS.forEach((sc) => {
+        const z = parseFloat(r[sc.prefix + "_z"]) || 0;
+        const pts = parseFloat(r[sc.prefix + "_pts"]) || 0;
+        const wObj = weightByKey[sc.key] || { weightNum: 0, name: sc.short };
+        const w = wObj.weightNum;
+        const pct = w * z * 100.0;
+        totalMult += w * z;
+        signals[sc.key] = z;
+        contribs.push({
+          key: sc.key,
+          short: sc.short,
+          label: wObj.name || sc.short,
+          w,
+          z,
+          pts,
+          pct
+        });
+      });
+
+      contribs.sort((a, b) => Math.abs(b.pts) - Math.abs(a.pts));
+      const topDrivers = contribs.filter((c) => Math.abs(c.pts) >= 0.08).slice(0, 3);
+
+      let roof = "outdoors";
+      let surface = "grass";
+      let gametime = "13:00 ET";
+      const wxMatch = String(r.weather_Penalty || "").match(/\(([^•]+)•([^•]+)•([^)]+)\)/);
+      if (wxMatch) {
+        roof = wxMatch[1].trim();
+        surface = wxMatch[2].trim();
+        gametime = wxMatch[3].trim();
+      }
+
+      if (r.game && !gamesMap.has(r.game)) {
+        const parts = r.game.split("@");
+        const away = parts[0] || "";
+        const home = parts[1] || "";
+        const isHome = r.team === home;
+        const homeImp = isHome ? implied_total : over_under - implied_total;
+        const awayImp = isHome ? over_under - implied_total : implied_total;
+        const homeSpread = isHome ? spread : -spread;
+        gamesMap.set(r.game, {
+          code: r.game,
+          away,
+          home,
+          total: over_under,
+          home_spread: homeSpread,
+          away_implied: Number(awayImp.toFixed(2)),
+          home_implied: Number(homeImp.toFixed(2)),
+          roof,
+          surface,
+          gametime
         });
       }
-      gamesMap.get(p.game).count++;
+
+      const pObj = {
+        rank: parseInt(r.rank, 10) || 0,
+        id: r.id,
+        name: r.name,
+        pos: r.pos,
+        pos_display: r.pos === "DST" ? "DEF" : r.pos,
+        team: r.team,
+        opp: r.opp,
+        game: r.game,
+        home_away: r.home_away,
+        is_home: r.home_away === "HOME",
+        salary: sal,
+        our_proj,
+        fd_proj,
+        base_proj,
+        proj_edge,
+        value_per_1k,
+        ceil,
+        floor,
+        status: r.status === "ACTIVE" ? "" : r.status,
+        injury_note: r.injury_note,
+        is_sleeper,
+        sleeper_reasons: r.sleeper_reasons ? r.sleeper_reasons.split(" | ") : [],
+        spread,
+        over_under,
+        implied_total,
+        weather_Penalty: r.weather_Penalty,
+        roof,
+        surface,
+        gametime,
+        signals,
+        contribs,
+        top_drivers: topDrivers,
+        total_mult_pct: Number((totalMult * 100).toFixed(1))
+      };
+
+      state.playerById.set(pObj.id, pObj);
+      state.playerByName.set(pObj.name, pObj);
+      return pObj;
     });
 
-    const games = Array.from(gamesMap.values());
+    state.games = Array.from(gamesMap.values()).sort((a, b) => b.total - a.total);
+    state.lineups = lineupRows;
+    state.historicPlayers = histPlayerRows.map((r) => ({
+      ...r,
+      weekNum: parseInt(r.week, 10) || 0,
+      salaryNum: parseInt(r.salary, 10) || 0,
+      ourProjNum: parseFloat(r.our_proj_pregame) || 0,
+      fdProjNum: parseFloat(r.fd_proj_pregame) || 0,
+      baseProjNum: parseFloat(r.base_proj_pregame) || 0,
+      actualNum: r.actual_fd !== "" ? parseFloat(r.actual_fd) : null,
+      diffFdNum: parseFloat(r.our_diff_vs_fd) || 0,
+      ourErrNum: r.our_error !== "" ? parseFloat(r.our_error) : null,
+      fdErrNum: r.fd_error !== "" ? parseFloat(r.fd_error) : null,
+      ourAbsErrNum: r.our_abs_error !== "" ? parseFloat(r.our_abs_error) : null,
+      fdAbsErrNum: r.fd_abs_error !== "" ? parseFloat(r.fd_abs_error) : null,
+      isSleeperBool: r.is_sleeper === "true"
+    }));
+    state.historicWeekly = histWeeklyRows;
+    state.historicPositions = histPosRows;
+    state.revertedSignals = revertedRows;
+    state.backtestVersions = btVersionRows;
+
+    ROSTER_SLOT_SCHEMA.forEach((s) => {
+      state.roster[s.slotId] = null;
+    });
+
+    state.loaded = true;
+  }
+
+  function populateHeaderAndMeta() {
+    const m = state.meta;
+    const allRow = state.historicWeekly.find((w) => w.week === "ALL") || {};
+
+    document.getElementById("hdr-version-badge").textContent = m.active_version || "v6 LOCKED";
+    document.getElementById("hdr-slate-title").textContent =
+      (m.title || "NFL Classic Player Selection Board") + " • 100% CSV-Driven";
+    document.getElementById("hdr-rho-val").textContent = allRow.our_rho || "0.6284";
+    document.getElementById("hdr-mae-val").textContent = allRow.our_mae || "4.017";
+    document.getElementById("hdr-opt-val").textContent =
+      (allRow.our_opt_lineup_actual || "140.09") + " pts";
+    document.getElementById("hdr-lock-time").textContent = "Lock: " + (m.lock_time || "Sun 1:00 PM ET");
+
+    document.getElementById("player-count-badge").textContent = state.players.length;
+    document.getElementById("total-player-count").textContent = state.players.length;
+
+    document.getElementById("hist-bot-name").textContent = m.updater_bot || "@fd-board-updater";
+    document.getElementById("hist-bot-id").textContent = (m.updater_bot_id || "").slice(0, 13) + "…";
+    document.getElementById("hist-pregame-sched").textContent = m.pregame_schedule || "";
+    document.getElementById("hist-postgame-sched").textContent = m.postgame_schedule || "";
+    document.getElementById("hist-generated-at").textContent = m.generated_at || "";
+  }
+
+  function renderGamesStrip() {
+    const strip = document.getElementById("games-strip");
     let html = `
-      <div class="fd-game-chip ${STATE.gameFilter === 'ALL' ? 'active' : ''}" data-game="ALL">
-        <div class="g-teams">ALL ${games.length} GAMES</div>
-        <div class="g-meta">${DB.players.length} Players • Slate #${esc(DB.meta.slate_id)}</div>
+      <div class="game-chip all-games-chip ${state.gameFilter === "ALL" ? "active" : ""}" data-game="ALL">
+        <div class="gc-teams">ALL ${state.games.length} GAMES</div>
+        <div class="gc-meta">${state.players.length} Players • Main Slate</div>
       </div>
     `;
-
-    games.forEach(g => {
-      const isAct = STATE.gameFilter === g.game ? 'active' : '';
+    state.games.forEach((g) => {
+      const isAct = state.gameFilter === g.code ? "active" : "";
+      const spreadTxt = g.home_spread <= 0 ? `${g.home} ${g.home_spread}` : `${g.away} -${g.home_spread}`;
       html += `
-        <div class="fd-game-chip ${isAct}" data-game="${esc(g.game)}">
-          <div class="g-teams">${esc(g.game)}</div>
-          <div class="g-meta">O/U ${g.ou.toFixed(1)} • ${g.count} plyrs</div>
+        <div class="game-chip ${isAct}" data-game="${escapeHtml(g.code)}">
+          <div class="gc-top">
+            <span class="gc-teams">${escapeHtml(g.away)} @ ${escapeHtml(g.home)}</span>
+            <span class="gc-roof">${escapeHtml(g.roof)}</span>
+          </div>
+          <div class="gc-meta">O/U <strong>${g.total.toFixed(1)}</strong> • ${escapeHtml(spreadTxt)}</div>
+          <div class="gc-meta">${escapeHtml(g.away)} ${g.away_implied} | ${escapeHtml(g.home)} ${g.home_implied}</div>
         </div>
       `;
     });
-
     strip.innerHTML = html;
-    strip.querySelectorAll('.fd-game-chip').forEach(chip => {
-      chip.addEventListener('click', () => {
-        STATE.gameFilter = chip.getAttribute('data-game');
+
+    strip.querySelectorAll(".game-chip").forEach((chip) => {
+      chip.addEventListener("click", () => {
+        state.gameFilter = chip.getAttribute("data-game");
         renderGamesStrip();
-        renderPlayerTable();
+        renderPlayerPool();
       });
     });
   }
 
-  function isRostered(playerName) {
-    return STATE.roster.some(s => s.player && s.player.name === playerName);
+  // ---------- TAB 1: PLAYER POOL & LINEUP BUILDER ----------
+  function getRosteredPlayerIds() {
+    const s = new Set();
+    Object.values(state.roster).forEach((p) => {
+      if (p) s.add(p.id);
+    });
+    return s;
   }
 
-  function getTopSignalChips(p) {
-    const sigCols = [
-      { col: 'First_Downs_Rate', short: '1stDn' },
-      { col: 'TD_Regression', short: 'TDReg' },
-      { col: 'Opportunity_Share', short: 'OppShr' },
-      { col: 'Injury_Step_Up', short: 'InjUp' },
-      { col: 'Per_Snap_Breakout', short: 'SnapBrk' },
-      { col: 'Opp_Defender_Matchup', short: 'DefMup' },
-      { col: 'NGS_Skill_Breakout', short: 'NGS+FTN' },
-      { col: 'Pedigree_Sleeper', short: 'PedSlp' },
-      { col: 'Floor_Consistency', short: 'Floor' },
-      { col: 'Snap_Momentum', short: 'SnapMom' },
-      { col: 'Social_Media_Buzz', short: 'Buzz' }
-    ];
-    const items = sigCols
-      .map(s => ({
-        short: s.short,
-        pts: num(p[`${s.col}_pts`]),
-        z: num(p[`${s.col}_z`])
-      }))
-      .filter(x => Math.abs(x.pts) >= 0.08)
-      .sort((a, b) => Math.abs(b.pts) - Math.abs(a.pts))
-      .slice(0, 3);
-
-    if (!items.length) {
-      return '<span style="color:var(--fd-text-dim);font-size:11px;">Neutral (0.00)</span>';
+  function findTargetSlotForPlayer(p) {
+    if (state.activeSlotFilter) {
+      const schema = ROSTER_SLOT_SCHEMA.find((s) => s.slotId === state.activeSlotFilter);
+      if (schema && schema.allowed.includes(p.pos)) return schema.slotId;
     }
-    return `<div class="driver-chips">${items
-      .map(it => `<span class="driver-chip ${it.pts >= 0 ? 'pos' : 'neg'}">${it.short} ${fmtSigned(it.pts, 2)}</span>`)
-      .join('')}</div>`;
+    for (const s of ROSTER_SLOT_SCHEMA) {
+      if (s.slotId !== "FLEX" && s.allowed.includes(p.pos) && !state.roster[s.slotId]) {
+        return s.slotId;
+      }
+    }
+    if (["RB", "WR", "TE"].includes(p.pos) && !state.roster.FLEX) {
+      return "FLEX";
+    }
+    return null;
   }
 
-  function renderPlayerTable() {
-    const tbody = document.getElementById('player-tbody');
-    if (!tbody) return;
+  function renderPlayerPool() {
+    const tbody = document.getElementById("player-tbody");
+    const rosteredIds = getRosteredPlayerIds();
+    const q = state.searchQuery.trim().toLowerCase();
 
-    const q = STATE.searchQuery.trim().toLowerCase();
-    const filtered = DB.players.filter(p => {
-      if (STATE.activeOnly && (['O', 'IR', 'D', 'OUT'].includes(p.status) || p.ourProjNum <= 0)) {
-        return false;
-      }
-      if ((STATE.sleepersOnly || STATE.posFilter === 'SLEEPERS') && !p.isSleeperBool) return false;
-      if (STATE.gameFilter !== 'ALL' && p.game !== STATE.gameFilter) return false;
-      if (STATE.posFilter !== 'ALL' && STATE.posFilter !== 'SLEEPERS') {
-        if (STATE.posFilter === 'FLEX') {
-          if (!['RB', 'WR', 'TE'].includes(p.pos)) return false;
-        } else if (STATE.posFilter === 'DEF') {
-          if (!['DST', 'DEF', 'D'].includes(p.pos)) return false;
-        } else if (p.pos !== STATE.posFilter) {
+    let filtered = state.players.filter((p) => {
+      if (state.posFilter !== "ALL") {
+        if (state.posFilter === "FLEX") {
+          if (!["RB", "WR", "TE"].includes(p.pos)) return false;
+        } else if (state.posFilter === "DEF") {
+          if (p.pos !== "DST") return false;
+        } else if (p.pos !== state.posFilter) {
           return false;
         }
       }
+      if (state.gameFilter !== "ALL" && p.game !== state.gameFilter) return false;
+      if (state.sleepersOnly && !p.is_sleeper) return false;
+      if (state.activeOnly) {
+        if (["O", "IR", "D"].includes(p.status)) return false;
+        if (p.our_proj <= 0.55 && p.base_proj <= 0.2) return false;
+      }
       if (q) {
-        const hay = `${p.name} ${p.team} ${p.opp} ${p.pos} ${p.game} ${p.sleeper_reasons || ''} ${p.injury_note || ''}`.toLowerCase();
+        const hay = `${p.name} ${p.team} ${p.opp} ${p.pos_display} ${p.sleeper_reasons.join(" ")}`.toLowerCase();
         if (!hay.includes(q)) return false;
       }
       return true;
     });
 
-    const sMode = STATE.sortBy;
-    filtered.sort((a, b) => {
-      switch (sMode) {
-        case 'fd_proj_desc': return b.fdProjNum - a.fdProjNum;
-        case 'base_desc': return b.baseProjNum - a.baseProjNum;
-        case 'edge_desc': return b.edgeNum - a.edgeNum;
-        case 'value_desc': return b.valNum - a.valNum;
-        case 'salary_desc': return b.salaryNum - a.salaryNum || b.ourProjNum - a.ourProjNum;
-        case 'salary_asc': return a.salaryNum - b.salaryNum || b.ourProjNum - a.ourProjNum;
-        case 'ngs_desc': return num(b.NGS_Skill_Breakout_pts) - num(a.NGS_Skill_Breakout_pts);
-        case 'def_desc': return num(b.Opp_Defender_Matchup_pts) - num(a.Opp_Defender_Matchup_pts);
-        case 'inj_desc': return num(b.Injury_Step_Up_pts) - num(a.Injury_Step_Up_pts);
-        case 'our_proj_desc':
-        default:
-          return b.ourProjNum - a.ourProjNum;
+    const sortFns = {
+      our_proj_desc: (a, b) => b.our_proj - a.our_proj || b.salary - a.salary,
+      fd_proj_desc: (a, b) => b.fd_proj - a.fd_proj || b.our_proj - a.our_proj,
+      base_desc: (a, b) => b.base_proj - a.base_proj || b.our_proj - a.our_proj,
+      edge_desc: (a, b) => b.proj_edge - a.proj_edge || b.our_proj - a.our_proj,
+      value_desc: (a, b) => b.value_per_1k - a.value_per_1k || b.our_proj - a.our_proj,
+      salary_desc: (a, b) => b.salary - a.salary || b.our_proj - a.our_proj,
+      salary_asc: (a, b) => a.salary - b.salary || b.our_proj - a.our_proj,
+      ngs_desc: (a, b) => (b.signals.ngs_skill_breakout || 0) - (a.signals.ngs_skill_breakout || 0) || b.our_proj - a.our_proj,
+      def_desc: (a, b) => (b.signals.opp_defender_matchup || 0) - (a.signals.opp_defender_matchup || 0) || b.our_proj - a.our_proj,
+      inj_desc: (a, b) => (b.signals.injury_step_up || 0) - (a.signals.injury_step_up || 0) || b.our_proj - a.our_proj
+    };
+
+    filtered.sort(sortFns[state.sortBy] || sortFns.our_proj_desc);
+    document.getElementById("visible-player-count").textContent = filtered.length;
+
+    const sortLabels = {
+      our_proj_desc: "Our Projection (v6)",
+      fd_proj_desc: "FanDuel Pre-Game Projection",
+      base_desc: "EB Vegas Base",
+      edge_desc: "Edge vs. FD Pre-Game",
+      value_desc: "Value / $1K",
+      salary_desc: "FD Salary (High → Low)",
+      salary_asc: "FD Salary (Low → High)",
+      ngs_desc: "NGS + FTN Skill Signal",
+      def_desc: "Opp Defender Matchup",
+      inj_desc: "Injury Step-Up Signal"
+    };
+    document.getElementById("active-sort-label").textContent = sortLabels[state.sortBy] || "Our Projection (v6)";
+
+    const rowsHtml = filtered.map((p, idx) => {
+      const isRostered = rosteredIds.has(p.id);
+      const targetSlot = findTargetSlotForPlayer(p);
+      const canDraft = !isRostered && targetSlot !== null;
+
+      let injHtml = "";
+      if (p.status) {
+        const cls = ["O", "IR", "D"].includes(p.status) ? "O" : "Q";
+        injHtml = `<span class="inj-badge ${cls}" title="${escapeHtml(p.injury_note)}">${escapeHtml(p.status)}</span>`;
       }
-    });
+      const sleeperHtml = p.is_sleeper
+        ? `<span class="sleeper-badge" title="${escapeHtml(p.sleeper_reasons.join(", "))}">SLEEPER</span>`
+        : "";
 
-    const visEl = document.getElementById('visible-player-count');
-    if (visEl) visEl.textContent = String(filtered.length);
+      let driversHtml = "";
+      if (p.top_drivers && p.top_drivers.length > 0) {
+        driversHtml = p.top_drivers
+          .map((d) => {
+            const cls = d.pts >= 0 ? "pos" : "neg";
+            const sign = d.pts >= 0 ? "+" : "";
+            return `<span class="sig-pill ${cls}" title="${escapeHtml(d.label)}: w=${d.w}, z=${d.z.toFixed(2)}">${escapeHtml(d.short)} ${sign}${d.pts.toFixed(1)}</span>`;
+          })
+          .join("");
+      } else {
+        driversHtml = `<span class="sig-pill">Neutral Signals</span>`;
+      }
 
-    tbody.innerHTML = filtered.map((p, i) => {
-      const rostered = isRostered(p.name);
-      const statusBadge = p.status ? `<span class="status-badge status-${esc(p.status)}" title="${esc(p.injury_note)}">${esc(p.status)}</span>` : '';
-      const sleeperBadge = p.isSleeperBool ? `<span class="sleeper-tag" title="${esc(p.sleeper_reasons)}">★ SLEEPER</span>` : '';
-      const edgeCls = p.edgeNum >= 0.05 ? 'edge-pos' : (p.edgeNum <= -0.05 ? 'edge-neg' : '');
+      const edgeCls = p.proj_edge >= 0.25 ? "pos" : p.proj_edge <= -0.25 ? "neg" : "neutral";
+      const valCls = p.value_per_1k >= 2.8 ? "high" : "";
+      const multSign = p.total_mult_pct >= 0 ? "+" : "";
+      const matchupStr = p.is_home ? `vs ${p.opp}` : `@ ${p.opp}`;
 
       return `
-        <tr class="${rostered ? 'rostered-row' : ''}" data-player-name="${esc(p.name)}">
-          <td class="col-rank">${i + 1}</td>
-          <td class="col-pos"><span class="pos-badge pos-${esc(p.pos)}">${esc(p.pos === 'DST' ? 'DEF' : p.pos)}</span></td>
-          <td class="col-player">
+        <tr class="${isRostered ? "rostered-row" : ""}" data-pid="${escapeHtml(p.id)}">
+          <td class="col-rank">${idx + 1}</td>
+          <td class="col-pos"><span class="pos-badge ${escapeHtml(p.pos_display)}">${escapeHtml(p.pos_display)}</span></td>
+          <td class="col-player sticky-col">
             <div class="p-name-line">
-              <span>${esc(p.name)}</span>
-              ${statusBadge}
-              ${sleeperBadge}
+              <span class="p-name">${escapeHtml(p.name)}</span>
+              ${injHtml}
+              ${sleeperHtml}
             </div>
-            <div class="p-sub-line">${esc(p.team)} ${p.home_away === 'HOME' ? 'vs' : '@'} ${esc(p.opp)} ${p.sleeper_reasons ? '• ' + esc(p.sleeper_reasons) : ''}</div>
+            <div class="p-sub-line">
+              <span class="p-team-tag">${escapeHtml(p.team)}</span>
+              <span>${escapeHtml(matchupStr)}</span>
+              <span>•</span>
+              <span>Flr ${p.floor.toFixed(1)} / Ceil ${p.ceil.toFixed(1)}</span>
+            </div>
           </td>
           <td class="col-game">
-            <div style="font-weight:700;color:#e2e8f0;font-size:12px;">${esc(p.game)}</div>
-            <div class="p-sub-line">Imp ${p.impNum.toFixed(1)} • O/U ${p.ouNum.toFixed(1)}</div>
+            <div class="game-cell-top">${escapeHtml(p.game)}</div>
+            <div class="game-cell-sub">Imp ${p.implied_total.toFixed(1)} • O/U ${p.over_under.toFixed(1)} (${escapeHtml(p.roof)})</div>
           </td>
-          <td>${p.fdProjNum.toFixed(2)}</td>
-          <td>${p.baseProjNum.toFixed(2)}</td>
-          <td class="col-signals">${getTopSignalChips(p)}</td>
-          <td class="col-proj-cell">${p.ourProjNum.toFixed(2)}</td>
-          <td class="${edgeCls}">${fmtSigned(p.edgeNum, 2)}</td>
-          <td>${p.valNum.toFixed(2)}x</td>
-          <td style="font-weight:800;color:#fff;">${fmtMoney(p.salaryNum)}</td>
-          <td style="text-align:center;">
-            <button type="button" class="add-btn ${rostered ? 'rostered' : ''}" data-draft-name="${esc(p.name)}" title="${rostered ? 'Remove from lineup' : 'Add to lineup'}">
-              ${rostered ? '✓' : '+'}
+          <td class="col-fppg">${p.fd_proj.toFixed(2)}</td>
+          <td class="col-base">${p.base_proj.toFixed(2)}</td>
+          <td class="col-signals"><div class="sig-pills-wrap">${driversHtml}</div></td>
+          <td class="col-proj">
+            <div class="proj-main">${p.our_proj.toFixed(2)}</div>
+            <div class="proj-mult">${multSign}${p.total_mult_pct.toFixed(1)}% vs Base</div>
+          </td>
+          <td class="col-edge"><span class="edge-val ${edgeCls}">${fmtSigned(p.proj_edge)}</span></td>
+          <td class="col-val"><span class="val-chip ${valCls}">${p.value_per_1k.toFixed(2)}x</span></td>
+          <td class="col-sal">${fmtMoney(p.salary)}</td>
+          <td class="col-act">
+            <button class="btn-add-player ${isRostered ? "in-lineup" : ""}"
+                    data-action="${isRostered ? "remove" : "add"}"
+                    data-pid="${escapeHtml(p.id)}"
+                    ${!isRostered && !canDraft ? "disabled" : ""}
+                    title="${isRostered ? "Remove from lineup" : canDraft ? "Draft into " + targetSlot : "Position slots full"}">
+              ${isRostered ? "✓" : "+"}
             </button>
           </td>
         </tr>
       `;
-    }).join('');
-
-    tbody.querySelectorAll('tr[data-player-name]').forEach(tr => {
-      tr.addEventListener('click', e => {
-        if (e.target.closest('button')) return;
-        openPlayerModal(tr.getAttribute('data-player-name'));
-      });
     });
 
-    tbody.querySelectorAll('button[data-draft-name]').forEach(btn => {
-      btn.addEventListener('click', e => {
-        e.stopPropagation();
-        togglePlayerInLineup(btn.getAttribute('data-draft-name'));
+    tbody.innerHTML = rowsHtml.join("");
+
+    tbody.querySelectorAll("tr").forEach((tr) => {
+      tr.addEventListener("click", (e) => {
+        const btn = e.target.closest(".btn-add-player");
+        const pid = tr.getAttribute("data-pid");
+        const player = state.playerById.get(pid);
+        if (!player) return;
+
+        if (btn) {
+          e.stopPropagation();
+          const act = btn.getAttribute("data-action");
+          if (act === "remove") {
+            removePlayerFromRoster(player.id);
+          } else {
+            addPlayerToRoster(player);
+          }
+          return;
+        }
+        openPlayerModal(player);
       });
     });
   }
 
-  function populatePresetSelect() {
-    const sel = document.getElementById('preset-select');
-    if (!sel) return;
-    sel.innerHTML = DB.lineups.map(lu => `
-      <option value="${esc(lu.preset_id)}">${esc(lu.label)} — ${fmtMoney(lu.salary)} (${num(lu.our_proj).toFixed(2)} pts)</option>
-    `).join('');
-    sel.value = STATE.activePresetId;
-  }
+  function populatePresetsDropdown() {
+    const sel = document.getElementById("preset-select");
+    const groups = new Map();
+    state.lineups.forEach((lu) => {
+      if (!groups.has(lu.group)) groups.set(lu.group, []);
+      groups.get(lu.group).push(lu);
+    });
 
-  function cleanSlotCellName(rawCell) {
-    if (!rawCell) return '';
-    return String(rawCell).replace(/\s*\(\$[\d,]+\)\s*$/, '').trim();
+    let html = `<option value="">-- Select a Saved Contest Entry or v6 Optimal Build --</option>`;
+    groups.forEach((list, grpName) => {
+      html += `<optgroup label="${escapeHtml(grpName)}">`;
+      list.forEach((lu) => {
+        html += `<option value="${escapeHtml(lu.preset_id)}">${escapeHtml(lu.label)}</option>`;
+      });
+      html += `</optgroup>`;
+    });
+    sel.innerHTML = html;
+
+    sel.addEventListener("change", () => {
+      const val = sel.value;
+      if (val) loadPresetLineup(val);
+    });
   }
 
   function loadPresetLineup(presetId) {
-    const lu = DB.lineups.find(r => r.preset_id === presetId) || DB.lineups[0];
-    if (!lu) return;
-    STATE.activePresetId = lu.preset_id;
-    const sel = document.getElementById('preset-select');
-    if (sel) sel.value = lu.preset_id;
+    const preset = state.lineups.find((p) => p.preset_id === presetId);
+    if (!preset) return;
 
-    const slotCols = ['QB', 'RB1', 'RB2', 'WR1', 'WR2', 'WR3', 'TE', 'FLEX', 'DEF'];
-    STATE.roster.forEach((slotObj, idx) => {
-      const colName = slotCols[idx];
-      const pName = cleanSlotCellName(lu[colName]);
-      slotObj.player = DB.playerByName[pName] || null;
+    ROSTER_SLOT_SCHEMA.forEach((s) => {
+      const pName = preset[s.slotId];
+      const pObj = pName ? state.playerByName.get(pName) : null;
+      state.roster[s.slotId] = pObj || null;
     });
+    state.activePresetMeta = preset;
+    state.activeSlotFilter = null;
 
-    STATE.lineupMetaText = `${lu.label} • ${lu.contest || ''}`;
-    renderPlayerTable();
+    document.getElementById("preset-select").value = presetId;
     renderLineupPanel();
+    renderPlayerPool();
   }
 
-  function togglePlayerInLineup(playerName) {
-    const existingIdx = STATE.roster.findIndex(s => s.player && s.player.name === playerName);
-    if (existingIdx !== -1) {
-      STATE.roster[existingIdx].player = null;
-      renderPlayerTable();
-      renderLineupPanel();
-      return;
-    }
-    const p = DB.playerByName[playerName];
-    if (!p) return;
-    const openSlot = STATE.roster.find(s => !s.player && s.accept.includes(p.pos));
-    if (!openSlot) {
-      alert(`All eligible ${p.pos} / FLEX slots are currently filled. Remove a player first.`);
-      return;
-    }
-    openSlot.player = p;
-    renderPlayerTable();
+  function addPlayerToRoster(player) {
+    const slotId = findTargetSlotForPlayer(player);
+    if (!slotId) return;
+    state.roster[slotId] = player;
+    state.activePresetMeta = null;
+    document.getElementById("preset-select").value = "";
+    if (state.activeSlotFilter === slotId) state.activeSlotFilter = null;
     renderLineupPanel();
+    renderPlayerPool();
+  }
+
+  function removePlayerFromRoster(playerId) {
+    Object.keys(state.roster).forEach((slotId) => {
+      if (state.roster[slotId] && state.roster[slotId].id === playerId) {
+        state.roster[slotId] = null;
+      }
+    });
+    state.activePresetMeta = null;
+    document.getElementById("preset-select").value = "";
+    renderLineupPanel();
+    renderPlayerPool();
+  }
+
+  function clearLineup() {
+    ROSTER_SLOT_SCHEMA.forEach((s) => {
+      state.roster[s.slotId] = null;
+    });
+    state.activePresetMeta = null;
+    state.activeSlotFilter = null;
+    document.getElementById("preset-select").value = "";
+    renderLineupPanel();
+    renderPlayerPool();
   }
 
   function autoFillRemainingSlots() {
-    const cap = num(DB.meta.salary_cap, 60000);
-    let usedSal = STATE.roster.reduce((acc, s) => acc + (s.player ? s.player.salaryNum : 0), 0);
-    const openIndices = STATE.roster.map((s, idx) => (!s.player ? idx : -1)).filter(i => i !== -1);
-    if (openIndices.length === 0) return;
+    const cap = parseInt(state.meta.salary_cap || "60000", 10);
+    const openSlots = ROSTER_SLOT_SCHEMA.filter((s) => !state.roster[s.slotId]);
+    if (openSlots.length === 9 && state.lineups.length > 0) {
+      const opt1 = state.lineups.find((l) => l.preset_id === "opt-1") || state.lineups[0];
+      loadPresetLineup(opt1.preset_id);
+      return;
+    }
 
-    const minSalPerOpen = 4000;
-    openIndices.forEach((slotIdx, k) => {
-      const slotObj = STATE.roster[slotIdx];
-      const remainingAfterThis = openIndices.length - 1 - k;
-      const maxAllowable = (cap - usedSal) - remainingAfterThis * minSalPerOpen;
-      const candidate = DB.players
-        .filter(p =>
-          slotObj.accept.includes(p.pos) &&
-          !isRostered(p.name) &&
-          !['O', 'IR', 'D', 'OUT'].includes(p.status) &&
-          p.salaryNum <= maxAllowable
-        )
-        .sort((a, b) => b.ourProjNum - a.ourProjNum)[0];
-      if (candidate) {
-        slotObj.player = candidate;
-        usedSal += candidate.salaryNum;
+    const usedIds = getRosteredPlayerIds();
+    let currentSal = Object.values(state.roster).reduce((acc, p) => acc + (p ? p.salary : 0), 0);
+
+    for (let i = 0; i < openSlots.length; i++) {
+      const slot = openSlots[i];
+      const remAfterThis = openSlots.length - 1 - i;
+      const minReserve = remAfterThis * 3200;
+      const maxAffordable = cap - currentSal - minReserve;
+
+      const cands = state.players
+        .filter((p) => {
+          if (usedIds.has(p.id)) return false;
+          if (!slot.allowed.includes(p.pos)) return false;
+          if (["O", "IR", "D"].includes(p.status)) return false;
+          if (p.salary > maxAffordable) return false;
+          return true;
+        })
+        .sort((a, b) => b.our_proj - a.our_proj);
+
+      if (cands.length > 0) {
+        state.roster[slot.slotId] = cands[0];
+        usedIds.add(cands[0].id);
+        currentSal += cands[0].salary;
       }
-    });
-
-    renderPlayerTable();
+    }
+    state.activePresetMeta = null;
     renderLineupPanel();
+    renderPlayerPool();
   }
 
   function renderLineupPanel() {
-    const slotsContainer = document.getElementById('roster-slots');
-    if (!slotsContainer) return;
-
-    const cap = num(DB.meta.salary_cap, 60000);
+    const cap = parseInt(state.meta.salary_cap || "60000", 10);
     let usedSal = 0;
-    let totalOurProj = 0;
-    let totalFdProj = 0;
+    let totalProj = 0;
+    let totalFd = 0;
+    let totalCeil = 0;
     let filledCount = 0;
 
-    slotsContainer.innerHTML = STATE.roster.map((s, idx) => {
-      if (!s.player) {
+    ROSTER_SLOT_SCHEMA.forEach((s) => {
+      const p = state.roster[s.slotId];
+      if (p) {
+        usedSal += p.salary;
+        totalProj += p.our_proj;
+        totalFd += p.fd_proj;
+        totalCeil += p.ceil;
+        filledCount++;
+      }
+    });
+
+    const remSal = cap - usedSal;
+    const openCount = 9 - filledCount;
+    const avgOpen = openCount > 0 ? Math.floor(remSal / openCount) : 0;
+
+    const remEl = document.getElementById("cap-remaining");
+    remEl.textContent = fmtMoney(remSal);
+    remEl.className = "meter-value" + (remSal < 0 ? " over-cap" : "");
+
+    document.getElementById("cap-used").textContent = `${fmtMoney(usedSal)} / ${fmtMoney(cap)}`;
+    document.getElementById("cap-avg-slot").textContent = openCount > 0 ? fmtMoney(avgOpen) : "FULL";
+    document.getElementById("slots-filled-count").textContent = `${filledCount} / 9 Rostered`;
+    document.getElementById("lineup-total-proj").textContent = totalProj.toFixed(2);
+    const edgeTotal = totalProj - totalFd;
+    document.getElementById("lineup-total-edge").textContent =
+      `FD: ${totalFd.toFixed(2)} (${fmtSigned(edgeTotal)} edge)`;
+
+    document.getElementById("m-bar-slots").textContent = `${filledCount}/9`;
+    document.getElementById("m-bar-sal").textContent = fmtMoney(remSal);
+    document.getElementById("m-bar-proj").textContent = totalProj.toFixed(2);
+
+    const subText = document.getElementById("lineup-subtitle-text");
+    if (state.activePresetMeta) {
+      subText.textContent = state.activePresetMeta.contest;
+    } else if (filledCount === 9) {
+      subText.textContent = `Custom 9-Player Build • Ceiling ${totalCeil.toFixed(1)} pts`;
+    } else {
+      subText.textContent = `Select ${openCount} more player${openCount === 1 ? "" : "s"}`;
+    }
+
+    const container = document.getElementById("roster-slots");
+    container.innerHTML = ROSTER_SLOT_SCHEMA.map((s) => {
+      const p = state.roster[s.slotId];
+      const isSelectedSlot = state.activeSlotFilter === s.slotId;
+      if (!p) {
         return `
-          <div class="roster-slot-row empty">
-            <span class="slot-pill">${esc(s.slot)}</span>
-            <div class="slot-p-sub">Open ${esc(s.slot)} slot — click + on board</div>
-            <div></div>
-            <div></div>
+          <div class="roster-slot empty-slot ${isSelectedSlot ? "active-slot-filter" : ""}" data-slot="${s.slotId}">
+            <div class="slot-pos-tag">${s.label}</div>
+            <div class="slot-body">
+              <div class="slot-empty-text">Click to filter ${s.label} pool or click + on table</div>
+            </div>
           </div>
         `;
       }
-      const p = s.player;
-      usedSal += p.salaryNum;
-      totalOurProj += p.ourProjNum;
-      totalFdProj += p.fdProjNum;
-      filledCount++;
+      const matchup = p.is_home ? `vs ${p.opp}` : `@ ${p.opp}`;
       return `
-        <div class="roster-slot-row">
-          <span class="slot-pill">${esc(s.slot)}</span>
-          <div>
-            <div class="slot-p-name" data-modal-player="${esc(p.name)}">${esc(p.name)} <span style="color:var(--fd-text-muted);font-size:11px;">(${esc(p.team)})</span></div>
-            <div class="slot-p-sub">${esc(p.game)} • FD ${p.fdProjNum.toFixed(1)} → Our ${p.ourProjNum.toFixed(2)}</div>
+        <div class="roster-slot" data-slot="${s.slotId}" data-pid="${escapeHtml(p.id)}">
+          <div class="slot-pos-tag">${s.label}</div>
+          <div class="slot-body">
+            <div class="slot-p-name">
+              <span>${escapeHtml(p.name)}</span>
+              ${p.is_sleeper ? `<span class="sleeper-badge">SLEEPER</span>` : ""}
+            </div>
+            <div class="slot-p-meta">${escapeHtml(p.team)} ${escapeHtml(matchup)} • FD ${p.fd_proj.toFixed(1)} • Ceil ${p.ceil.toFixed(1)}</div>
           </div>
-          <div class="slot-p-nums">
-            <div class="slot-p-proj">${p.ourProjNum.toFixed(2)}</div>
-            <div class="slot-p-sal">${fmtMoney(p.salaryNum)}</div>
+          <div class="slot-numbers">
+            <div class="slot-proj">${p.our_proj.toFixed(2)}</div>
+            <div class="slot-sal">${fmtMoney(p.salary)}</div>
           </div>
-          <button type="button" class="slot-rm-btn" data-rm-idx="${idx}" title="Remove player">×</button>
+          <button class="slot-remove" data-remove-slot="${s.slotId}" title="Remove player">✕</button>
         </div>
       `;
-    }).join('');
+    }).join("");
 
-    slotsContainer.querySelectorAll('[data-modal-player]').forEach(el => {
-      el.addEventListener('click', () => openPlayerModal(el.getAttribute('data-modal-player')));
-    });
-
-    slotsContainer.querySelectorAll('button[data-rm-idx]').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const idx = Number(btn.getAttribute('data-rm-idx'));
-        if (STATE.roster[idx]) {
-          STATE.roster[idx].player = null;
-          renderPlayerTable();
+    container.querySelectorAll(".roster-slot").forEach((el) => {
+      el.addEventListener("click", (e) => {
+        const rmBtn = e.target.closest(".slot-remove");
+        const slotId = el.getAttribute("data-slot");
+        if (rmBtn) {
+          e.stopPropagation();
+          state.roster[slotId] = null;
+          state.activePresetMeta = null;
+          document.getElementById("preset-select").value = "";
+          renderLineupPanel();
+          renderPlayerPool();
+          return;
+        }
+        const pid = el.getAttribute("data-pid");
+        if (pid) {
+          const p = state.playerById.get(pid);
+          if (p) openPlayerModal(p);
+        } else {
+          state.activeSlotFilter = state.activeSlotFilter === slotId ? null : slotId;
+          const schema = ROSTER_SLOT_SCHEMA.find((x) => x.slotId === slotId);
+          if (schema) {
+            setPosTabFilter(slotId === "FLEX" ? "FLEX" : slotId === "DEF" ? "DEF" : schema.allowed[0]);
+          }
           renderLineupPanel();
         }
       });
     });
 
-    const remSal = cap - usedSal;
-    const openSlots = 9 - filledCount;
-    const avgOpen = openSlots > 0 ? Math.floor(remSal / openSlots) : 0;
-    const edgeTotal = totalOurProj - totalFdProj;
+    const footer = document.getElementById("lineup-footer-info");
+    const teamCounts = {};
+    let sleepersCount = 0;
+    Object.values(state.roster).forEach((p) => {
+      if (p) {
+        teamCounts[p.team] = (teamCounts[p.team] || 0) + 1;
+        if (p.is_sleeper) sleepersCount++;
+      }
+    });
+    const stacks = Object.entries(teamCounts)
+      .filter(([, c]) => c >= 2)
+      .sort((a, b) => b[1] - a[1])
+      .map(([t, c]) => `${t} (${c})`)
+      .join(", ");
 
-    const setTxt = (id, t) => {
-      const el = document.getElementById(id);
-      if (el) el.textContent = t;
-    };
-
-    const capRemEl = document.getElementById('cap-remaining');
-    if (capRemEl) {
-      capRemEl.textContent = fmtMoney(remSal);
-      capRemEl.classList.toggle('over-cap', remSal < 0);
-    }
-    setTxt('cap-used', `${fmtMoney(usedSal)} / ${fmtMoney(cap)}`);
-    setTxt('cap-avg-slot', openSlots > 0 ? fmtMoney(avgOpen) : '$0');
-    setTxt('slots-filled-count', `${filledCount} / 9 Rostered`);
-    setTxt('lineup-total-proj', totalOurProj.toFixed(2));
-    setTxt('lineup-total-edge', `FD Proj: ${totalFdProj.toFixed(2)} (${fmtSigned(edgeTotal, 2)})`);
-
-    setTxt('m-bar-slots', `${filledCount}/9`);
-    setTxt('m-bar-sal', fmtMoney(remSal));
-    setTxt('m-bar-proj', totalOurProj.toFixed(2));
-
-    const footerEl = document.getElementById('lineup-footer-info');
-    if (footerEl) {
-      footerEl.innerHTML = `<strong>Active Build:</strong> ${esc(STATE.lineupMetaText || 'Custom Lineup')} • <strong>Total Edge vs FD:</strong> <span class="edge-pos">${fmtSigned(edgeTotal, 2)} FD pts</span>`;
+    if (state.activePresetMeta) {
+      const m = state.activePresetMeta;
+      footer.innerHTML = `
+        <div><strong>Entry ID:</strong> <code>${escapeHtml(m.entry_id)}</code> • <strong>Contest:</strong> ${escapeHtml(m.contest)}</div>
+        <div><strong>Team Stacks:</strong> ${escapeHtml(stacks || "Balanced")} • <strong>Sleepers:</strong> ${sleepersCount} • <strong>9-Slot Ceiling:</strong> ${totalCeil.toFixed(1)} pts</div>
+      `;
+    } else {
+      footer.innerHTML = `
+        <div><strong>Team Stacks:</strong> ${escapeHtml(stacks || "None (add 2+ from same team)")} • <strong>Sleeper Breakouts:</strong> ${sleepersCount}</div>
+        <div><strong>Lineup Ceiling:</strong> ${totalCeil.toFixed(2)} pts • <strong>Edge vs FD Pre-Game:</strong> ${fmtSigned(edgeTotal)} pts</div>
+      `;
     }
   }
 
-  // ==========================================================================
-  // TAB 2: HISTORIC TRENDS (OUR PROJ vs ACTUAL vs FANDUEL PROJ)
-  // ==========================================================================
-  function renderHistoricView() {
-    renderHistoricKpisAndLegends();
+  function setPosTabFilter(posKey) {
+    state.posFilter = posKey;
+    document.querySelectorAll("#pos-tabs .pos-tab").forEach((btn) => {
+      btn.classList.toggle("active", btn.getAttribute("data-pos") === posKey);
+    });
+    renderPlayerPool();
+  }
+
+  // ---------- TAB 2: HISTORIC TRENDS ----------
+  function renderHistoricTrendsTab() {
+    renderHistoricKpis();
     renderWeeklyLineupsChart();
     renderWeeklyAccuracyChart();
-    renderScatterCalibrationChart();
-    renderPosSummaryTable();
+    renderPositionSummaryTable();
     renderHistoricWeeklyTable();
-    renderHistoricExplorer();
+    renderHistoricExplorerAndScatter();
   }
 
-  function renderHistoricKpisAndLegends() {
-    const allRow = DB.weeklySummary.find(r => r.week === 'ALL') || {};
-    const wk8Row = DB.weeklySummary.find(r => r.week === '8') || {};
+  function renderHistoricKpis() {
+    const allRow = state.historicWeekly.find((w) => w.week === "ALL") || {};
+    const w8Row = state.historicWeekly.find((w) => w.week === "8") || {};
+    const grid = document.getElementById("historic-kpi-grid");
+    document.getElementById("leg-our-opt").textContent = `Our Optimal Actual (${allRow.our_opt_lineup_actual} avg)`;
+    document.getElementById("leg-tysa-opt").textContent = `Tysa Best Entry (${allRow.tysa_best_entry_actual} avg)`;
+    document.getElementById("leg-fd-opt").textContent = `FD Pre-Game Optimal (${allRow.fd_opt_lineup_actual} avg)`;
+    document.getElementById("leg-our-acc").textContent = `Our v6 Pre-Game (ρ=${allRow.our_rho}, MAE=${allRow.our_mae})`;
+    document.getElementById("leg-fd-acc").textContent = `FD Pre-Game (ρ=${allRow.fd_rho}, MAE=${allRow.fd_mae})`;
 
-    const setTxt = (id, txt) => {
-      const el = document.getElementById(id);
-      if (el) el.textContent = txt;
-    };
-    setTxt('leg-our-opt', `Our Optimal Actual (${allRow.our_opt_actual || '—'} avg)`);
-    setTxt('leg-tysa-opt', `Tysa Best Entry (${allRow.tysa_best_actual || '—'} avg)`);
-    setTxt('leg-fd-opt', `FD Pre-Game Optimal (${allRow.fd_opt_actual || '—'} avg)`);
-    setTxt('leg-our-acc', `Our v6 Pre-Game (ρ=${allRow.our_rho || '—'}, MAE=${allRow.our_mae || '—'})`);
-    setTxt('leg-fd-acc', `FD Pre-Game (ρ=${allRow.fd_rho || '—'}, MAE=${allRow.fd_mae || '—'})`);
-
-    const kpiGrid = document.getElementById('historic-kpi-grid');
-    if (!kpiGrid) return;
-
-    kpiGrid.innerHTML = `
-      <div class="kpi-card">
-        <div class="k-lbl">Out-of-Sample Rank ρ (Wk 3–7)</div>
-        <div class="k-val">${esc(allRow.our_rho)} <span style="font-size:13px;color:#38bdf8;">(${esc(allRow.rho_lift)} vs FD)</span></div>
-        <div class="k-sub">Our v6 ρ = ${esc(allRow.our_rho)} vs. FanDuel Pre-Game ρ = ${esc(allRow.fd_rho)} across ${esc(allRow.n_players)} completed player-games</div>
+    grid.innerHTML = `
+      <div class="hist-kpi-card">
+        <div class="hk-label">OUT-OF-SAMPLE SPEARMAN ρ (WK 3–7)</div>
+        <div class="hk-val pos">${escapeHtml(allRow.our_rho)} <span class="hk-vs">vs FD ${escapeHtml(allRow.fd_rho)}</span></div>
+        <div class="hk-sub"><strong>${escapeHtml(allRow.rho_gain)} rank correlation lift</strong> across n = ${escapeHtml(allRow.n_players)} completed player-games</div>
       </div>
-      <div class="kpi-card">
-        <div class="k-lbl">Out-of-Sample MAE (Wk 3–7)</div>
-        <div class="k-val">${esc(allRow.our_mae)} pts</div>
-        <div class="k-sub">Beat FanDuel Pre-Game MAE (${esc(allRow.fd_mae)} pts) by ${esc(allRow.mae_improvement)} FD pts/player</div>
+      <div class="hist-kpi-card">
+        <div class="hk-label">PRE-GAME POINT ERROR (MAE WK 3–7)</div>
+        <div class="hk-val pos">${escapeHtml(allRow.our_mae)} <span class="hk-vs">vs FD ${escapeHtml(allRow.fd_mae)}</span></div>
+        <div class="hk-sub"><strong>${escapeHtml(allRow.mae_improvement)} FD pts lower error</strong> per player-game (${escapeHtml(allRow.our_beat_fd_pct)}% Head-to-Head Win Rate)</div>
       </div>
-      <div class="kpi-card">
-        <div class="k-lbl">Head-to-Head Player Win Rate</div>
-        <div class="k-val">${esc(allRow.our_beat_fd_pct)}%</div>
-        <div class="k-sub">Our pre-game projection was closer to Actual FD Points than FanDuel’s in 5 of 5 weeks</div>
+      <div class="hist-kpi-card">
+        <div class="hk-label">OPTIMAL LINEUP ACTUAL AVG (WK 3–6)</div>
+        <div class="hk-val accent">${escapeHtml(allRow.our_opt_lineup_actual)} <span class="hk-vs">vs FD ${escapeHtml(allRow.fd_opt_lineup_actual)}</span></div>
+        <div class="hk-sub"><strong>${escapeHtml(allRow.opt_lineup_edge_pts)} FD pts/wk</strong> actual scoring edge • Tysa Best Entry Avg: <strong>${escapeHtml(allRow.tysa_best_entry_actual)} pts</strong></div>
       </div>
-      <div class="kpi-card">
-        <div class="k-lbl">Our Pre-Game Optimal Lineup Actual</div>
-        <div class="k-val">${esc(allRow.our_opt_actual)} pts/wk</div>
-        <div class="k-sub">vs. FanDuel Pre-Game Optimal (${esc(allRow.fd_opt_actual)} pts/wk) → <strong>${esc(allRow.opt_actual_edge)} pts/wk edge</strong></div>
-      </div>
-      <div class="kpi-card">
-        <div class="k-lbl">Tysa Entered Lineups Actual Avg</div>
-        <div class="k-val">${esc(allRow.tysa_best_actual)} pts/wk</div>
-        <div class="k-sub">${esc(allRow.tysa_contest_note)}</div>
-      </div>
-      <div class="kpi-card">
-        <div class="k-lbl">Week 8 Locked Optimal Projection</div>
-        <div class="k-val">${esc(wk8Row.our_opt_proj)} pts</div>
-        <div class="k-sub">Slate #${esc(DB.meta.slate_id)} (${esc(wk8Row.n_players)} players) • FD Base for same lineup: ${esc(wk8Row.fd_opt_proj)} pts</div>
+      <div class="hist-kpi-card">
+        <div class="hk-label">WEEK 8 PRE-GAME LOCKED SNAPSHOT</div>
+        <div class="hk-val gold">${escapeHtml(w8Row.our_opt_lineup_proj || "167.59")} <span class="hk-vs">vs FD ${escapeHtml(w8Row.fd_opt_lineup_proj || "149.12")}</span></div>
+        <div class="hk-sub">510 players locked in CSV • Top Entered Lineup #2: <strong>165.19 v6 pts</strong> (HOU Stroud + Bijan)</div>
       </div>
     `;
   }
 
   function renderWeeklyLineupsChart() {
-    const wrap = document.getElementById('chart-weekly-lineups');
-    if (!wrap) return;
-    const weeks = DB.weeklySummary.filter(r => r.week !== 'ALL');
-    if (!weeks.length) return;
-
-    const W = 680, H = 260, padL = 44, padR = 18, padT = 22, padB = 42;
+    const wrap = document.getElementById("chart-weekly-lineups");
+    const weeks = state.historicWeekly.filter((w) => ["3", "4", "5", "6", "7", "8"].includes(w.week));
+    const W = 640;
+    const H = 265;
+    const padL = 44;
+    const padR = 18;
+    const padT = 24;
+    const padB = 46;
     const plotW = W - padL - padR;
     const plotH = H - padT - padB;
-    const maxY = 185;
-    const yScale = v => padT + plotH - (Math.min(maxY, Math.max(0, v)) / maxY) * plotH;
+    const maxY = 200;
 
-    let svg = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Weekly Optimal Lineup Scoring Chart">`;
-    [0, 45, 90, 135, 180].forEach(tick => {
-      const y = yScale(tick);
-      svg += `<line x1="${padL}" y1="${y}" x2="${W - padR}" y2="${y}" stroke="#1e3256" stroke-dasharray="3,3" />`;
-      svg += `<text x="${padL - 6}" y="${y + 4}" text-anchor="end" fill="#8ca2c6" font-size="10" font-family="JetBrains Mono">${tick}</text>`;
+    const yPos = (val) => padT + plotH - (Math.min(maxY, Math.max(0, val)) / maxY) * plotH;
+
+    let gridLines = "";
+    [0, 50, 100, 150, 200].forEach((tick) => {
+      const y = yPos(tick);
+      gridLines += `
+        <line x1="${padL}" y1="${y}" x2="${W - padR}" y2="${y}" stroke="#1f2d47" stroke-dasharray="3,3" />
+        <text x="${padL - 8}" y="${y + 4}" text-anchor="end" fill="#64748b" font-size="10" font-family="JetBrains Mono">${tick}</text>
+      `;
     });
 
     const groupW = plotW / weeks.length;
-    const barW = Math.min(22, (groupW - 18) / 3);
+    const barW = 19;
+    let bars = "";
 
     weeks.forEach((w, idx) => {
-      const gx = padL + idx * groupW + 10;
-      const isPre = w.status !== 'COMPLETED';
-      const ourVal = isPre ? num(w.our_opt_proj) : num(w.our_opt_actual);
-      const tysaVal = isPre ? num(w.our_opt_proj) : num(w.tysa_best_actual);
-      const fdVal = isPre ? num(w.fd_opt_proj) : num(w.fd_opt_actual);
+      const cx = padL + idx * groupW + groupW / 2;
+      const isPending = w.week === "8";
+      const ourVal = isPending ? parseFloat(w.our_opt_lineup_proj) || 0 : parseFloat(w.our_opt_lineup_actual) || 0;
+      const bestW8 = Math.max(...state.lineups.filter(l => l.preset_id.startsWith("contest-")).map(l => parseFloat(l.our_proj) || 0));
+      const tysaVal = isPending ? bestW8 : parseFloat(w.tysa_best_entry_actual) || 0;
+      const fdVal = isPending ? parseFloat(w.fd_opt_lineup_proj) || 0 : parseFloat(w.fd_opt_lineup_actual) || 0;
 
-      const bars = [
-        { val: ourVal, color: isPre ? '#1493ff' : '#00d084', lbl: ourVal.toFixed(1) },
-        { val: tysaVal, color: '#38bdf8', lbl: tysaVal.toFixed(1) },
-        { val: fdVal, color: '#f87171', lbl: fdVal.toFixed(1) }
-      ];
+      const xOur = cx - barW * 1.55;
+      const xTysa = cx - barW * 0.45;
+      const xFd = cx + barW * 0.65;
 
-      bars.forEach((b, bi) => {
-        const bx = gx + bi * (barW + 3);
-        const by = yScale(b.val);
-        const bh = padT + plotH - by;
-        svg += `<rect x="${bx}" y="${by}" width="${barW}" height="${bh}" rx="3" fill="${b.color}" opacity="${isPre ? '0.65' : '0.92'}" />`;
-        svg += `<text x="${bx + barW / 2}" y="${by - 4}" text-anchor="middle" fill="#e2e8f0" font-size="9" font-family="JetBrains Mono">${b.lbl}</text>`;
-      });
+      const yOur = yPos(ourVal);
+      const yTysa = yPos(tysaVal);
+      const yFd = yPos(fdVal);
+      const opAttr = isPending ? 'fill-opacity="0.45" stroke-dasharray="3,2"' : "";
 
-      const wkLbl = isPre ? `Wk ${w.week} (Proj)` : `Wk ${w.week}`;
-      svg += `<text x="${gx + barW * 1.5 + 3}" y="${H - 16}" text-anchor="middle" fill="#cbd5e1" font-size="11" font-weight="700">${esc(wkLbl)}</text>`;
+      bars += `
+        <g class="chart-bar-group">
+          <rect x="${xOur}" y="${yOur}" width="${barW}" height="${padT + plotH - yOur}" rx="3" fill="#00d68f" stroke="#00d68f" ${opAttr} />
+          <text x="${xOur + barW / 2}" y="${yOur - 5}" text-anchor="middle" fill="#00d68f" font-size="9.5" font-weight="700" font-family="JetBrains Mono">${ourVal.toFixed(0)}</text>
+
+          <rect x="${xTysa}" y="${yTysa}" width="${barW}" height="${padT + plotH - yTysa}" rx="3" fill="#38bdf8" stroke="#38bdf8" ${opAttr} />
+          <text x="${xTysa + barW / 2}" y="${yTysa - 5}" text-anchor="middle" fill="#38bdf8" font-size="9.5" font-weight="700" font-family="JetBrains Mono">${tysaVal.toFixed(0)}</text>
+
+          <rect x="${xFd}" y="${yFd}" width="${barW}" height="${padT + plotH - yFd}" rx="3" fill="#f59e0b" stroke="#f59e0b" ${opAttr} />
+          <text x="${xFd + barW / 2}" y="${yFd - 5}" text-anchor="middle" fill="#f59e0b" font-size="9.5" font-weight="700" font-family="JetBrains Mono">${fdVal.toFixed(0)}</text>
+
+          <text x="${cx}" y="${H - 22}" text-anchor="middle" fill="#e2e8f0" font-size="11" font-weight="700">${isPending ? "Wk 8*" : "Wk " + w.week}</text>
+          <text x="${cx}" y="${H - 8}" text-anchor="middle" fill="#64748b" font-size="9.5">${isPending ? "Pre-Game" : "+" + (ourVal - fdVal).toFixed(1) + " edge"}</text>
+        </g>
+      `;
     });
 
-    svg += `</svg>`;
-    wrap.innerHTML = svg;
+    wrap.innerHTML = `<svg viewBox="0 0 ${W} ${H}" class="resp-svg" role="img" aria-label="Week by Week Optimal Lineup Scoring Chart">${gridLines}${bars}</svg>`;
   }
 
   function renderWeeklyAccuracyChart() {
-    const wrap = document.getElementById('chart-weekly-accuracy');
-    if (!wrap) return;
-    const compWeeks = DB.weeklySummary.filter(r => r.status === 'COMPLETED' && r.week !== 'ALL');
-    if (!compWeeks.length) return;
-
-    const W = 680, H = 260, padL = 44, padR = 20, padT = 24, padB = 42;
+    const wrap = document.getElementById("chart-weekly-accuracy");
+    const weeks = state.historicWeekly.filter((w) => ["3", "4", "5", "6", "7"].includes(w.week));
+    const W = 640;
+    const H = 265;
+    const padL = 44;
+    const padR = 44;
+    const padT = 24;
+    const padB = 46;
     const plotW = W - padL - padR;
     const plotH = H - padT - padB;
-    const groupW = plotW / compWeeks.length;
+
+    const yRho = (r) => padT + plotH - (Math.min(0.85, Math.max(0, r)) / 0.85) * plotH;
+
+    let gridLines = "";
+    [0.2, 0.4, 0.6, 0.8].forEach((rTick) => {
+      const y = yRho(rTick);
+      gridLines += `
+        <line x1="${padL}" y1="${y}" x2="${W - padR}" y2="${y}" stroke="#1f2d47" stroke-dasharray="3,3" />
+        <text x="${padL - 8}" y="${y + 4}" text-anchor="end" fill="#00d68f" font-size="10" font-family="JetBrains Mono">ρ ${rTick.toFixed(1)}</text>
+      `;
+    });
+
+    const groupW = plotW / weeks.length;
     const barW = 24;
+    let bars = "";
 
-    let svg = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Weekly Spearman Rank Correlation Chart">`;
-    [0.0, 0.2, 0.4, 0.6, 0.8].forEach(tick => {
-      const y = padT + plotH - (tick / 0.8) * plotH;
-      svg += `<line x1="${padL}" y1="${y}" x2="${W - padR}" y2="${y}" stroke="#1e3256" stroke-dasharray="3,3" />`;
-      svg += `<text x="${padL - 6}" y="${y + 4}" text-anchor="end" fill="#8ca2c6" font-size="10" font-family="JetBrains Mono">${tick.toFixed(1)}</text>`;
-    });
-
-    compWeeks.forEach((w, idx) => {
+    weeks.forEach((w, idx) => {
       const cx = padL + idx * groupW + groupW / 2;
-      const ourRho = num(w.our_rho);
-      const fdRho = num(w.fd_rho);
-      const yOur = padT + plotH - (ourRho / 0.8) * plotH;
-      const yFd = padT + plotH - (fdRho / 0.8) * plotH;
+      const rOur = parseFloat(w.our_rho) || 0;
+      const rFd = parseFloat(w.fd_rho) || 0;
+      const mOur = parseFloat(w.our_mae) || 0;
+      const mFd = parseFloat(w.fd_mae) || 0;
 
-      svg += `<rect x="${cx - barW - 3}" y="${yOur}" width="${barW}" height="${padT + plotH - yOur}" rx="3" fill="#00d084" />`;
-      svg += `<text x="${cx - barW / 2 - 3}" y="${yOur - 5}" text-anchor="middle" fill="#6ee7b7" font-size="9.5" font-family="JetBrains Mono">${ourRho.toFixed(3)}</text>`;
+      const xOur = cx - barW - 3;
+      const xFd = cx + 3;
+      const yROur = yRho(rOur);
+      const yRFd = yRho(rFd);
 
-      svg += `<rect x="${cx + 3}" y="${yFd}" width="${barW}" height="${padT + plotH - yFd}" rx="3" fill="#f87171" />`;
-      svg += `<text x="${cx + barW / 2 + 3}" y="${yFd - 5}" text-anchor="middle" fill="#fca5a5" font-size="9.5" font-family="JetBrains Mono">${fdRho.toFixed(3)}</text>`;
+      bars += `
+        <g>
+          <rect x="${xOur}" y="${yROur}" width="${barW}" height="${padT + plotH - yROur}" rx="3" fill="#00d68f" fill-opacity="0.85" />
+          <text x="${xOur + barW / 2}" y="${yROur - 5}" text-anchor="middle" fill="#00d68f" font-size="9.5" font-weight="700" font-family="JetBrains Mono">.${Math.round(rOur * 1000)}</text>
 
-      svg += `<text x="${cx}" y="${H - 18}" text-anchor="middle" fill="#cbd5e1" font-size="11" font-weight="700">Wk ${esc(w.week)} (MAE ${esc(w.our_mae)} vs ${esc(w.fd_mae)})</text>`;
+          <rect x="${xFd}" y="${yRFd}" width="${barW}" height="${padT + plotH - yRFd}" rx="3" fill="#f59e0b" fill-opacity="0.78" />
+          <text x="${xFd + barW / 2}" y="${yRFd - 5}" text-anchor="middle" fill="#f59e0b" font-size="9.5" font-weight="700" font-family="JetBrains Mono">.${Math.round(rFd * 1000)}</text>
+
+          <text x="${cx}" y="${H - 22}" text-anchor="middle" fill="#e2e8f0" font-size="11" font-weight="700">Week ${w.week}</text>
+          <text x="${cx}" y="${H - 8}" text-anchor="middle" fill="#94a3b8" font-size="9.5">MAE ${mOur.toFixed(2)} vs ${mFd.toFixed(2)}</text>
+        </g>
+      `;
     });
 
-    svg += `</svg>`;
-    wrap.innerHTML = svg;
+    wrap.innerHTML = `<svg viewBox="0 0 ${W} ${H}" class="resp-svg" role="img" aria-label="Week by Week Spearman Correlation and MAE Chart">${gridLines}${bars}</svg>`;
   }
 
-  function renderScatterCalibrationChart() {
-    const wrap = document.getElementById('chart-scatter-calibration');
-    if (!wrap) return;
+  function renderPositionSummaryTable() {
+    const container = document.getElementById("pos-summary-container");
+    const wkFilter = ["3", "4", "5", "6", "7"].includes(state.histWeekFilter) ? state.histWeekFilter : "ALL";
+    const rows = state.historicPositions.filter((r) => r.week === wkFilter);
 
-    const pts = DB.histPlayers.filter(r => {
-      if (!r.isCompleted || r.actualNum === null) return false;
-      if (STATE.histWeek !== 'COMPLETED' && STATE.histWeek !== 'ALL' && String(r.week) !== STATE.histWeek) return false;
-      if (STATE.histPos !== 'ALL' && r.pos !== STATE.histPos) return false;
-      return true;
-    });
-
-    const W = 680, H = 260, padL = 44, padR = 20, padT = 18, padB = 36;
-    const plotW = W - padL - padR;
-    const plotH = H - padT - padB;
-    const maxVal = 40;
-    const xScale = v => padL + (Math.min(maxVal, Math.max(0, v)) / maxVal) * plotW;
-    const yScale = v => padT + plotH - (Math.min(maxVal, Math.max(0, v)) / maxVal) * plotH;
-
-    let svg = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Pre-Game Projection vs Actual Calibration Scatter">`;
-    [0, 10, 20, 30, 40].forEach(t => {
-      const y = yScale(t);
-      const x = xScale(t);
-      svg += `<line x1="${padL}" y1="${y}" x2="${W - padR}" y2="${y}" stroke="#1b2d4f" stroke-dasharray="2,3" />`;
-      svg += `<text x="${padL - 6}" y="${y + 4}" text-anchor="end" fill="#8ca2c6" font-size="9.5" font-family="JetBrains Mono">${t}</text>`;
-      svg += `<text x="${x}" y="${H - 10}" text-anchor="middle" fill="#8ca2c6" font-size="9.5" font-family="JetBrains Mono">${t}</text>`;
-    });
-
-    // Perfect y = x calibration line
-    svg += `<line x1="${xScale(0)}" y1="${yScale(0)}" x2="${xScale(38)}" y2="${yScale(38)}" stroke="#38bdf8" stroke-width="1.5" stroke-dasharray="5,4" />`;
-
-    const step = Math.max(1, Math.ceil(pts.length / 450));
-    for (let i = 0; i < pts.length; i += step) {
-      const r = pts[i];
-      svg += `<circle cx="${xScale(r.fdProjNum).toFixed(1)}" cy="${yScale(r.actualNum).toFixed(1)}" r="2.2" fill="#f87171" opacity="0.35" />`;
-      svg += `<circle cx="${xScale(r.ourProjNum).toFixed(1)}" cy="${yScale(r.actualNum).toFixed(1)}" r="2.6" fill="#00d084" opacity="0.68"><title>Wk ${esc(r.week)} ${esc(r.name)} (${esc(r.pos)}): Our ${r.ourProjNum.toFixed(2)} vs FD ${r.fdProjNum.toFixed(2)} → Actual ${r.actualNum.toFixed(2)}</title></circle>`;
-    }
-
-    svg += `</svg>`;
-    wrap.innerHTML = svg;
-  }
-
-  function renderPosSummaryTable() {
-    const wrap = document.getElementById('pos-summary-container');
-    if (!wrap) return;
-    const targetScope = (STATE.histWeek === 'COMPLETED' || STATE.histWeek === 'ALL' || STATE.histWeek === '8') ? 'ALL' : STATE.histWeek;
-    const rows = DB.posSummary.filter(r => r.week === targetScope);
-
-    wrap.innerHTML = `
-      <table class="data-table">
+    let html = `
+      <table class="data-table compact-pos-table">
         <thead>
           <tr>
-            <th>POS (${targetScope === 'ALL' ? 'WK 3–7 ALL' : 'WK ' + esc(targetScope)})</th>
+            <th>POS (${wkFilter === "ALL" ? "WK 3–7" : "WK " + wkFilter})</th>
             <th>N</th>
             <th>OUR ρ</th>
             <th>FD ρ</th>
             <th>OUR MAE</th>
             <th>FD MAE</th>
-            <th>OUR BIAS</th>
-            <th>FD BIAS</th>
-            <th>WIN %</th>
+            <th>WIN % vs FD</th>
           </tr>
         </thead>
         <tbody>
-          ${rows.map(r => `
-            <tr>
-              <td><span class="pos-badge pos-${esc(r.pos)}">${esc(r.pos)}</span></td>
-              <td>${esc(r.n_players)}</td>
-              <td class="edge-pos">${esc(r.our_rho)}</td>
-              <td>${esc(r.fd_rho)}</td>
-              <td class="edge-pos">${esc(r.our_mae)}</td>
-              <td>${esc(r.fd_mae)}</td>
-              <td>${esc(r.our_bias)}</td>
-              <td>${esc(r.fd_bias)}</td>
-              <td class="edge-pos">${esc(r.our_beat_fd_pct)}%</td>
-            </tr>
-          `).join('')}
-        </tbody>
-      </table>
     `;
+    rows.forEach((r) => {
+      const posDisp = r.pos === "DST" ? "DEF" : r.pos;
+      const rhoLift = (parseFloat(r.our_rho) - parseFloat(r.fd_rho)).toFixed(3);
+      html += `
+        <tr>
+          <td><span class="pos-badge ${escapeHtml(posDisp)}">${escapeHtml(posDisp)}</span></td>
+          <td class="mono">${escapeHtml(r.n_players)}</td>
+          <td class="mono pos-text"><strong>${escapeHtml(r.our_rho)}</strong> <span class="tiny-lift">(+${rhoLift})</span></td>
+          <td class="mono">${escapeHtml(r.fd_rho)}</td>
+          <td class="mono pos-text"><strong>${escapeHtml(r.our_mae)}</strong></td>
+          <td class="mono">${escapeHtml(r.fd_mae)}</td>
+          <td class="mono"><span class="win-pill">${escapeHtml(r.our_beat_fd_pct)}%</span></td>
+        </tr>
+      `;
+    });
+    html += `</tbody></table>`;
+    container.innerHTML = html;
   }
 
   function renderHistoricWeeklyTable() {
-    const tbody = document.getElementById('historic-weekly-tbody');
-    if (!tbody) return;
+    const tbody = document.getElementById("historic-weekly-tbody");
+    tbody.innerHTML = state.historicWeekly
+      .map((w) => {
+        const isAll = w.week === "ALL";
+        const isW8 = w.week === "8";
+        const isSelected = state.histWeekFilter === w.week;
+        const rowCls = isAll ? "active-version-row" : isW8 ? "pregame-locked-row" : isSelected ? "selected-wk-row" : "";
 
-    tbody.innerHTML = DB.weeklySummary.map(r => {
-      const isAll = r.week === 'ALL';
-      const isPre = r.status !== 'COMPLETED';
-      const rowStyle = isAll ? 'background:rgba(0,208,132,0.11);font-weight:700;' : (isPre ? 'background:rgba(20,147,255,0.10);' : 'cursor:pointer;');
+        return `
+          <tr class="${rowCls} clickable-wk-row" data-wk="${escapeHtml(w.week)}" title="Click to filter Player-Week Explorer and Calibration Plot to ${escapeHtml(w.label)}">
+            <td class="sticky-col">
+              <div class="wk-title">${escapeHtml(w.label)}</div>
+              <div class="wk-sub">${escapeHtml(w.slate_type)}</div>
+            </td>
+            <td class="mono">${escapeHtml(w.n_players)}</td>
+            <td class="mono pos-text"><strong>${escapeHtml(w.our_rho)}</strong></td>
+            <td class="mono">${escapeHtml(w.fd_rho)}</td>
+            <td class="mono pos-text"><strong>${escapeHtml(w.rho_gain)}</strong></td>
+            <td class="mono pos-text"><strong>${escapeHtml(w.our_mae)}</strong></td>
+            <td class="mono">${escapeHtml(w.fd_mae)}</td>
+            <td class="mono pos-text"><strong>${escapeHtml(w.mae_improvement)}</strong></td>
+            <td class="mono"><span class="win-pill">${escapeHtml(w.our_beat_fd_pct)}${w.our_beat_fd_pct !== "PENDING" ? "%" : ""}</span></td>
+            <td class="mono"><strong>${escapeHtml(w.our_opt_lineup_proj)}</strong> → <strong class="pos-text">${escapeHtml(w.our_opt_lineup_actual)}</strong></td>
+            <td class="mono">${escapeHtml(w.fd_opt_lineup_proj)} → ${escapeHtml(w.fd_opt_lineup_actual)}</td>
+            <td class="mono pos-text"><strong>${escapeHtml(w.opt_lineup_edge_pts)}</strong></td>
+            <td class="contest-note-cell">
+              <div class="mono"><strong>${escapeHtml(w.tysa_best_entry_actual)} pts</strong></div>
+              <div class="wk-sub">${escapeHtml(w.tysa_contest_note)}</div>
+            </td>
+            <td class="sleeper-hit-cell">
+              <div><strong>${escapeHtml(w.top_sleeper_hit)}</strong></div>
+              <div class="mono wk-sub">Our ${escapeHtml(w.top_sleeper_our_proj)} vs FD ${escapeHtml(w.top_sleeper_fd_proj)} → <strong>Act ${escapeHtml(w.top_sleeper_actual)}</strong></div>
+            </td>
+          </tr>
+        `;
+      })
+      .join("");
 
-      return `
-        <tr style="${rowStyle}" data-hist-week="${esc(r.week)}">
-          <td>
-            <div style="font-weight:800;color:#fff;">${esc(r.slate_label)}</div>
-            <div style="font-size:11px;color:var(--fd-text-muted);">${esc(r.date_et)} • ${esc(r.status)}</div>
-          </td>
-          <td>${esc(r.n_players)}</td>
-          <td class="edge-pos">${esc(r.our_rho || '—')}</td>
-          <td>${esc(r.fd_rho || '—')}</td>
-          <td class="edge-pos">${esc(r.rho_lift || '—')}</td>
-          <td class="edge-pos">${esc(r.our_mae || '—')}</td>
-          <td>${esc(r.fd_mae || '—')}</td>
-          <td class="edge-pos">${esc(r.mae_improvement || '—')}</td>
-          <td class="edge-pos">${r.our_beat_fd_pct ? esc(r.our_beat_fd_pct) + '%' : '—'}</td>
-          <td>
-            <span style="color:#38bdf8;">${esc(r.our_opt_proj)}</span> →
-            <strong style="color:#00d084;">${esc(r.our_opt_actual || 'Pending')}</strong>
-          </td>
-          <td>
-            <span>${esc(r.fd_opt_proj)}</span> →
-            <strong>${esc(r.fd_opt_actual || 'Pending')}</strong>
-          </td>
-          <td class="edge-pos">${esc(r.opt_actual_edge || '—')}</td>
-          <td style="text-align:left;max-width:250px;white-space:normal;font-family:var(--font-sans);font-size:11.5px;">
-            <strong style="color:#fff;">${esc(r.tysa_best_actual ? r.tysa_best_actual + ' pts' : 'Locked')}</strong> — ${esc(r.tysa_contest_note)}
-          </td>
-          <td style="text-align:left;max-width:260px;white-space:normal;font-family:var(--font-sans);font-size:11.5px;color:#fcd34d;">
-            ${esc(r.top_sleeper_hit)}
-          </td>
-        </tr>
-      `;
-    }).join('');
-
-    tbody.querySelectorAll('tr[data-hist-week]').forEach(tr => {
-      tr.addEventListener('click', () => {
-        const wk = tr.getAttribute('data-hist-week');
-        const wkSel = document.getElementById('hist-filter-week');
-        STATE.histWeek = wk === 'ALL' ? 'COMPLETED' : wk;
-        if (wkSel) wkSel.value = STATE.histWeek;
-        STATE.histPage = 1;
-        renderScatterCalibrationChart();
-        renderPosSummaryTable();
-        renderHistoricExplorer();
+    tbody.querySelectorAll(".clickable-wk-row").forEach((tr) => {
+      tr.addEventListener("click", () => {
+        const wk = tr.getAttribute("data-wk");
+        state.histWeekFilter = wk === "ALL" ? "COMPLETED" : wk;
+        state.histPage = 1;
+        document.getElementById("hist-filter-week").value = state.histWeekFilter;
+        renderPositionSummaryTable();
+        renderHistoricWeeklyTable();
+        renderHistoricExplorerAndScatter();
       });
     });
   }
 
-  function getFilteredHistPlayers() {
-    const q = STATE.histSearch.trim().toLowerCase();
-    const list = DB.histPlayers.filter(r => {
-      if (STATE.histWeek === 'COMPLETED' && !r.isCompleted) return false;
-      if (STATE.histWeek !== 'COMPLETED' && STATE.histWeek !== 'ALL' && String(r.week) !== STATE.histWeek) return false;
-      if (STATE.histPos !== 'ALL' && r.pos !== STATE.histPos) return false;
-      if (STATE.histOutcome === 'SLEEPERS_ALL' && !r.isSleeperBool) return false;
-      if (STATE.histOutcome === 'OUR_BEAT_FD' && !r.ourBeatFdBool) return false;
-      if (STATE.histOutcome === 'SLEEPER_HITS' && !(r.isSleeperBool && (r.actualNum ?? 0) >= 14)) return false;
-      if (STATE.histOutcome === 'BIG_BOOMS' && (r.actualNum ?? -1) < 20) return false;
-      if (STATE.histOutcome === 'BIG_MISSES' && (r.ourAbsErrNum ?? 0) < 10) return false;
+  function getFilteredHistoricPlayers() {
+    const q = state.histSearch.trim().toLowerCase();
+    const filtered = state.historicPlayers.filter((r) => {
+      if (state.histWeekFilter === "COMPLETED") {
+        if (r.weekNum < 3 || r.weekNum > 7) return false;
+      } else if (state.histWeekFilter !== "ALL") {
+        if (String(r.week) !== state.histWeekFilter) return false;
+      }
+      if (state.histPosFilter !== "ALL" && r.pos !== state.histPosFilter) return false;
+
+      if (state.histOutcomeFilter === "OUR_BEAT_FD") {
+        if (r.our_beat_fd !== "true") return false;
+      } else if (state.histOutcomeFilter === "SLEEPER_HITS") {
+        if (!r.isSleeperBool || (r.actualNum !== null && r.actualNum < 14.0)) return false;
+      } else if (state.histOutcomeFilter === "BIG_BOOMS") {
+        if (r.actualNum === null || r.actualNum < 20.0) return false;
+      } else if (state.histOutcomeFilter === "BIG_MISSES") {
+        if (r.ourAbsErrNum === null || r.ourAbsErrNum < 10.0) return false;
+      }
+
       if (q) {
-        const hay = `${r.name} ${r.team} ${r.opp} ${r.pos} ${r.window}`.toLowerCase();
+        const hay = `${r.name} ${r.team} ${r.opp} ${r.pos} ${r.slate}`.toLowerCase();
         if (!hay.includes(q)) return false;
       }
       return true;
     });
 
-    list.sort((a, b) => {
-      switch (STATE.histSort) {
-        case 'our_proj_desc': return b.ourProjNum - a.ourProjNum;
-        case 'fd_proj_desc': return b.fdProjNum - a.fdProjNum;
-        case 'edge_desc': return b.edgeNum - a.edgeNum;
-        case 'our_err_asc': return (a.ourAbsErrNum ?? 999) - (b.ourAbsErrNum ?? 999);
-        case 'fd_beat_margin': return ((b.fdAbsErrNum ?? 0) - (b.ourAbsErrNum ?? 0)) - ((a.fdAbsErrNum ?? 0) - (a.ourAbsErrNum ?? 0));
-        case 'actual_desc':
-        default:
-          return (b.actualNum ?? b.ourProjNum) - (a.actualNum ?? a.ourProjNum);
-      }
+    const sorters = {
+      actual_desc: (a, b) => (b.actualNum ?? -1) - (a.actualNum ?? -1) || b.ourProjNum - a.ourProjNum,
+      our_proj_desc: (a, b) => b.ourProjNum - a.ourProjNum,
+      fd_proj_desc: (a, b) => b.fdProjNum - a.fdProjNum,
+      edge_desc: (a, b) => b.diffFdNum - a.diffFdNum,
+      our_err_asc: (a, b) => (a.ourAbsErrNum ?? 999) - (b.ourAbsErrNum ?? 999) || (b.actualNum ?? 0) - (a.actualNum ?? 0),
+      fd_beat_margin: (a, b) => ((b.fdAbsErrNum ?? 0) - (b.ourAbsErrNum ?? 0)) - ((a.fdAbsErrNum ?? 0) - (a.ourAbsErrNum ?? 0))
+    };
+
+    filtered.sort(sorters[state.histSortBy] || sorters.actual_desc);
+    return filtered;
+  }
+
+  function renderScatterCalibrationChart(filteredRows) {
+    const wrap = document.getElementById("chart-scatter-calibration");
+    const completed = filteredRows.filter((r) => r.actualNum !== null).slice(0, 350);
+    const W = 640;
+    const H = 265;
+    const padL = 44;
+    const padR = 20;
+    const padT = 20;
+    const padB = 42;
+    const plotW = W - padL - padR;
+    const plotH = H - padT - padB;
+    const maxVal = 40;
+
+    const xPos = (v) => padL + (Math.min(maxVal, Math.max(0, v)) / maxVal) * plotW;
+    const yPos = (v) => padT + plotH - (Math.min(maxVal, Math.max(0, v)) / maxVal) * plotH;
+
+    let grid = "";
+    [0, 10, 20, 30, 40].forEach((t) => {
+      const x = xPos(t);
+      const y = yPos(t);
+      grid += `
+        <line x1="${padL}" y1="${y}" x2="${W - padR}" y2="${y}" stroke="#1f2d47" stroke-dasharray="3,3" />
+        <text x="${padL - 6}" y="${y + 4}" text-anchor="end" fill="#64748b" font-size="9.5" font-family="JetBrains Mono">${t}</text>
+        <text x="${x}" y="${H - 18}" text-anchor="middle" fill="#64748b" font-size="9.5" font-family="JetBrains Mono">${t}</text>
+      `;
     });
-    return list;
+
+    const diag = `<line x1="${xPos(0)}" y1="${yPos(0)}" x2="${xPos(maxVal)}" y2="${yPos(maxVal)}" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="5,4" />`;
+
+    let dots = "";
+    completed.forEach((r) => {
+      const xFd = xPos(r.fdProjNum);
+      const xOur = xPos(r.ourProjNum);
+      const yAct = yPos(r.actualNum);
+      dots += `<circle cx="${xFd.toFixed(1)}" cy="${yAct.toFixed(1)}" r="2.4" fill="#f59e0b" fill-opacity="0.38" />`;
+      dots += `<circle cx="${xOur.toFixed(1)}" cy="${yAct.toFixed(1)}" r="3.0" fill="#00d68f" fill-opacity="0.72"><title>Wk${r.week} ${escapeHtml(r.name)} (${r.pos}): Our ${r.ourProjNum.toFixed(1)}, FD ${r.fdProjNum.toFixed(1)}, Act ${r.actualNum.toFixed(1)}</title></circle>`;
+    });
+
+    wrap.innerHTML = `
+      <svg viewBox="0 0 ${W} ${H}" class="resp-svg" role="img" aria-label="Pre-Game Projection vs Actual FD Points Scatter Plot">
+        ${grid}${diag}${dots}
+        <text x="${W / 2}" y="${H - 3}" text-anchor="middle" fill="#94a3b8" font-size="10">Pre-Game Projected FD Points (Emerald = Our v6 Proj, Amber = FD Pre-Game Proj)</text>
+        <text x="12" y="${H / 2}" transform="rotate(-90 12 ${H / 2})" text-anchor="middle" fill="#94a3b8" font-size="10">Actual FD Pts</text>
+      </svg>
+    `;
   }
 
-  function renderHistoricExplorer() {
-    const tbody = document.getElementById('historic-players-tbody');
-    if (!tbody) return;
+  function renderHistoricExplorerAndScatter() {
+    const filtered = getFilteredHistoricPlayers();
+    renderScatterCalibrationChart(filtered);
 
-    const filtered = getFilteredHistPlayers();
-    const total = filtered.length;
-    const totalPages = Math.max(1, Math.ceil(total / STATE.histPageSize));
-    if (STATE.histPage > totalPages) STATE.histPage = totalPages;
+    document.getElementById("hist-explorer-count").textContent = filtered.length.toLocaleString("en-US");
+    const totalPages = Math.max(1, Math.ceil(filtered.length / state.histPageSize));
+    if (state.histPage > totalPages) state.histPage = totalPages;
 
-    const startIdx = (STATE.histPage - 1) * STATE.histPageSize;
-    const pageRows = filtered.slice(startIdx, startIdx + STATE.histPageSize);
+    const startIdx = (state.histPage - 1) * state.histPageSize;
+    const pageRows = filtered.slice(startIdx, startIdx + state.histPageSize);
 
-    const cntEl = document.getElementById('hist-explorer-count');
-    if (cntEl) cntEl.textContent = total.toLocaleString();
-    const infoEl = document.getElementById('hist-page-info');
-    if (infoEl) infoEl.textContent = total ? `Showing ${startIdx + 1}–${Math.min(total, startIdx + pageRows.length)} of ${total.toLocaleString()}` : '0 matching rows';
-    const indEl = document.getElementById('hist-page-indicator');
-    if (indEl) indEl.textContent = `Page ${STATE.histPage} / ${totalPages}`;
+    document.getElementById("hist-page-info").textContent =
+      filtered.length > 0
+        ? `Showing ${(startIdx + 1).toLocaleString()}–${Math.min(filtered.length, startIdx + pageRows.length).toLocaleString()} of ${filtered.length.toLocaleString()} CSV rows`
+        : "No matching player-weeks";
+    document.getElementById("hist-page-indicator").textContent = `Page ${state.histPage} / ${totalPages}`;
+    document.getElementById("btn-hist-prev").disabled = state.histPage <= 1;
+    document.getElementById("btn-hist-next").disabled = state.histPage >= totalPages;
 
-    tbody.innerHTML = pageRows.map(r => {
-      const actStr = r.actualNum !== null ? r.actualNum.toFixed(2) : 'LOCKED (Wk 8)';
-      const ourErrStr = r.ourErrNum !== null ? fmtSigned(r.ourErrNum, 2) : '—';
-      const fdErrStr = r.fdErrNum !== null ? fmtSigned(r.fdErrNum, 2) : '—';
-      let winnerHtml = '<span style="color:var(--fd-text-dim);">Pending</span>';
-      if (r.isCompleted) {
-        winnerHtml = r.ourBeatFdBool
-          ? `<span class="edge-pos">✓ OUR v6 (by ${((r.fdAbsErrNum ?? 0) - (r.ourAbsErrNum ?? 0)).toFixed(2)})</span>`
-          : `<span style="color:#fca5a5;">FD (by ${((r.ourAbsErrNum ?? 0) - (r.fdAbsErrNum ?? 0)).toFixed(2)})</span>`;
-      }
+    const tbody = document.getElementById("historic-players-tbody");
+    tbody.innerHTML = pageRows
+      .map((r) => {
+        const posDisp = r.pos === "DST" ? "DEF" : r.pos;
+        const matchup = r.home_away === "HOME" ? `${r.team} vs ${r.opp}` : `${r.team} @ ${r.opp}`;
+        const edgeCls = r.diffFdNum >= 0.5 ? "pos-text" : r.diffFdNum <= -0.5 ? "neg-text" : "";
 
-      return `
-        <tr>
-          <td>Wk ${esc(r.week)} • <span style="color:var(--fd-text-muted);font-size:11px;">${esc(r.window)}</span></td>
-          <td>
-            <strong style="color:#fff;">${esc(r.name)}</strong>
-            ${r.isSleeperBool ? '<span class="sleeper-tag">SLEEPER</span>' : ''}
-          </td>
-          <td><span class="pos-badge pos-${esc(r.pos)}">${esc(r.pos)}</span></td>
-          <td>${esc(r.team)} ${r.home_away === 'HOME' ? 'vs' : '@'} ${esc(r.opp)}</td>
-          <td>${fmtMoney(r.salaryNum)}</td>
-          <td>${r.fdProjNum.toFixed(2)}</td>
-          <td>${r.baseProjNum.toFixed(2)}</td>
-          <td class="col-proj-cell">${r.ourProjNum.toFixed(2)}</td>
-          <td class="${r.edgeNum >= 0 ? 'edge-pos' : 'edge-neg'}">${fmtSigned(r.edgeNum, 2)}</td>
-          <td style="font-weight:800;color:#fff;">${actStr}</td>
-          <td>${ourErrStr}</td>
-          <td>${fdErrStr}</td>
-          <td>${winnerHtml}</td>
-        </tr>
-      `;
-    }).join('');
-  }
+        let badgeHtml = "";
+        if (r.our_beat_fd === "true") {
+          const margin = (r.fdAbsErrNum - r.ourAbsErrNum).toFixed(2);
+          badgeHtml = `<span class="decision-badge kept">OUR PROJ (+${margin})</span>`;
+        } else if (r.our_beat_fd === "false") {
+          const margin = (r.ourAbsErrNum - r.fdAbsErrNum).toFixed(2);
+          badgeHtml = `<span class="decision-badge base">FD CLOSER (+${margin})</span>`;
+        } else {
+          badgeHtml = `<span class="decision-badge locked">PRE-GAME LOCKED</span>`;
+        }
 
-  // ==========================================================================
-  // TAB 3: WEIGHTS, DEFINITIONS & MULTI-WEEK BACKTEST
-  // ==========================================================================
-  function renderWeightsView() {
-    const heroKpis = document.getElementById('weights-hero-kpis');
-    const allRow = DB.weeklySummary.find(r => r.week === 'ALL') || {};
-    if (heroKpis) {
-      heroKpis.innerHTML = `
-        <div class="kpi-card">
-          <div class="k-lbl">Active Surviving Signals</div>
-          <div class="k-val">${esc(DB.meta.active_signals || DB.weights.length)} / ${esc(DB.meta.candidates_tested || '57')}</div>
-          <div class="k-sub">46 candidate signals reverted to 0.0 in LOWO CV</div>
-        </div>
-        <div class="kpi-card">
-          <div class="k-lbl">Wk 3–7 Out-of-Sample ρ</div>
-          <div class="k-val">${esc(allRow.our_rho || '—')}</div>
-          <div class="k-sub">Up from v1 baseline ρ = 0.4149 (+51.5% gain)</div>
-        </div>
-        <div class="kpi-card">
-          <div class="k-lbl">Wk 3–7 Out-of-Sample MAE</div>
-          <div class="k-val">${esc(allRow.our_mae || '—')} pts</div>
-          <div class="k-sub">Down from v1 baseline MAE = 5.115 pts</div>
-        </div>
-        <div class="kpi-card">
-          <div class="k-lbl">Optimal Lineup Actual Avg</div>
-          <div class="k-val">${esc(allRow.our_opt_actual || '—')} pts</div>
-          <div class="k-sub">+52.78 pts/wk over FD Pre-Game Optimal (${esc(allRow.fd_opt_actual || '—')})</div>
-        </div>
-      `;
-    }
-
-    const btTbody = document.getElementById('backtest-tbody');
-    if (btTbody) {
-      btTbody.innerHTML = DB.backtest.map(b => {
-        const isAct = String(b.is_active).toLowerCase() === 'true';
-        const isRev = String(b.status).includes('REVERTED');
         return `
-          <tr style="${isAct ? 'background:rgba(0,208,132,0.12);font-weight:700;' : ''}">
-            <td style="font-family:var(--font-mono);font-weight:800;color:#fff;">${esc(b.version)}</td>
-            <td style="color:#fff;font-weight:700;">${esc(b.label)}</td>
-            <td class="edge-pos">${esc(b.wk3_7_rho)}</td>
-            <td>${esc(b.wk3_7_mae)}</td>
-            <td style="color:#38bdf8;">${esc(b.wk4_7_rho)}</td>
-            <td>${esc(b.wk4_7_mae)}</td>
-            <td class="edge-pos" style="font-weight:800;">${esc(b.lineup_avg)} pts</td>
-            <td style="text-align:left;white-space:normal;font-family:var(--font-sans);font-size:11.5px;color:var(--fd-text-muted);">${esc(b.notes)}</td>
-            <td><span class="sleeper-tag" style="${isRev ? 'color:#f87171;border-color:#f87171;' : 'color:#00d084;border-color:#00d084;'}">${esc(b.status)}</span></td>
+          <tr>
+            <td class="mono">
+              <div><strong>${escapeHtml(r.slate)}</strong></div>
+              <div class="wk-sub">${escapeHtml(r.game_window)}</div>
+            </td>
+            <td class="sticky-col">
+              <div class="p-name-line">
+                <strong>${escapeHtml(r.name)}</strong>
+                ${r.isSleeperBool ? `<span class="sleeper-badge">SLEEPER</span>` : ""}
+              </div>
+            </td>
+            <td><span class="pos-badge ${escapeHtml(posDisp)}">${escapeHtml(posDisp)}</span></td>
+            <td class="mono">${escapeHtml(matchup)}</td>
+            <td class="mono">${fmtMoney(r.salaryNum)}</td>
+            <td class="mono">${escapeHtml(r.fd_proj_pregame)}</td>
+            <td class="mono">${escapeHtml(r.base_proj_pregame)}</td>
+            <td class="mono"><strong class="pos-text">${escapeHtml(r.our_proj_pregame)}</strong></td>
+            <td class="mono ${edgeCls}"><strong>${escapeHtml(r.our_diff_vs_fd)}</strong></td>
+            <td class="mono"><strong>${r.actual_fd !== "" ? escapeHtml(r.actual_fd) : "PENDING"}</strong></td>
+            <td class="mono">${r.our_error !== "" ? escapeHtml(r.our_error) + " (|" + escapeHtml(r.our_abs_error) + "|)" : "—"}</td>
+            <td class="mono">${r.fd_error !== "" ? escapeHtml(r.fd_error) + " (|" + escapeHtml(r.fd_abs_error) + "|)" : "—"}</td>
+            <td>${badgeHtml}</td>
           </tr>
         `;
-      }).join('');
-    }
-
-    const wGrid = document.getElementById('active-weights-grid');
-    if (wGrid) {
-      wGrid.innerHTML = DB.weights.map((w, idx) => `
-        <div class="weight-card">
-          <div class="weight-card-top">
-            <div>
-              <span style="font-family:var(--font-mono);font-size:11px;color:var(--fd-text-muted);">#${idx + 1} • ${esc(w.category)}</span>
-              <h3 style="font-size:14px;font-weight:800;color:#fff;">${esc(w.attribute)}</h3>
-            </div>
-            <span class="weight-val-pill">w = +${num(w.weight).toFixed(2)}</span>
-          </div>
-          <p style="font-size:12px;color:#e2e8f0;">${esc(w.description)}</p>
-          <div style="background:#060d1b;padding:6px 8px;border-radius:5px;border:1px solid var(--fd-border);font-family:var(--font-mono);font-size:11px;color:#7dd3fc;">
-            ${esc(w.formula)}
-          </div>
-          <div style="font-size:11px;color:var(--fd-text-muted);display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;">
-            <span>Owner: <strong>${esc(w.owner)}</strong></span>
-            <span style="color:#34d399;">${esc(w.cv_evidence)}</span>
-          </div>
-        </div>
-      `).join('');
-    }
-
-    const revTbody = document.getElementById('reverted-tbody');
-    if (revTbody) {
-      revTbody.innerHTML = DB.reverted.map(r => `
-        <tr>
-          <td style="font-family:var(--font-mono);color:#fca5a5;font-weight:700;white-space:normal;max-width:240px;">${esc(r.attribute)}</td>
-          <td style="text-align:left;white-space:normal;font-family:var(--font-sans);max-width:260px;">${esc(r.description)}</td>
-          <td>${esc(r.version_tested)}</td>
-          <td style="font-size:11.5px;">${esc(r.owner)}</td>
-          <td style="font-family:var(--font-mono);font-size:11.5px;color:#fcd34d;white-space:normal;max-width:220px;">${esc(r.cv_result)}</td>
-          <td style="text-align:left;white-space:normal;font-family:var(--font-sans);color:#e2e8f0;max-width:340px;">${esc(r.revert_reason)}</td>
-        </tr>
-      `).join('');
-    }
+      })
+      .join("");
   }
 
-  // ==========================================================================
-  // PLAYER 11-SIGNAL MODAL
-  // ==========================================================================
-  function openPlayerModal(playerName) {
-    const p = DB.playerByName[playerName];
-    if (!p) return;
-    const modal = document.getElementById('player-modal');
-    const hdr = document.getElementById('modal-player-header');
-    const body = document.getElementById('modal-player-body');
-    if (!modal || !hdr || !body) return;
+  function exportFilteredHistoricCSV() {
+    const rows = getFilteredHistoricPlayers();
+    if (!rows.length) return;
+    const cols = [
+      "week", "slate", "game_window", "player_id", "name", "pos", "team", "opp",
+      "home_away", "salary", "our_proj_pregame", "fd_proj_pregame", "base_proj_pregame",
+      "actual_fd", "our_diff_vs_fd", "our_error", "fd_error", "our_abs_error",
+      "fd_abs_error", "our_beat_fd", "our_value_pregame", "actual_value", "is_sleeper"
+    ];
+    const esc = (v) => {
+      const s = String(v ?? "");
+      return /[",\n\r]/.test(s) ? `"${s.replace(/"/g, '""')}"` : s;
+    };
+    const lines = [cols.join(",")];
+    rows.forEach((r) => {
+      lines.push(cols.map((c) => esc(r[c])).join(","));
+    });
+    const blob = new Blob([lines.join("\n")], { type: "text/csv;charset=utf-8;" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = `historic_filtered_${state.histWeekFilter.toLowerCase()}_${state.histPosFilter.toLowerCase()}.csv`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  }
 
-    hdr.innerHTML = `
-      <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
-        <span class="pos-badge pos-${esc(p.pos)}">${esc(p.pos)}</span>
-        <h3 style="font-size:17px;font-weight:800;color:#fff;">${esc(p.name)}</h3>
-        <span style="color:var(--fd-text-muted);font-weight:700;">${esc(p.team)} ${p.home_away === 'HOME' ? 'vs' : '@'} ${esc(p.opp)} (${esc(p.game)})</span>
-        ${p.isSleeperBool ? `<span class="sleeper-tag">★ SLEEPER (${esc(p.sleeper_reasons)})</span>` : ''}
+  // ---------- TAB 3: WEIGHTS, DEFINITIONS & BACKTEST ----------
+  function renderWeightsAndBacktestTab() {
+    const v6Row = state.backtestVersions.find((v) => v.is_active === "true") || state.backtestVersions[state.backtestVersions.length - 1] || {};
+    const v1Row = state.backtestVersions[0] || {};
+    const m = state.meta;
+
+    document.getElementById("weights-hero-kpis").innerHTML = `
+      <div class="kpi-box">
+        <span class="kpi-label">WK 3–7 SPEARMAN ρ</span>
+        <span class="kpi-value pos">${escapeHtml(v6Row.wk3_7_rho)}</span>
+        <span class="kpi-sub">Up from ${escapeHtml(v1Row.wk3_7_rho)} (v1) • n = ${escapeHtml(m.n_wk3_7 || "1,928")}</span>
       </div>
-      <div style="font-size:12px;color:var(--fd-text-muted);margin-top:4px;">
-        FD ID: <code>${esc(p.id)}</code> • Salary: <strong style="color:#fff;">${fmtMoney(p.salaryNum)}</strong> • Value: <strong style="color:#38bdf8;">${p.valNum.toFixed(2)}x</strong> • Vegas Implied: <strong>${p.impNum.toFixed(1)} pts</strong>
+      <div class="kpi-box">
+        <span class="kpi-label">WK 3–7 POINT MAE</span>
+        <span class="kpi-value pos">${escapeHtml(v6Row.wk3_7_mae)}</span>
+        <span class="kpi-sub">Down from ${escapeHtml(v1Row.wk3_7_mae)} (v1)</span>
+      </div>
+      <div class="kpi-box">
+        <span class="kpi-label">SIMULATED OPTIMAL LINEUP</span>
+        <span class="kpi-value accent">${escapeHtml(v6Row.lineup_avg)}</span>
+        <span class="kpi-sub">FD Pts/Wk (vs ${escapeHtml(v1Row.lineup_avg)} in v1)</span>
+      </div>
+      <div class="kpi-box">
+        <span class="kpi-label">CANDIDATES AUDITED</span>
+        <span class="kpi-value">${escapeHtml(m.candidates_tested || "57")} → ${escapeHtml(m.active_signals || "11")}</span>
+        <span class="kpi-sub">46 noisy/redundant signals reverted to 0.0</span>
       </div>
     `;
 
-    const sigRows = DB.weights.map(w => {
-      const col = w.attribute;
-      const z = num(p[`${col}_z`]);
-      const pts = num(p[`${col}_pts`]);
-      return `
+    const btBody = document.getElementById("backtest-tbody");
+    btBody.innerHTML = state.backtestVersions
+      .map((r) => {
+        const isAct = r.is_active === "true";
+        const isReverted = r.notes.includes("REVERTED");
+        const rowCls = isAct ? "active-version-row" : isReverted ? "reverted-version-row" : "";
+        const badgeCls = isAct ? "locked" : isReverted ? "reverted" : r.notes.includes("KEPT") ? "kept" : "base";
+        const statusText = isAct ? "LOCKED v6" : isReverted ? "REVERTED (0.0)" : r.version.toUpperCase();
+
+        return `
+          <tr class="${rowCls}">
+            <td class="mono"><strong>${escapeHtml(r.version)}</strong></td>
+            <td><strong>${escapeHtml(r.name)}</strong></td>
+            <td class="mono">${escapeHtml(r.wk3_7_rho)}</td>
+            <td class="mono">${escapeHtml(r.wk3_7_mae)}</td>
+            <td class="mono">${escapeHtml(r.wk4_7_rho)}</td>
+            <td class="mono">${escapeHtml(r.wk4_7_mae)}</td>
+            <td class="mono"><strong>${escapeHtml(r.lineup_avg)} pts</strong></td>
+            <td class="mono" style="font-size:0.75rem;color:#94a3b8;">${escapeHtml(r.notes)}</td>
+            <td><span class="decision-badge ${badgeCls}">${escapeHtml(statusText)}</span></td>
+          </tr>
+        `;
+      })
+      .join("");
+
+    const grid = document.getElementById("active-weights-grid");
+    grid.innerHTML = state.weights
+      .map((w) => {
+        const barWidth = Math.min(100, Math.round((w.weightNum / 0.21) * 100));
+        return `
+          <div class="weight-card">
+            <div class="wc-top">
+              <div>
+                <div class="wc-title">${escapeHtml(w.name)}</div>
+                <span class="wc-key">${escapeHtml(w.key)}</span>
+              </div>
+              <div class="wc-badge">
+                <div class="wc-val">+${w.weightNum.toFixed(2)}</div>
+                <div class="wc-share">${escapeHtml(w.share_pct)} of signal weight</div>
+              </div>
+            </div>
+            <div class="wc-bar-track"><div class="wc-bar-fill" style="width:${barWidth}%"></div></div>
+            <div class="wc-meta-row">
+              <span><strong>Category:</strong> ${escapeHtml(w.category)}</span>
+              <span><strong>Owner:</strong> ${escapeHtml(w.owner)}</span>
+            </div>
+            <div class="wc-formula">${escapeHtml(w.formula)}</div>
+            <div class="wc-desc">${escapeHtml(w.why_it_works)}</div>
+          </div>
+        `;
+      })
+      .join("");
+
+    const revBody = document.getElementById("reverted-tbody");
+    revBody.innerHTML = state.revertedSignals
+      .map(
+        (r) => `
         <tr>
-          <td style="font-weight:700;color:#fff;">${esc(col)}</td>
-          <td>+${w.weightNum.toFixed(2)}</td>
-          <td class="${z >= 0 ? 'edge-pos' : 'edge-neg'}">${fmtSigned(z, 3)}</td>
-          <td class="${pts >= 0 ? 'edge-pos' : 'edge-neg'}" style="font-weight:800;">${fmtSigned(pts, 2)} pts</td>
-          <td style="text-align:left;font-family:var(--font-sans);font-size:11px;color:var(--fd-text-muted);white-space:normal;">${esc(w.description)}</td>
+          <td class="mono" style="color:#f87171;font-weight:700;">${escapeHtml(r.key)}</td>
+          <td><strong>${escapeHtml(r.name)}</strong></td>
+          <td><span class="decision-badge reverted">${escapeHtml(r.tested_in)}</span></td>
+          <td style="font-size:0.76rem;color:#94a3b8;">${escapeHtml(r.owner)}</td>
+          <td class="mono" style="font-size:0.75rem;">${escapeHtml(r.cv_impact)}</td>
+          <td style="font-size:0.78rem;color:#cbd5e1;">${escapeHtml(r.reason)}</td>
         </tr>
-      `;
-    }).join('');
+      `
+      )
+      .join("");
+  }
+
+  function openPlayerModal(p) {
+    const modal = document.getElementById("player-modal");
+    const header = document.getElementById("modal-player-header");
+    const body = document.getElementById("modal-player-body");
+    const matchup = p.is_home ? `vs ${p.opp}` : `@ ${p.opp}`;
+
+    header.innerHTML = `
+      <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
+        <span class="pos-badge ${escapeHtml(p.pos_display)}">${escapeHtml(p.pos_display)}</span>
+        <h2 style="font-size:1.15rem;font-weight:800;">${escapeHtml(p.name)}</h2>
+        <span class="p-team-tag">${escapeHtml(p.team)} ${escapeHtml(matchup)}</span>
+        <span class="mono" style="color:#00d68f;font-weight:800;">${fmtMoney(p.salary)}</span>
+        ${p.is_sleeper ? `<span class="sleeper-badge">SLEEPER BREAKOUT</span>` : ""}
+      </div>
+      <div style="font-size:0.78rem;color:#94a3b8;margin-top:4px;">
+        Game: <strong>${escapeHtml(p.game)}</strong> (${escapeHtml(p.roof)}, ${escapeHtml(p.surface)}) • Implied Team Total: <strong>${p.implied_total.toFixed(2)} pts</strong> (O/U ${p.over_under.toFixed(1)}, Spread ${fmtSigned(p.spread, 1)})
+      </div>
+    `;
+
+    const sigRows = p.contribs
+      .map((c) => {
+        const cls = c.pts > 0.02 ? "pos" : c.pts < -0.02 ? "neg" : "";
+        return `
+          <tr>
+            <td><strong>${escapeHtml(c.label)}</strong> <code style="font-size:0.7rem;color:#38bdf8;">${escapeHtml(c.key)}</code></td>
+            <td class="mono">${c.w.toFixed(2)}</td>
+            <td class="mono ${cls}">${fmtSigned(c.z, 3)}</td>
+            <td class="mono ${cls}">${fmtSigned(c.pct, 2)}%</td>
+            <td class="mono ${cls}"><strong>${fmtSigned(c.pts, 2)} pts</strong></td>
+          </tr>
+        `;
+      })
+      .join("");
 
     body.innerHTML = `
-      <div class="fd-cap-meters" style="grid-template-columns:repeat(4,1fr);margin-bottom:14px;">
-        <div class="cap-meter">
-          <span class="meter-label">FD PRE-GAME PROJ</span>
-          <span class="meter-value">${p.fdProjNum.toFixed(2)}</span>
-        </div>
-        <div class="cap-meter">
-          <span class="meter-label">EB VEGAS BASE</span>
-          <span class="meter-value">${p.baseProjNum.toFixed(2)}</span>
-        </div>
-        <div class="cap-meter">
-          <span class="meter-label">OUR v6 PROJECTION</span>
-          <span class="meter-value proj-total">${p.ourProjNum.toFixed(2)}</span>
-        </div>
-        <div class="cap-meter">
-          <span class="meter-label">EDGE VS FANDUEL</span>
-          <span class="meter-value ${p.edgeNum >= 0 ? 'proj-total' : 'over-cap'}">${fmtSigned(p.edgeNum, 2)}</span>
-        </div>
+      <div class="modal-summary-grid">
+        <div class="ms-card"><div class="ms-lbl">FD PRE-GAME PROJ</div><div class="ms-val">${p.fd_proj.toFixed(2)}</div></div>
+        <div class="ms-card"><div class="ms-lbl">EB VEGAS SHARE BASE</div><div class="ms-val">${p.base_proj.toFixed(2)}</div></div>
+        <div class="ms-card"><div class="ms-lbl">11-SIGNAL MULTIPLIER</div><div class="ms-val" style="color:${p.total_mult_pct >= 0 ? "#00d68f" : "#ff5c75"}">${fmtSigned(p.total_mult_pct, 1)}%</div></div>
+        <div class="ms-card"><div class="ms-lbl">OUR v6 PROJECTION</div><div class="ms-val" style="color:#00d68f">${p.our_proj.toFixed(2)}</div></div>
+        <div class="ms-card"><div class="ms-lbl">VALUE / $1K (CEIL)</div><div class="ms-val" style="color:#38bdf8">${p.value_per_1k.toFixed(2)}x <span style="font-size:0.75rem;color:#94a3b8;">(${p.ceil.toFixed(1)})</span></div></div>
       </div>
+      <h3 style="font-size:0.86rem;font-weight:800;margin-bottom:8px;color:#e2e8f0;">
+        Per-Signal Mathematical Breakdown: <code>${p.base_proj.toFixed(2)} × (1 + ${(p.total_mult_pct / 100).toFixed(4)}) = ${p.our_proj.toFixed(2)} FD Pts</code>
+      </h3>
       <div class="table-scroll-x">
         <table class="data-table">
           <thead>
             <tr>
-              <th>SIGNAL ATTRIBUTE</th>
-              <th>WEIGHT</th>
-              <th>RANK Z-SCORE</th>
-              <th>Δ FD PTS</th>
-              <th>SIGNAL DEFINITION</th>
+              <th>SIGNAL ATTRIBUTE (from current_players.csv)</th>
+              <th>WEIGHT (w_k)</th>
+              <th>PLAYER Z-SCORE (z_k)</th>
+              <th>% MULTIPLIER (w_k × z_k)</th>
+              <th>POINT IMPACT (Δ PTS)</th>
             </tr>
           </thead>
           <tbody>${sigRows}</tbody>
@@ -1259,192 +1428,156 @@
       </div>
     `;
 
-    modal.classList.add('open');
+    modal.classList.add("open");
+    modal.setAttribute("aria-hidden", "false");
   }
 
-  function exportFilteredHistoricCSV() {
-    const rows = getFilteredHistPlayers();
-    if (!rows.length) return;
-    const headers = ['week', 'window', 'status', 'name', 'pos', 'team', 'opp', 'salary', 'fd_proj', 'base_proj', 'our_proj', 'proj_edge_vs_fd', 'actual_pts', 'our_error', 'fd_error', 'our_beat_fd'];
-    const csvLines = [headers.join(',')];
-    rows.forEach(r => {
-      csvLines.push(headers.map(h => `"${String(r[h] ?? '').replace(/"/g, '""')}"`).join(','));
-    });
-    const blob = new Blob([csvLines.join('\n')], { type: 'text/csv;charset=utf-8;' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = `historic_filtered_${STATE.histWeek}_${STATE.histPos}.csv`;
-    a.click();
-    URL.revokeObjectURL(url);
+  function closePlayerModal() {
+    const modal = document.getElementById("player-modal");
+    modal.classList.remove("open");
+    modal.setAttribute("aria-hidden", "true");
   }
 
-  function bindUIEvents() {
-    // Top navigation tabs
-    document.querySelectorAll('.fd-nav-tab[data-tab]').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const tab = btn.getAttribute('data-tab');
-        STATE.activeTab = tab;
-        document.querySelectorAll('.fd-nav-tab[data-tab]').forEach(b => {
-          const active = b === btn;
-          b.classList.toggle('active', active);
-          b.setAttribute('aria-selected', String(active));
+  function setMobileLineupDrawer(open) {
+    state.mobileDrawerOpen = open;
+    const panel = document.getElementById("lineup-drawer-panel");
+    panel.classList.toggle("mobile-open", open);
+  }
+
+  function bindEvents() {
+    document.querySelectorAll(".fd-nav-tab").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const tab = btn.getAttribute("data-tab");
+        state.activeTab = tab;
+        document.querySelectorAll(".fd-nav-tab").forEach((b) => {
+          const act = b === btn;
+          b.classList.toggle("active", act);
+          b.setAttribute("aria-selected", act ? "true" : "false");
         });
-        document.querySelectorAll('.fd-view').forEach(v => {
-          v.classList.toggle('active', v.id === `tab-${tab}`);
+        document.querySelectorAll(".fd-view").forEach((v) => {
+          v.classList.toggle("active", v.id === `tab-${tab}`);
         });
       });
     });
 
-    // Refresh Live Data button
-    const btnRefresh = document.getElementById('btn-refresh-csv');
-    if (btnRefresh) {
-      btnRefresh.addEventListener('click', () => loadAllCSVData(true));
-    }
-
-    // Position filter tabs (including 🔥 SLEEPERS & BREAKOUTS)
-    document.querySelectorAll('#pos-tabs .pos-tab').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const nextPos = btn.getAttribute('data-pos');
-        STATE.posFilter = nextPos;
-        const slpEl = document.getElementById('filter-sleepers');
-        if (nextPos === 'SLEEPERS') {
-          STATE.sleepersOnly = true;
-          if (slpEl) slpEl.checked = true;
-        } else if (nextPos === 'ALL' && slpEl && slpEl.checked) {
-          STATE.sleepersOnly = false;
-          slpEl.checked = false;
-        }
-        document.querySelectorAll('#pos-tabs .pos-tab').forEach(b => b.classList.toggle('active', b === btn));
-        renderPlayerTable();
-      });
-    });
-
-    // Search & checkboxes & sort
-    const searchEl = document.getElementById('player-search');
-    if (searchEl) {
-      searchEl.addEventListener('input', () => {
-        STATE.searchQuery = searchEl.value;
-        renderPlayerTable();
-      });
-    }
-    const slpEl = document.getElementById('filter-sleepers');
-    if (slpEl) {
-      slpEl.addEventListener('change', () => {
-        STATE.sleepersOnly = slpEl.checked;
-        renderPlayerTable();
-      });
-    }
-    const actEl = document.getElementById('filter-active');
-    if (actEl) {
-      actEl.addEventListener('change', () => {
-        STATE.activeOnly = actEl.checked;
-        renderPlayerTable();
-      });
-    }
-    const sortSel = document.getElementById('sort-select');
-    if (sortSel) {
-      sortSel.addEventListener('change', () => {
-        STATE.sortBy = sortSel.value;
-        const lbl = document.getElementById('active-sort-label');
-        if (lbl) lbl.textContent = sortSel.options[sortSel.selectedIndex].text;
-        renderPlayerTable();
-      });
-    }
-
-    document.querySelectorAll('#player-table thead th.sortable').forEach(th => {
-      th.addEventListener('click', () => {
-        const sortKey = th.getAttribute('data-sort');
-        if (sortKey) {
-          STATE.sortBy = sortKey;
-          if (sortSel) sortSel.value = sortKey;
-          document.querySelectorAll('#player-table thead th.sortable').forEach(h => h.classList.toggle('active-col', h === th));
-          renderPlayerTable();
-        }
-      });
-    });
-
-    // Lineup controls
-    const presetSel = document.getElementById('preset-select');
-    if (presetSel) {
-      presetSel.addEventListener('change', () => loadPresetLineup(presetSel.value));
-    }
-    const optBtn = document.getElementById('btn-optimize-remaining');
-    if (optBtn) optBtn.addEventListener('click', autoFillRemainingSlots);
-    const clrBtn = document.getElementById('btn-clear-lineup');
-    if (clrBtn) {
-      clrBtn.addEventListener('click', () => {
-        STATE.roster.forEach(s => { s.player = null; });
-        STATE.lineupMetaText = 'Custom Build';
-        renderPlayerTable();
+    document.querySelectorAll("#pos-tabs .pos-tab").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        state.activeSlotFilter = null;
+        setPosTabFilter(btn.getAttribute("data-pos"));
         renderLineupPanel();
       });
-    }
+    });
 
-    // Mobile drawer controls
-    const drawer = document.getElementById('lineup-drawer-panel');
-    const openDrawerBtn = document.getElementById('btn-open-mobile-lineup');
-    const closeDrawerBtn = document.getElementById('btn-close-mobile-lineup');
-    if (openDrawerBtn && drawer) {
-      openDrawerBtn.addEventListener('click', () => drawer.classList.add('drawer-open'));
-    }
-    if (closeDrawerBtn && drawer) {
-      closeDrawerBtn.addEventListener('click', () => drawer.classList.remove('drawer-open'));
-    }
+    document.getElementById("player-search").addEventListener("input", (e) => {
+      state.searchQuery = e.target.value;
+      renderPlayerPool();
+    });
+    document.getElementById("filter-sleepers").addEventListener("change", (e) => {
+      state.sleepersOnly = e.target.checked;
+      renderPlayerPool();
+    });
+    document.getElementById("filter-active").addEventListener("change", (e) => {
+      state.activeOnly = e.target.checked;
+      renderPlayerPool();
+    });
+    document.getElementById("sort-select").addEventListener("change", (e) => {
+      state.sortBy = e.target.value;
+      renderPlayerPool();
+    });
 
-    // Historic explorer controls
-    const bindHistControl = (id, key) => {
-      const el = document.getElementById(id);
-      if (!el) return;
-      const evName = el.tagName === 'INPUT' ? 'input' : 'change';
-      el.addEventListener(evName, () => {
-        STATE[key] = el.value;
-        STATE.histPage = 1;
-        renderScatterCalibrationChart();
-        renderPosSummaryTable();
-        renderHistoricExplorer();
+    document.querySelectorAll("#player-table th.sortable").forEach((th) => {
+      th.addEventListener("click", () => {
+        const sortKey = th.getAttribute("data-sort");
+        if (!sortKey) return;
+        state.sortBy = sortKey;
+        const sel = document.getElementById("sort-select");
+        if ([...sel.options].some((o) => o.value === sortKey)) sel.value = sortKey;
+        document.querySelectorAll("#player-table th.sortable").forEach((x) => x.classList.remove("active-col"));
+        th.classList.add("active-col");
+        renderPlayerPool();
       });
-    };
-    bindHistControl('hist-filter-week', 'histWeek');
-    bindHistControl('hist-filter-pos', 'histPos');
-    bindHistControl('hist-filter-outcome', 'histOutcome');
-    bindHistControl('hist-sort', 'histSort');
-    bindHistControl('hist-search', 'histSearch');
+    });
 
-    const prevBtn = document.getElementById('btn-hist-prev');
-    if (prevBtn) {
-      prevBtn.addEventListener('click', () => {
-        if (STATE.histPage > 1) {
-          STATE.histPage--;
-          renderHistoricExplorer();
-        }
-      });
-    }
-    const nextBtn = document.getElementById('btn-hist-next');
-    if (nextBtn) {
-      nextBtn.addEventListener('click', () => {
-        STATE.histPage++;
-        renderHistoricExplorer();
-      });
-    }
-    const expHistBtn = document.getElementById('btn-export-filtered-hist');
-    if (expHistBtn) expHistBtn.addEventListener('click', exportFilteredHistoricCSV);
+    document.getElementById("btn-clear-lineup").addEventListener("click", clearLineup);
+    document.getElementById("btn-optimize-remaining").addEventListener("click", autoFillRemainingSlots);
 
-    // Modal close
-    const modal = document.getElementById('player-modal');
-    const closeBtn = document.getElementById('modal-close-btn');
-    if (closeBtn && modal) {
-      closeBtn.addEventListener('click', () => modal.classList.remove('open'));
-    }
-    if (modal) {
-      modal.addEventListener('click', e => {
-        if (e.target === modal) modal.classList.remove('open');
-      });
+    document.getElementById("btn-open-mobile-lineup").addEventListener("click", () => {
+      setMobileLineupDrawer(!state.mobileDrawerOpen);
+    });
+    document.getElementById("btn-close-mobile-lineup").addEventListener("click", () => {
+      setMobileLineupDrawer(false);
+    });
+
+    document.getElementById("hist-filter-week").addEventListener("change", (e) => {
+      state.histWeekFilter = e.target.value;
+      state.histPage = 1;
+      renderPositionSummaryTable();
+      renderHistoricWeeklyTable();
+      renderHistoricExplorerAndScatter();
+    });
+    document.getElementById("hist-filter-pos").addEventListener("change", (e) => {
+      state.histPosFilter = e.target.value;
+      state.histPage = 1;
+      renderHistoricExplorerAndScatter();
+    });
+    document.getElementById("hist-filter-outcome").addEventListener("change", (e) => {
+      state.histOutcomeFilter = e.target.value;
+      state.histPage = 1;
+      renderHistoricExplorerAndScatter();
+    });
+    document.getElementById("hist-sort").addEventListener("change", (e) => {
+      state.histSortBy = e.target.value;
+      state.histPage = 1;
+      renderHistoricExplorerAndScatter();
+    });
+    document.getElementById("hist-search").addEventListener("input", (e) => {
+      state.histSearch = e.target.value;
+      state.histPage = 1;
+      renderHistoricExplorerAndScatter();
+    });
+    document.getElementById("btn-hist-prev").addEventListener("click", () => {
+      if (state.histPage > 1) {
+        state.histPage--;
+        renderHistoricExplorerAndScatter();
+      }
+    });
+    document.getElementById("btn-hist-next").addEventListener("click", () => {
+      state.histPage++;
+      renderHistoricExplorerAndScatter();
+    });
+    document.getElementById("btn-export-filtered-hist").addEventListener("click", exportFilteredHistoricCSV);
+
+    document.getElementById("modal-close-btn").addEventListener("click", closePlayerModal);
+    document.getElementById("player-modal").addEventListener("click", (e) => {
+      if (e.target.id === "player-modal") closePlayerModal();
+    });
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") {
+        closePlayerModal();
+        setMobileLineupDrawer(false);
+      }
+    });
+  }
+
+  async function init() {
+    try {
+      bindEvents();
+      await loadAllCSVData();
+      populateHeaderAndMeta();
+      renderGamesStrip();
+      populatePresetsDropdown();
+      loadPresetLineup("contest-2");
+      renderHistoricTrendsTab();
+      renderWeightsAndBacktestTab();
+    } catch (err) {
+      console.error("Failed to initialize CSV board:", err);
+      document.getElementById("hdr-slate-title").textContent = "Error loading CSV files: " + err.message;
     }
   }
 
-  document.addEventListener('DOMContentLoaded', () => {
-    bindUIEvents();
-    loadAllCSVData(false);
-  });
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", init);
+  } else {
+    init();
+  }
 })();

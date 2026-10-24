@@ -1,0 +1,10 @@
+version,name,wk3_7_rho,wk3_7_mae,wk4_7_rho,wk4_7_mae,lineup_avg,notes,is_active
+v1,v1 — Judgment Weights on Unshrunk Share Base (7 legacy weights),0.4149,5.115,0.4590,5.125,104.61,Baseline v1 | Wk3: 111.04 / Wk4: 71.06 / Wk5: 120.80 / Wk6: 115.52,false
+v2,v2 — Unshrunk Vegas Share Base Only (FanDuel Pre-Game FPPG / Usage Baseline),0.4026,5.003,0.4601,4.984,87.31,Pre-Game Baseline | Wk3: 67.86 / Wk4: 84.92 / Wk5: 126.58 / Wk6: 69.88,false
+v3-base,v3 Base — Empirical-Bayes Shrunk Vegas Share Base Only (K=3.5),0.5817,4.195,0.5774,4.185,100.39,EB Base Upgrade | Wk3: 116.62 / Wk4: 67.32 / Wk5: 140.12 / Wk6: 77.48,false
+v3,v3 — EB Base + 6 Surviving Pre-Game Usage/Regression Signals,0.6216,4.053,0.6176,4.004,131.94,KEPT (v3) | Wk3: 127.70 / Wk4: 142.44 / Wk5: 152.86 / Wk6: 104.78,false
+v4,v4 — EB Base + 9 Signals (Added 3 Salary-Headroom Sleeper Signals),0.6260,4.031,0.6219,3.998,138.57,KEPT (v4) | Wk3: 127.70 / Wk4: 142.44 / Wk5: 174.66 / Wk6: 109.48,false
+v4+wx,v4 + stadium_weather_surface (Dome/Turf/Grass × Rain/Wind),0.6240,4.044,0.6183,4.012,136.52,REVERTED TO 0.0 | Wk3: 133.10 / Wk4: 128.84 / Wk5: 174.66 / Wk6: 109.48,false
+v5+wx,v5 + stadium_weather_surface Combined Test,0.6244,4.031,0.6183,4.003,126.49,REVERTED TO 0.0 | Wk3: 133.10 / Wk4: 142.44 / Wk5: 150.86 / Wk6: 79.56,false
+v5,v5 — EB Base + 10 Signals (Added opp_defender_matchup),0.6279,4.028,0.6225,3.997,140.09,KEPT (v5) | Wk3: 133.10 / Wk4: 142.44 / Wk5: 174.66 / Wk6: 110.18,false
+v6,v6 (CURRENT LOCKED) — EB Base + 11 Signals (Added ngs_skill_breakout),0.6284,4.017,0.6236,3.987,140.09,LOCKED WINNER (v6) | Wk3: 133.10 / Wk4: 142.44 / Wk5: 174.66 / Wk6: 110.18,true

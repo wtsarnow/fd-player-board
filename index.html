@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tysa's FanDuel NFL Player Selection Board & v6 Weights Audit (Slate 135562)</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- Top FanDuel-Style Header Bar -->
+  <header class="fd-topbar">
+    <div class="fd-brand">
+      <div class="fd-shield">FD</div>
+      <div class="fd-brand-text">
+        <h1>
+          NFL Classic Player Selection Board
+          <span class="fd-badge-v6">v6 LOCKED • 11 SIGNALS</span>
+        </h1>
+        <div class="fd-brand-sub">
+          Slate #135562 (Week 8 Sunday Main • 10 Games • 510 Players) • Ordered by Our v6 Projections • Exact FanDuel Salaries Intact
+        </div>
+      </div>
+    </div>
+
+    <nav class="fd-nav-tabs">
+      <button class="fd-nav-btn active" data-view="board" id="nav-btn-board">
+        🏈 Player Selection & Lineup Builder
+      </button>
+      <button class="fd-nav-btn" data-view="audit" id="nav-btn-audit">
+        ⚖️ Weights, Definitions & Multi-Week Backtest (v1 → v6)
+      </button>
+    </nav>
+
+    <div class="fd-contest-pills">
+      <div class="fd-stat-pill">
+        <span class="lbl">LOWO CV (Wk 3–7)</span>
+        <span class="val green">ρ = 0.6284 | MAE = 4.017</span>
+      </div>
+      <div class="fd-stat-pill">
+        <span class="lbl">Salary Cap</span>
+        <span class="val">$60,000</span>
+      </div>
+      <div class="fd-stat-pill">
+        <span class="lbl">Slate Lock</span>
+        <span class="val">Sun 1:00 PM ET</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- VIEW 1: FanDuel-Style Player Selection & Lineup Builder -->
+  <main id="view-board">
+    <!-- 10-Game Matchup Strip -->
+    <section class="fd-game-strip" id="fd-game-strip"></section>
+
+    <div class="fd-draft-layout">
+      <!-- Left Column: Player Selection Table -->
+      <section class="fd-board-panel">
+        <div class="fd-controls-bar">
+          <div class="fd-pos-tabs">
+            <button class="fd-pos-tab active" data-pos="ALL">ALL</button>
+            <button class="fd-pos-tab" data-pos="QB">QB</button>
+            <button class="fd-pos-tab" data-pos="RB">RB</button>
+            <button class="fd-pos-tab" data-pos="WR">WR</button>
+            <button class="fd-pos-tab" data-pos="TE">TE</button>
+            <button class="fd-pos-tab" data-pos="FLEX">FLEX</button>
+            <button class="fd-pos-tab" data-pos="DEF">DEF</button>
+            <button class="fd-pos-tab sleeper-tab" data-pos="SLEEPERS">🔥 SLEEPERS & BREAKOUTS</button>
+          </div>
+
+          <div class="fd-filter-right">
+            <input type="text" id="fd-search-input" class="fd-search-input" placeholder="Search player, team, matchup..." />
+            <select id="fd-team-select" class="fd-select">
+              <option value="ALL">All 20 Teams</option>
+            </select>
+            <label class="fd-checkbox-lbl">
+              <input type="checkbox" id="fd-hide-out" checked />
+              Hide OUT / IR
+            </label>
+          </div>
+        </div>
+
+        <div class="fd-board-subbar">
+          <div>
+            <strong>Ordered by Our v6 Adjusted Projection (descending)</strong> • Exact FanDuel salaries preserved • Click any player row for full 11-signal math breakdown
+          </div>
+          <div id="fd-FilteredCount" style="font-family:var(--font-mono);font-weight:700;color:#fff;">
+            510 players shown
+          </div>
+        </div>
+
+        <div class="fd-table-wrap">
+          <table class="fd-player-table">
+            <thead>
+              <tr>
+                <th data-sort="pos">POS</th>
+                <th data-sort="name">PLAYER / VEGAS IMPLIED</th>
+                <th data-sort="team">GAME / ROOF</th>
+                <th data-sort="fppg" title="FanDuel Season Fantasy Points Per Game">FPPG</th>
+                <th data-sort="base" title="Empirical-Bayes Shrunk Vegas Share Base Projection">VEGAS EB</th>
+                <th data-sort="adjusted" class="sorted" title="Our Final v6 Projection = Base × (1 + Σ w_i × s_i)">OUR PROJ</th>
+                <th data-sort="salary" title="Official Verified FanDuel Salary">SALARY</th>
+                <th data-sort="value_per_1k" title="Projected Points per $1,000 FanDuel Salary">VAL/$1K</th>
+                <th data-sort="first_downs_rate" title="First Downs Rate (w = 0.21)">1stDn (.21)</th>
+                <th data-sort="td_regression" title="TD & xFP Positive Regression (w = 0.21)">TDReg (.21)</th>
+                <th data-sort="opportunity_share" title="Team Opportunity Share (w = 0.18)">OppSh (.18)</th>
+                <th data-sort="injury_step_up" title="Starter Injury Step-Up (w = 0.15)">InjStp (.15)</th>
+                <th data-sort="per_snap_breakout" title="Per-Snap Efficiency Breakout (w = 0.15)">SnapBrk (.15)</th>
+                <th data-sort="opp_defender_matchup" title="Opposing Defender & Unit Matchup (w = 0.09)">OppDef (.09)</th>
+                <th data-sort="ngs_skill_breakout" title="Next Gen Stats Skill OE + FTN Charting Breakout (w = 0.08)">NGS+FTN (.08)</th>
+                <th data-sort="pedigree_sleeper" title="Draft Pedigree & Youth Sleeper (w = 0.07)">PedSlp (.07)</th>
+                <th style="text-align:center;">DRAFT</th>
+              </tr>
+            </thead>
+            <tbody id="fd-player-tbody"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Right Column: FanDuel-Style Interactive Roster / Lineup Builder -->
+      <aside class="fd-roster-panel">
+        <div class="fd-roster-header">
+          <div class="fd-roster-title-row">
+            <h2>Your Lineup</h2>
+            <span class="fd-badge-v6" id="rm-filled-badge">9 / 9 SLOTS</span>
+          </div>
+          <div class="fd-roster-metrics">
+            <div class="rm-box">
+              <span class="rm-lbl">Salary Remaining</span>
+              <span class="rm-val" id="rm-sal-rem">$0</span>
+            </div>
+            <div class="rm-box">
+              <span class="rm-lbl">Avg Rem / Player</span>
+              <span class="rm-val" id="rm-avg-rem">$0</span>
+            </div>
+            <div class="rm-box">
+              <span class="rm-lbl">Our v6 Proj Total</span>
+              <span class="rm-val proj-total" id="rm-tot-proj">0.00</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="fd-preset-bar">
+          <label for="fd-preset-select">Load Entered Contest Lineup (L1–L7) or v6 Math Optimal:</label>
+          <select id="fd-preset-select" class="fd-select" style="width:100%;"></select>
+          <div class="fd-preset-actions">
+            <button class="fd-btn-sm primary" id="btn-load-opt1" style="flex:1;">⚡ v6 Optimal #1 (167.6p)</button>
+            <button class="fd-btn-sm" id="btn-clear-roster">Clear</button>
+            <button class="fd-btn-sm" id="btn-export-csv">Export CSV</button>
+          </div>
+        </div>
+
+        <ul class="fd-roster-slots" id="fd-roster-slots"></ul>
+
+        <div class="fd-roster-footer">
+          <div class="fd-strategy-note" id="fd-strategy-note"></div>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <!-- VIEW 2: Weights, Definitions & Multi-Week Out-of-Sample Backtest Audit -->
+  <section class="fd-audit-view" id="view-audit">
+    <div class="audit-hero">
+      <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;">
+        <div>
+          <h2 style="font-size:20px;font-weight:800;color:#fff;">
+            v6 Locked Weights, Mathematical Definitions & Multi-Week Keep-or-Revert Audit
+          </h2>
+          <p style="color:#93a6c7;font-size:13px;margin-top:4px;">
+            Evaluated across <strong>57 strictly pre-game candidate attributes</strong> on Weeks 3–7 (<code>n = 1,928</code> player-games; <code>n = 1,528</code> in Weeks 4–7) via Leave-One-Week-Out Cross-Validation (LOWO CV) and simulated weekly optimal Classic lineups.
+          </p>
+        </div>
+        <span class="status-pill status-kept" style="font-size:12px;padding:5px 12px;">
+          Formula: adjusted = base_EB × (1 + Σ weight_i × signal_i)
+        </span>
+      </div>
+
+      <div class="audit-kpi-grid">
+        <div class="audit-kpi">
+          <div class="k-lbl">Wk 3–7 Out-of-Sample Spearman ρ</div>
+          <div class="k-val">0.6284</div>
+          <div class="k-sub">+0.2135 vs v1 (0.4149) • +0.0005 vs v5 (0.6279)</div>
+        </div>
+        <div class="audit-kpi">
+          <div class="k-lbl">Wk 3–7 Out-of-Sample MAE</div>
+          <div class="k-val">4.017 FD pts</div>
+          <div class="k-sub">-1.098 pts vs v1 (5.115) • -0.011 pts vs v5 (4.028)</div>
+        </div>
+        <div class="audit-kpi">
+          <div class="k-lbl">Wk 4–7 Out-of-Sample ρ / MAE</div>
+          <div class="k-val">0.6236 / 3.987</div>
+          <div class="k-sub">+0.0011 ρ and -0.010 MAE improvement over v5</div>
+        </div>
+        <div class="audit-kpi">
+          <div class="k-lbl">Wk 3–6 Simulated Top Lineup Avg</div>
+          <div class="k-val">140.09 FD pts</div>
+          <div class="k-sub">133.10 / 142.44 / 174.66 / 110.18 (+35.48 pts/wk vs v1)</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section 1: Active v6 Weights & Definitions -->
+    <div class="audit-section">
+      <h3>1. Active v6 Weights & Mathematical Definitions (11 Surviving Pre-Game Attributes)</h3>
+      <p style="color:#93a6c7;font-size:12.5px;">
+        Every active signal is normalized strictly pre-game within <code>(week, pos)</code>, clipped to <code>[-1.0, +1.0]</code> (<code>±2 SD / 2</code>), and base-weighted zero-centered per position so that applying weights preserves total Vegas-implied positional scoring.
+      </p>
+      <table class="audit-table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Attribute / Key</th>
+            <th>v6 Weight</th>
+            <th>Signal Tier</th>
+            <th>Bot Ownership</th>
+            <th>Plain-English Definition & Exact Formula</th>
+          </tr>
+        </thead>
+        <tbody id="audit-active-tbody"></tbody>
+      </table>
+    </div>
+
+    <!-- Section 2: Multi-Week Out-of-Sample Backtest Progression -->
+    <div class="audit-section">
+      <h3>2. Multi-Week Out-of-Sample LOWO CV Progression (v1 → v2 → v3 → v4 → v5 → v6)</h3>
+      <p style="color:#93a6c7;font-size:12.5px;">
+        In each fold, weights are fit via bounded Powell optimization on 4 training weeks and evaluated strictly out-of-sample on the held-out week.
+      </p>
+      <table class="audit-table">
+        <thead>
+          <tr>
+            <th>Model Version / Specification</th>
+            <th>Decision</th>
+            <th>Wk 3–7 ρ (n=1,928)</th>
+            <th>Wk 3–7 MAE</th>
+            <th>Wk 4–7 ρ (n=1,528)</th>
+            <th>Wk 4–7 MAE</th>
+            <th>Wk 3 / Wk 4 / Wk 5 / Wk 6 Top Lineup</th>
+            <th>Lineup Avg</th>
+          </tr>
+        </thead>
+        <tbody id="audit-backtest-tbody"></tbody>
+      </table>
+    </div>
+
+    <!-- Section 3: Reverted & Eliminated Attributes (Keep-or-Revert Audit) -->
+    <div class="audit-section">
+      <h3>3. Reverted & Eliminated Candidate Attributes (Strict Keep-or-Revert Rule)</h3>
+      <p style="color:#93a6c7;font-size:12.5px;">
+        Any candidate attribute that failed to beat the locked benchmark out-of-sample across LOWO CV folds was immediately reverted to <code>0.0</code>.
+      </p>
+      <table class="audit-table">
+        <thead>
+          <tr>
+            <th>Candidate Attribute(s)</th>
+            <th>Test Phase</th>
+            <th>Locked Weight</th>
+            <th>Out-of-Sample LOWO CV Result</th>
+            <th>Why It Was Reverted</th>
+          </tr>
+        </thead>
+        <tbody id="audit-reverted-tbody"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- Player Signal Breakdown Modal -->
+  <div class="fd-modal-backdrop" id="fd-player-modal">
+    <div class="fd-modal-card" id="fd-modal-content"></div>
+  </div>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

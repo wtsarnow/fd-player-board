@@ -201,7 +201,7 @@
       const spread = parseFloat(r.spread) || 0;
       const over_under = parseFloat(r.over_under) || 0;
       const implied_total = parseFloat(r.implied_total) || 0;
-      const is_sleeper = r.is_sleeper === "true";
+      const is_sleeper = String(r.is_sleeper || "").trim().toLowerCase() === "true";
 
       const signals = {};
       const contribs = [];
@@ -317,7 +317,7 @@
       fdErrNum: r.fd_error !== "" ? parseFloat(r.fd_error) : null,
       ourAbsErrNum: r.our_abs_error !== "" ? parseFloat(r.our_abs_error) : null,
       fdAbsErrNum: r.fd_abs_error !== "" ? parseFloat(r.fd_abs_error) : null,
-      isSleeperBool: r.is_sleeper === "true"
+      isSleeperBool: String(r.is_sleeper || "").trim().toLowerCase() === "true"
     }));
     state.historicWeekly = histWeeklyRows;
     state.historicPositions = histPosRows;
@@ -344,8 +344,21 @@
       (allRow.our_opt_lineup_actual || "140.09") + " pts";
     document.getElementById("hdr-lock-time").textContent = "Lock: " + (m.lock_time || "Sun 1:00 PM ET");
 
+    const sleeperCount = state.players.filter((p) => p.is_sleeper).length;
     document.getElementById("player-count-badge").textContent = state.players.length;
     document.getElementById("total-player-count").textContent = state.players.length;
+    const stc = document.getElementById("sleeper-tab-count");
+    if (stc) stc.textContent = sleeperCount;
+    const scc = document.getElementById("sleeper-chip-count");
+    if (scc) scc.textContent = sleeperCount;
+    const hec = document.getElementById("hist-eyebrow-counts");
+    if (hec) hec.textContent = `${state.historicPlayers.length.toLocaleString("en-US")} PLAYER-WEEKS • ${state.players.length} WK8 PLAYERS • ${state.weights.length} SIGNALS`;
+    const chp = document.getElementById("csv-hist-players-count");
+    if (chp) chp.textContent = state.historicPlayers.length.toLocaleString("en-US");
+    const ccp = document.getElementById("csv-curr-players-count");
+    if (ccp) ccp.textContent = state.players.length;
+    const clc = document.getElementById("csv-lineups-count");
+    if (clc) clc.textContent = state.lineups.length;
 
     document.getElementById("hist-bot-name").textContent = m.updater_bot || "@fd-board-updater";
     document.getElementById("hist-bot-id").textContent = (m.updater_bot_id || "").slice(0, 13) + "…";
@@ -419,7 +432,9 @@
 
     let filtered = state.players.filter((p) => {
       if (state.posFilter !== "ALL") {
-        if (state.posFilter === "FLEX") {
+        if (state.posFilter === "SLEEPERS") {
+          if (!p.is_sleeper) return false;
+        } else if (state.posFilter === "FLEX") {
           if (!["RB", "WR", "TE"].includes(p.pos)) return false;
         } else if (state.posFilter === "DEF") {
           if (p.pos !== "DST") return false;
@@ -824,7 +839,16 @@
   }
 
   function setPosTabFilter(posKey) {
+    const wasSleepersTab = state.posFilter === "SLEEPERS";
     state.posFilter = posKey;
+    const sleepChk = document.getElementById("filter-sleepers");
+    if (posKey === "SLEEPERS") {
+      state.sleepersOnly = true;
+      if (sleepChk) sleepChk.checked = true;
+    } else if (wasSleepersTab || posKey === "ALL") {
+      state.sleepersOnly = false;
+      if (sleepChk) sleepChk.checked = false;
+    }
     document.querySelectorAll("#pos-tabs .pos-tab").forEach((btn) => {
       btn.classList.toggle("active", btn.getAttribute("data-pos") === posKey);
     });
@@ -1099,8 +1123,10 @@
 
       if (state.histOutcomeFilter === "OUR_BEAT_FD") {
         if (r.our_beat_fd !== "true") return false;
+      } else if (state.histOutcomeFilter === "SLEEPERS_ALL") {
+        if (!r.isSleeperBool) return false;
       } else if (state.histOutcomeFilter === "SLEEPER_HITS") {
-        if (!r.isSleeperBool || (r.actualNum !== null && r.actualNum < 14.0)) return false;
+        if (!r.isSleeperBool || r.actualNum === null || r.actualNum < 14.0) return false;
       } else if (state.histOutcomeFilter === "BIG_BOOMS") {
         if (r.actualNum === null || r.actualNum < 20.0) return false;
       } else if (state.histOutcomeFilter === "BIG_MISSES") {
@@ -1474,6 +1500,12 @@
     });
     document.getElementById("filter-sleepers").addEventListener("change", (e) => {
       state.sleepersOnly = e.target.checked;
+      if (!state.sleepersOnly && state.posFilter === "SLEEPERS") {
+        state.posFilter = "ALL";
+        document.querySelectorAll("#pos-tabs .pos-tab").forEach((btn) => {
+          btn.classList.toggle("active", btn.getAttribute("data-pos") === "ALL");
+        });
+      }
       renderPlayerPool();
     });
     document.getElementById("filter-active").addEventListener("change", (e) => {

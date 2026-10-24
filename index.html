@@ -2,275 +2,566 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Tysa's FanDuel NFL Player Selection Board & v6 Weights Audit (Slate 135562)</title>
-  <link rel="stylesheet" href="styles.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
+  <title>FanDuel NFL Player Selection &amp; Historic Trends Board (CSV-Driven v6)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=20261024-093722" />
 </head>
 <body>
-
-  <!-- Top FanDuel-Style Header Bar -->
+  <!-- TOP FANDUEL-STYLE HEADER BAR -->
   <header class="fd-topbar">
-    <div class="fd-brand">
-      <div class="fd-shield">FD</div>
-      <div class="fd-brand-text">
-        <h1>
-          NFL Classic Player Selection Board
-          <span class="fd-badge-v6">v6 LOCKED • 11 SIGNALS</span>
-        </h1>
-        <div class="fd-brand-sub">
-          Slate #135562 (Week 8 Sunday Main • 10 Games • 510 Players) • Ordered by Our v6 Projections • Exact FanDuel Salaries Intact
+    <div class="fd-topbar-left">
+      <div class="fd-logo">
+        <span class="fd-shield">FD</span>
+        <div class="fd-brand-text">
+          <div class="fd-brand-title">FANDUEL DFS <span class="v6-badge" id="hdr-version-badge">LOADING CSV…</span></div>
+          <div class="fd-brand-sub" id="hdr-slate-title">Loading slate metadata from data/meta.csv…</div>
         </div>
       </div>
     </div>
 
-    <nav class="fd-nav-tabs">
-      <button class="fd-nav-btn active" data-view="board" id="nav-btn-board">
-        🏈 Player Selection & Lineup Builder
+    <!-- MAIN VIEW TABS (3 TOUCH-FRIENDLY TABS) -->
+    <nav class="fd-nav-tabs" role="tablist" aria-label="Main Board Views">
+      <button class="fd-nav-tab active" data-tab="players" id="tab-btn-players" role="tab" aria-selected="true">
+        <span class="tab-dot live"></span>
+        <span class="tab-label-full">Player Selection &amp; Lineup Builder</span>
+        <span class="tab-label-short">Player Board</span>
       </button>
-      <button class="fd-nav-btn" data-view="audit" id="nav-btn-audit">
-        ⚖️ Weights, Definitions & Multi-Week Backtest (v1 → v6)
+      <button class="fd-nav-tab" data-tab="historic" id="tab-btn-historic" role="tab" aria-selected="false">
+        <span class="tab-dot trend"></span>
+        <span class="tab-label-full">Historic Trends (Our Proj vs Actual vs FD Proj)</span>
+        <span class="tab-label-short">Historic Trends</span>
+      </button>
+      <button class="fd-nav-tab" data-tab="weights" id="tab-btn-weights" role="tab" aria-selected="false">
+        <span class="tab-dot math"></span>
+        <span class="tab-label-full">Weights, Definitions &amp; Backtest</span>
+        <span class="tab-label-short">Weights &amp; CV</span>
       </button>
     </nav>
 
-    <div class="fd-contest-pills">
-      <div class="fd-stat-pill">
-        <span class="lbl">LOWO CV (Wk 3–7)</span>
-        <span class="val green">ρ = 0.6284 | MAE = 4.017</span>
+    <div class="fd-topbar-right">
+      <div class="fd-metric-pill">
+        <span class="pill-label">Wk 3–7 ρ</span>
+        <span class="pill-val pos" id="hdr-rho-val">—</span>
       </div>
-      <div class="fd-stat-pill">
-        <span class="lbl">Salary Cap</span>
-        <span class="val">$60,000</span>
+      <div class="fd-metric-pill">
+        <span class="pill-label">Wk 3–7 MAE</span>
+        <span class="pill-val pos" id="hdr-mae-val">—</span>
       </div>
-      <div class="fd-stat-pill">
-        <span class="lbl">Slate Lock</span>
-        <span class="val">Sun 1:00 PM ET</span>
+      <div class="fd-metric-pill">
+        <span class="pill-label">Opt Lineup Avg</span>
+        <span class="pill-val accent" id="hdr-opt-val">—</span>
       </div>
+      <div class="fd-lock-pill" id="hdr-lock-time">Lock: —</div>
+      <button class="btn-refresh-csv" id="btn-refresh-csv" type="button" title="Re-fetch all data/*.csv files with fresh cache-buster">🔄 Refresh Live Data</button>
     </div>
   </header>
 
-  <!-- VIEW 1: FanDuel-Style Player Selection & Lineup Builder -->
-  <main id="view-board">
-    <!-- 10-Game Matchup Strip -->
-    <section class="fd-game-strip" id="fd-game-strip"></section>
+  <!-- ===================================================================== -->
+  <!-- TAB 1: FANDUEL-STYLE PLAYER SELECTION & LINEUP BUILDER                -->
+  <!-- ===================================================================== -->
+  <main id="tab-players" class="fd-view active">
+    <!-- GAME MATCHUP FILTER STRIP (Populated from current_players.csv) -->
+    <section class="fd-games-strip-wrap">
+      <div class="fd-games-strip" id="games-strip"></div>
+    </section>
 
-    <div class="fd-draft-layout">
-      <!-- Left Column: Player Selection Table -->
-      <section class="fd-board-panel">
-        <div class="fd-controls-bar">
-          <div class="fd-pos-tabs">
-            <button class="fd-pos-tab active" data-pos="ALL">ALL</button>
-            <button class="fd-pos-tab" data-pos="QB">QB</button>
-            <button class="fd-pos-tab" data-pos="RB">RB</button>
-            <button class="fd-pos-tab" data-pos="WR">WR</button>
-            <button class="fd-pos-tab" data-pos="TE">TE</button>
-            <button class="fd-pos-tab" data-pos="FLEX">FLEX</button>
-            <button class="fd-pos-tab" data-pos="DEF">DEF</button>
-            <button class="fd-pos-tab sleeper-tab" data-pos="SLEEPERS">🔥 SLEEPERS & BREAKOUTS</button>
+    <!-- MAIN 2-COLUMN WORKSPACE: LEFT = PLAYER POOL, RIGHT = LINEUP BUILDER -->
+    <section class="fd-workspace">
+      <!-- LEFT PANEL: PLAYER SELECTION TABLE -->
+      <div class="fd-player-pool-panel">
+        <!-- Position Tabs + Controls -->
+        <div class="fd-pool-controls">
+          <div class="fd-pos-tabs" id="pos-tabs">
+            <button class="pos-tab active" data-pos="ALL">ALL</button>
+            <button class="pos-tab" data-pos="QB">QB</button>
+            <button class="pos-tab" data-pos="RB">RB</button>
+            <button class="pos-tab" data-pos="WR">WR</button>
+            <button class="pos-tab" data-pos="TE">TE</button>
+            <button class="pos-tab" data-pos="FLEX">FLEX</button>
+            <button class="pos-tab" data-pos="DEF">DEF</button>
           </div>
 
-          <div class="fd-filter-right">
-            <input type="text" id="fd-search-input" class="fd-search-input" placeholder="Search player, team, matchup..." />
-            <select id="fd-team-select" class="fd-select">
-              <option value="ALL">All 20 Teams</option>
-            </select>
-            <label class="fd-checkbox-lbl">
-              <input type="checkbox" id="fd-hide-out" checked />
-              Hide OUT / IR
+          <div class="fd-search-filters">
+            <div class="search-box">
+              <input type="text" id="player-search" placeholder="Search player, team, or sleeper signal..." autocomplete="off" />
+            </div>
+
+            <label class="toggle-chip" title="Filter to low/mid-salary sleeper breakout targets">
+              <input type="checkbox" id="filter-sleepers" />
+              <span>Sleepers Only</span>
             </label>
+
+            <label class="toggle-chip" title="Hide players who are Out / IR / Doubtful or have 0 projection">
+              <input type="checkbox" id="filter-active" checked />
+              <span>Active / Projected</span>
+            </label>
+
+            <div class="sort-select-wrap">
+              <label for="sort-select">Order:</label>
+              <select id="sort-select">
+                <option value="our_proj_desc" selected>Our Projection (High → Low)</option>
+                <option value="edge_desc">Edge vs. FD FPPG (High → Low)</option>
+                <option value="value_desc">Value / $1K (High → Low)</option>
+                <option value="salary_desc">FD Salary (High → Low)</option>
+                <option value="salary_asc">FD Salary (Low → High)</option>
+                <option value="ngs_desc">NGS + FTN Skill Signal (High → Low)</option>
+                <option value="def_desc">Opp Defender Matchup (High → Low)</option>
+                <option value="inj_desc">Injury Step-Up Signal (High → Low)</option>
+              </select>
+            </div>
+
+            <a class="csv-dl-mini" href="data/current_players.csv" download="current_players.csv" title="Download raw current_players.csv">
+              ⬇ CSV (<span id="player-count-badge">0</span>)
+            </a>
           </div>
         </div>
 
-        <div class="fd-board-subbar">
-          <div>
-            <strong>Ordered by Our v6 Adjusted Projection (descending)</strong> • Exact FanDuel salaries preserved • Click any player row for full 11-signal math breakdown
+        <!-- Column Legend Banner -->
+        <div class="fd-pool-subbar">
+          <div class="subbar-left">
+            Showing <strong id="visible-player-count">0</strong> of <span id="total-player-count">0</span> CSV rows • Ordered by <strong id="active-sort-label">Our Projection (v6)</strong> • Tap any player row for full 11-signal math breakdown
           </div>
-          <div id="fd-FilteredCount" style="font-family:var(--font-mono);font-weight:700;color:#fff;">
-            510 players shown
+          <div class="subbar-right">
+            <span class="legend-dot Base"></span>EB Vegas Base
+            <span class="legend-dot SigPos"></span>+Signal Boost
+            <span class="legend-dot SigNeg"></span>−Signal Penalty
+            <span class="legend-dot Sleeper"></span>Sleeper Breakout
           </div>
         </div>
 
-        <div class="fd-table-wrap">
-          <table class="fd-player-table">
+        <!-- Scrollable Player Table -->
+        <div class="fd-table-container">
+          <table class="fd-player-table" id="player-table">
             <thead>
               <tr>
-                <th data-sort="pos">POS</th>
-                <th data-sort="name">PLAYER / VEGAS IMPLIED</th>
-                <th data-sort="team">GAME / ROOF</th>
-                <th data-sort="fppg" title="FanDuel Season Fantasy Points Per Game">FPPG</th>
-                <th data-sort="base" title="Empirical-Bayes Shrunk Vegas Share Base Projection">VEGAS EB</th>
-                <th data-sort="adjusted" class="sorted" title="Our Final v6 Projection = Base × (1 + Σ w_i × s_i)">OUR PROJ</th>
-                <th data-sort="salary" title="Official Verified FanDuel Salary">SALARY</th>
-                <th data-sort="value_per_1k" title="Projected Points per $1,000 FanDuel Salary">VAL/$1K</th>
-                <th data-sort="first_downs_rate" title="First Downs Rate (w = 0.21)">1stDn (.21)</th>
-                <th data-sort="td_regression" title="TD & xFP Positive Regression (w = 0.21)">TDReg (.21)</th>
-                <th data-sort="opportunity_share" title="Team Opportunity Share (w = 0.18)">OppSh (.18)</th>
-                <th data-sort="injury_step_up" title="Starter Injury Step-Up (w = 0.15)">InjStp (.15)</th>
-                <th data-sort="per_snap_breakout" title="Per-Snap Efficiency Breakout (w = 0.15)">SnapBrk (.15)</th>
-                <th data-sort="opp_defender_matchup" title="Opposing Defender & Unit Matchup (w = 0.09)">OppDef (.09)</th>
-                <th data-sort="ngs_skill_breakout" title="Next Gen Stats Skill OE + FTN Charting Breakout (w = 0.08)">NGS+FTN (.08)</th>
-                <th data-sort="pedigree_sleeper" title="Draft Pedigree & Youth Sleeper (w = 0.07)">PedSlp (.07)</th>
-                <th style="text-align:center;">DRAFT</th>
+                <th class="col-rank">#</th>
+                <th class="col-pos">POS</th>
+                <th class="col-player sticky-col">PLAYER / MATCHUP / SIGNALS</th>
+                <th class="col-game">GAME &amp; VEGAS</th>
+                <th class="col-fppg sortable" data-sort="fd_proj_desc" title="FanDuel Pre-Game FPPG Baseline">FD PROJ</th>
+                <th class="col-base sortable" data-sort="base_desc" title="Empirical-Bayes Shrunk Vegas Share Base">EB BASE</th>
+                <th class="col-signals">TOP v6 SIGNAL DRIVERS (Z / Δ PTS)</th>
+                <th class="col-proj sortable active-col" data-sort="our_proj_desc" title="Our Locked v6 Projection">OUR PROJ ↓</th>
+                <th class="col-edge sortable" data-sort="edge_desc" title="Our Projection minus FanDuel Pre-Game Projection">EDGE</th>
+                <th class="col-val sortable" data-sort="value_desc" title="Projected Points per $1,000 of FD Salary">VAL/$1K</th>
+                <th class="col-sal sortable" data-sort="salary_desc" title="Verified FanDuel Salary">SALARY</th>
+                <th class="col-act">ADD</th>
               </tr>
             </thead>
-            <tbody id="fd-player-tbody"></tbody>
+            <tbody id="player-tbody"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- RIGHT PANEL: FANDUEL 9-SLOT LINEUP BUILDER (Drawer on Mobile < 1080px) -->
+      <aside class="fd-lineup-panel" id="lineup-drawer-panel" aria-label="9-Slot Lineup Builder">
+        <div class="fd-lineup-mobile-handle">
+          <div class="mobile-drawer-title">9-Slot Lineup Builder ($60,000 Cap)</div>
+          <button class="mobile-drawer-close" id="btn-close-mobile-lineup" type="button" aria-label="Close Lineup Drawer">✕ Close</button>
+        </div>
+
+        <div class="fd-lineup-header">
+          <div class="lineup-title-row">
+            <div>
+              <h2 class="lineup-title">YOUR LINEUP</h2>
+              <p class="lineup-subtitle" id="lineup-subtitle-text">Load Preset from data/lineups.csv or Click + to Draft</p>
+            </div>
+            <div class="lineup-actions-top">
+              <button class="btn-secondary btn-sm" id="btn-optimize-remaining" title="Auto-fill open slots with highest v6 projected players under $60,000 cap">Auto-Fill Optimal</button>
+              <button class="btn-ghost btn-sm" id="btn-clear-lineup" title="Clear all 9 slots">Clear</button>
+            </div>
+          </div>
+
+          <!-- Preset Selector (Populated from data/lineups.csv) -->
+          <div class="preset-selector-box">
+            <label for="preset-select">Load Saved Entry / Optimal Build (from <code>data/lineups.csv</code>):</label>
+            <select id="preset-select"></select>
+          </div>
+
+          <!-- Salary & Projection Meters -->
+          <div class="fd-cap-meters">
+            <div class="cap-meter">
+              <span class="meter-label">SALARY REMAINING</span>
+              <span class="meter-value" id="cap-remaining">$60,000</span>
+              <span class="meter-sub" id="cap-used">$0 / $60,000</span>
+            </div>
+            <div class="cap-meter">
+              <span class="meter-label">AVG / OPEN SLOT</span>
+              <span class="meter-value" id="cap-avg-slot">$6,667</span>
+              <span class="meter-sub" id="slots-filled-count">0 / 9 Rostered</span>
+            </div>
+            <div class="cap-meter highlight">
+              <span class="meter-label">OUR v6 PROJECTION</span>
+              <span class="meter-value proj-total" id="lineup-total-proj">0.00</span>
+              <span class="meter-sub" id="lineup-total-edge">FD Base: 0.00</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 9 FanDuel Classic Roster Slots -->
+        <div class="fd-roster-slots" id="roster-slots"></div>
+
+        <!-- Lineup Strategy / Stack Summary Footer -->
+        <div class="fd-lineup-footer" id="lineup-footer-info"></div>
+      </aside>
+    </section>
+
+    <!-- STICKY MOBILE BOTTOM LINEUP BAR (Visible on screens < 1080px) -->
+    <div class="fd-mobile-lineup-bar" id="mobile-lineup-bar">
+      <div class="mobile-bar-stats">
+        <div class="m-stat">
+          <span class="m-lbl">SLOTS</span>
+          <strong class="m-val" id="m-bar-slots">—</strong>
+        </div>
+        <div class="m-stat">
+          <span class="m-lbl">REM SAL</span>
+          <strong class="m-val" id="m-bar-sal">—</strong>
+        </div>
+        <div class="m-stat highlight">
+          <span class="m-lbl">v6 PROJ</span>
+          <strong class="m-val accent" id="m-bar-proj">—</strong>
+        </div>
+      </div>
+      <button class="btn-mobile-drawer-toggle" id="btn-open-mobile-lineup" type="button">
+        View / Edit Lineup ▲
+      </button>
+    </div>
+  </main>
+
+  <!-- ===================================================================== -->
+  <!-- TAB 2: HISTORIC TRENDS (OUR PROJ vs ACTUAL vs FANDUEL PROJ)           -->
+  <!-- ===================================================================== -->
+  <main id="tab-historic" class="fd-view">
+    <div class="historic-container">
+      <!-- UPDATER BOT & RAW CSV DATA EXPORT BANNER -->
+      <section class="historic-hero-card">
+        <div class="historic-hero-top">
+          <div class="historic-hero-text">
+            <div class="hero-eyebrow">100% CSV-DRIVEN HISTORICAL AUDIT • 100% CSV-DRIVEN AUDIT • <span id="hist-eyebrow-counts">LOADING CSV COUNTS…</span></div>
+            <h1>Historic Trends: Our Pre-Game Projection vs. Actual vs. FanDuel Pre-Game Projection</h1>
+            <p>
+              Every number on this page is loaded dynamically via <code>fetch()</code> from RFC-4180 CSV files in <code>data/</code>—zero data is hardcoded in HTML or JS.
+              For completed Weeks 3–7, <strong>Our Pre-Game Projection</strong> is the strict out-of-sample Leave-One-Week-Out (LOWO) cross-validated <code>v6</code> projection computed using only data prior to that week’s kickoff, compared head-to-head against <strong>FanDuel’s Pre-Game Implied FPPG / Prior Usage Baseline</strong> and <strong>Official Actual FanDuel Points Scored</strong>.
+            </p>
+          </div>
+
+          <div class="updater-bot-card">
+            <div class="bot-card-hdr">
+              <span class="bot-status-dot"></span>
+              <strong id="hist-bot-name">@fd-board-updater</strong>
+              <code class="bot-id-pill" id="hist-bot-id">3d16d616…</code>
+            </div>
+            <div class="bot-sched-row">
+              <span class="sched-tag pre">PRE-GAME LOCK</span>
+              <span id="hist-pregame-sched">Loading schedule…</span>
+            </div>
+            <div class="bot-sched-row">
+              <span class="sched-tag post">POST-GAME ACTUALS</span>
+              <span id="hist-postgame-sched">Loading schedule…</span>
+            </div>
+            <div class="bot-gen-time">Last CSV Build: <strong id="hist-generated-at">—</strong></div>
+          </div>
+        </div>
+
+        <!-- RAW CSV EXPORT BAR -->
+        <div class="csv-export-bar">
+          <span class="export-bar-title">RAW CSV EXPORTS:</span>
+          <a class="csv-btn primary" href="data/historic_weekly_summary.csv" download="historic_weekly_summary.csv">⬇ historic_weekly_summary.csv</a>
+          <a class="csv-btn primary" href="data/historic_player_projections.csv" download="historic_player_projections.csv">⬇ historic_player_projections.csv (<span id="csv-hist-players-count">—</span>)</a>
+          <a class="csv-btn" href="data/historic_position_summary.csv" download="historic_position_summary.csv">⬇ historic_position_summary.csv</a>
+          <a class="csv-btn" href="data/current_players.csv" download="current_players.csv">⬇ current_players.csv (<span id="csv-curr-players-count">—</span>)</a>
+          <a class="csv-btn" href="data/lineups.csv" download="lineups.csv">⬇ lineups.csv (<span id="csv-lineups-count">—</span>)</a>
+          <a class="csv-btn" href="data/weights.csv" download="weights.csv">⬇ weights.csv</a>
+          <a class="csv-btn" href="data/backtest_versions.csv" download="backtest_versions.csv">⬇ backtest_versions.csv</a>
+          <button class="csv-btn accent" id="btn-export-filtered-hist" type="button">⬇ Export Filtered View CSV</button>
+        </div>
+      </section>
+
+      <!-- KPI SUMMARY STRIP (Populated from historic_weekly_summary.csv) -->
+      <section class="historic-kpi-grid" id="historic-kpi-grid"></section>
+
+      <!-- VISUAL CHARTS ROW 1: OPTIMAL LINEUP SCORING + WEEKLY ACCURACY (RHO & MAE) -->
+      <section class="historic-charts-grid">
+        <div class="chart-card">
+          <div class="chart-card-hdr">
+            <div>
+              <h3>1. Week-by-Week Optimal Lineup &amp; Contest Scoring (FD Pts)</h3>
+              <p>Comparing actual FD points scored by <strong>Our Pre-Game Optimal Lineup</strong> vs. <strong>FanDuel Pre-Game Optimal Lineup</strong> vs. <strong>Tysa’s Entered Contest Lineup</strong> (plus Wk 8 Pre-Game Projected Optimal)</p>
+            </div>
+            <div class="chart-legend">
+              <span class="c-leg our" id="leg-our-opt">Our Optimal Actual</span>
+              <span class="c-leg tysa" id="leg-tysa-opt">Tysa Best Entry</span>
+              <span class="c-leg fd" id="leg-fd-opt">FD Pre-Game Optimal</span>
+            </div>
+          </div>
+          <div class="svg-chart-wrap" id="chart-weekly-lineups"></div>
+        </div>
+
+        <div class="chart-card">
+          <div class="chart-card-hdr">
+            <div>
+              <h3>2. Week-by-Week Rank Correlation (Spearman ρ) &amp; Error (MAE)</h3>
+              <p>Out-of-sample pre-game player ranking accuracy (higher ρ is better) and Mean Absolute Error in FD points (lower MAE is better) across Weeks 3–7</p>
+            </div>
+            <div class="chart-legend">
+              <span class="c-leg our" id="leg-our-acc">Our v6 Pre-Game</span>
+              <span class="c-leg fd" id="leg-fd-acc">FD Pre-Game</span>
+            </div>
+          </div>
+          <div class="svg-chart-wrap" id="chart-weekly-accuracy"></div>
+        </div>
+      </section>
+
+      <!-- VISUAL CHARTS ROW 2: PRE-GAME PROJ vs ACTUAL SCATTER + POSITION BREAKDOWN -->
+      <section class="historic-charts-grid">
+        <div class="chart-card">
+          <div class="chart-card-hdr">
+            <div>
+              <h3>3. Pre-Game Projection vs. Actual FD Points Calibration Plot</h3>
+              <p>Each dot is a completed player-game (filtered by your active Week &amp; Position selection below) plotted against the <code>y = x</code> perfect calibration line</p>
+            </div>
+            <div class="chart-legend">
+              <span class="c-leg our">Our Pre-Game Proj vs Actual</span>
+              <span class="c-leg fd">FD Pre-Game Proj vs Actual</span>
+            </div>
+          </div>
+          <div class="svg-chart-wrap" id="chart-scatter-calibration"></div>
+        </div>
+
+        <div class="chart-card">
+          <div class="chart-card-hdr">
+            <div>
+              <h3>4. Position-by-Position Accuracy Breakdown (QB, RB, WR, TE, DST)</h3>
+              <p>Pre-game Spearman ρ, Mean Absolute Error (MAE), and Head-to-Head Win Rate by position from <code>data/historic_position_summary.csv</code></p>
+            </div>
+          </div>
+          <div class="pos-summary-table-wrap" id="pos-summary-container"></div>
+        </div>
+      </section>
+
+      <!-- WEEK-BY-WEEK SUMMARY TABLE (Click any week to filter explorer & scatter) -->
+      <section class="historic-section-card">
+        <div class="section-header-bar">
+          <div>
+            <h2>Week-by-Week Breakdown: Our Pre-Game Proj vs. Actual vs. FanDuel Pre-Game Proj</h2>
+            <p>Loaded from <code>data/historic_weekly_summary.csv</code> • Click any row to filter the Scatter Plot and Player-Week Explorer below to that week</p>
+          </div>
+        </div>
+        <div class="table-scroll-x">
+          <table class="data-table historic-weekly-table" id="historic-weekly-table">
+            <thead>
+              <tr>
+                <th class="sticky-col">WEEK / SLATE</th>
+                <th>PLAYERS</th>
+                <th>OUR ρ</th>
+                <th>FD ρ</th>
+                <th>Δ ρ LIFT</th>
+                <th>OUR MAE</th>
+                <th>FD MAE</th>
+                <th>MAE GAIN</th>
+                <th>OUR BEAT FD %</th>
+                <th>OUR OPT PROJ → ACTUAL</th>
+                <th>FD OPT PROJ → ACTUAL</th>
+                <th>OPT LINEUP EDGE</th>
+                <th>TYSA ENTRY SCORE &amp; RESULT</th>
+                <th>TOP SLEEPER CALL (OUR vs FD → ACT)</th>
+              </tr>
+            </thead>
+            <tbody id="historic-weekly-tbody"></tbody>
           </table>
         </div>
       </section>
 
-      <!-- Right Column: FanDuel-Style Interactive Roster / Lineup Builder -->
-      <aside class="fd-roster-panel">
-        <div class="fd-roster-header">
-          <div class="fd-roster-title-row">
-            <h2>Your Lineup</h2>
-            <span class="fd-badge-v6" id="rm-filled-badge">9 / 9 SLOTS</span>
+      <!-- HISTORICAL PLAYER-WEEK EXPLORER (2,438 ROWS FROM historic_player_projections.csv) -->
+      <section class="historic-section-card">
+        <div class="section-header-bar explorer-header">
+          <div>
+            <h2>Historical &amp; Pre-Game Player-Week Explorer (<span id="hist-explorer-count">0</span> Rows)</h2>
+            <p>Loaded from <code>data/historic_player_projections.csv</code> • Every completed player-game (Weeks 3–7) plus locked pre-game Week 8 projections</p>
           </div>
-          <div class="fd-roster-metrics">
-            <div class="rm-box">
-              <span class="rm-lbl">Salary Remaining</span>
-              <span class="rm-val" id="rm-sal-rem">$0</span>
-            </div>
-            <div class="rm-box">
-              <span class="rm-lbl">Avg Rem / Player</span>
-              <span class="rm-val" id="rm-avg-rem">$0</span>
-            </div>
-            <div class="rm-box">
-              <span class="rm-lbl">Our v6 Proj Total</span>
-              <span class="rm-val proj-total" id="rm-tot-proj">0.00</span>
-            </div>
+
+          <div class="explorer-controls">
+            <select id="hist-filter-week" aria-label="Filter by Week">
+              <option value="COMPLETED" selected>All Completed Weeks (Wk 3–7)</option>
+              <option value="ALL">All Weeks Incl. Wk 8 Pre-Game</option>
+              <option value="3">Week 3 Completed</option>
+              <option value="4">Week 4 Completed</option>
+              <option value="5">Week 5 Completed</option>
+              <option value="6">Week 6 Completed</option>
+              <option value="7">Week 7 Completed</option>
+              <option value="8">Week 8 Pre-Game Locked</option>
+            </select>
+
+            <select id="hist-filter-pos" aria-label="Filter by Position">
+              <option value="ALL" selected>All Positions</option>
+              <option value="QB">QB</option>
+              <option value="RB">RB</option>
+              <option value="WR">WR</option>
+              <option value="TE">TE</option>
+              <option value="DST">DST</option>
+            </select>
+
+            <select id="hist-filter-outcome" aria-label="Filter by Outcome">
+              <option value="ALL" selected>All Outcomes</option>
+              <option value="OUR_BEAT_FD">Our Proj Closer than FD (Win)</option>
+              <option value="SLEEPER_HITS">Sleeper Hits (Sleeper + ≥14 Actual Pts)</option>
+              <option value="BIG_BOOMS">20+ Point Actual Scorers</option>
+              <option value="BIG_MISSES">Largest Projection Misses (|Error| ≥ 10)</option>
+            </select>
+
+            <select id="hist-sort" aria-label="Sort Explorer Rows">
+              <option value="actual_desc" selected>Sort: Actual FD Pts (High → Low)</option>
+              <option value="our_proj_desc">Sort: Our Pre-Game Proj (High → Low)</option>
+              <option value="fd_proj_desc">Sort: FD Pre-Game Proj (High → Low)</option>
+              <option value="edge_desc">Sort: Pre-Game Edge Our − FD (High → Low)</option>
+              <option value="our_err_asc">Sort: Most Accurate Our Proj (|Err| Low → High)</option>
+              <option value="fd_beat_margin">Sort: Biggest Win vs FD (|FD Err| − |Our Err|)</option>
+            </select>
+
+            <input type="text" id="hist-search" placeholder="Search player or team..." autocomplete="off" />
           </div>
         </div>
 
-        <div class="fd-preset-bar">
-          <label for="fd-preset-select">Load Entered Contest Lineup (L1–L7) or v6 Math Optimal:</label>
-          <select id="fd-preset-select" class="fd-select" style="width:100%;"></select>
-          <div class="fd-preset-actions">
-            <button class="fd-btn-sm primary" id="btn-load-opt1" style="flex:1;">⚡ v6 Optimal #1 (167.6p)</button>
-            <button class="fd-btn-sm" id="btn-clear-roster">Clear</button>
-            <button class="fd-btn-sm" id="btn-export-csv">Export CSV</button>
+        <div class="table-scroll-x">
+          <table class="data-table historic-players-table">
+            <thead>
+              <tr>
+                <th>WEEK / WINDOW</th>
+                <th class="sticky-col">PLAYER</th>
+                <th>POS</th>
+                <th>MATCHUP</th>
+                <th>SALARY</th>
+                <th>FD PRE-GAME PROJ</th>
+                <th>EB BASE PROJ</th>
+                <th>OUR PRE-GAME PROJ</th>
+                <th>PRE-GAME EDGE (OUR−FD)</th>
+                <th>ACTUAL FD PTS</th>
+                <th>OUR ERROR (PROJ−ACT)</th>
+                <th>FD ERROR (PROJ−ACT)</th>
+                <th>CLOSER TO ACTUAL</th>
+              </tr>
+            </thead>
+            <tbody id="historic-players-tbody"></tbody>
+          </table>
+        </div>
+
+        <!-- Pagination Bar -->
+        <div class="pagination-bar">
+          <div class="page-info" id="hist-page-info">Loading…</div>
+          <div class="page-controls">
+            <button class="btn-secondary btn-sm" id="btn-hist-prev" type="button">← Prev 100</button>
+            <span class="page-num-indicator" id="hist-page-indicator">Page —</span>
+            <button class="btn-secondary btn-sm" id="btn-hist-next" type="button">Next 100 →</button>
           </div>
         </div>
-
-        <ul class="fd-roster-slots" id="fd-roster-slots"></ul>
-
-        <div class="fd-roster-footer">
-          <div class="fd-strategy-note" id="fd-strategy-note"></div>
-        </div>
-      </aside>
+      </section>
     </div>
   </main>
 
-  <!-- VIEW 2: Weights, Definitions & Multi-Week Out-of-Sample Backtest Audit -->
-  <section class="fd-audit-view" id="view-audit">
-    <div class="audit-hero">
-      <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;">
-        <div>
-          <h2 style="font-size:20px;font-weight:800;color:#fff;">
-            v6 Locked Weights, Mathematical Definitions & Multi-Week Keep-or-Revert Audit
-          </h2>
-          <p style="color:#93a6c7;font-size:13px;margin-top:4px;">
-            Evaluated across <strong>57 strictly pre-game candidate attributes</strong> on Weeks 3–7 (<code>n = 1,928</code> player-games; <code>n = 1,528</code> in Weeks 4–7) via Leave-One-Week-Out Cross-Validation (LOWO CV) and simulated weekly optimal Classic lineups.
+  <!-- ===================================================================== -->
+  <!-- TAB 3: WEIGHTS, DEFINITIONS & MULTI-WEEK BACKTEST                     -->
+  <!-- ===================================================================== -->
+  <main id="tab-weights" class="fd-view">
+    <div class="weights-container">
+      <!-- HERO FORMULA CARD -->
+      <section class="weights-hero-card">
+        <div class="hero-left">
+          <div class="hero-eyebrow">LOCKED PRODUCTION MODEL • WEIGHTS.CSV v6 • LEAVE-ONE-WEEK-OUT CV</div>
+          <h1>11-Signal Empirical-Bayes Projection Architecture</h1>
+          <p>
+            Every player’s projection begins with an <strong>Empirical-Bayes Shrunk Vegas Implied Share Base</strong> (blending 2026 pre-game usage share with 2025 role-adjusted prior share using shrinkage constant <code>K = 3.5</code> games, multiplied by Vegas implied team points) and applies a bounded multiplicative adjustment from <strong>11 orthogonal pre-game signals</strong> loaded from <code>data/weights.csv</code>.
           </p>
+          <div class="formula-banner">
+            <code>Our_Proj = clip( Base_EB_Vegas × (1.0 + Σ [ w_k × z_k ]), min=0.50 )</code>
+            <span class="formula-note">where each <code>z_k ∈ [-1, +1]</code> is two-step rank-normalized within position × week</span>
+          </div>
         </div>
-        <span class="status-pill status-kept" style="font-size:12px;padding:5px 12px;">
-          Formula: adjusted = base_EB × (1 + Σ weight_i × signal_i)
-        </span>
+        <div class="hero-kpis" id="weights-hero-kpis"></div>
+      </section>
+
+      <!-- MULTI-WEEK BACKTEST PROGRESSION TABLE (v1 -> v6 from backtest_versions.csv) -->
+      <section class="weights-section">
+        <div class="section-header-bar">
+          <div>
+            <h2>1. Multi-Week Out-of-Sample Backtest Progression (<code>v1 → v6</code>)</h2>
+            <p>Loaded from <code>data/backtest_versions.csv</code> • Strictly pre-game Leave-One-Week-Out Cross-Validation (LOWO CV). Candidate signals are kept <strong>only</strong> if they improve out-of-sample Spearman rank correlation (ρ) and reduce Mean Absolute Error (MAE).</p>
+          </div>
+        </div>
+        <div class="table-scroll-x">
+          <table class="data-table" id="backtest-table">
+            <thead>
+              <tr>
+                <th>VERSION</th>
+                <th>MODEL SPECIFICATION</th>
+                <th>WK 3–7 SPEARMAN ρ</th>
+                <th>WK 3–7 MAE</th>
+                <th>WK 4–7 SPEARMAN ρ</th>
+                <th>WK 4–7 MAE</th>
+                <th>OPTIMAL LINEUP ACTUAL AVG</th>
+                <th>NOTES &amp; WEEKLY OPTIMAL SCORES</th>
+                <th>STATUS</th>
+              </tr>
+            </thead>
+            <tbody id="backtest-tbody"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- 11 ACTIVE WEIGHTS TABLE + DEFINITIONS (from weights.csv) -->
+      <section class="weights-section">
+        <div class="section-header-bar">
+          <div>
+            <h2>2. Active Locked <code>weights.csv</code> v6 Signals (11 Surviving Attributes)</h2>
+            <p>Loaded from <code>data/weights.csv</code> • Sum of active weights = <code>1.31</code> • Owned and computed pre-game by the 32 NFL Team Bots (<code>fd-ARI</code> … <code>fd-WAS</code>)</p>
+          </div>
+        </div>
+        <div class="weights-cards-grid" id="active-weights-grid"></div>
+      </section>
+
+      <!-- REVERTED CANDIDATES AUDIT TABLE (from reverted_signals.csv) -->
+      <section class="weights-section">
+        <div class="section-header-bar">
+          <div>
+            <h2>3. Reverted &amp; Pruned Candidate Attributes (46 Attributes Set to <code>0.0</code>)</h2>
+            <p>Loaded from <code>data/reverted_signals.csv</code> • Under our strict Keep-or-Revert protocol, every attribute below was tested in multi-week out-of-sample CV and reverted to <code>0.0</code> when it degraded MAE, failed to improve ρ, or double-counted an existing signal.</p>
+          </div>
+        </div>
+        <div class="table-scroll-x">
+          <table class="data-table" id="reverted-table">
+            <thead>
+              <tr>
+                <th>CANDIDATE ATTRIBUTE(S)</th>
+                <th>DESCRIPTION</th>
+                <th>TESTED IN</th>
+                <th>BOT OWNER</th>
+                <th>OUT-OF-SAMPLE CV IMPACT</th>
+                <th>WHY REVERTED TO 0.0</th>
+              </tr>
+            </thead>
+            <tbody id="reverted-tbody"></tbody>
+          </table>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- PLAYER 11-SIGNAL BREAKDOWN MODAL -->
+  <div class="modal-backdrop" id="player-modal" aria-hidden="true">
+    <div class="modal-card">
+      <div class="modal-header">
+        <div id="modal-player-header"></div>
+        <button class="modal-close" id="modal-close-btn" aria-label="Close modal">✕</button>
       </div>
-
-      <div class="audit-kpi-grid">
-        <div class="audit-kpi">
-          <div class="k-lbl">Wk 3–7 Out-of-Sample Spearman ρ</div>
-          <div class="k-val">0.6284</div>
-          <div class="k-sub">+0.2135 vs v1 (0.4149) • +0.0005 vs v5 (0.6279)</div>
-        </div>
-        <div class="audit-kpi">
-          <div class="k-lbl">Wk 3–7 Out-of-Sample MAE</div>
-          <div class="k-val">4.017 FD pts</div>
-          <div class="k-sub">-1.098 pts vs v1 (5.115) • -0.011 pts vs v5 (4.028)</div>
-        </div>
-        <div class="audit-kpi">
-          <div class="k-lbl">Wk 4–7 Out-of-Sample ρ / MAE</div>
-          <div class="k-val">0.6236 / 3.987</div>
-          <div class="k-sub">+0.0011 ρ and -0.010 MAE improvement over v5</div>
-        </div>
-        <div class="audit-kpi">
-          <div class="k-lbl">Wk 3–6 Simulated Top Lineup Avg</div>
-          <div class="k-val">140.09 FD pts</div>
-          <div class="k-sub">133.10 / 142.44 / 174.66 / 110.18 (+35.48 pts/wk vs v1)</div>
-        </div>
-      </div>
+      <div class="modal-body" id="modal-player-body"></div>
     </div>
-
-    <!-- Section 1: Active v6 Weights & Definitions -->
-    <div class="audit-section">
-      <h3>1. Active v6 Weights & Mathematical Definitions (11 Surviving Pre-Game Attributes)</h3>
-      <p style="color:#93a6c7;font-size:12.5px;">
-        Every active signal is normalized strictly pre-game within <code>(week, pos)</code>, clipped to <code>[-1.0, +1.0]</code> (<code>±2 SD / 2</code>), and base-weighted zero-centered per position so that applying weights preserves total Vegas-implied positional scoring.
-      </p>
-      <table class="audit-table">
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>Attribute / Key</th>
-            <th>v6 Weight</th>
-            <th>Signal Tier</th>
-            <th>Bot Ownership</th>
-            <th>Plain-English Definition & Exact Formula</th>
-          </tr>
-        </thead>
-        <tbody id="audit-active-tbody"></tbody>
-      </table>
-    </div>
-
-    <!-- Section 2: Multi-Week Out-of-Sample Backtest Progression -->
-    <div class="audit-section">
-      <h3>2. Multi-Week Out-of-Sample LOWO CV Progression (v1 → v2 → v3 → v4 → v5 → v6)</h3>
-      <p style="color:#93a6c7;font-size:12.5px;">
-        In each fold, weights are fit via bounded Powell optimization on 4 training weeks and evaluated strictly out-of-sample on the held-out week.
-      </p>
-      <table class="audit-table">
-        <thead>
-          <tr>
-            <th>Model Version / Specification</th>
-            <th>Decision</th>
-            <th>Wk 3–7 ρ (n=1,928)</th>
-            <th>Wk 3–7 MAE</th>
-            <th>Wk 4–7 ρ (n=1,528)</th>
-            <th>Wk 4–7 MAE</th>
-            <th>Wk 3 / Wk 4 / Wk 5 / Wk 6 Top Lineup</th>
-            <th>Lineup Avg</th>
-          </tr>
-        </thead>
-        <tbody id="audit-backtest-tbody"></tbody>
-      </table>
-    </div>
-
-    <!-- Section 3: Reverted & Eliminated Attributes (Keep-or-Revert Audit) -->
-    <div class="audit-section">
-      <h3>3. Reverted & Eliminated Candidate Attributes (Strict Keep-or-Revert Rule)</h3>
-      <p style="color:#93a6c7;font-size:12.5px;">
-        Any candidate attribute that failed to beat the locked benchmark out-of-sample across LOWO CV folds was immediately reverted to <code>0.0</code>.
-      </p>
-      <table class="audit-table">
-        <thead>
-          <tr>
-            <th>Candidate Attribute(s)</th>
-            <th>Test Phase</th>
-            <th>Locked Weight</th>
-            <th>Out-of-Sample LOWO CV Result</th>
-            <th>Why It Was Reverted</th>
-          </tr>
-        </thead>
-        <tbody id="audit-reverted-tbody"></tbody>
-      </table>
-    </div>
-  </section>
-
-  <!-- Player Signal Breakdown Modal -->
-  <div class="fd-modal-backdrop" id="fd-player-modal">
-    <div class="fd-modal-card" id="fd-modal-content"></div>
   </div>
 
-  <script src="data.js"></script>
-  <script src="app.js"></script>
+  <script src="app.js?v=20261024-093722"></script>
 </body>
 </html>

@@ -1,12 +1,12 @@
 key,value
-build_id,20261024-101959
+build_id,20261025-091622
 slate_id,135562
 week,8
 title,NFL Classic Player Selection Board (Slate #135562 • Week 8 Main • 10 Games)
 lock_time,"Sun Oct 25, 2026 • 1:00 PM ET"
-generated_at,2026-10-24 10:19 AM ET (mode=both)
+generated_at,2026-10-25 09:16 AM ET (mode=pregame)
 active_version,v6 LOCKED • 11 SIGNALS
-total_players,510
+total_players,511
 active_signals,11
 salary_cap,60000
 candidates_tested,57

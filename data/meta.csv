@@ -1,18 +1,19 @@
 key,value
-build_id,20261026-004327
+build_id,20261026-064100
 slate_id,135562 + 135719
 week,8
 title,NFL Player Selection Board (Week 8 Main #135562 Final + SNF KC@SEA #135719 Final • 11 Games)
 lock_time,"Sun Oct 25, 2026 • Main 1:00 PM ET (Final) | SNF KC@SEA 8:20 PM ET (Final SEA 20 - KC 3)"
-generated_at,2026-10-26 12:43 AM ET (mode=postgame)
-active_version,v7 LOCKED • 12 SIGNALS
+generated_at,2026-10-26 06:41 AM ET (mode=postgame)
+active_version,v8 LOCKED • 14 SIGNALS
 total_players,566
-active_signals,12
+active_signals,14
 salary_cap,60000
-candidates_tested,62
+candidates_tested,69
 n_wk3_7,"2,494 (Wk3–8) / 1,928 (Wk3–7)"
 n_wk4_7,1528
 updater_bot,@fd-board-updater
 updater_bot_id,3d16d616-921d-472e-a9ef-bf156bbd1391
 pregame_schedule,"Right before kickoff: Thu 7:55 PM ET (TNF), Sun 12:35 PM ET (Main 1pm), Sun 3:45 PM ET (Late 4pm), Sun 7:55 PM ET (SNF), Mon 7:55 PM ET (MNF)"
 postgame_schedule,"Right after games finish: Thu 11:45 PM ET (TNF), Sun 11:50 PM ET (Sun Main+SNF), Tue 12:15 AM ET (Full Week Final) + Tue 9:30 AM ET Weekly Audit"
+strategy_exchange_bot,@fd-strategy-exchange (4f64d389-10db-4641-ae99-ad900bb4ffcb)

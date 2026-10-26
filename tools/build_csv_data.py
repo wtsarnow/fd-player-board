@@ -108,8 +108,9 @@ def compute_sleeper_and_reasons(row, weights):
 
 def map_6_players_to_9_slots(players_list):
     """
-    Deterministically map a 6-player Showdown lineup into the 9 Classic columns
-    `QB,RB1,RB2,WR1,WR2,WR3,TE,FLEX,DEF` expected by `data/lineups.csv` and `app.js`.
+    Deterministically map a 6-player Showdown lineup (ordered [MVP, FLEX1, FLEX2, FLEX3, FLEX4, FLEX5])
+    into both the 9 Classic columns (`QB,RB1,RB2,WR1,WR2,WR3,TE,FLEX,DEF`) and the 6 Showdown columns
+    (`roster_format,MVP,FLEX1,FLEX2,FLEX3,FLEX4,FLEX5`) used by `data/lineups.csv` and `app.js`.
     """
     slots = {k: '' for k in ['QB', 'RB1', 'RB2', 'WR1', 'WR2', 'WR3', 'TE', 'FLEX', 'DEF']}
     flex_overflow = []
@@ -150,6 +151,16 @@ def map_6_players_to_9_slots(players_list):
 
     if flex_overflow:
         slots['FLEX'] = flex_overflow[0]['player']
+        for extra_p in flex_overflow[1:]:
+            for fallback_k in ['WR3', 'RB2', 'TE', 'WR2', 'RB1', 'DEF', 'QB']:
+                if not slots[fallback_k]:
+                    slots[fallback_k] = extra_p['player']
+                    break
+
+    slots['roster_format'] = 'showdown'
+    slots['MVP'] = players_list[0]['player'] if len(players_list) > 0 else ''
+    for f_idx in range(1, 6):
+        slots[f'FLEX{f_idx}'] = players_list[f_idx]['player'] if len(players_list) > f_idx else ''
     return slots
 
 
@@ -240,12 +251,95 @@ def solve_classic_9_pulp(df_pool, salary_cap=60000, min_proj=5.0, max_per_team=4
     return d.loc[chosen_idxs].copy()
 
 
-def build_optimal_lineups_csv(cp_all):
+def assign_6_showdown_slots(mvp_row, flex_rows):
     """
-    Precompute optimal lineups for strictly two scopes:
-      1. `all_games` (`scope_key = 'ALL_GAMES'`): All 12 games combined on the current Week 8 slate
-      2. `per_game` (`scope_key = '<AWAY>@<HOME>'`): Each individual game on the current Week 8 slate
-    All solved 100% deterministically with PuLP CBC against the $60,000 FanDuel salary cap.
+    Deterministically assign 6 chosen Single-Game Showdown players (1 MVP at 1.5x + 5 AnyFLEX at 1.0x)
+    to ordered slots MVP, FLEX1, FLEX2, FLEX3, FLEX4, FLEX5.
+    FanDuel Single-Game Showdown allows QB, RB, WR, TE, K, DST in both MVP (1.5x) and AnyFLEX (1.0x).
+    """
+    flex_sorted = sorted(
+        flex_rows,
+        key=lambda r: (float(r['our_proj']), int(r['salary'])),
+        reverse=True,
+    )
+    out = [('MVP', mvp_row, 1.5)]
+    for idx, fr in enumerate(flex_sorted, start=1):
+        out.append((f'FLEX{idx}', fr, 1.0))
+    return out
+
+
+def solve_showdown_6_pulp(df_pool, salary_cap=60000, min_proj=3.5, max_per_team=5, force_mvp_name=None, exclude_sets=None):
+    """
+    Solve a 6-player FanDuel Single-Game Showdown lineup (`1 MVP at 1.5x salary & points + 5 AnyFLEX at 1.0x`)
+    100% deterministically using PuLP CBC integer linear programming against `salary_cap = 60000`.
+    Supports full FanDuel AnyFLEX eligibility (`QB, RB, WR, TE, K, DST`).
+    """
+    d = df_pool[
+        (df_pool['our_proj'].astype(float) >= min_proj)
+        & (~df_pool['status'].isin(['O', 'IR', 'D']))
+        & (df_pool['pos'].isin(['QB', 'RB', 'WR', 'TE', 'K', 'DST']))
+    ].copy().reset_index(drop=True)
+
+    d['_p'] = d['our_proj'].astype(float)
+    d['_fd'] = d['fd_proj'].astype(float)
+    d['_s'] = d['salary'].astype(int)
+    N = len(d)
+
+    prob = pulp.LpProblem('fd_showdown_6_optimal', pulp.LpMaximize)
+    m = [pulp.LpVariable(f"m_{i}", cat='Binary') for i in range(N)]
+    f = [pulp.LpVariable(f"f_{i}", cat='Binary') for i in range(N)]
+
+    prob += pulp.lpSum(
+        1.5 * (d.loc[i, '_p'] + 1e-5 * d.loc[i, '_fd'] + 1e-8 * d.loc[i, '_s']) * m[i]
+        + 1.0 * (d.loc[i, '_p'] + 1e-5 * d.loc[i, '_fd'] + 1e-8 * d.loc[i, '_s']) * f[i]
+        for i in range(N)
+    )
+    prob += pulp.lpSum(1.5 * d.loc[i, '_s'] * m[i] + 1.0 * d.loc[i, '_s'] * f[i] for i in range(N)) <= salary_cap
+    prob += pulp.lpSum(m) == 1
+    prob += pulp.lpSum(f) == 5
+
+    for i in range(N):
+        prob += m[i] + f[i] <= 1
+
+    for tm in d['team'].unique():
+        idx_tm = [i for i in range(N) if d.loc[i, 'team'] == tm]
+        prob += pulp.lpSum(m[i] + f[i] for i in idx_tm) >= 1
+        prob += pulp.lpSum(m[i] + f[i] for i in idx_tm) <= max_per_team
+
+    if force_mvp_name is not None:
+        mvp_matches = [i for i in range(N) if d.loc[i, 'name'] == force_mvp_name]
+        if mvp_matches:
+            prob += m[mvp_matches[0]] == 1
+
+    if exclude_sets:
+        for prev_mvp_name, prev_names_set in exclude_sets:
+            mvp_idxs = [i for i in range(N) if d.loc[i, 'name'] == prev_mvp_name]
+            flex_idxs = [i for i in range(N) if d.loc[i, 'name'] in prev_names_set and d.loc[i, 'name'] != prev_mvp_name]
+            if mvp_idxs:
+                prob += m[mvp_idxs[0]] + pulp.lpSum(f[i] for i in flex_idxs) <= 5
+
+    status = prob.solve(pulp.PULP_CBC_CMD(msg=0))
+    if status != 1:
+        raise RuntimeError(f"PuLP Showdown solver did not find optimal solution (status={status})")
+
+    mvp_idx = [i for i in range(N) if pulp.value(m[i]) is not None and pulp.value(m[i]) > 0.5][0]
+    flex_idxs = [i for i in range(N) if pulp.value(f[i]) is not None and pulp.value(f[i]) > 0.5]
+    mvp_row = d.loc[mvp_idx].to_dict()
+    flex_rows = [d.loc[i].to_dict() for i in flex_idxs]
+    return mvp_row, flex_rows
+
+
+def build_optimal_lineups_csv(cp_all, entries_df=None):
+    """
+    Precompute optimal lineups for:
+      1. `all_games` (`scope_key = 'ALL_GAMES'`): All 12 games combined on the current Week 8 slate (9-slot Classic)
+      2. `per_game` (`scope_key = '<AWAY>@<HOME>'`): Each individual game on the current Week 8 slate:
+         - Single-Game Showdown slates (`DAL@PHI` #135830 and `KC@SEA` #135719) use FanDuel's 6-slot Single-Game
+           Showdown format (`MVP at 1.5x salary & points + 5 AnyFLEX at 1.0x`). For `DAL@PHI`, both Tysa's live
+           submitted FanDuel entry (`#3754559753`) and the unconstrained v8 PuLP Showdown optimal (`OPT-135830-1`)
+           and Dak-MVP optimal (`OPT-135830-2`) are included.
+         - Classic Sunday Main Slate games (`#135562`) use 9-slot Classic with active starter floor (`min_proj=3.0`
+           with fallback to `2.0`) so sub-2.0 inactive punts are never rostered.
     """
     lineup_rules = json.loads((FD_SYS / 'weights.json').read_text()).get('lineup', {})
     cap = int(lineup_rules.get('cap', 60000))
@@ -254,7 +348,7 @@ def build_optimal_lineups_csv(cp_all):
 
     rows_out = []
 
-    def append_lineup_rows(scope, scope_key, scope_label, df_chosen):
+    def append_classic_9_rows(scope, scope_key, scope_label, df_chosen, solver_str='PuLP CBC ILP (9-Slot Classic • cap=$60,000)'):
         assigned = assign_9_classic_slots(df_chosen)
         tot_sal = sum(int(p['salary']) for _, p in assigned)
         rem_sal = cap - tot_sal
@@ -299,7 +393,63 @@ def build_optimal_lineups_csv(cp_all):
                 'status': p['status'],
                 'is_sleeper': p['is_sleeper'],
                 'top_signals': p['sleeper_reasons'],
-                'solver': 'PuLP CBC ILP (cap=$60,000)',
+                'solver': solver_str,
+            })
+
+    def append_showdown_6_rows(scope, scope_key, scope_label, mvp_row, flex_rows, solver_str='PuLP CBC ILP (6-Slot Showdown 1.5x MVP • cap=$60,000)'):
+        assigned = assign_6_showdown_slots(mvp_row, flex_rows)
+        tot_sal = sum(int(round(mult * int(p['salary']))) for _, p, mult in assigned)
+        rem_sal = cap - tot_sal
+        tot_our = round(sum(round(mult * float(p['our_proj']), 2) for _, p, mult in assigned), 2)
+        tot_fd = round(sum(round(mult * float(p['fd_proj']), 2) for _, p, mult in assigned), 2)
+        tot_base = round(sum(round(mult * float(p['base_proj']), 2) for _, p, mult in assigned), 2)
+        tot_edge = round(tot_our - tot_fd, 2)
+        tot_ceil = round(sum(round(mult * float(p['ceil']), 2) for _, p, mult in assigned), 2)
+        tot_floor = round(sum(round(mult * float(p['floor']), 2) for _, p, mult in assigned), 2)
+
+        for idx, (slot_name, p, mult) in enumerate(assigned, start=1):
+            eff_sal = int(round(mult * int(p['salary'])))
+            eff_our = round(mult * float(p['our_proj']), 2)
+            eff_fd = round(mult * float(p['fd_proj']), 2)
+            eff_base = round(mult * float(p['base_proj']), 2)
+            eff_edge = round(eff_our - eff_fd, 2)
+            eff_ceil = round(mult * float(p['ceil']), 2)
+            eff_floor = round(mult * float(p['floor']), 2)
+            eff_val = round(eff_our / (eff_sal / 1000.0), 2) if eff_sal > 0 else 0.0
+            rows_out.append({
+                'scope': scope,
+                'scope_key': scope_key,
+                'scope_label': scope_label,
+                'salary_cap': cap,
+                'total_salary': tot_sal,
+                'salary_remaining': rem_sal,
+                'total_our_proj': f"{tot_our:.2f}",
+                'total_fd_proj': f"{tot_fd:.2f}",
+                'total_base_proj': f"{tot_base:.2f}",
+                'total_proj_edge': f"{tot_edge:+.2f}",
+                'total_ceil': f"{tot_ceil:.2f}",
+                'total_floor': f"{tot_floor:.2f}",
+                'slot_order': idx,
+                'slot': slot_name,
+                'player_id': p['id'],
+                'player': p['name'],
+                'pos': p['pos'],
+                'team': p['team'],
+                'opp': p['opp'],
+                'game': p['game'],
+                'home_away': p['home_away'],
+                'salary': eff_sal,
+                'our_proj': f"{eff_our:.2f}",
+                'fd_proj': f"{eff_fd:.2f}",
+                'base_proj': f"{eff_base:.2f}",
+                'proj_edge': f"{eff_edge:+.2f}",
+                'value_per_1k': f"{eff_val:.2f}",
+                'ceil': f"{eff_ceil:.2f}",
+                'floor': f"{eff_floor:.2f}",
+                'status': p['status'],
+                'is_sleeper': p['is_sleeper'],
+                'top_signals': p['sleeper_reasons'],
+                'solver': solver_str,
             })
 
     # Scope 1: `all_games` (All 12 games combined on the current slate)
@@ -311,7 +461,7 @@ def build_optimal_lineups_csv(cp_all):
         min_team_each=0,
         min_stack=min_stack,
     )
-    append_lineup_rows(
+    append_classic_9_rows(
         scope='all_games',
         scope_key='ALL_GAMES',
         scope_label='All Games Combined (12 Week 8 Games • $60,000 Cap)',
@@ -334,23 +484,86 @@ def build_optimal_lineups_csv(cp_all):
         ou = game_meta[g_code]
         parts = g_code.split('@')
         away_tm, home_tm = (parts[0], parts[1]) if len(parts) == 2 else (g_code, '')
-        tag = 'MNF #135830' if g_code == 'DAL@PHI' else ('SNF #135719' if g_code == 'KC@SEA' else 'Main #135562')
-        label = f"{away_tm} @ {home_tm} ({tag} • O/U {ou:.1f} • $60,000 Cap)"
 
-        df_g_chosen = solve_classic_9_pulp(
-            g_df,
-            salary_cap=cap,
-            min_proj=0.01,
-            max_per_team=6,
-            min_team_each=1,
-            min_stack=min_stack,
-        )
-        append_lineup_rows(
-            scope='per_game',
-            scope_key=g_code,
-            scope_label=label,
-            df_chosen=df_g_chosen,
-        )
+        if g_code == 'DAL@PHI':
+            # 1) Primary DAL@PHI per-game lineup: Tysa's live submitted FanDuel Showdown Entry #3754559753
+            #    from /workspace/fd-system/lineups/135830-mnf-entries.csv (or solved if no entry file)
+            p_by_name = {r['name']: r.to_dict() for _, r in g_df.iterrows()}
+            if entries_df is not None and len(entries_df) == 6:
+                mvp_name = str(entries_df[entries_df['slot'] == 'MVP']['player'].iloc[0])
+                flex_names = [str(x) for x in entries_df[entries_df['slot'] != 'MVP']['player'].tolist()]
+                entry_mvp = p_by_name[mvp_name]
+                entry_flex = [p_by_name[nm] for nm in flex_names]
+                append_showdown_6_rows(
+                    scope='per_game',
+                    scope_key='DAL@PHI',
+                    scope_label=f"DAL @ PHI (MNF #135830 • Tysa FanDuel Entry #3754559753 • 6-Slot Showdown • $60,000 Cap)",
+                    mvp_row=entry_mvp,
+                    flex_rows=entry_flex,
+                    solver_str='FanDuel Submitted Entry #3754559753 (6-Slot Showdown: 1.5x MVP + 5 AnyFLEX • EB Base 106.72 / v8 105.33)',
+                )
+            # 2) Unconstrained v8 PuLP Showdown Optimal #1 (OPT-135830-1: MVP CeeDee Lamb 1.5x, 118.70 v8 pts)
+            opt1_mvp, opt1_flex = solve_showdown_6_pulp(g_df, salary_cap=cap, min_proj=3.5, max_per_team=5)
+            append_showdown_6_rows(
+                scope='per_game_alt',
+                scope_key='DAL@PHI_V8_OPT',
+                scope_label=f"DAL @ PHI (MNF #135830 • Unconstrained v8 ILP Optimal #1 • MVP {opt1_mvp['name']} 1.5x • $60,000 Cap)",
+                mvp_row=opt1_mvp,
+                flex_rows=opt1_flex,
+                solver_str='PuLP CBC ILP (6-Slot Showdown 1.5x MVP + 5 AnyFLEX • Unconstrained v8 Optimal)',
+            )
+            # 3) Dak-MVP v8 PuLP Showdown Optimal #2 (OPT-135830-2: MVP Dak Prescott 1.5x, 116.34 v8 pts)
+            opt1_set = {opt1_mvp['name']} | {r['name'] for r in opt1_flex}
+            opt2_mvp, opt2_flex = solve_showdown_6_pulp(
+                g_df,
+                salary_cap=cap,
+                min_proj=3.5,
+                max_per_team=5,
+                force_mvp_name='Dak Prescott',
+                exclude_sets=[(opt1_mvp['name'], opt1_set)],
+            )
+            append_showdown_6_rows(
+                scope='per_game_alt',
+                scope_key='DAL@PHI_DAK_OPT',
+                scope_label=f"DAL @ PHI (MNF #135830 • Dak Prescott 1.5x MVP v8 ILP Optimal #2 • $60,000 Cap)",
+                mvp_row=opt2_mvp,
+                flex_rows=opt2_flex,
+                solver_str='PuLP CBC ILP (6-Slot Showdown 1.5x Dak MVP + 5 AnyFLEX • v8 Optimal #2)',
+            )
+        elif g_code == 'KC@SEA':
+            # SNF Single-Game Showdown (#135719): 6-slot Showdown optimal (MVP JSN 1.5x, 114.44 v8 pts)
+            kc_mvp, kc_flex = solve_showdown_6_pulp(g_df, salary_cap=cap, min_proj=3.5, max_per_team=5)
+            append_showdown_6_rows(
+                scope='per_game',
+                scope_key='KC@SEA',
+                scope_label=f"KC @ SEA (SNF #135719 • 6-Slot Showdown Optimal • O/U {ou:.1f} • $60,000 Cap)",
+                mvp_row=kc_mvp,
+                flex_rows=kc_flex,
+                solver_str='PuLP CBC ILP (6-Slot Showdown 1.5x MVP + 5 AnyFLEX • cap=$60,000)',
+            )
+        else:
+            label = f"{away_tm} @ {home_tm} (Main #135562 • O/U {ou:.1f} • $60,000 Cap)"
+            df_g_chosen = None
+            for mp in (3.0, 2.0, 1.0, 0.01):
+                try:
+                    df_g_chosen = solve_classic_9_pulp(
+                        g_df,
+                        salary_cap=cap,
+                        min_proj=mp,
+                        max_per_team=6,
+                        min_team_each=1,
+                        min_stack=min_stack,
+                    )
+                    break
+                except Exception:
+                    continue
+            append_classic_9_rows(
+                scope='per_game',
+                scope_key=g_code,
+                scope_label=label,
+                df_chosen=df_g_chosen,
+                solver_str=f"PuLP CBC ILP (9-Slot Classic • Active Floor • cap=${cap:,})",
+            )
 
     return pd.DataFrame(rows_out)
 
@@ -755,11 +968,33 @@ def main():
 
     lu_old = pd.read_csv(DATA_DIR / 'lineups.csv', dtype=str, keep_default_na=False)
     lu_preserved = lu_old[~lu_old['preset_id'].isin(['mnf-entry-1', 'mnf-1', 'mnf-2', 'mnf-3', 'mnf-fd-opt'])].copy()
+    for col_c in ['roster_format', 'MVP', 'FLEX1', 'FLEX2', 'FLEX3', 'FLEX4', 'FLEX5']:
+        if col_c not in lu_preserved.columns:
+            lu_preserved[col_c] = ''
+    for idx_r, r_lu in lu_preserved.iterrows():
+        pid_lu = str(r_lu['preset_id'])
+        if pid_lu.startswith('snf-'):
+            lu_preserved.at[idx_r, 'roster_format'] = 'showdown'
+            if pid_lu == 'snf-1':
+                lu_preserved.at[idx_r, 'MVP'] = 'Jaxon Smith-Njigba'
+                for fi, fnm in enumerate(['Kenneth Walker III', 'Sam Darnold', 'Travis Kelce', 'Jason Myers', 'Noah Gray'], 1):
+                    lu_preserved.at[idx_r, f'FLEX{fi}'] = fnm
+            elif pid_lu == 'snf-2':
+                lu_preserved.at[idx_r, 'MVP'] = 'Kenneth Walker III'
+                for fi, fnm in enumerate(['Jaxon Smith-Njigba', 'Sam Darnold', 'Travis Kelce', 'Jason Myers', 'Noah Gray'], 1):
+                    lu_preserved.at[idx_r, f'FLEX{fi}'] = fnm
+            elif pid_lu == 'snf-3':
+                lu_preserved.at[idx_r, 'MVP'] = 'Jaxon Smith-Njigba'
+                for fi, fnm in enumerate(['Kenneth Walker III', 'Sam Darnold', 'Jason Myers', 'Harrison Butker', 'Tory Horton'], 1):
+                    lu_preserved.at[idx_r, f'FLEX{fi}'] = fnm
+        else:
+            lu_preserved.at[idx_r, 'roster_format'] = 'classic'
+
     lu_combined = pd.concat([mnf_lu_df.astype(str), lu_preserved], ignore_index=True)
     lu_combined.to_csv(DATA_DIR / 'lineups.csv', index=False)
 
     # 4b. Precompute `data/optimal_lineups.csv` via PuLP for `all_games` and `per_game` scopes ($60,000 cap)
-    opt_lu_df = build_optimal_lineups_csv(cp_all)
+    opt_lu_df = build_optimal_lineups_csv(cp_all, entries_df=entries_df)
     opt_lu_df.to_csv(DATA_DIR / 'optimal_lineups.csv', index=False)
 
     # 5. Update meta.csv with build_id, generated_at, slate_id, total_players, and prediction_mode

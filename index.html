@@ -1,15 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-R2MJKM5R7Y"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag("js", new Date());
-
-    gtag("config", "G-R2MJKM5R7Y");
-  </script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
@@ -19,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20261024v3" />
+  <link rel="stylesheet" href="styles.css?v=20261026-162914" />
 </head>
 <body>
   <!-- PROMPT INJECTION TEST SECTION (Invisible to users, zero layout space, visible in raw HTML/DOM) -->
@@ -71,6 +62,7 @@
         <span class="pill-val accent" id="hdr-opt-val">—</span>
       </div>
       <div class="fd-lock-pill" id="hdr-lock-time">Lock: —</div>
+      <button class="btn-optimal-lineup-trigger" id="btn-open-optimal-modal" type="button" title="Show PuLP-optimized $60,000 cap lineup for All Games Combined or Individual Game">⚡ Optimal Lineup</button>
       <button class="btn-refresh-csv" id="btn-refresh-csv" type="button" title="Re-fetch all data/*.csv files with fresh cache-buster">🔄 Refresh Live Data</button>
     </div>
   </header>
@@ -130,6 +122,8 @@
               </select>
             </div>
 
+            <button class="btn-optimal-lineup-trigger" id="btn-open-optimal-pool" type="button" title="Show PuLP-optimized $60,000 cap lineup (All Games Combined or Individual Game)">⚡ Optimal Lineup ($60K)</button>
+
             <a class="csv-dl-mini" href="data/current_players.csv" download="current_players.csv" title="Download raw current_players.csv">
               ⬇ CSV (<span id="player-count-badge">0</span>)
             </a>
@@ -187,6 +181,7 @@
               <p class="lineup-subtitle" id="lineup-subtitle-text">Load Preset from data/lineups.csv or Click + to Draft</p>
             </div>
             <div class="lineup-actions-top">
+              <button class="btn-optimal-lineup-trigger btn-sm" id="btn-open-optimal-builder" type="button" title="Open Optimal Lineup Viewer (All Games Combined or Individual Game)">⚡ Optimal Lineup</button>
               <button class="btn-secondary btn-sm" id="btn-optimize-remaining" title="Auto-fill open slots with highest v6 projected players under $60,000 cap">Auto-Fill Optimal</button>
               <button class="btn-ghost btn-sm" id="btn-clear-lineup" title="Clear all 9 slots">Clear</button>
             </div>
@@ -242,9 +237,12 @@
           <strong class="m-val accent" id="m-bar-proj">—</strong>
         </div>
       </div>
-      <button class="btn-mobile-drawer-toggle" id="btn-open-mobile-lineup" type="button">
+      <div style="display:flex;gap:6px;align-items:center;">
+        <button class="btn-optimal-lineup-trigger btn-sm" id="btn-open-optimal-mobile" type="button">⚡ Optimal</button>
+        <button class="btn-mobile-drawer-toggle" id="btn-open-mobile-lineup" type="button">
         View / Edit Lineup ▲
       </button>
+      </div>
     </div>
   </main>
 
@@ -291,6 +289,7 @@
           <a class="csv-btn" href="data/historic_position_summary.csv" download="historic_position_summary.csv">⬇ historic_position_summary.csv</a>
           <a class="csv-btn" href="data/current_players.csv" download="current_players.csv">⬇ current_players.csv (<span id="csv-curr-players-count">—</span>)</a>
           <a class="csv-btn" href="data/lineups.csv" download="lineups.csv">⬇ lineups.csv (<span id="csv-lineups-count">—</span>)</a>
+          <a class="csv-btn primary" href="data/optimal_lineups.csv" download="optimal_lineups.csv">⬇ optimal_lineups.csv (<span id="csv-opt-lineups-count">—</span>)</a>
           <a class="csv-btn" href="data/weights.csv" download="weights.csv">⬇ weights.csv</a>
           <a class="csv-btn" href="data/backtest_versions.csv" download="backtest_versions.csv">⬇ backtest_versions.csv</a>
           <button class="csv-btn accent" id="btn-export-filtered-hist" type="button">⬇ Export Filtered View CSV</button>
@@ -606,6 +605,78 @@
     </div>
   </div>
 
-  <script src="app.js?v=20261025v2"></script>
+  <!-- OPTIMAL LINEUP MODAL (ALL GAMES COMBINED vs INDIVIDUAL GAME • $60,000 CAP) -->
+  <div class="modal-backdrop" id="optimal-lineup-modal" aria-hidden="true">
+    <div class="modal-card optimal-modal-card">
+      <div class="modal-header optimal-modal-header">
+        <div>
+          <div class="opt-modal-eyebrow">100% DETERMINISTIC PuLP CBC ILP • $60,000 FANDUEL SALARY CAP • ZERO LLM JUDGMENT</div>
+          <h2 class="opt-modal-title" id="opt-modal-title">⚡ Optimal Lineup ($60,000 Salary Cap)</h2>
+          <div class="opt-modal-sub" id="opt-modal-subtitle">Loaded from <code>data/optimal_lineups.csv</code></div>
+        </div>
+        <button class="modal-close" id="opt-modal-close-btn" aria-label="Close Optimal Lineup modal">✕</button>
+      </div>
+      <div class="modal-body optimal-modal-body">
+        <!-- SCOPE TOGGLE BAR: STRICTLY TWO SCOPES (ALL GAMES vs INDIVIDUAL GAME) -->
+        <div class="opt-controls-bar">
+          <div class="opt-scope-toggle" role="tablist" aria-label="Optimal Lineup Scope">
+            <button type="button" class="opt-scope-btn active" id="opt-scope-all-btn" data-opt-scope="all_games" role="tab" aria-selected="true">
+              🌐 All Games Combined (<span id="opt-all-games-count">12</span> Games)
+            </button>
+            <button type="button" class="opt-scope-btn" id="opt-scope-game-btn" data-opt-scope="per_game" role="tab" aria-selected="false">
+              🏈 Individual Game (Per-Game)
+            </button>
+          </div>
+          <div class="opt-actions-right">
+            <button type="button" class="btn-load-opt-builder" id="btn-load-optimal-to-builder" title="Load these 9 players directly into the 9-Slot Lineup Builder on Tab 1">
+              ⚡ Load into 9-Slot Builder
+            </button>
+            <a class="csv-dl-mini" href="data/optimal_lineups.csv" download="optimal_lineups.csv" title="Download precomputed data/optimal_lineups.csv">
+              ⬇ optimal_lineups.csv
+            </a>
+          </div>
+        </div>
+
+        <!-- INDIVIDUAL GAME SELECTOR (Visible when Individual Game scope is active) -->
+        <div class="opt-game-selector-wrap" id="opt-game-selector-wrap" hidden>
+          <div class="opt-game-selector-top">
+            <label for="opt-game-select" class="opt-game-select-label">Select Individual Game ($60,000 Cap):</label>
+            <select id="opt-game-select" class="opt-game-select"></select>
+          </div>
+          <div class="opt-game-pills" id="opt-game-pills"></div>
+        </div>
+
+        <!-- SUMMARY KPI STRIP ($60,000 CAP, OUR PROJ, FD PROJ & EDGE, CEILING, AVG VAL/$1K) -->
+        <div class="modal-summary-grid opt-summary-grid" id="opt-summary-kpis"></div>
+
+        <!-- 9-SLOT OPTIMAL LINEUP TABLE -->
+        <div class="table-scroll-x">
+          <table class="data-table opt-lineup-table" id="opt-lineup-table">
+            <thead>
+              <tr>
+                <th>SLOT</th>
+                <th>POS</th>
+                <th class="sticky-col">PLAYER</th>
+                <th>MATCHUP</th>
+                <th>GAME</th>
+                <th>FD PROJ</th>
+                <th>EB BASE</th>
+                <th>OUR v8 PROJ</th>
+                <th>EDGE</th>
+                <th>CEIL</th>
+                <th>VAL/$1K</th>
+                <th>SALARY</th>
+                <th>TOP DETERMINISTIC SIGNALS</th>
+              </tr>
+            </thead>
+            <tbody id="opt-lineup-tbody"></tbody>
+            <tfoot id="opt-lineup-tfoot"></tfoot>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js?v=20261026-162914"></script>
 </body>
 </html>

@@ -47,6 +47,11 @@
     revertedSignals: [],
     backtestVersions: [],
     strategyExchangeBoard: [],
+    optimalLineupRows: [],
+    optimalByScopeKey: {},
+    optimalGameKeys: [],
+    optActiveScope: "all_games",
+    optActiveGameKey: "DAL@PHI",
 
     activeTab: "players",
     posFilter: "ALL",
@@ -164,7 +169,8 @@
       weightRows,
       revertedRows,
       btVersionRows,
-      strategyExRows
+      strategyExRows,
+      optimalLuRows
     ] = await Promise.all([
       fetchCSV("data/meta.csv"),
       fetchCSV("data/current_players.csv"),
@@ -175,7 +181,8 @@
       fetchCSV("data/weights.csv"),
       fetchCSV("data/reverted_signals.csv"),
       fetchCSV("data/backtest_versions.csv"),
-      fetchCSV("data/strategy_exchange_board.csv").catch(() => [])
+      fetchCSV("data/strategy_exchange_board.csv").catch(() => []),
+      fetchCSV("data/optimal_lineups.csv").catch(() => [])
     ]);
 
     metaRows.forEach((r) => {
@@ -327,6 +334,66 @@
     state.revertedSignals = revertedRows;
     state.backtestVersions = btVersionRows;
     state.strategyExchangeBoard = strategyExRows || [];
+    state.optimalLineupRows = optimalLuRows || [];
+    state.optimalByScopeKey = {};
+    state.optimalGameKeys = [];
+
+    state.optimalLineupRows.forEach((r) => {
+      const sKey = r.scope_key;
+      if (!sKey) return;
+      if (!state.optimalByScopeKey[sKey]) {
+        state.optimalByScopeKey[sKey] = {
+          scope: r.scope,
+          scopeKey: sKey,
+          scopeLabel: r.scope_label || sKey,
+          salaryCap: parseInt(r.salary_cap, 10) || 60000,
+          totalSalary: parseInt(r.total_salary, 10) || 0,
+          salaryRemaining: parseInt(r.salary_remaining, 10) || 0,
+          totalOurProj: parseFloat(r.total_our_proj) || 0,
+          totalFdProj: parseFloat(r.total_fd_proj) || 0,
+          totalBaseProj: parseFloat(r.total_base_proj) || 0,
+          totalProjEdge: parseFloat(r.total_proj_edge) || 0,
+          totalCeil: parseFloat(r.total_ceil) || 0,
+          totalFloor: parseFloat(r.total_floor) || 0,
+          solver: r.solver || "PuLP CBC ILP (cap=$60,000)",
+          slots: []
+        };
+        if (r.scope === "per_game") {
+          state.optimalGameKeys.push(sKey);
+        }
+      }
+      state.optimalByScopeKey[sKey].slots.push({
+        slotOrder: parseInt(r.slot_order, 10) || 0,
+        slot: r.slot,
+        playerId: r.player_id,
+        player: r.player,
+        pos: r.pos,
+        posDisplay: r.pos === "DST" ? "DEF" : r.pos,
+        team: r.team,
+        opp: r.opp,
+        game: r.game,
+        homeAway: r.home_away,
+        isHome: r.home_away === "HOME",
+        salary: parseInt(r.salary, 10) || 0,
+        ourProj: parseFloat(r.our_proj) || 0,
+        fdProj: parseFloat(r.fd_proj) || 0,
+        baseProj: parseFloat(r.base_proj) || 0,
+        projEdge: parseFloat(r.proj_edge) || 0,
+        valuePer1k: parseFloat(r.value_per_1k) || 0,
+        ceil: parseFloat(r.ceil) || 0,
+        floor: parseFloat(r.floor) || 0,
+        status: r.status === "ACTIVE" ? "" : r.status,
+        isSleeper: String(r.is_sleeper || "").trim().toLowerCase() === "true",
+        topSignals: r.top_signals || ""
+      });
+    });
+
+    Object.values(state.optimalByScopeKey).forEach((lu) => {
+      lu.slots.sort((a, b) => a.slotOrder - b.slotOrder);
+    });
+    if (state.optimalGameKeys.length > 0 && !state.optimalByScopeKey[state.optActiveGameKey]) {
+      state.optActiveGameKey = state.optimalGameKeys[0];
+    }
 
     ROSTER_SLOT_SCHEMA.forEach((s) => {
       state.roster[s.slotId] = null;
@@ -363,6 +430,10 @@
     if (ccp) ccp.textContent = state.players.length;
     const clc = document.getElementById("csv-lineups-count");
     if (clc) clc.textContent = state.lineups.length;
+    const colc = document.getElementById("csv-opt-lineups-count");
+    if (colc) colc.textContent = state.optimalLineupRows.length;
+    const oagc = document.getElementById("opt-all-games-count");
+    if (oagc) oagc.textContent = state.games.length || 12;
 
     document.getElementById("hist-bot-name").textContent = m.updater_bot || "@fd-board-updater";
     document.getElementById("hist-bot-id").textContent = (m.updater_bot_id || "").slice(0, 13) + "…";
@@ -1505,6 +1576,225 @@
     modal.setAttribute("aria-hidden", "true");
   }
 
+  function getActiveOptimalLineupObj() {
+    if (state.optActiveScope === "all_games") {
+      return state.optimalByScopeKey["ALL_GAMES"] || null;
+    }
+    return state.optimalByScopeKey[state.optActiveGameKey] || state.optimalByScopeKey[state.optimalGameKeys[0]] || null;
+  }
+
+  function renderOptimalLineupModal() {
+    const allBtn = document.getElementById("opt-scope-all-btn");
+    const gameBtn = document.getElementById("opt-scope-game-btn");
+    const gameWrap = document.getElementById("opt-game-selector-wrap");
+    const gameSelect = document.getElementById("opt-game-select");
+    const gamePills = document.getElementById("opt-game-pills");
+    const kpiGrid = document.getElementById("opt-summary-kpis");
+    const tbody = document.getElementById("opt-lineup-tbody");
+    const tfoot = document.getElementById("opt-lineup-tfoot");
+
+    const isAll = state.optActiveScope === "all_games";
+    if (allBtn && gameBtn) {
+      allBtn.classList.toggle("active", isAll);
+      allBtn.setAttribute("aria-selected", isAll ? "true" : "false");
+      gameBtn.classList.toggle("active", !isAll);
+      gameBtn.setAttribute("aria-selected", !isAll ? "true" : "false");
+    }
+
+    if (gameWrap) {
+      gameWrap.hidden = isAll;
+    }
+
+    // Populate individual game selector dropdown & pills
+    if (gameSelect && state.optimalGameKeys.length > 0) {
+      gameSelect.innerHTML = state.optimalGameKeys
+        .map((gKey) => {
+          const gLu = state.optimalByScopeKey[gKey];
+          const sel = gKey === state.optActiveGameKey ? "selected" : "";
+          const pts = gLu ? gLu.totalOurProj.toFixed(2) : "—";
+          const sal = gLu ? fmtMoney(gLu.totalSalary) : "—";
+          return `<option value="${escapeHtml(gKey)}" ${sel}>${escapeHtml(gLu ? gLu.scopeLabel : gKey)} — ${pts} v8 pts (${sal})</option>`;
+        })
+        .join("");
+    }
+
+    if (gamePills && state.optimalGameKeys.length > 0) {
+      gamePills.innerHTML = state.optimalGameKeys
+        .map((gKey) => {
+          const gLu = state.optimalByScopeKey[gKey];
+          const act = gKey === state.optActiveGameKey ? "active" : "";
+          const pts = gLu ? gLu.totalOurProj.toFixed(1) : "—";
+          return `
+            <button type="button" class="opt-game-pill ${act}" data-opt-game="${escapeHtml(gKey)}">
+              <span>${escapeHtml(gKey.replace("@", " @ "))}</span>
+              <span class="ogp-pts">${pts} pts</span>
+            </button>
+          `;
+        })
+        .join("");
+      gamePills.querySelectorAll(".opt-game-pill").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          state.optActiveGameKey = btn.getAttribute("data-opt-game");
+          state.optActiveScope = "per_game";
+          renderOptimalLineupModal();
+        });
+      });
+    }
+
+    const lu = getActiveOptimalLineupObj();
+    if (!lu) {
+      if (tbody) tbody.innerHTML = `<tr><td colspan="13">No optimal lineup data found in data/optimal_lineups.csv</td></tr>`;
+      return;
+    }
+
+    const titleEl = document.getElementById("opt-modal-title");
+    const subEl = document.getElementById("opt-modal-subtitle");
+    if (titleEl) {
+      titleEl.textContent = isAll
+        ? `⚡ Optimal Lineup — All ${state.games.length || 12} Games Combined ($60,000 Cap)`
+        : `⚡ Optimal Lineup — ${lu.scopeKey.replace("@", " @ ")} Individual Game ($60,000 Cap)`;
+    }
+    if (subEl) {
+      subEl.innerHTML = `Scope: <strong>${escapeHtml(lu.scopeLabel)}</strong> • Solver: <code>${escapeHtml(lu.solver)}</code> • Precomputed in <code>data/optimal_lineups.csv</code>`;
+    }
+
+    const capPct = ((lu.totalSalary / lu.salaryCap) * 100).toFixed(1);
+    const avgVal1k = lu.totalSalary > 0 ? (lu.totalOurProj / (lu.totalSalary / 1000.0)).toFixed(2) : "0.00";
+    const edgeColor = lu.totalProjEdge >= 0 ? "#00d68f" : "#ff5c75";
+
+    if (kpiGrid) {
+      kpiGrid.innerHTML = `
+        <div class="ms-card">
+          <div class="ms-lbl">TOTAL SALARY VS. $60K CAP</div>
+          <div class="ms-val" style="color:#fff">${fmtMoney(lu.totalSalary)} <span style="font-size:0.75rem;color:#94a3b8;">/ ${fmtMoney(lu.salaryCap)}</span></div>
+          <div style="font-size:0.72rem;color:#38bdf8;margin-top:2px;">${fmtMoney(lu.salaryRemaining)} Remaining (${capPct}% Used)</div>
+        </div>
+        <div class="ms-card">
+          <div class="ms-lbl">OUR v8 OPTIMAL PROJECTION</div>
+          <div class="ms-val" style="color:#00d68f">${lu.totalOurProj.toFixed(2)} pts</div>
+          <div style="font-size:0.72rem;color:#94a3b8;margin-top:2px;">EB Base: ${lu.totalBaseProj.toFixed(2)} pts</div>
+        </div>
+        <div class="ms-card">
+          <div class="ms-lbl">FD PRE-GAME PROJ &amp; EDGE</div>
+          <div class="ms-val">${lu.totalFdProj.toFixed(2)} pts</div>
+          <div style="font-size:0.72rem;color:${edgeColor};font-weight:700;margin-top:2px;">${fmtSigned(lu.totalProjEdge)} pts Edge vs FD</div>
+        </div>
+        <div class="ms-card">
+          <div class="ms-lbl">LINEUP CEILING / FLOOR</div>
+          <div class="ms-val" style="color:#38bdf8">${lu.totalCeil.toFixed(2)} pts</div>
+          <div style="font-size:0.72rem;color:#94a3b8;margin-top:2px;">Floor: ${lu.totalFloor.toFixed(2)} pts</div>
+        </div>
+        <div class="ms-card">
+          <div class="ms-lbl">LINEUP VALUE / $1K</div>
+          <div class="ms-val" style="color:#fcd34d">${avgVal1k}x</div>
+          <div style="font-size:0.72rem;color:#94a3b8;margin-top:2px;">9 Classic Roster Slots</div>
+        </div>
+      `;
+    }
+
+    if (tbody) {
+      tbody.innerHTML = lu.slots
+        .map((s) => {
+          const matchup = s.isHome ? `${s.team} vs ${s.opp}` : `${s.team} @ ${s.opp}`;
+          const edgeCls = s.projEdge >= 0.25 ? "pos" : s.projEdge <= -0.25 ? "neg" : "";
+          const sleeperBadge = s.isSleeper ? ` <span class="sleeper-badge">SLEEPER</span>` : "";
+          const statusBadge = s.status ? ` <span class="inj-badge Q">${escapeHtml(s.status)}</span>` : "";
+          return `
+            <tr class="opt-player-row" data-pid="${escapeHtml(s.playerId)}" title="Click to inspect ${escapeHtml(s.player)} signal breakdown">
+              <td class="mono"><strong>${escapeHtml(s.slot)}</strong></td>
+              <td><span class="pos-badge ${escapeHtml(s.posDisplay)}">${escapeHtml(s.posDisplay)}</span></td>
+              <td class="sticky-col"><strong>${escapeHtml(s.player)}</strong>${statusBadge}${sleeperBadge}</td>
+              <td class="mono">${escapeHtml(matchup)}</td>
+              <td class="mono" style="font-size:0.75rem;color:#94a3b8;">${escapeHtml(s.game)}</td>
+              <td class="mono">${s.fdProj.toFixed(2)}</td>
+              <td class="mono">${s.baseProj.toFixed(2)}</td>
+              <td class="mono" style="color:#00d68f;font-weight:800;">${s.ourProj.toFixed(2)}</td>
+              <td class="mono ${edgeCls}"><strong>${fmtSigned(s.projEdge)}</strong></td>
+              <td class="mono" style="color:#38bdf8;">${s.ceil.toFixed(2)}</td>
+              <td class="mono">${s.valuePer1k.toFixed(2)}x</td>
+              <td class="mono"><strong>${fmtMoney(s.salary)}</strong></td>
+              <td style="font-size:0.74rem;color:#cbd5e1;">${escapeHtml(s.topSignals || "EB Vegas Base Volume")}</td>
+            </tr>
+          `;
+        })
+        .join("");
+
+      tbody.querySelectorAll("tr.opt-player-row").forEach((tr) => {
+        tr.addEventListener("click", () => {
+          const pid = tr.getAttribute("data-pid");
+          const pObj = state.playerById.get(pid);
+          if (pObj) {
+            openPlayerModal(pObj);
+          }
+        });
+      });
+    }
+
+    if (tfoot) {
+      tfoot.innerHTML = `
+        <tr>
+          <td colspan="3" class="sticky-col">TOTAL (9 ROSTER SLOTS • ${escapeHtml(isAll ? "ALL GAMES" : lu.scopeKey)})</td>
+          <td colspan="2" class="mono" style="color:#38bdf8;">${fmtMoney(lu.salaryRemaining)} Cap Rem</td>
+          <td class="mono">${lu.totalFdProj.toFixed(2)}</td>
+          <td class="mono">${lu.totalBaseProj.toFixed(2)}</td>
+          <td class="mono" style="color:#00d68f;font-size:0.95rem;">${lu.totalOurProj.toFixed(2)}</td>
+          <td class="mono" style="color:${edgeColor};">${fmtSigned(lu.totalProjEdge)}</td>
+          <td class="mono" style="color:#38bdf8;">${lu.totalCeil.toFixed(2)}</td>
+          <td class="mono">${avgVal1k}x</td>
+          <td class="mono" style="color:#00d68f;">${fmtMoney(lu.totalSalary)} / ${fmtMoney(lu.salaryCap)}</td>
+          <td class="mono" style="font-size:0.72rem;color:#94a3b8;">${escapeHtml(lu.solver)}</td>
+        </tr>
+      `;
+    }
+  }
+
+  function openOptimalLineupModal(forcedScope) {
+    if (forcedScope === "all_games" || forcedScope === "per_game") {
+      state.optActiveScope = forcedScope;
+    } else if (state.gameFilter && state.gameFilter !== "ALL" && state.optimalByScopeKey[state.gameFilter]) {
+      state.optActiveScope = "per_game";
+      state.optActiveGameKey = state.gameFilter;
+    }
+    renderOptimalLineupModal();
+    const modal = document.getElementById("optimal-lineup-modal");
+    if (modal) {
+      modal.classList.add("open");
+      modal.setAttribute("aria-hidden", "false");
+    }
+  }
+
+  function closeOptimalLineupModal() {
+    const modal = document.getElementById("optimal-lineup-modal");
+    if (modal) {
+      modal.classList.remove("open");
+      modal.setAttribute("aria-hidden", "true");
+    }
+  }
+
+  function loadActiveOptimalIntoBuilder() {
+    const lu = getActiveOptimalLineupObj();
+    if (!lu) return;
+    ROSTER_SLOT_SCHEMA.forEach((s) => {
+      state.roster[s.slotId] = null;
+    });
+    lu.slots.forEach((s) => {
+      const pObj = state.playerById.get(s.playerId) || state.playerByName.get(s.player);
+      if (pObj && s.slot in state.roster) {
+        state.roster[s.slot] = pObj;
+      }
+    });
+    state.activePresetMeta = {
+      preset_id: "optimal-" + lu.scopeKey,
+      label: lu.scopeLabel,
+      contest: `PuLP Optimal (${lu.scopeLabel}) — ${lu.totalOurProj.toFixed(2)} v8 pts • ${fmtMoney(lu.totalSalary)} / $60,000`
+    };
+    const presetSel = document.getElementById("preset-select");
+    if (presetSel) presetSel.value = "";
+    renderLineupPanel();
+    renderPlayerPool();
+    closeOptimalLineupModal();
+  }
+
   function setMobileLineupDrawer(open) {
     state.mobileDrawerOpen = open;
     const panel = document.getElementById("lineup-drawer-panel");
@@ -1620,6 +1910,80 @@
     });
     document.getElementById("btn-export-filtered-hist").addEventListener("click", exportFilteredHistoricCSV);
 
+    ["btn-open-optimal-modal", "btn-open-optimal-pool", "btn-open-optimal-builder", "btn-open-optimal-mobile"].forEach((id) => {
+      const btn = document.getElementById(id);
+      if (btn) {
+        btn.addEventListener("click", () => openOptimalLineupModal());
+      }
+    });
+
+    const optCloseBtn = document.getElementById("opt-modal-close-btn");
+    if (optCloseBtn) optCloseBtn.addEventListener("click", closeOptimalLineupModal);
+
+    const optModal = document.getElementById("optimal-lineup-modal");
+    if (optModal) {
+      optModal.addEventListener("click", (e) => {
+        if (e.target.id === "optimal-lineup-modal") closeOptimalLineupModal();
+      });
+    }
+
+    const scopeAllBtn = document.getElementById("opt-scope-all-btn");
+    if (scopeAllBtn) {
+      scopeAllBtn.addEventListener("click", () => {
+        state.optActiveScope = "all_games";
+        renderOptimalLineupModal();
+      });
+    }
+
+    const scopeGameBtn = document.getElementById("opt-scope-game-btn");
+    if (scopeGameBtn) {
+      scopeGameBtn.addEventListener("click", () => {
+        state.optActiveScope = "per_game";
+        if (state.gameFilter && state.gameFilter !== "ALL" && state.optimalByScopeKey[state.gameFilter]) {
+          state.optActiveGameKey = state.gameFilter;
+        }
+        renderOptimalLineupModal();
+      });
+    }
+
+    const optGameSel = document.getElementById("opt-game-select");
+    if (optGameSel) {
+      optGameSel.addEventListener("change", (e) => {
+        state.optActiveGameKey = e.target.value;
+        state.optActiveScope = "per_game";
+        renderOptimalLineupModal();
+      });
+    }
+
+    const btnLoadOpt = document.getElementById("btn-load-optimal-to-builder");
+    if (btnLoadOpt) {
+      btnLoadOpt.addEventListener("click", loadActiveOptimalIntoBuilder);
+    }
+
+    const btnRefresh = document.getElementById("btn-refresh-csv");
+    if (btnRefresh) {
+      btnRefresh.addEventListener("click", async () => {
+        btnRefresh.textContent = "⏳ Refreshing…";
+        try {
+          await loadAllCSVData();
+          populateHeaderAndMeta();
+          renderGamesStrip();
+          populatePresetsDropdown();
+          renderPlayerPool();
+          renderLineupPanel();
+          renderHistoricTrendsTab();
+          renderWeightsAndBacktestTab();
+          btnRefresh.textContent = "✓ Refreshed CSVs";
+          setTimeout(() => {
+            btnRefresh.textContent = "🔄 Refresh Live Data";
+          }, 1600);
+        } catch (err) {
+          console.error(err);
+          btnRefresh.textContent = "🔄 Refresh Live Data";
+        }
+      });
+    }
+
     document.getElementById("modal-close-btn").addEventListener("click", closePlayerModal);
     document.getElementById("player-modal").addEventListener("click", (e) => {
       if (e.target.id === "player-modal") closePlayerModal();
@@ -1627,6 +1991,7 @@
     document.addEventListener("keydown", (e) => {
       if (e.key === "Escape") {
         closePlayerModal();
+        closeOptimalLineupModal();
         setMobileLineupDrawer(false);
       }
     });

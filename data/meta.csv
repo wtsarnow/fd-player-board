@@ -1,12 +1,12 @@
 key,value
-build_id,20261026-085319
-slate_id,135720 (MNF DAL@PHI) + 135562 + 135719
+build_id,20261026-162914
+slate_id,135830 (MNF DAL@PHI Live) + 135562 + 135719
 week,8
-title,NFL Player Selection Board (MNF DAL@PHI #135720 Live Prep + Week 8 Main/SNF Final • 12 Games)
+title,NFL Player Selection Board (MNF DAL@PHI #135830 Live Entry + Week 8 Main/SNF Final • 12 Games)
 lock_time,"Mon Oct 26, 2026 • MNF DAL@PHI 8:15 PM ET | Sun Main + SNF Final"
-generated_at,2026-10-26 08:53 AM ET (mode=pregame • 100% Deterministic Pipeline)
+generated_at,2026-10-26 04:29 PM ET (mode=pregame • 100% Deterministic Pipeline)
 active_version,v8 LOCKED • 14 SIGNALS
-total_players,604
+total_players,621
 active_signals,14
 salary_cap,60000
 candidates_tested,69
@@ -18,3 +18,4 @@ pregame_schedule,"Morning Prep: Thu 9:00 AM ET (TNF Prep), Fri 9:00 AM ET (Sun M
 postgame_schedule,"Right after games finish: Thu 11:45 PM–12:15 AM ET (Post-TNF), Sun 5:00 PM ET (Post-1pm), Sun 8:00 PM ET (Post-4pm), Sun 11:50 PM ET (Post-SNF), Tue 12:15 AM ET (Post-MNF Full Week Final) + Tue 9:30 AM ET Weekly Audit"
 strategy_exchange_bot,@fd-strategy-exchange (4f64d389-10db-4641-ae99-ad900bb4ffcb)
 prediction_mode,100% Deterministic Python Math (Empirical Bayes + 14-Signal LOWO Ridge + PuLP ILP — Zero LLM Judgment)
+optimal_lineup_scopes,"all_games (1) + per_game (12) = 13 PuLP ILP lineups ($60,000 cap)"

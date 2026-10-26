@@ -1,10 +1,10 @@
 key,value
-build_id,20261026-165715
+build_id,20261026-171901
 slate_id,135830 (MNF DAL@PHI Live) + 135562 + 135719
 week,8
 title,NFL Player Selection Board (MNF DAL@PHI #135830 Live Entry + Week 8 Main/SNF Final • 12 Games)
 lock_time,"Mon Oct 26, 2026 • MNF DAL@PHI 8:15 PM ET | Sun Main + SNF Final"
-generated_at,2026-10-26 04:57 PM ET (mode=pregame • 100% Deterministic Pipeline)
+generated_at,2026-10-26 05:19 PM ET (mode=pregame • 100% Deterministic Pipeline)
 active_version,v8 LOCKED • 14 SIGNALS
 total_players,621
 active_signals,14

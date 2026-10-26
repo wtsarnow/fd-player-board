@@ -6,17 +6,28 @@
 (function () {
   "use strict";
 
-  const ROSTER_SLOT_SCHEMA = [
-    { slotId: "QB", label: "QB", allowed: ["QB"] },
-    { slotId: "RB1", label: "RB", allowed: ["RB"] },
-    { slotId: "RB2", label: "RB", allowed: ["RB"] },
-    { slotId: "WR1", label: "WR", allowed: ["WR"] },
-    { slotId: "WR2", label: "WR", allowed: ["WR"] },
-    { slotId: "WR3", label: "WR", allowed: ["WR"] },
-    { slotId: "TE", label: "TE", allowed: ["TE"] },
-    { slotId: "FLEX", label: "FLEX", allowed: ["RB", "WR", "TE"] },
-    { slotId: "DEF", label: "DEF", allowed: ["DST"] }
+  const ROSTER_SLOT_SCHEMA_CLASSIC = [
+    { slotId: "QB", label: "QB", allowed: ["QB"], mult: 1.0 },
+    { slotId: "RB1", label: "RB", allowed: ["RB"], mult: 1.0 },
+    { slotId: "RB2", label: "RB", allowed: ["RB"], mult: 1.0 },
+    { slotId: "WR1", label: "WR", allowed: ["WR"], mult: 1.0 },
+    { slotId: "WR2", label: "WR", allowed: ["WR"], mult: 1.0 },
+    { slotId: "WR3", label: "WR", allowed: ["WR"], mult: 1.0 },
+    { slotId: "TE", label: "TE", allowed: ["TE"], mult: 1.0 },
+    { slotId: "FLEX", label: "FLEX", allowed: ["RB", "WR", "TE"], mult: 1.0 },
+    { slotId: "DEF", label: "DEF", allowed: ["DST"], mult: 1.0 }
   ];
+
+  const ROSTER_SLOT_SCHEMA_SHOWDOWN = [
+    { slotId: "MVP", label: "MVP 1.5x", allowed: ["QB", "RB", "WR", "TE", "K", "DST"], mult: 1.5 },
+    { slotId: "FLEX1", label: "FLEX", allowed: ["QB", "RB", "WR", "TE", "K", "DST"], mult: 1.0 },
+    { slotId: "FLEX2", label: "FLEX", allowed: ["QB", "RB", "WR", "TE", "K", "DST"], mult: 1.0 },
+    { slotId: "FLEX3", label: "FLEX", allowed: ["QB", "RB", "WR", "TE", "K", "DST"], mult: 1.0 },
+    { slotId: "FLEX4", label: "FLEX", allowed: ["QB", "RB", "WR", "TE", "K", "DST"], mult: 1.0 },
+    { slotId: "FLEX5", label: "FLEX", allowed: ["QB", "RB", "WR", "TE", "K", "DST"], mult: 1.0 }
+  ];
+
+  let ROSTER_SLOT_SCHEMA = ROSTER_SLOT_SCHEMA_CLASSIC;
 
   const SIGNAL_COLUMNS = [
     { key: "first_downs_rate", prefix: "First_Downs_Rate", short: "1stDowns" },
@@ -52,6 +63,8 @@
     optimalGameKeys: [],
     optActiveScope: "all_games",
     optActiveGameKey: "DAL@PHI",
+    optDalSubKey: "DAL@PHI",
+    rosterMode: "classic",
 
     activeTab: "players",
     posFilter: "ALL",
@@ -484,18 +497,42 @@
     return s;
   }
 
+  function setRosterMode(mode) {
+    state.rosterMode = mode === "showdown" ? "showdown" : "classic";
+    ROSTER_SLOT_SCHEMA = state.rosterMode === "showdown" ? ROSTER_SLOT_SCHEMA_SHOWDOWN : ROSTER_SLOT_SCHEMA_CLASSIC;
+  }
+
   function findTargetSlotForPlayer(p) {
     if (state.activeSlotFilter) {
       const schema = ROSTER_SLOT_SCHEMA.find((s) => s.slotId === state.activeSlotFilter);
       if (schema && schema.allowed.includes(p.pos)) return schema.slotId;
+    }
+    if (state.rosterMode === "showdown") {
+      for (const s of ROSTER_SLOT_SCHEMA) {
+        if (s.allowed.includes(p.pos) && !state.roster[s.slotId]) {
+          return s.slotId;
+        }
+      }
+      return null;
     }
     for (const s of ROSTER_SLOT_SCHEMA) {
       if (s.slotId !== "FLEX" && s.allowed.includes(p.pos) && !state.roster[s.slotId]) {
         return s.slotId;
       }
     }
-    if (["RB", "WR", "TE"].includes(p.pos) && !state.roster.FLEX) {
-      return "FLEX";
+    if (["RB", "WR", "TE"].includes(p.pos)) {
+      if (!state.roster.FLEX) {
+        return "FLEX";
+      }
+      // FanDuel UI parity: if FLEX is occupied by a player whose primary position has an open slot, can auto-shift FLEX
+      const flexP = state.roster.FLEX;
+      if (flexP) {
+        for (const s of ROSTER_SLOT_SCHEMA) {
+          if (s.slotId !== "FLEX" && s.allowed.includes(flexP.pos) && !state.roster[s.slotId]) {
+            return "FLEX";
+          }
+        }
+      }
     }
     return null;
   }
@@ -688,6 +725,9 @@
     const preset = state.lineups.find((p) => p.preset_id === presetId);
     if (!preset) return;
 
+    const isSd = preset.roster_format === "showdown" || Boolean(preset.MVP);
+    setRosterMode(isSd ? "showdown" : "classic");
+    state.roster = {};
     ROSTER_SLOT_SCHEMA.forEach((s) => {
       const pName = preset[s.slotId];
       const pObj = pName ? state.playerByName.get(pName) : null;
@@ -704,6 +744,16 @@
   function addPlayerToRoster(player) {
     const slotId = findTargetSlotForPlayer(player);
     if (!slotId) return;
+    if (state.rosterMode === "classic" && slotId === "FLEX" && state.roster.FLEX) {
+      const flexP = state.roster.FLEX;
+      for (const s of ROSTER_SLOT_SCHEMA) {
+        if (s.slotId !== "FLEX" && s.allowed.includes(flexP.pos) && !state.roster[s.slotId]) {
+          state.roster[s.slotId] = flexP;
+          state.roster.FLEX = null;
+          break;
+        }
+      }
+    }
     state.roster[slotId] = player;
     state.activePresetMeta = null;
     document.getElementById("preset-select").value = "";
@@ -776,6 +826,7 @@
 
   function renderLineupPanel() {
     const cap = parseInt(state.meta.salary_cap || "60000", 10);
+    const totalSlotsCount = ROSTER_SLOT_SCHEMA.length;
     let usedSal = 0;
     let totalProj = 0;
     let totalFd = 0;
@@ -785,16 +836,17 @@
     ROSTER_SLOT_SCHEMA.forEach((s) => {
       const p = state.roster[s.slotId];
       if (p) {
-        usedSal += p.salary;
-        totalProj += p.our_proj;
-        totalFd += p.fd_proj;
-        totalCeil += p.ceil;
+        const mult = s.mult || 1.0;
+        usedSal += Math.round(p.salary * mult);
+        totalProj += Number((p.our_proj * mult).toFixed(2));
+        totalFd += Number((p.fd_proj * mult).toFixed(2));
+        totalCeil += Number((p.ceil * mult).toFixed(2));
         filledCount++;
       }
     });
 
     const remSal = cap - usedSal;
-    const openCount = 9 - filledCount;
+    const openCount = totalSlotsCount - filledCount;
     const avgOpen = openCount > 0 ? Math.floor(remSal / openCount) : 0;
 
     const remEl = document.getElementById("cap-remaining");
@@ -803,21 +855,21 @@
 
     document.getElementById("cap-used").textContent = `${fmtMoney(usedSal)} / ${fmtMoney(cap)}`;
     document.getElementById("cap-avg-slot").textContent = openCount > 0 ? fmtMoney(avgOpen) : "FULL";
-    document.getElementById("slots-filled-count").textContent = `${filledCount} / 9 Rostered`;
+    document.getElementById("slots-filled-count").textContent = `${filledCount} / ${totalSlotsCount} Rostered${state.rosterMode === "showdown" ? " (Showdown)" : ""}`;
     document.getElementById("lineup-total-proj").textContent = totalProj.toFixed(2);
     const edgeTotal = totalProj - totalFd;
     document.getElementById("lineup-total-edge").textContent =
       `FD: ${totalFd.toFixed(2)} (${fmtSigned(edgeTotal)} edge)`;
 
-    document.getElementById("m-bar-slots").textContent = `${filledCount}/9`;
+    document.getElementById("m-bar-slots").textContent = `${filledCount}/${totalSlotsCount}`;
     document.getElementById("m-bar-sal").textContent = fmtMoney(remSal);
     document.getElementById("m-bar-proj").textContent = totalProj.toFixed(2);
 
     const subText = document.getElementById("lineup-subtitle-text");
     if (state.activePresetMeta) {
       subText.textContent = state.activePresetMeta.contest;
-    } else if (filledCount === 9) {
-      subText.textContent = `Custom 9-Player Build • Ceiling ${totalCeil.toFixed(1)} pts`;
+    } else if (filledCount === totalSlotsCount) {
+      subText.textContent = `Custom ${totalSlotsCount}-Player ${state.rosterMode === "showdown" ? "Showdown" : "Classic"} Build • Ceiling ${totalCeil.toFixed(1)} pts`;
     } else {
       subText.textContent = `Select ${openCount} more player${openCount === 1 ? "" : "s"}`;
     }
@@ -826,6 +878,7 @@
     container.innerHTML = ROSTER_SLOT_SCHEMA.map((s) => {
       const p = state.roster[s.slotId];
       const isSelectedSlot = state.activeSlotFilter === s.slotId;
+      const mult = s.mult || 1.0;
       if (!p) {
         return `
           <div class="roster-slot empty-slot ${isSelectedSlot ? "active-slot-filter" : ""}" data-slot="${s.slotId}">
@@ -837,19 +890,24 @@
         `;
       }
       const matchup = p.is_home ? `vs ${p.opp}` : `@ ${p.opp}`;
+      const effProj = Number((p.our_proj * mult).toFixed(2));
+      const effFd = Number((p.fd_proj * mult).toFixed(2));
+      const effCeil = Number((p.ceil * mult).toFixed(2));
+      const effSal = Math.round(p.salary * mult);
       return `
         <div class="roster-slot" data-slot="${s.slotId}" data-pid="${escapeHtml(p.id)}">
           <div class="slot-pos-tag">${s.label}</div>
           <div class="slot-body">
             <div class="slot-p-name">
               <span>${escapeHtml(p.name)}</span>
+              ${mult > 1 ? `<span class="sleeper-badge" style="background:rgba(56,189,248,0.18);color:#38bdf8;border-color:rgba(56,189,248,0.4);">1.5x MVP</span>` : ""}
               ${p.is_sleeper ? `<span class="sleeper-badge">SLEEPER</span>` : ""}
             </div>
-            <div class="slot-p-meta">${escapeHtml(p.team)} ${escapeHtml(matchup)} • FD ${p.fd_proj.toFixed(1)} • Ceil ${p.ceil.toFixed(1)}</div>
+            <div class="slot-p-meta">${escapeHtml(p.pos_display)} • ${escapeHtml(p.team)} ${escapeHtml(matchup)} • FD ${effFd.toFixed(1)} • Ceil ${effCeil.toFixed(1)}</div>
           </div>
           <div class="slot-numbers">
-            <div class="slot-proj">${p.our_proj.toFixed(2)}</div>
-            <div class="slot-sal">${fmtMoney(p.salary)}</div>
+            <div class="slot-proj">${effProj.toFixed(2)}</div>
+            <div class="slot-sal">${fmtMoney(effSal)}</div>
           </div>
           <button class="slot-remove" data-remove-slot="${s.slotId}" title="Remove player">✕</button>
         </div>
@@ -1580,6 +1638,9 @@
     if (state.optActiveScope === "all_games") {
       return state.optimalByScopeKey["ALL_GAMES"] || null;
     }
+    if (state.optActiveGameKey === "DAL@PHI" && state.optDalSubKey && state.optimalByScopeKey[state.optDalSubKey]) {
+      return state.optimalByScopeKey[state.optDalSubKey];
+    }
     return state.optimalByScopeKey[state.optActiveGameKey] || state.optimalByScopeKey[state.optimalGameKeys[0]] || null;
   }
 
@@ -1619,7 +1680,7 @@
     }
 
     if (gamePills && state.optimalGameKeys.length > 0) {
-      gamePills.innerHTML = state.optimalGameKeys
+      let pillsHtml = state.optimalGameKeys
         .map((gKey) => {
           const gLu = state.optimalByScopeKey[gKey];
           const act = gKey === state.optActiveGameKey ? "active" : "";
@@ -1632,9 +1693,38 @@
           `;
         })
         .join("");
-      gamePills.querySelectorAll(".opt-game-pill").forEach((btn) => {
+
+      if (!isAll && state.optActiveGameKey === "DAL@PHI" && state.optimalByScopeKey["DAL@PHI_V8_OPT"]) {
+        const dalVariants = [
+          { key: "DAL@PHI", label: "Tysa Live FanDuel Entry #3754559753 ($59.5K • 105.33 v8 / 106.72 Base • MVP Dak)" },
+          { key: "DAL@PHI_V8_OPT", label: "v8 ILP Optimal #1 ($59.9K • 118.71 v8 • MVP CeeDee Lamb)" },
+          { key: "DAL@PHI_DAK_OPT", label: "Dak-MVP v8 Optimal #2 ($59.3K • 116.34 v8 • MVP Dak Prescott)" }
+        ];
+        pillsHtml += `
+          <div style="width:100%;margin-top:8px;padding-top:8px;border-top:1px solid rgba(148,163,184,0.18);display:flex;flex-wrap:wrap;gap:6px;align-items:center;">
+            <span style="font-size:0.72rem;font-weight:700;color:#38bdf8;margin-right:4px;">DAL @ PHI SHOWDOWN VIEW:</span>
+            ${dalVariants
+              .map((v) => {
+                const isVarAct = (state.optDalSubKey || "DAL@PHI") === v.key ? "active" : "";
+                return `<button type="button" class="opt-game-pill ${isVarAct}" data-dal-sub="${escapeHtml(v.key)}" style="font-size:0.73rem;">${escapeHtml(v.label)}</button>`;
+              })
+              .join("")}
+          </div>
+        `;
+      }
+
+      gamePills.innerHTML = pillsHtml;
+      gamePills.querySelectorAll(".opt-game-pill[data-opt-game]").forEach((btn) => {
         btn.addEventListener("click", () => {
           state.optActiveGameKey = btn.getAttribute("data-opt-game");
+          state.optActiveScope = "per_game";
+          renderOptimalLineupModal();
+        });
+      });
+      gamePills.querySelectorAll(".opt-game-pill[data-dal-sub]").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          state.optDalSubKey = btn.getAttribute("data-dal-sub");
+          state.optActiveGameKey = "DAL@PHI";
           state.optActiveScope = "per_game";
           renderOptimalLineupModal();
         });
@@ -1647,12 +1737,15 @@
       return;
     }
 
+    const isShowdown = lu.slots.length === 6;
+    const slotDesc = isShowdown ? "6 Showdown Slots (1.5x MVP + 5 AnyFLEX)" : `${lu.slots.length} Classic Roster Slots`;
+
     const titleEl = document.getElementById("opt-modal-title");
     const subEl = document.getElementById("opt-modal-subtitle");
     if (titleEl) {
       titleEl.textContent = isAll
         ? `⚡ Optimal Lineup — All ${state.games.length || 12} Games Combined ($60,000 Cap)`
-        : `⚡ Optimal Lineup — ${lu.scopeKey.replace("@", " @ ")} Individual Game ($60,000 Cap)`;
+        : `⚡ Optimal Lineup — ${state.optActiveGameKey.replace("@", " @ ")} ${isShowdown ? "Single-Game Showdown" : "Individual Game"} ($60,000 Cap)`;
     }
     if (subEl) {
       subEl.innerHTML = `Scope: <strong>${escapeHtml(lu.scopeLabel)}</strong> • Solver: <code>${escapeHtml(lu.solver)}</code> • Precomputed in <code>data/optimal_lineups.csv</code>`;
@@ -1687,7 +1780,7 @@
         <div class="ms-card">
           <div class="ms-lbl">LINEUP VALUE / $1K</div>
           <div class="ms-val" style="color:#fcd34d">${avgVal1k}x</div>
-          <div style="font-size:0.72rem;color:#94a3b8;margin-top:2px;">9 Classic Roster Slots</div>
+          <div style="font-size:0.72rem;color:#94a3b8;margin-top:2px;">${escapeHtml(slotDesc)}</div>
         </div>
       `;
     }
@@ -1697,13 +1790,16 @@
         .map((s) => {
           const matchup = s.isHome ? `${s.team} vs ${s.opp}` : `${s.team} @ ${s.opp}`;
           const edgeCls = s.projEdge >= 0.25 ? "pos" : s.projEdge <= -0.25 ? "neg" : "";
+          const isMvp = s.slot === "MVP";
+          const mvpBadge = isMvp ? ` <span class="sleeper-badge" style="background:rgba(56,189,248,0.18);color:#38bdf8;border-color:rgba(56,189,248,0.4);">1.5x MVP</span>` : "";
           const sleeperBadge = s.isSleeper ? ` <span class="sleeper-badge">SLEEPER</span>` : "";
           const statusBadge = s.status ? ` <span class="inj-badge Q">${escapeHtml(s.status)}</span>` : "";
+          const slotLabel = isMvp ? "MVP (1.5x)" : s.slot;
           return `
             <tr class="opt-player-row" data-pid="${escapeHtml(s.playerId)}" title="Click to inspect ${escapeHtml(s.player)} signal breakdown">
-              <td class="mono"><strong>${escapeHtml(s.slot)}</strong></td>
+              <td class="mono"><strong>${escapeHtml(slotLabel)}</strong></td>
               <td><span class="pos-badge ${escapeHtml(s.posDisplay)}">${escapeHtml(s.posDisplay)}</span></td>
-              <td class="sticky-col"><strong>${escapeHtml(s.player)}</strong>${statusBadge}${sleeperBadge}</td>
+              <td class="sticky-col"><strong>${escapeHtml(s.player)}</strong>${mvpBadge}${statusBadge}${sleeperBadge}</td>
               <td class="mono">${escapeHtml(matchup)}</td>
               <td class="mono" style="font-size:0.75rem;color:#94a3b8;">${escapeHtml(s.game)}</td>
               <td class="mono">${s.fdProj.toFixed(2)}</td>
@@ -1733,7 +1829,7 @@
     if (tfoot) {
       tfoot.innerHTML = `
         <tr>
-          <td colspan="3" class="sticky-col">TOTAL (9 ROSTER SLOTS • ${escapeHtml(isAll ? "ALL GAMES" : lu.scopeKey)})</td>
+          <td colspan="3" class="sticky-col">TOTAL (${lu.slots.length} ROSTER SLOTS • ${escapeHtml(isAll ? "ALL GAMES" : lu.scopeKey)})</td>
           <td colspan="2" class="mono" style="color:#38bdf8;">${fmtMoney(lu.salaryRemaining)} Cap Rem</td>
           <td class="mono">${lu.totalFdProj.toFixed(2)}</td>
           <td class="mono">${lu.totalBaseProj.toFixed(2)}</td>
@@ -1774,6 +1870,9 @@
   function loadActiveOptimalIntoBuilder() {
     const lu = getActiveOptimalLineupObj();
     if (!lu) return;
+    const isSd = lu.slots.length === 6;
+    setRosterMode(isSd ? "showdown" : "classic");
+    state.roster = {};
     ROSTER_SLOT_SCHEMA.forEach((s) => {
       state.roster[s.slotId] = null;
     });
@@ -1785,8 +1884,9 @@
     });
     state.activePresetMeta = {
       preset_id: "optimal-" + lu.scopeKey,
+      entry_id: lu.scopeKey === "DAL@PHI" ? "3754559753" : lu.scopeKey,
       label: lu.scopeLabel,
-      contest: `PuLP Optimal (${lu.scopeLabel}) — ${lu.totalOurProj.toFixed(2)} v8 pts • ${fmtMoney(lu.totalSalary)} / $60,000`
+      contest: `${lu.scopeLabel} — ${lu.totalOurProj.toFixed(2)} v8 pts • ${fmtMoney(lu.totalSalary)} / $60,000`
     };
     const presetSel = document.getElementById("preset-select");
     if (presetSel) presetSel.value = "";
@@ -2004,7 +2104,7 @@
       populateHeaderAndMeta();
       renderGamesStrip();
       populatePresetsDropdown();
-      loadPresetLineup("contest-2");
+      loadPresetLineup(state.lineups.some((x) => x.preset_id === "mnf-entry-1") ? "mnf-entry-1" : "contest-2");
       renderHistoricTrendsTab();
       renderWeightsAndBacktestTab();
     } catch (err) {

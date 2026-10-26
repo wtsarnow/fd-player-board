@@ -486,49 +486,16 @@ def build_optimal_lineups_csv(cp_all, entries_df=None):
         away_tm, home_tm = (parts[0], parts[1]) if len(parts) == 2 else (g_code, '')
 
         if g_code == 'DAL@PHI':
-            # 1) Primary DAL@PHI per-game lineup: Tysa's live submitted FanDuel Showdown Entry #3754559753
-            #    from /workspace/fd-system/lineups/135830-mnf-entries.csv (or solved if no entry file)
-            p_by_name = {r['name']: r.to_dict() for _, r in g_df.iterrows()}
-            if entries_df is not None and len(entries_df) == 6:
-                mvp_name = str(entries_df[entries_df['slot'] == 'MVP']['player'].iloc[0])
-                flex_names = [str(x) for x in entries_df[entries_df['slot'] != 'MVP']['player'].tolist()]
-                entry_mvp = p_by_name[mvp_name]
-                entry_flex = [p_by_name[nm] for nm in flex_names]
-                append_showdown_6_rows(
-                    scope='per_game',
-                    scope_key='DAL@PHI',
-                    scope_label=f"DAL @ PHI (MNF #135830 • Tysa FanDuel Entry #3754559753 • 6-Slot Showdown • $60,000 Cap)",
-                    mvp_row=entry_mvp,
-                    flex_rows=entry_flex,
-                    solver_str='FanDuel Submitted Entry #3754559753 (6-Slot Showdown: 1.5x MVP + 5 AnyFLEX • EB Base 106.72 / v8 105.33)',
-                )
-            # 2) Unconstrained v8 PuLP Showdown Optimal #1 (OPT-135830-1: MVP CeeDee Lamb 1.5x, 118.70 v8 pts)
+            # STANDING RULE: Primary DAL@PHI per-game lineup is ALWAYS the pure maximum-points optimal build
+            # (OPT-135830-1 / Entry #3754559753: MVP CeeDee Lamb 1.5x + Dak Prescott + George Pickens + Dallas Goedert + Brandon Aubrey + Ryan Flournoy, 118.71 v8 pts)
             opt1_mvp, opt1_flex = solve_showdown_6_pulp(g_df, salary_cap=cap, min_proj=3.5, max_per_team=5)
             append_showdown_6_rows(
-                scope='per_game_alt',
-                scope_key='DAL@PHI_V8_OPT',
-                scope_label=f"DAL @ PHI (MNF #135830 • Unconstrained v8 ILP Optimal #1 • MVP {opt1_mvp['name']} 1.5x • $60,000 Cap)",
+                scope='per_game',
+                scope_key='DAL@PHI',
+                scope_label=f"DAL @ PHI (MNF #135830 • Max-Points Optimal OPT-135830-1 / Entry #3754559753 • MVP {opt1_mvp['name']} 1.5x • $60,000 Cap)",
                 mvp_row=opt1_mvp,
                 flex_rows=opt1_flex,
-                solver_str='PuLP CBC ILP (6-Slot Showdown 1.5x MVP + 5 AnyFLEX • Unconstrained v8 Optimal)',
-            )
-            # 3) Dak-MVP v8 PuLP Showdown Optimal #2 (OPT-135830-2: MVP Dak Prescott 1.5x, 116.34 v8 pts)
-            opt1_set = {opt1_mvp['name']} | {r['name'] for r in opt1_flex}
-            opt2_mvp, opt2_flex = solve_showdown_6_pulp(
-                g_df,
-                salary_cap=cap,
-                min_proj=3.5,
-                max_per_team=5,
-                force_mvp_name='Dak Prescott',
-                exclude_sets=[(opt1_mvp['name'], opt1_set)],
-            )
-            append_showdown_6_rows(
-                scope='per_game_alt',
-                scope_key='DAL@PHI_DAK_OPT',
-                scope_label=f"DAL @ PHI (MNF #135830 • Dak Prescott 1.5x MVP v8 ILP Optimal #2 • $60,000 Cap)",
-                mvp_row=opt2_mvp,
-                flex_rows=opt2_flex,
-                solver_str='PuLP CBC ILP (6-Slot Showdown 1.5x Dak MVP + 5 AnyFLEX • v8 Optimal #2)',
+                solver_str='PuLP CBC ILP (6-Slot Showdown: 1.5x MVP + 5 AnyFLEX • Pure Max-Points Optimal OPT-135830-1 / Entry #3754559753)',
             )
         elif g_code == 'KC@SEA':
             # SNF Single-Game Showdown (#135719): 6-slot Showdown optimal (MVP JSN 1.5x, 114.44 v8 pts)
@@ -644,50 +611,29 @@ def solve_showdown_lineups(df_mnf):
         flex_idxs.sort(key=lambda i: (float(act.loc[i, 'our_proj']), int(act.loc[i, 'salary'])), reverse=True)
         return mvp_idx, flex_idxs
 
-    # Tysa's live entered lineup on FanDuel (Entry ID 3754559753, Lineup ID 135830-3528737559)
-    tysa_m = idx_by_name['Dak Prescott']
-    tysa_f = [
-        idx_by_name['Javonte Williams'],
-        idx_by_name['George Pickens'],
-        idx_by_name['Dallas Goedert'],
-        idx_by_name['Jake Ferguson'],
-        idx_by_name['Ryan Flournoy'],
-    ]
-
     # Deterministic PuLP ILP optimal Showdown builds on live slate 135830
     l1_m, l1_f = solve_one('our_proj', min_proj=3.5, max_per_team=5)
     l2_m, l2_f = solve_one('our_proj', min_proj=3.5, max_per_team=4, force_mvp='Dak Prescott')
     l3_m, l3_f = solve_one('our_proj', min_proj=3.5, max_per_team=4, exclude_sets=[[l1_m] + l1_f, [l2_m] + l2_f], require_k=True)
     lfd_m, lfd_f = solve_one('fd_proj', min_proj=0.1, max_per_team=5)
 
+    # STANDING RULE: Pure maximum-points optimal lineup (OPT-135830-1, also Tysa's live Entry #3754559753) MUST ALWAYS be row #1 / featured first
     configs = [
         (
-            'mnf-entry-1',
-            1,
-            '3754559753',
-            '135830-281254021',
-            '$3 $80K Mon NFL Rush ($10K to 1st)',
-            3.00,
-            'Tysa Live Entry #3754559753 — 5-1 Cowboys Red-Zone Onslaught',
-            tysa_m,
-            tysa_f,
-            True,
-        ),
-        (
             'mnf-1',
-            2,
+            1,
             'OPT-135830-1',
             '135830-281254021',
             '$3 $80K Mon NFL Rush ($10K to 1st)',
             3.00,
-            'Deterministic v8 ILP Optimal #1 (5-1 Onslaught Max Ceiling)',
+            '★ Featured Max-Points Optimal #1 (OPT-135830-1 / Entry #3754559753 • Pure v8 Projection-Maximizing ILP Build)',
             l1_m,
             l1_f,
-            False,
+            True,
         ),
         (
             'mnf-2',
-            3,
+            2,
             'OPT-135830-2',
             '135830-281310001',
             '$15 $300K Mon NFL Primetime Showdown (Flagship 135830)',
@@ -699,7 +645,7 @@ def solve_showdown_lineups(df_mnf):
         ),
         (
             'mnf-3',
-            4,
+            3,
             'OPT-135830-3',
             '135830-281310003',
             '$1 $20K Mon NFL Dive',
@@ -711,7 +657,7 @@ def solve_showdown_lineups(df_mnf):
         ),
         (
             'mnf-fd-opt',
-            5,
+            4,
             'FD-OPT-135830',
             '135830-FD-OPT',
             'FanDuel Pre-Game Mathematical Optimal Showdown',
@@ -796,11 +742,12 @@ def solve_showdown_lineups(df_mnf):
             label_str = f"FD Pre-Game Optimal Showdown — Baseline FPPG Max Build ({tot_fd:.2f} FD pts / {tot_our:.2f} v8 pts)"
             contest_str = f"{cname} — {strat_str}"
         elif is_live_entry:
-            label_str = f"Tysa Live Entry #3754559753 — $3 $80K Mon NFL Rush ({tot_our:.2f} v8 pts / {tot_base:.2f} base / {tot_fd:.2f} FD • MVP {mvp_row['player']})"
-            contest_str = f"{cname} (Entry #3754559753 • Lineup #135830-3528737559) — {strat_str}"
+            label_str = f"★ Featured Max-Points Optimal #1 (OPT-135830-1 / Entry #3754559753) — {tot_our:.2f} v8 pts (${tot_sal:,} • MVP {mvp_row['player']})"
+            contest_str = f"{cname} (OPT-135830-1 • Entry #3754559753) — {strat_str}"
         else:
-            opt_idx = l_num - 1
-            label_str = f"MNF v8 Optimal #{opt_idx} — {cname.split(' (')[0]} ({tot_our:.2f} pts • MVP {mvp_row['player']})"
+            opt_idx = l_num
+            star_prefix = "★ Featured " if opt_idx == 1 else ""
+            label_str = f"{star_prefix}MNF Max-Points Optimal #{opt_idx} ({entry_id}) — {tot_our:.2f} pts (${tot_sal:,} • MVP {mvp_row['player']})"
             contest_str = f"{cname} — {strat_str}"
 
         board_lineup_rows.append({
@@ -990,7 +937,11 @@ def main():
         else:
             lu_preserved.at[idx_r, 'roster_format'] = 'classic'
 
-    lu_combined = pd.concat([mnf_lu_df.astype(str), lu_preserved], ignore_index=True)
+    # Ensure pure mathematical optimal builds (opt-*) always precede diversified contest entries in lu_preserved
+    lu_opt_classic = lu_preserved[lu_preserved['preset_id'].str.startswith('opt-')].copy()
+    lu_snf = lu_preserved[lu_preserved['preset_id'].str.startswith('snf-')].copy()
+    lu_other = lu_preserved[~lu_preserved['preset_id'].str.startswith(('opt-', 'snf-'))].copy()
+    lu_combined = pd.concat([mnf_lu_df.astype(str), lu_opt_classic, lu_snf, lu_other], ignore_index=True)
     lu_combined.to_csv(DATA_DIR / 'lineups.csv', index=False)
 
     # 4b. Precompute `data/optimal_lineups.csv` via PuLP for `all_games` and `per_game` scopes ($60,000 cap)

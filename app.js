@@ -46,6 +46,7 @@
     weights: [],
     revertedSignals: [],
     backtestVersions: [],
+    strategyExchangeBoard: [],
 
     activeTab: "players",
     posFilter: "ALL",
@@ -162,7 +163,8 @@
       histPosRows,
       weightRows,
       revertedRows,
-      btVersionRows
+      btVersionRows,
+      strategyExRows
     ] = await Promise.all([
       fetchCSV("data/meta.csv"),
       fetchCSV("data/current_players.csv"),
@@ -172,7 +174,8 @@
       fetchCSV("data/historic_position_summary.csv"),
       fetchCSV("data/weights.csv"),
       fetchCSV("data/reverted_signals.csv"),
-      fetchCSV("data/backtest_versions.csv")
+      fetchCSV("data/backtest_versions.csv"),
+      fetchCSV("data/strategy_exchange_board.csv").catch(() => [])
     ]);
 
     metaRows.forEach((r) => {
@@ -323,6 +326,7 @@
     state.historicPositions = histPosRows;
     state.revertedSignals = revertedRows;
     state.backtestVersions = btVersionRows;
+    state.strategyExchangeBoard = strategyExRows || [];
 
     ROSTER_SLOT_SCHEMA.forEach((s) => {
       state.roster[s.slotId] = null;
@@ -1329,7 +1333,7 @@
       <div class="kpi-box">
         <span class="kpi-label">CANDIDATES AUDITED</span>
         <span class="kpi-value">${escapeHtml(m.candidates_tested || "57")} → ${escapeHtml(m.active_signals || "11")}</span>
-        <span class="kpi-sub">50 noisy/redundant signals reverted to 0.0</span>
+        <span class="kpi-sub">53 noisy/redundant signals reverted to 0.0 (incl. 3 v8 strategy sub-signals)</span>
       </div>
     `;
 
@@ -1385,6 +1389,33 @@
         `;
       })
       .join("");
+
+    const exBody = document.getElementById("strategy-exchange-tbody");
+    if (exBody && state.strategyExchangeBoard) {
+      exBody.innerHTML = state.strategyExchangeBoard
+        .map((r) => {
+          const pShift = parseFloat(r.predicted_pass_shift) || 0;
+          const pShiftStr = (pShift >= 0 ? "+" : "") + pShift.toFixed(4);
+          const pCls = pShift > 0.04 ? "kept" : pShift < -0.04 ? "reverted" : "base";
+          const dScore = parseFloat(r.dst_pressure_trap_raw) || 0;
+          const dCls = dScore > 1.04 ? "locked" : dScore < 0.93 ? "base" : "kept";
+          return `
+            <tr>
+              <td class="mono"><strong>${escapeHtml(r.team_bot)}</strong> <span style="color:#64748b;font-size:0.72rem">(${escapeHtml((r.team_bot_id || "").slice(0, 8))}…)</span></td>
+              <td class="mono"><span class="decision-badge locked">${escapeHtml(r.middleman_bot)}</span> <span style="color:#64748b;font-size:0.72rem">(${escapeHtml((r.middleman_bot_id || "").slice(0, 8))}…)</span></td>
+              <td class="mono"><strong>${escapeHtml(r.opponent_bot)}</strong> <span style="color:#64748b;font-size:0.72rem">(${escapeHtml((r.opponent_bot_id || "").slice(0, 8))}…)</span></td>
+              <td><span class="decision-badge ${pCls}">${escapeHtml(r.off_strategy_call)}</span></td>
+              <td class="mono">${escapeHtml(r.opp_def_pass_funnel_idx)}</td>
+              <td class="mono">${escapeHtml(r.own_off_pass_lean_idx)}</td>
+              <td class="mono"><strong>${escapeHtml(pShiftStr)}</strong></td>
+              <td class="mono" style="font-size:0.74rem">${escapeHtml(r.pos_raw_QB)} / ${escapeHtml(r.pos_raw_RB)} / ${escapeHtml(r.pos_raw_WR)} / ${escapeHtml(r.pos_raw_TE)}</td>
+              <td><span class="decision-badge ${dCls}">${escapeHtml(r.def_strategy_call)}</span></td>
+              <td class="mono"><strong>${escapeHtml(r.dst_pressure_trap_raw)}</strong> <span style="color:#94a3b8;font-size:0.72rem">(blitz×sack=${escapeHtml(r.blitz_sack_product)})</span></td>
+            </tr>
+          `;
+        })
+        .join("");
+    }
 
     const revBody = document.getElementById("reverted-tbody");
     revBody.innerHTML = state.revertedSignals

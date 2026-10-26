@@ -1,12 +1,12 @@
 key,value
-build_id,20261026-064100
-slate_id,135562 + 135719
+build_id,20261026-085319
+slate_id,135720 (MNF DAL@PHI) + 135562 + 135719
 week,8
-title,NFL Player Selection Board (Week 8 Main #135562 Final + SNF KC@SEA #135719 Final • 11 Games)
-lock_time,"Sun Oct 25, 2026 • Main 1:00 PM ET (Final) | SNF KC@SEA 8:20 PM ET (Final SEA 20 - KC 3)"
-generated_at,2026-10-26 06:41 AM ET (mode=postgame)
+title,NFL Player Selection Board (MNF DAL@PHI #135720 Live Prep + Week 8 Main/SNF Final • 12 Games)
+lock_time,"Mon Oct 26, 2026 • MNF DAL@PHI 8:15 PM ET | Sun Main + SNF Final"
+generated_at,2026-10-26 08:53 AM ET (mode=pregame • 100% Deterministic Pipeline)
 active_version,v8 LOCKED • 14 SIGNALS
-total_players,566
+total_players,604
 active_signals,14
 salary_cap,60000
 candidates_tested,69
@@ -14,6 +14,7 @@ n_wk3_7,"2,494 (Wk3–8) / 1,928 (Wk3–7)"
 n_wk4_7,1528
 updater_bot,@fd-board-updater
 updater_bot_id,3d16d616-921d-472e-a9ef-bf156bbd1391
-pregame_schedule,"Right before kickoff: Thu 7:55 PM ET (TNF), Sun 12:35 PM ET (Main 1pm), Sun 3:45 PM ET (Late 4pm), Sun 7:55 PM ET (SNF), Mon 7:55 PM ET (MNF)"
-postgame_schedule,"Right after games finish: Thu 11:45 PM ET (TNF), Sun 11:50 PM ET (Sun Main+SNF), Tue 12:15 AM ET (Full Week Final) + Tue 9:30 AM ET Weekly Audit"
+pregame_schedule,"Morning Prep: Thu 9:00 AM ET (TNF Prep), Fri 9:00 AM ET (Sun Main Prep w/ fd-manager), Mon 9:00 AM ET (MNF Prep) • Pre-Game Locks: Thu 7:55 PM ET (TNF), Sun 12:35 PM ET (Main 1pm), Sun 3:45 PM ET (Late 4pm), Sun 7:55 PM ET (SNF), Mon 7:55 PM ET (MNF)"
+postgame_schedule,"Right after games finish: Thu 11:45 PM–12:15 AM ET (Post-TNF), Sun 5:00 PM ET (Post-1pm), Sun 8:00 PM ET (Post-4pm), Sun 11:50 PM ET (Post-SNF), Tue 12:15 AM ET (Post-MNF Full Week Final) + Tue 9:30 AM ET Weekly Audit"
 strategy_exchange_bot,@fd-strategy-exchange (4f64d389-10db-4641-ae99-ad900bb4ffcb)
+prediction_mode,100% Deterministic Python Math (Empirical Bayes + 14-Signal LOWO Ridge + PuLP ILP — Zero LLM Judgment)

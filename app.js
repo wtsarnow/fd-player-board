@@ -1329,7 +1329,7 @@
       <div class="kpi-box">
         <span class="kpi-label">CANDIDATES AUDITED</span>
         <span class="kpi-value">${escapeHtml(m.candidates_tested || "57")} → ${escapeHtml(m.active_signals || "11")}</span>
-        <span class="kpi-sub">46 noisy/redundant signals reverted to 0.0</span>
+        <span class="kpi-sub">50 noisy/redundant signals reverted to 0.0</span>
       </div>
     `;
 
@@ -1340,7 +1340,7 @@
         const isReverted = r.notes.includes("REVERTED");
         const rowCls = isAct ? "active-version-row" : isReverted ? "reverted-version-row" : "";
         const badgeCls = isAct ? "locked" : isReverted ? "reverted" : r.notes.includes("KEPT") ? "kept" : "base";
-        const statusText = isAct ? "LOCKED v6" : isReverted ? "REVERTED (0.0)" : r.version.toUpperCase();
+        const statusText = isAct ? `LOCKED ${r.version.toUpperCase()}` : isReverted ? "REVERTED (0.0)" : r.version.toUpperCase();
 
         return `
           <tr class="${rowCls}">

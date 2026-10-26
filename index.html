@@ -478,10 +478,10 @@
       <!-- HERO FORMULA CARD -->
       <section class="weights-hero-card">
         <div class="hero-left">
-          <div class="hero-eyebrow">LOCKED PRODUCTION MODEL • WEIGHTS.CSV v6 • LEAVE-ONE-WEEK-OUT CV</div>
-          <h1>11-Signal Empirical-Bayes Projection Architecture</h1>
+          <div class="hero-eyebrow">LOCKED PRODUCTION MODEL • WEIGHTS.CSV v7 • 6-WEEK LEAVE-ONE-WEEK-OUT CV</div>
+          <h1>12-Signal Calibrated Empirical-Bayes Projection Architecture (v7)</h1>
           <p>
-            Every player’s projection begins with an <strong>Empirical-Bayes Shrunk Vegas Implied Share Base</strong> (blending 2026 pre-game usage share with 2025 role-adjusted prior share using shrinkage constant <code>K = 3.5</code> games, multiplied by Vegas implied team points) and applies a bounded multiplicative adjustment from <strong>11 orthogonal pre-game signals</strong> loaded from <code>data/weights.csv</code>.
+            Every player’s projection begins with an <strong>Empirical-Bayes Shrunk Vegas Implied Share Base</strong> (blending 2026 pre-game usage share with 2025 role-adjusted prior share using shrinkage constant <code>K = 3.5</code> games, multiplied by Vegas implied team points) and applies a bounded multiplicative adjustment from <strong>12 orthogonal pre-game signals</strong> (plus v7 workhorse xFP, spread script, QB1/debut verification, and soft ceiling taper calibrations) loaded from <code>data/weights.csv</code>.
           </p>
           <div class="formula-banner">
             <code>Our_Proj = clip( Base_EB_Vegas × (1.0 + Σ [ w_k × z_k ]), min=0.50 )</code>
@@ -495,7 +495,7 @@
       <section class="weights-section">
         <div class="section-header-bar">
           <div>
-            <h2>1. Multi-Week Out-of-Sample Backtest Progression (<code>v1 → v6</code>)</h2>
+            <h2>1. Multi-Week Out-of-Sample Backtest Progression (<code>v1 → v7</code>)</h2>
             <p>Loaded from <code>data/backtest_versions.csv</code> • Strictly pre-game Leave-One-Week-Out Cross-Validation (LOWO CV). Candidate signals are kept <strong>only</strong> if they improve out-of-sample Spearman rank correlation (ρ) and reduce Mean Absolute Error (MAE).</p>
           </div>
         </div>
@@ -523,8 +523,8 @@
       <section class="weights-section">
         <div class="section-header-bar">
           <div>
-            <h2>2. Active Locked <code>weights.csv</code> v6 Signals (11 Surviving Attributes)</h2>
-            <p>Loaded from <code>data/weights.csv</code> • Sum of active weights = <code>1.31</code> • Owned and computed pre-game by the 32 NFL Team Bots (<code>fd-ARI</code> … <code>fd-WAS</code>)</p>
+            <h2>2. Active Locked <code>weights.csv</code> v7 Signals (12 Surviving Attributes)</h2>
+            <p>Loaded from <code>data/weights.csv</code> • Sum of active weights = <code>1.39</code> • Owned and computed pre-game by the 32 NFL Team Bots (<code>fd-ARI</code> … <code>fd-WAS</code>)</p>
           </div>
         </div>
         <div class="weights-cards-grid" id="active-weights-grid"></div>
@@ -534,7 +534,7 @@
       <section class="weights-section">
         <div class="section-header-bar">
           <div>
-            <h2>3. Reverted &amp; Pruned Candidate Attributes (46 Attributes Set to <code>0.0</code>)</h2>
+            <h2>3. Reverted &amp; Pruned Candidate Attributes (50 Attributes Set to <code>0.0</code>)</h2>
             <p>Loaded from <code>data/reverted_signals.csv</code> • Under our strict Keep-or-Revert protocol, every attribute below was tested in multi-week out-of-sample CV and reverted to <code>0.0</code> when it degraded MAE, failed to improve ρ, or double-counted an existing signal.</p>
           </div>
         </div>

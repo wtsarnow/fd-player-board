@@ -868,6 +868,8 @@
   function renderHistoricKpis() {
     const allRow = state.historicWeekly.find((w) => w.week === "ALL") || {};
     const w8Row = state.historicWeekly.find((w) => w.week === "8") || {};
+    const w8Done = w8Row.our_opt_lineup_actual && w8Row.our_opt_lineup_actual !== "PENDING";
+    const wkSpan = w8Done ? "WK 3–8" : "WK 3–7";
     const grid = document.getElementById("historic-kpi-grid");
     document.getElementById("leg-our-opt").textContent = `Our Optimal Actual (${allRow.our_opt_lineup_actual} avg)`;
     document.getElementById("leg-tysa-opt").textContent = `Tysa Best Entry (${allRow.tysa_best_entry_actual} avg)`;
@@ -875,27 +877,35 @@
     document.getElementById("leg-our-acc").textContent = `Our v6 Pre-Game (ρ=${allRow.our_rho}, MAE=${allRow.our_mae})`;
     document.getElementById("leg-fd-acc").textContent = `FD Pre-Game (ρ=${allRow.fd_rho}, MAE=${allRow.fd_mae})`;
 
+    const w8CardHtml = w8Done
+      ? `<div class="hist-kpi-card">
+          <div class="hk-label">WEEK 8 MAIN SLATE FINAL (${escapeHtml(w8Row.n_players)} PLAYERS)</div>
+          <div class="hk-val pos">ρ ${escapeHtml(w8Row.our_rho)} <span class="hk-vs">vs FD ${escapeHtml(w8Row.fd_rho)}</span></div>
+          <div class="hk-sub">MAE <strong>${escapeHtml(w8Row.our_mae)} vs ${escapeHtml(w8Row.fd_mae)}</strong> (${escapeHtml(w8Row.our_beat_fd_pct)}% Win) • Best Entry: <strong>${escapeHtml(w8Row.tysa_best_entry_actual)} pts</strong></div>
+        </div>`
+      : `<div class="hist-kpi-card">
+          <div class="hk-label">WEEK 8 PRE-GAME LOCKED SNAPSHOT</div>
+          <div class="hk-val gold">${escapeHtml(w8Row.our_opt_lineup_proj || "167.87")} <span class="hk-vs">vs FD ${escapeHtml(w8Row.fd_opt_lineup_proj || "149.12")}</span></div>
+          <div class="hk-sub">${escapeHtml(w8Row.n_players || "511")} players locked in CSV • ${escapeHtml(w8Row.tysa_contest_note || "")}</div>
+        </div>`;
+
     grid.innerHTML = `
       <div class="hist-kpi-card">
-        <div class="hk-label">OUT-OF-SAMPLE SPEARMAN ρ (WK 3–7)</div>
+        <div class="hk-label">OUT-OF-SAMPLE SPEARMAN ρ (${wkSpan})</div>
         <div class="hk-val pos">${escapeHtml(allRow.our_rho)} <span class="hk-vs">vs FD ${escapeHtml(allRow.fd_rho)}</span></div>
         <div class="hk-sub"><strong>${escapeHtml(allRow.rho_gain)} rank correlation lift</strong> across n = ${escapeHtml(allRow.n_players)} completed player-games</div>
       </div>
       <div class="hist-kpi-card">
-        <div class="hk-label">PRE-GAME POINT ERROR (MAE WK 3–7)</div>
+        <div class="hk-label">PRE-GAME POINT ERROR (MAE ${wkSpan})</div>
         <div class="hk-val pos">${escapeHtml(allRow.our_mae)} <span class="hk-vs">vs FD ${escapeHtml(allRow.fd_mae)}</span></div>
         <div class="hk-sub"><strong>${escapeHtml(allRow.mae_improvement)} FD pts lower error</strong> per player-game (${escapeHtml(allRow.our_beat_fd_pct)}% Head-to-Head Win Rate)</div>
       </div>
       <div class="hist-kpi-card">
-        <div class="hk-label">OPTIMAL LINEUP ACTUAL AVG (WK 3–6)</div>
+        <div class="hk-label">OPTIMAL LINEUP ACTUAL AVG (${wkSpan})</div>
         <div class="hk-val accent">${escapeHtml(allRow.our_opt_lineup_actual)} <span class="hk-vs">vs FD ${escapeHtml(allRow.fd_opt_lineup_actual)}</span></div>
         <div class="hk-sub"><strong>${escapeHtml(allRow.opt_lineup_edge_pts)} FD pts/wk</strong> actual scoring edge • Tysa Best Entry Avg: <strong>${escapeHtml(allRow.tysa_best_entry_actual)} pts</strong></div>
       </div>
-      <div class="hist-kpi-card">
-        <div class="hk-label">WEEK 8 PRE-GAME LOCKED SNAPSHOT</div>
-        <div class="hk-val gold">${escapeHtml(w8Row.our_opt_lineup_proj || "167.59")} <span class="hk-vs">vs FD ${escapeHtml(w8Row.fd_opt_lineup_proj || "149.12")}</span></div>
-        <div class="hk-sub">510 players locked in CSV • Top Entered Lineup #2: <strong>165.19 v6 pts</strong> (HOU Stroud + Bijan)</div>
-      </div>
+      ${w8CardHtml}
     `;
   }
 
@@ -929,7 +939,7 @@
 
     weeks.forEach((w, idx) => {
       const cx = padL + idx * groupW + groupW / 2;
-      const isPending = w.week === "8";
+      const isPending = !w.our_opt_lineup_actual || w.our_opt_lineup_actual === "PENDING";
       const ourVal = isPending ? parseFloat(w.our_opt_lineup_proj) || 0 : parseFloat(w.our_opt_lineup_actual) || 0;
       const bestW8 = Math.max(...state.lineups.filter(l => l.preset_id.startsWith("contest-")).map(l => parseFloat(l.our_proj) || 0));
       const tysaVal = isPending ? bestW8 : parseFloat(w.tysa_best_entry_actual) || 0;
@@ -966,7 +976,7 @@
 
   function renderWeeklyAccuracyChart() {
     const wrap = document.getElementById("chart-weekly-accuracy");
-    const weeks = state.historicWeekly.filter((w) => ["3", "4", "5", "6", "7"].includes(w.week));
+    const weeks = state.historicWeekly.filter((w) => w.week !== "ALL" && w.our_rho && w.our_rho !== "PENDING");
     const W = 640;
     const H = 265;
     const padL = 44;
@@ -1022,14 +1032,14 @@
 
   function renderPositionSummaryTable() {
     const container = document.getElementById("pos-summary-container");
-    const wkFilter = ["3", "4", "5", "6", "7"].includes(state.histWeekFilter) ? state.histWeekFilter : "ALL";
+    const wkFilter = ["3", "4", "5", "6", "7", "8"].includes(state.histWeekFilter) ? state.histWeekFilter : "ALL";
     const rows = state.historicPositions.filter((r) => r.week === wkFilter);
 
     let html = `
       <table class="data-table compact-pos-table">
         <thead>
           <tr>
-            <th>POS (${wkFilter === "ALL" ? "WK 3–7" : "WK " + wkFilter})</th>
+            <th>POS (${wkFilter === "ALL" ? "ALL COMPLETED" : "WK " + wkFilter})</th>
             <th>N</th>
             <th>OUR ρ</th>
             <th>FD ρ</th>
@@ -1064,7 +1074,7 @@
     tbody.innerHTML = state.historicWeekly
       .map((w) => {
         const isAll = w.week === "ALL";
-        const isW8 = w.week === "8";
+        const isW8 = w.our_opt_lineup_actual === "PENDING";
         const isSelected = state.histWeekFilter === w.week;
         const rowCls = isAll ? "active-version-row" : isW8 ? "pregame-locked-row" : isSelected ? "selected-wk-row" : "";
 
@@ -1115,7 +1125,7 @@
     const q = state.histSearch.trim().toLowerCase();
     const filtered = state.historicPlayers.filter((r) => {
       if (state.histWeekFilter === "COMPLETED") {
-        if (r.weekNum < 3 || r.weekNum > 7) return false;
+        if (r.actualNum === null) return false;
       } else if (state.histWeekFilter !== "ALL") {
         if (String(r.week) !== state.histWeekFilter) return false;
       }

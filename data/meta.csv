@@ -1,12 +1,12 @@
 key,value
-build_id,20261025-123727
-slate_id,135562
+build_id,20261025-194559
+slate_id,135562 + 135719
 week,8
-title,NFL Classic Player Selection Board (Slate #135562 • Week 8 Main • 10 Games)
-lock_time,"Sun Oct 25, 2026 • 1:00 PM ET"
-generated_at,2026-10-25 12:37 PM ET (mode=pregame)
+title,NFL Player Selection Board (Week 8 Main #135562 Final + SNF KC@SEA #135719 • 11 Games)
+lock_time,"Sun Oct 25, 2026 • Main 1:00 PM ET (Final) | SNF KC@SEA 8:20 PM ET"
+generated_at,2026-10-25 07:45 PM ET (mode=postgame)
 active_version,v6 LOCKED • 11 SIGNALS
-total_players,511
+total_players,566
 active_signals,11
 salary_cap,60000
 candidates_tested,57

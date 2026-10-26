@@ -788,8 +788,8 @@
   function autoFillRemainingSlots() {
     const cap = parseInt(state.meta.salary_cap || "60000", 10);
     const openSlots = ROSTER_SLOT_SCHEMA.filter((s) => !state.roster[s.slotId]);
-    if (openSlots.length === 9 && state.lineups.length > 0) {
-      const opt1 = state.lineups.find((l) => l.preset_id === "opt-1") || state.lineups[0];
+    if (openSlots.length === ROSTER_SLOT_SCHEMA.length && state.lineups.length > 0) {
+      const opt1 = state.lineups.find((l) => l.preset_id === "mnf-1") || state.lineups.find((l) => l.preset_id === "opt-1") || state.lineups[0];
       loadPresetLineup(opt1.preset_id);
       return;
     }
@@ -1694,24 +1694,7 @@
         })
         .join("");
 
-      if (!isAll && state.optActiveGameKey === "DAL@PHI" && state.optimalByScopeKey["DAL@PHI_V8_OPT"]) {
-        const dalVariants = [
-          { key: "DAL@PHI", label: "Tysa Live FanDuel Entry #3754559753 ($59.5K • 105.33 v8 / 106.72 Base • MVP Dak)" },
-          { key: "DAL@PHI_V8_OPT", label: "v8 ILP Optimal #1 ($59.9K • 118.71 v8 • MVP CeeDee Lamb)" },
-          { key: "DAL@PHI_DAK_OPT", label: "Dak-MVP v8 Optimal #2 ($59.3K • 116.34 v8 • MVP Dak Prescott)" }
-        ];
-        pillsHtml += `
-          <div style="width:100%;margin-top:8px;padding-top:8px;border-top:1px solid rgba(148,163,184,0.18);display:flex;flex-wrap:wrap;gap:6px;align-items:center;">
-            <span style="font-size:0.72rem;font-weight:700;color:#38bdf8;margin-right:4px;">DAL @ PHI SHOWDOWN VIEW:</span>
-            ${dalVariants
-              .map((v) => {
-                const isVarAct = (state.optDalSubKey || "DAL@PHI") === v.key ? "active" : "";
-                return `<button type="button" class="opt-game-pill ${isVarAct}" data-dal-sub="${escapeHtml(v.key)}" style="font-size:0.73rem;">${escapeHtml(v.label)}</button>`;
-              })
-              .join("")}
-          </div>
-        `;
-      }
+
 
       gamePills.innerHTML = pillsHtml;
       gamePills.querySelectorAll(".opt-game-pill[data-opt-game]").forEach((btn) => {
@@ -1884,7 +1867,7 @@
     });
     state.activePresetMeta = {
       preset_id: "optimal-" + lu.scopeKey,
-      entry_id: lu.scopeKey === "DAL@PHI" ? "3754559753" : lu.scopeKey,
+      entry_id: lu.scopeKey === "DAL@PHI" ? "OPT-135830-1" : lu.scopeKey,
       label: lu.scopeLabel,
       contest: `${lu.scopeLabel} — ${lu.totalOurProj.toFixed(2)} v8 pts • ${fmtMoney(lu.totalSalary)} / $60,000`
     };
@@ -2104,7 +2087,8 @@
       populateHeaderAndMeta();
       renderGamesStrip();
       populatePresetsDropdown();
-      loadPresetLineup(state.lineups.some((x) => x.preset_id === "mnf-entry-1") ? "mnf-entry-1" : "contest-2");
+      const topOpt = state.lineups.find((x) => x.preset_id === "mnf-1") || state.lineups.find((x) => x.preset_id === "opt-1") || state.lineups[0];
+      if (topOpt) loadPresetLineup(topOpt.preset_id);
       renderHistoricTrendsTab();
       renderWeightsAndBacktestTab();
     } catch (err) {

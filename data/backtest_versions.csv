@@ -7,4 +7,9 @@ v4,v4 — EB Base + 9 Signals (Added 3 Salary-Headroom Sleeper Signals),0.6260,4
 v4+wx,v4 + stadium_weather_surface (Dome/Turf/Grass × Rain/Wind),0.6240,4.044,0.6183,4.012,136.52,REVERTED TO 0.0 | Wk3: 133.10 / Wk4: 128.84 / Wk5: 174.66 / Wk6: 109.48,false
 v5+wx,v5 + stadium_weather_surface Combined Test,0.6244,4.031,0.6183,4.003,126.49,REVERTED TO 0.0 | Wk3: 133.10 / Wk4: 142.44 / Wk5: 150.86 / Wk6: 79.56,false
 v5,v5 — EB Base + 10 Signals (Added opp_defender_matchup),0.6279,4.028,0.6225,3.997,140.09,KEPT (v5) | Wk3: 133.10 / Wk4: 142.44 / Wk5: 174.66 / Wk6: 110.18,false
-v6,v6 (CURRENT LOCKED) — EB Base + 11 Signals (Added ngs_skill_breakout),0.6284,4.017,0.6236,3.987,140.09,LOCKED WINNER (v6) | Wk3: 133.10 / Wk4: 142.44 / Wk5: 174.66 / Wk6: 110.18,true
+v6,"v6 — EB Base + 11 Signals (Added ngs_skill_breakout; Wk3–8 ρ=0.6450, MAE=3.668, 6-Wk LU=128.12)",0.6284,4.017,0.6236,3.987,140.09,KEPT (v6) | Wk8: 80.22 | Wk3: 133.10 / Wk4: 142.44 / Wk5: 174.66 / Wk6: 110.18,false
+v7-cal,v7 Base Calibration Only (QB1/Debut Fix + xFP Blend + Spread Script + Alpha/TE Gate + Ceiling Taper),0.7244,3.351,0.7349,3.178,139.29,"KEPT (v7-cal) | Wk3–8 ρ=0.7256, MAE=3.112, Wk8: 134.68 | Wk3: 127.70 / Wk4: 139.24 / Wk5: 174.66 / Wk6: 120.16",false
+v7+exp,v7-cal + explosive_rate (15+ Yd Rush / 20+ Yd Air-Yard Rate),0.7241,3.365,0.7346,3.192,136.01,"REVERTED TO 0.0 | Wk3–8 ρ=0.7252, MAE=3.126, Wk8: 118.28 | Wk3: 127.70 / Wk4: 139.24 / Wk5: 174.66 / Wk6: 120.16",false
+v7+xfp,v7-cal + xfp_share_gap Standalone Multiplier,0.7247,3.356,0.7350,3.182,136.01,"REVERTED TO 0.0 | Wk3–8 ρ=0.7256, MAE=3.116, Wk8: 118.28 | Wk3: 127.70 / Wk4: 139.24 / Wk5: 174.66 / Wk6: 120.16",false
+v7+veg,v7-cal + vegas_total / game_script Standalone Multiplier,0.7244,3.354,0.7346,3.182,136.37,"REVERTED TO 0.0 | Wk3–8 ρ=0.7253, MAE=3.115, Wk8: 116.78 | Wk3: 127.70 / Wk4: 139.24 / Wk5: 174.66 / Wk6: 120.16",false
+v7,"v7 (CURRENT LOCKED) — Calibrated EB Base + 12 Signals (Added ceiling_upside 0.08; Wk3–8 ρ=0.7255, MAE=3.108)",0.7248,3.348,0.7347,3.176,140.89,LOCKED WINNER (v7) | Wk8: 142.68 (6-Wk Avg: 140.89) | Wk3: 127.70 / Wk4: 139.24 / Wk5: 174.66 / Wk6: 120.16,true

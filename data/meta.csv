@@ -1,21 +1,37 @@
 key,value
-build_id,20261027-004540
-slate_id,135830 (MNF DAL@PHI Final 38-21) + 135562 + 135719
-week,8
-title,"NFL Player Selection Board (Week 8 Full Final • MNF DAL 38, PHI 21 • 12 Games Graded)"
-lock_time,"Tue Oct 27, 2026 • Week 8 Full Slate Final (MNF DAL 38, PHI 21)"
-generated_at,2026-10-27 12:45 AM ET (mode=postgame • 100% Deterministic Pipeline)
-active_version,v8 LOCKED • 14 SIGNALS
-total_players,621
-active_signals,14
+title,Week 9 Pre-Game Player Selection Board (14 Games • TNF CAR@GB + 11 Sun Main + SNF PHI@WAS + MNF CHI@SEA)
+active_week,9
+slate_id,WK9-SEED
+contest_name,Week 9 NFL Classic & Showdown Pre-Game Seed Board (Featured Optimal OPT-WK9-MAIN-1: 178.78 v9 pts)
+lock_time,TNF Thu Oct 29 8:15 PM ET • Sun Main Nov 1 1:00 PM ET
 salary_cap,60000
-candidates_tested,69
-n_wk3_7,"2,549 (Wk3–8 Full Final) / 1,928 (Wk3–7)"
-n_wk4_7,1528
+roster_slots,9
+active_version,v9 LOCKED (15 SIGNALS + TEAM-OWNED STADIUM/WX + STRATEGY EXCHANGE)
+generated_at,"Tue Oct 27, 2026 7:22 AM ET (Build 20261027-072204 • Week 8 Finalized n=621 + Week 9 14-Game Pre-Game Seed)"
+build_id,20261027-072204
 updater_bot,@fd-board-updater
-updater_bot_id,3d16d616-921d-472e-a9ef-bf156bbd1391
-pregame_schedule,"Morning Prep: Thu 9:00 AM ET (TNF Prep), Fri 9:00 AM ET (Sun Main Prep w/ fd-manager), Mon 9:00 AM ET (MNF Prep) • Pre-Game Locks: Thu 7:55 PM ET (TNF), Sun 12:35 PM ET (Main 1pm), Sun 3:45 PM ET (Late 4pm), Sun 7:55 PM ET (SNF), Mon 7:55 PM ET (MNF)"
-postgame_schedule,"Right after games finish: Thu 11:45 PM–12:15 AM ET (Post-TNF), Sun 5:00 PM ET (Post-1pm), Sun 8:00 PM ET (Post-4pm), Sun 11:50 PM ET (Post-SNF), Tue 12:15 AM ET (Post-MNF Full Week Final) + Tue 9:30 AM ET Weekly Audit"
-strategy_exchange_bot,@fd-strategy-exchange (4f64d389-10db-4641-ae99-ad900bb4ffcb)
-prediction_mode,100% Deterministic Python Math (Empirical Bayes + 14-Signal LOWO Ridge + PuLP ILP — Zero LLM Judgment)
-optimal_lineup_scopes,"all_games (1) + per_game (12) = 13 PuLP ILP lineups ($60,000 cap)"
+updater_bot_id,7f63a5f1-23e8-4a34-b1c8-fd8b0a4d2026
+middleman_bot,@fd-strategy-exchange
+middleman_bot_id,4f64d389-10db-4641-ae99-ad900bb4ffcb
+weather_bot,@fd-stadium-weather
+weather_bot_id,53977200-89b4-45e7-8791-b8a378bbc2d3
+pregame_schedule,Thu 9AM (TNF) • Fri 9AM (Sun Main/SNF) • Mon 9AM (MNF) • Refresh 3h Pre-Kickoff
+postgame_schedule,Tue 9AM Weekly Wrap (Finalize Wk8 Actuals vs Projections + Seed Wk9 Board)
+historic_weeks_covered,"Weeks 3, 4, 5, 6, 7 & 8 Completed (2,549 Player-Weeks Graded • Wk 8 All 12 Games Final)"
+overall_our_rho,0.6518
+overall_fd_rho,0.4492
+overall_rho_gain,+0.2026
+overall_our_mae,3.584
+overall_fd_mae,4.530
+overall_mae_gain,+0.946
+overall_our_rmse,5.498
+overall_fd_rmse,6.606
+overall_beat_fd_pct,62.0%
+wk8_our_rho,0.7236
+wk8_fd_rho,0.5939
+wk8_our_mae,2.240
+wk8_fd_mae,3.061
+wk8_beat_fd_pct,70.4%
+wk9_featured_optimal_id,OPT-WK9-MAIN-1
+wk9_featured_optimal_pts,178.78
+wk9_all_games_optimal_pts,180.22

@@ -1,16 +1,16 @@
 key,value
-build_id,20261026-171901
-slate_id,135830 (MNF DAL@PHI Live) + 135562 + 135719
+build_id,20261027-004540
+slate_id,135830 (MNF DAL@PHI Final 38-21) + 135562 + 135719
 week,8
-title,NFL Player Selection Board (MNF DAL@PHI #135830 Live Entry + Week 8 Main/SNF Final • 12 Games)
-lock_time,"Mon Oct 26, 2026 • MNF DAL@PHI 8:15 PM ET | Sun Main + SNF Final"
-generated_at,2026-10-26 05:19 PM ET (mode=pregame • 100% Deterministic Pipeline)
+title,"NFL Player Selection Board (Week 8 Full Final • MNF DAL 38, PHI 21 • 12 Games Graded)"
+lock_time,"Tue Oct 27, 2026 • Week 8 Full Slate Final (MNF DAL 38, PHI 21)"
+generated_at,2026-10-27 12:45 AM ET (mode=postgame • 100% Deterministic Pipeline)
 active_version,v8 LOCKED • 14 SIGNALS
 total_players,621
 active_signals,14
 salary_cap,60000
 candidates_tested,69
-n_wk3_7,"2,494 (Wk3–8) / 1,928 (Wk3–7)"
+n_wk3_7,"2,549 (Wk3–8 Full Final) / 1,928 (Wk3–7)"
 n_wk4_7,1528
 updater_bot,@fd-board-updater
 updater_bot_id,3d16d616-921d-472e-a9ef-bf156bbd1391

@@ -2,13 +2,13 @@ key,value
 title,Week 9 Pre-Game Player Selection Board (14 Games • TNF CAR@GB + 11 Sun Main + SNF PHI@WAS + MNF CHI@SEA)
 active_week,9
 slate_id,WK9-SEED
-contest_name,Week 9 NFL Classic & Showdown Pre-Game Seed Board (Featured Optimal OPT-WK9-MAIN-1: 178.78 v9 pts)
+contest_name,Week 9 NFL Classic & Showdown Pre-Game Seed Board (Featured Optimal OPT-WK9-MAIN-1: 176.66 v9 pts)
 lock_time,TNF Thu Oct 29 8:15 PM ET • Sun Main Nov 1 1:00 PM ET
 salary_cap,60000
 roster_slots,9
 active_version,v9 LOCKED (15 SIGNALS + TEAM-OWNED STADIUM/WX + STRATEGY EXCHANGE)
-generated_at,"Tue Oct 27, 2026 7:22 AM ET (Build 20261027-072204 • Week 8 Finalized n=621 + Week 9 14-Game Pre-Game Seed)"
-build_id,20261027-072204
+generated_at,"Thu Oct 29, 2026 9:02 AM ET (Build 20261029-090226 • Week 8 Finalized n=621 + Week 9 14-Game Pre-Game Seed)"
+build_id,20261029-090226
 updater_bot,@fd-board-updater
 updater_bot_id,7f63a5f1-23e8-4a34-b1c8-fd8b0a4d2026
 middleman_bot,@fd-strategy-exchange
@@ -33,5 +33,5 @@ wk8_our_mae,2.240
 wk8_fd_mae,3.061
 wk8_beat_fd_pct,70.4%
 wk9_featured_optimal_id,OPT-WK9-MAIN-1
-wk9_featured_optimal_pts,178.78
-wk9_all_games_optimal_pts,180.22
+wk9_featured_optimal_pts,176.66
+wk9_all_games_optimal_pts,180.25

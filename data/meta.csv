@@ -7,8 +7,8 @@ lock_time,TNF Thu Oct 29 8:15 PM ET • Sun Main Nov 1 1:00 PM ET
 salary_cap,60000
 roster_slots,9
 active_version,v9 LOCKED (15 SIGNALS + TEAM-OWNED STADIUM/WX + STRATEGY EXCHANGE)
-generated_at,"Thu Oct 29, 2026 9:02 AM ET (Build 20261029-090226 • Week 8 Finalized n=621 + Week 9 14-Game Pre-Game Seed)"
-build_id,20261029-090226
+generated_at,"Thu Oct 29, 2026 5:18 PM ET (Build 20261029-171839 • Week 8 Finalized n=621 + Week 9 14-Game Pre-Game Seed)"
+build_id,20261029-171839
 updater_bot,@fd-board-updater
 updater_bot_id,7f63a5f1-23e8-4a34-b1c8-fd8b0a4d2026
 middleman_bot,@fd-strategy-exchange

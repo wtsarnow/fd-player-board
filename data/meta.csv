@@ -2,13 +2,13 @@ key,value
 title,Week 9 Pre-Game Player Selection Board (14 Games • TNF CAR@GB + 11 Sun Main + SNF PHI@WAS + MNF CHI@SEA)
 active_week,9
 slate_id,WK9-SEED
-contest_name,Week 9 NFL Classic & Showdown Pre-Game Seed Board (Featured Optimal OPT-WK9-MAIN-1: 176.66 v9 pts)
-lock_time,TNF Thu Oct 29 8:15 PM ET • Sun Main Nov 1 1:00 PM ET
+contest_name,Week 9 NFL Classic & Showdown Pre-Game Seed Board (Featured Optimal OPT-WK9-MAIN-1: 175.64 v9 pts)
+lock_time,Sun Main Nov 1 1:00 PM ET • SNF PHI@WAS Nov 1 8:20 PM ET • MNF CHI@SEA Nov 2 8:15 PM ET
 salary_cap,60000
 roster_slots,9
 active_version,v9 LOCKED (15 SIGNALS + TEAM-OWNED STADIUM/WX + STRATEGY EXCHANGE)
-generated_at,"Thu Oct 29, 2026 5:18 PM ET (Build 20261029-171839 • Week 8 Finalized n=621 + Week 9 14-Game Pre-Game Seed)"
-build_id,20261029-171839
+generated_at,"Fri Oct 30, 2026 9:05 AM ET (Build 20261030-090531 • Fri Sunday Main Prep • Wk9 TNF CAR@GB graded n=54 + Week 9 Pre-Game Board)"
+build_id,20261030-090531
 updater_bot,@fd-board-updater
 updater_bot_id,7f63a5f1-23e8-4a34-b1c8-fd8b0a4d2026
 middleman_bot,@fd-strategy-exchange
@@ -17,7 +17,7 @@ weather_bot,@fd-stadium-weather
 weather_bot_id,53977200-89b4-45e7-8791-b8a378bbc2d3
 pregame_schedule,Thu 9AM (TNF) • Fri 9AM (Sun Main/SNF) • Mon 9AM (MNF) • Refresh 3h Pre-Kickoff
 postgame_schedule,Tue 9AM Weekly Wrap (Finalize Wk8 Actuals vs Projections + Seed Wk9 Board)
-historic_weeks_covered,"Weeks 3, 4, 5, 6, 7 & 8 Completed (2,549 Player-Weeks Graded • Wk 8 All 12 Games Final)"
+historic_weeks_covered,"Weeks 3–8 Completed (2,549 Player-Weeks) + Week 9 TNF CAR@GB Final (54 Player-Weeks Graded)"
 overall_our_rho,0.6518
 overall_fd_rho,0.4492
 overall_rho_gain,+0.2026
@@ -33,5 +33,5 @@ wk8_our_mae,2.240
 wk8_fd_mae,3.061
 wk8_beat_fd_pct,70.4%
 wk9_featured_optimal_id,OPT-WK9-MAIN-1
-wk9_featured_optimal_pts,176.66
-wk9_all_games_optimal_pts,180.25
+wk9_featured_optimal_pts,175.64
+wk9_all_games_optimal_pts,179.06

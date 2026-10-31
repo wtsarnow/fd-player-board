@@ -19,6 +19,15 @@
   </section>
   <!-- TOP FANDUEL-STYLE HEADER BAR -->
   <header class="fd-topbar">
+    <div id="lastRefreshed" style="position:absolute;top:4px;right:12px;font-size:11px;color:#9aa4b2;z-index:1000;white-space:nowrap;"></div>
+    <script>
+      fetch('data/meta.csv?t=' + Date.now(), { cache: 'no-store' }).then(function (r) { return r.text(); }).then(function (t) {
+        var m = {};
+        t.split(/\r?\n/).forEach(function (l) { var i = l.indexOf(','); if (i > 0) m[l.slice(0, i).trim()] = l.slice(i + 1).trim().replace(/^"|"$/g, ''); });
+        var v = (m.generated_at || '').split(' (')[0].replace(/\s*ET$/, '') || m.build_id;
+        if (v) document.getElementById('lastRefreshed').textContent = 'Last refreshed: ' + v + ' ET';
+      }).catch(function () {});
+    </script>
     <div class="fd-topbar-left">
       <div class="fd-logo">
         <span class="fd-shield">FD</span>

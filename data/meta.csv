@@ -7,8 +7,8 @@ lock_time,Sun Main Nov 1 1:00 PM ET • SNF PHI@WAS Nov 1 8:20 PM ET • MNF CHI
 salary_cap,60000
 roster_slots,9
 active_version,v9 LOCKED (15 SIGNALS + TEAM-OWNED STADIUM/WX + STRATEGY EXCHANGE)
-generated_at,"Sun Nov 1, 2026 8:04 PM ET (Build 20261101-200405 • Wk9 Sun 4PM actuals graded: LAC@LAR, KC@DEN, NE@MIA n=154 appended; Wk9 to-date n=605; SNF PHI@WAS pre-game lock retained)"
-build_id,20261101-200405
+generated_at,"Mon Nov 2, 2026 12:41 AM ET (Build 20261102-004118 • Wk9 SNF PHI@WAS actuals graded (WAS 27-10): n=60 appended; Wk9 to-date n=665; MNF CHI@SEA pre-game pending)"
+build_id,20261102-004118
 updater_bot,@fd-board-updater
 updater_bot_id,7f63a5f1-23e8-4a34-b1c8-fd8b0a4d2026
 middleman_bot,@fd-strategy-exchange
@@ -17,7 +17,7 @@ weather_bot,@fd-stadium-weather
 weather_bot_id,53977200-89b4-45e7-8791-b8a378bbc2d3
 pregame_schedule,Thu 9AM (TNF) • Fri 9AM (Sun Main/SNF) • Mon 9AM (MNF) • Refresh 3h Pre-Kickoff
 postgame_schedule,Tue 9AM Weekly Wrap (Finalize Wk8 Actuals vs Projections + Seed Wk9 Board)
-historic_weeks_covered,"Weeks 3–8 Completed (2,549 Player-Weeks) + Week 9 TNF CAR@GB + Sun 1PM (8) + 4PM (3) Games Final (605 Player-Weeks Graded)"
+historic_weeks_covered,"Weeks 3–8 Completed (2,549 Player-Weeks) + Week 9 TNF CAR@GB + Sun 1PM (8) + 4PM (3) + SNF PHI@WAS Final (665 Player-Weeks Graded)"
 overall_our_rho,0.6518
 overall_fd_rho,0.4492
 overall_rho_gain,+0.2026

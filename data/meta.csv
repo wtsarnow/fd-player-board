@@ -7,8 +7,8 @@ lock_time,Sun Main Nov 1 1:00 PM ET • SNF PHI@WAS Nov 1 8:20 PM ET • MNF CHI
 salary_cap,60000
 roster_slots,9
 active_version,v9 LOCKED (15 SIGNALS + TEAM-OWNED STADIUM/WX + STRATEGY EXCHANGE)
-generated_at,"Sun Nov 1, 2026 7:18 PM ET (Build 20261101-191846 • SNF PHI@WAS pre-kickoff snapshot verified; projections unchanged from build 20261101-123610 • Wk9 Sun 1PM actuals n=397 + TNF n=54 retained)"
-build_id,20261101-191846
+generated_at,"Sun Nov 1, 2026 7:56 PM ET (Build 20261101-195614 • SNF PHI@WAS re-priced on live FD Showdown slate 136032 (MVP 1.5x salaries, inactives removed); projections unchanged • Wk9 Sun 1PM actuals n=397 + TNF n=54 retained)"
+build_id,20261101-195614
 updater_bot,@fd-board-updater
 updater_bot_id,7f63a5f1-23e8-4a34-b1c8-fd8b0a4d2026
 middleman_bot,@fd-strategy-exchange

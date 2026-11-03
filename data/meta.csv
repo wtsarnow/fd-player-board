@@ -7,8 +7,8 @@ lock_time,Sun Main Nov 1 1:00 PM ET • SNF PHI@WAS Nov 1 8:20 PM ET • MNF CHI
 salary_cap,60000
 roster_slots,9
 active_version,v9 LOCKED (15 SIGNALS + TEAM-OWNED STADIUM/WX + STRATEGY EXCHANGE)
-generated_at,"Mon Nov 2, 2026 7:43 PM ET (Build 20261102-194347 • MNF CHI@SEA pre-lock: live FD Showdown salaries/statuses, baseline 136135, featured OPT-WK9-MNF-1 105.69 pts $58,900)"
-build_id,20261102-194347
+generated_at,"Tue Nov 3, 2026 12:35 AM ET (Build 20261103-003554 • Post-MNF CHI@SEA final CHI 34-17: 56 graded rows appended; Week 9 summaries recomputed)"
+build_id,20261103-003554
 updater_bot,@fd-board-updater
 updater_bot_id,7f63a5f1-23e8-4a34-b1c8-fd8b0a4d2026
 middleman_bot,@fd-strategy-exchange

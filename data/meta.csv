@@ -1,14 +1,14 @@
 key,value
-title,Week 9 Pre-Game Player Selection Board (14 Games • TNF CAR@GB + 11 Sun Main + SNF PHI@WAS + MNF CHI@SEA)
-active_week,9
-slate_id,WK9-SEED
-contest_name,Week 9 NFL Classic & Showdown Board (Featured Optimal OPT-WK9-MNF-1: 105.69 v9 pts • MNF CHI@SEA tonight 8:15 PM ET)
-lock_time,Sun Main Nov 1 1:00 PM ET • SNF PHI@WAS Nov 1 8:20 PM ET • MNF CHI@SEA Nov 2 8:15 PM ET
+title,Week 10 Pre-Game Player Selection Board (TNF JAX@BAL Thu Nov 5) • Week 9 Final
+active_week,10
+slate_id,WK10-TNF
+contest_name,Week 10 TNF JAX@BAL Showdown Board (Featured Optimal OPT-WK10-TNF-1: 95.62 v9 pts • tonight 8:15 PM ET)
+lock_time,TNF JAX@BAL Thu Nov 5 8:15 PM ET
 salary_cap,60000
 roster_slots,9
 active_version,v9 LOCKED (15 SIGNALS + TEAM-OWNED STADIUM/WX + STRATEGY EXCHANGE)
-generated_at,"Tue Nov 3, 2026 12:35 AM ET (Build 20261103-003554 • Post-MNF CHI@SEA final CHI 34-17: 56 graded rows appended; Week 9 summaries recomputed)"
-build_id,20261103-003554
+generated_at,"Thu Nov 5, 2026 9:13 AM ET (Build 20261105-091325 • Thu TNF morning prep: deterministic JAX@BAL baseline + PuLP Showdown; Lamar Jackson/Tyler Huntley OUT -> 0)"
+build_id,20261105-091325
 updater_bot,@fd-board-updater
 updater_bot_id,7f63a5f1-23e8-4a34-b1c8-fd8b0a4d2026
 middleman_bot,@fd-strategy-exchange

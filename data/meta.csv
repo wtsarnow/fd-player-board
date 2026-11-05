@@ -1,14 +1,14 @@
 key,value
-title,Week 10 Pre-Game Player Selection Board (TNF JAX@BAL Thu Nov 5) • Week 9 Final
+title,Week 10 Pre-Game Player Selection Board (TNF JAX@BAL Showdown Thu Nov 5) • Week 9 Final
 active_week,10
-slate_id,WK10-TNF
-contest_name,Week 10 TNF JAX@BAL Showdown Board (Featured Optimal OPT-WK10-TNF-1: 95.62 v9 pts • tonight 8:15 PM ET)
+slate_id,136167
+contest_name,Week 10 TNF JAX@BAL Showdown Board (Featured Optimal OPT-WK10-TNF-1: 88.42 v9 pts • Live FD #136167 • lock 8:15 PM ET)
 lock_time,TNF JAX@BAL Thu Nov 5 8:15 PM ET
 salary_cap,60000
-roster_slots,9
+roster_slots,6
 active_version,v9 LOCKED (15 SIGNALS + TEAM-OWNED STADIUM/WX + STRATEGY EXCHANGE)
-generated_at,"Thu Nov 5, 2026 9:13 AM ET (Build 20261105-091325 • Thu TNF morning prep: deterministic JAX@BAL baseline + PuLP Showdown; Lamar Jackson/Tyler Huntley OUT -> 0)"
-build_id,20261105-091325
+generated_at,"Thu Nov 5, 2026 5:20 PM ET (Build 20261105-172027 • Thu TNF PRE-LOCK: live Showdown #136167 prices + Classic-calibrated wk10-tnf projections + PuLP; Lamar/Huntley/Loop IR -> 0)"
+build_id,20261105-172027
 updater_bot,@fd-board-updater
 updater_bot_id,7f63a5f1-23e8-4a34-b1c8-fd8b0a4d2026
 middleman_bot,@fd-strategy-exchange
@@ -17,7 +17,7 @@ weather_bot,@fd-stadium-weather
 weather_bot_id,53977200-89b4-45e7-8791-b8a378bbc2d3
 pregame_schedule,Thu 9AM (TNF) • Fri 9AM (Sun Main/SNF) • Mon 9AM (MNF) • Refresh 3h Pre-Kickoff
 postgame_schedule,Tue 9AM Weekly Wrap (Finalize Wk8 Actuals vs Projections + Seed Wk9 Board)
-historic_weeks_covered,"Weeks 3–8 Completed (2,549 Player-Weeks) + Week 9 TNF CAR@GB + Sun 1PM (8) + 4PM (3) + SNF PHI@WAS Final (665 Player-Weeks Graded)"
+historic_weeks_covered,"Weeks 3–8 Completed (2,549 Player-Weeks) + Week 9 TNF CAR@GB Final (54 Player-Weeks Graded)"
 overall_our_rho,0.6518
 overall_fd_rho,0.4492
 overall_rho_gain,+0.2026
@@ -32,6 +32,9 @@ wk8_fd_rho,0.5939
 wk8_our_mae,2.240
 wk8_fd_mae,3.061
 wk8_beat_fd_pct,70.4%
-wk9_featured_optimal_id,OPT-WK9-MNF-1
-wk9_featured_optimal_pts,110.14
+wk9_featured_optimal_id,OPT-WK9-MAIN-1
+wk9_featured_optimal_pts,175.64
 wk9_all_games_optimal_pts,179.06
+wk10_featured_optimal_id,OPT-WK10-TNF-1
+wk10_featured_optimal_pts,88.42
+wk10_featured_optimal_salary,58300

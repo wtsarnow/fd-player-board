@@ -1,14 +1,14 @@
 key,value
-title,Week 10 TNF JAX@BAL Graded (JAX 33-10 Final) • Sun Main Board Pending
+title,Week 10 Pre-Game Player Selection Board (Sun Main + London + SNF TB@CHI + MNF BUF@MIN) • TNF JAX@BAL Graded
 active_week,10
-slate_id,136167
-contest_name,Week 10 TNF JAX@BAL Graded (OPT-WK10-TNF-1 actual 68.47 vs 88.42 proj • Tysa #3760703022: 61.18) • Sun Main pending FanDuel prices
-lock_time,TNF JAX@BAL Final (Thu Nov 5) • Sun Main TBD
+slate_id,WK10-MAIN-136184
+contest_name,"Week 10 Sunday Main Classic Board (Featured Optimal OPT-WK10-MAIN-1: 176.40 v9 pts • $60,000 • LIVE FD Classic #136184 (11 Sun games); London/SNF/MNF seed-estimated pending live FD)"
+lock_time,Sun Main Nov 8 1:00 PM ET • London CIN@ATL 9:30 AM ET • SNF TB@CHI 8:20 PM ET • MNF BUF@MIN Mon Nov 9 8:15 PM ET
 salary_cap,60000
-roster_slots,6
+roster_slots,9
 active_version,v9 LOCKED (15 SIGNALS + TEAM-OWNED STADIUM/WX + STRATEGY EXCHANGE)
-generated_at,"Fri Nov 6, 2026 12:41 AM ET (Build 20261106-004110 • Post-TNF grade: JAX@BAL Final JAX 33-10 • slate #136167 • historic append only)"
-build_id,20261106-004110
+generated_at,"Fri Nov 6, 2026 9:34 AM ET (Build 20261106-093450 • Fri Sunday Main prep: deterministic wk10-seed baseline + PuLP Classic; LIVE #136184 for 11 Sun games; CIN@ATL/SNF/MNF estimated Classic)"
+build_id,20261106-093450
 updater_bot,@fd-board-updater
 updater_bot_id,7f63a5f1-23e8-4a34-b1c8-fd8b0a4d2026
 middleman_bot,@fd-strategy-exchange
@@ -35,12 +35,16 @@ wk8_beat_fd_pct,70.4%
 wk9_featured_optimal_id,OPT-WK9-MAIN-1
 wk9_featured_optimal_pts,175.64
 wk9_all_games_optimal_pts,179.06
-wk10_featured_optimal_id,OPT-WK10-TNF-1
-wk10_featured_optimal_pts,88.42
-wk10_featured_optimal_salary,58300
+wk10_featured_optimal_id,OPT-WK10-MAIN-1
+wk10_featured_optimal_pts,176.40
+wk10_featured_optimal_salary,60000
 wk10_featured_optimal_actual,68.47
 wk10_tnf_our_mae,2.115
 wk10_tnf_fd_mae,2.619
 wk10_tnf_our_rho,0.6899
 wk10_tnf_fd_rho,0.6948
 wk10_tnf_beat_fd_pct,71.7%
+wk10_all_games_optimal_pts,176.70
+wk10_salary_source,LIVE FD Classic #136184 (11 Sun games)
+wk10_player_count,770
+wk10_game_count,15

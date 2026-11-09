@@ -3322,3 +3322,320 @@ week,slate,game_window,player_id,name,pos,team,opp,home_away,salary,our_proj_pre
 10,Wk 10 (TNF JAX@BAL),Thu 20:15 ET,136167-166313,Adam Randall,RB,BAL,JAX,HOME,1000,0.00,0.00,0.24,0.00,+0.00,+0.00,+0.00,0.00,0.00,true,0.00,0.00,False
 10,Wk 10 (TNF JAX@BAL),Thu 20:15 ET,136167-63115,Lamar Jackson,QB,BAL,JAX,HOME,1000,0.00,0.00,11.52,0.00,+0.00,+0.00,+0.00,0.00,0.00,true,0.00,0.00,False
 10,Wk 10 (TNF JAX@BAL),Thu 20:15 ET,136167-61693,Danny Pinter,TE,BAL,JAX,HOME,1000,0.00,0.00,0.20,0.00,+0.00,+0.00,+0.00,0.00,0.00,true,0.00,0.00,False
+10,Wk 10 (Sun Main; Friday stale forecast 20261106-093450),Sunday 13:00 ET,136184-129368,Jahmyr Gibbs,RB,DET,MIA,AWAY,10200,32.18,27.26,25.73,13.40,+4.92,+18.78,+13.86,18.78,13.86,false,3.15,1.31,False
+10,Wk 10 (Sun Main; Friday stale forecast 20261106-093450),Sunday 13:00 ET,136184-103342,Kenneth Walker III,RB,KC,NYJ,HOME,8900,31.23,23.01,22.96,37.30,+8.22,-6.07,-14.29,6.07,14.29,true,3.51,4.19,False
+10,Wk 10 (Sun Main; Friday stale forecast 20261106-093450),Sunday 13:00 ET,136184-103020,Puka Nacua,WR,LAR,WAS,AWAY,9200,25.71,16.66,18.38,31.00,+9.05,-5.29,-14.34,5.29,14.34,true,2.79,3.37,False
+10,Wk 10 (Sun Main; Friday stale forecast 20261106-093450),Sunday 13:00 ET,136184-31716,Dak Prescott,QB,DAL,IND,AWAY,8000,25.59,19.87,22.16,22.50,+5.72,+3.09,-2.63,3.09,2.63,false,3.20,2.81,False
+10,Wk 10 (Sun Main; Friday stale forecast 20261106-093450),Sunday 13:00 ET,136184-86631,CeeDee Lamb,WR,DAL,IND,AWAY,8800,25.11,18.41,18.54,31.50,+6.70,-6.39,-13.09,6.39,13.09,true,2.85,3.58,False
+10,Wk 10 (London CIN@ATL; Friday stale forecast; estimated salaries),Sunday 09:30 ET,135859-136855,Bijan Robinson,RB,ATL,CIN,HOME,8800,24.52,17.6,19.27,26.70,+6.92,-2.18,-9.10,2.18,9.10,true,2.79,3.03,False
+10,Wk 10 (London CIN@ATL; Friday stale forecast; estimated salaries),Sunday 09:30 ET,135859-63336,Joe Burrow,QB,CIN,ATL,AWAY,8300,24.5,25.09,25.58,29.54,-0.59,-5.04,-4.45,5.04,4.45,false,2.95,3.56,False
+10,Wk 10 (Sun Main; Friday stale forecast 20261106-093450),Sunday 13:00 ET,136184-57439,Patrick Mahomes,QB,KC,NYJ,HOME,7900,23.79,19.36,23.15,16.48,+4.43,+7.31,+2.88,7.31,2.88,false,3.01,2.09,False
+10,Wk 10 (Sun Main; Friday stale forecast 20261106-093450),Sunday 13:00 ET,136184-6654,Matthew Stafford,QB,LAR,WAS,AWAY,7500,23.31,18.95,19.67,12.22,+4.36,+11.09,+6.73,11.09,6.73,false,3.11,1.63,False
+10,Wk 10 (Sun Main; Friday stale forecast 20261106-093450),Sunday 13:00 ET,136184-104433,Kyren Williams,RB,LAR,WAS,AWAY,7500,22.97,16.69,17.56,7.60,+6.28,+15.37,+9.09,15.37,9.09,false,3.06,1.01,False
+10,Wk 10 (Sun Main; Friday stale forecast 20261106-093450),Sunday 13:00 ET,136184-88431,Tyler Shough,QB,NO,CLE,HOME,7400,22.59,19.28,20.09,19.70,+3.31,+2.89,-0.42,2.89,0.42,false,3.05,2.66,False
+10,Wk 10 (Sun Main; Friday stale forecast 20261106-093450),Sunday 13:00 ET,136184-87770,Chris Olave,WR,NO,CLE,HOME,8000,22.42,15.59,15.6,13.30,+6.83,+9.12,+2.29,9.12,2.29,false,2.80,1.66,False
+10,Wk 10 (Sun Main; Friday stale forecast 20261106-093450),Sunday 13:00 ET,136184-151761,Malik Nabers,WR,NYG,PHI,AWAY,7800,22.25,15.5,14.35,6.80,+6.75,+15.45,+8.70,15.45,8.70,false,2.85,0.87,False
+10,Wk 10 (Sun Main; Friday stale forecast 20261106-093450),Sunday 13:00 ET,136184-102785,Jayden Daniels,QB,WAS,LAR,HOME,8400,22.19,17.77,19.41,14.56,+4.42,+7.63,+3.21,7.63,3.21,false,2.64,1.73,False
+10,Wk 10 (Sun Main; Friday stale forecast 20261106-093450),Sunday 13:00 ET,136184-86997,Amon-Ra St. Brown,WR,DET,MIA,AWAY,8600,22.1,17.21,16.89,12.60,+4.89,+9.50,+4.61,9.50,4.61,false,2.57,1.47,False
+10,Wk 10 (Sun Main; Friday stale forecast 20261106-093450),Sunday 13:00 ET,136184-87691,Malik Willis,QB,MIA,DET,HOME,6500,21.75,15.17,17.95,4.82,+6.58,+16.93,+10.35,16.93,10.35,false,3.35,0.74,True
+10,Wk 10 (London CIN@ATL; Friday stale forecast; estimated salaries),Sunday 09:30 ET,135859-85701,Ja'Marr Chase,WR,CIN,ATL,AWAY,8700,21.23,15.24,16.8,29.50,+5.99,-8.27,-14.26,8.27,14.26,true,2.44,3.39,False
+10,Wk 10 (Sun Main; Friday stale forecast 20261106-093450),Sunday 13:00 ET,136184-89675,Jonathan Taylor,RB,IND,DAL,HOME,8300,21.11,16.71,15.66,6.90,+4.40,+14.21,+9.81,14.21,9.81,false,2.54,0.83,False
+10,Wk 10 (London CIN@ATL; Friday stale forecast; estimated salaries),Sunday 09:30 ET,135859-89981,Tee Higgins,WR,CIN,ATL,AWAY,7100,20.71,16.87,16.36,17.70,+3.84,+3.01,-0.83,3.01,0.83,false,2.92,2.49,False
+10,Wk 10 (Sun Main; Friday stale forecast 20261106-093450),Sunday 13:00 ET,136184-119606,Bryce Young,QB,CAR,DEN,HOME,7300,20.31,19.61,17.29,21.34,+0.70,-1.03,-1.73,1.03,1.73,true,2.78,2.92,False
+10,Wk 10 (Sun Main; Friday stale forecast 20261106-093450),Sunday 13:00 ET,136184-93541,Javonte Williams,RB,DAL,IND,AWAY,7700,20.01,16.27,18.26,23.40,+3.74,-3.39,-7.13,3.39,7.13,true,2.60,3.04,False
+10,Wk 10 (Sun Main; Friday stale forecast 20261106-093450),Sunday 13:00 ET,136184-102965,Bo Nix,QB,DEN,CAR,AWAY,7200,19.61,14.77,17.41,16.68,+4.84,+2.93,-1.91,2.93,1.91,false,2.72,2.32,False
+10,Wk 10 (London CIN@ATL; Friday stale forecast; estimated salaries),Sunday 09:30 ET,135859-89493,Chase Brown,RB,CIN,ATL,AWAY,7100,18.98,10.41,15.09,9.00,+8.57,+9.98,+1.41,9.98,1.41,false,2.67,1.27,False
+10,Wk 10 (Sun Main; Friday stale forecast 20261106-093450),Sunday 13:00 ET,136184-38435,Jared Goff,QB,DET,MIA,AWAY,7700,18.68,21.72,21.36,6.30,-3.04,+12.38,+15.42,12.38,15.42,true,2.43,0.82,False
+10,Wk 10 (Sun Main; Friday stale forecast 20261106-093450),Sunday 13:00 ET,136184-63519,Daniel Jones,QB,IND,DAL,HOME,6400,18.33,10.02,14.99,11.30,+8.31,+7.03,-1.28,7.03,1.28,false,2.86,1.77,True
+10,Wk 10 (Sun Main; Friday stale forecast 20261106-093450),Sunday 13:00 ET,136184-167620,Tetairoa McMillan,WR,CAR,DEN,HOME,7000,18.3,13.41,11.73,13.60,+4.89,+4.70,-0.19,4.70,0.19,false,2.61,1.94,False
+10,Wk 10 (London CIN@ATL; Friday stale forecast; estimated salaries),Sunday 09:30 ET,135859-112745,Drake London,WR,ATL,CIN,HOME,7700,18.22,11.29,13.57,9.30,+6.93,+8.92,+1.99,8.92,1.99,false,2.37,1.21,False
+10,Wk 10 (Sun Main; Friday stale forecast 20261106-093450),Sunday 13:00 ET,136184-87467,Chuba Hubbard,RB,CAR,DEN,HOME,7400,16.66,18.29,13.01,11.60,-1.63,+5.06,+6.69,5.06,6.69,true,2.25,1.57,False
+10,Wk 10 (Sun Main; Friday stale forecast 20261106-093450),Sunday 13:00 ET,136184-26483,Geno Smith,QB,NYJ,KC,AWAY,6700,15.71,16.14,14.33,7.40,-0.43,+8.31,+8.74,8.31,8.74,true,2.34,1.10,False
+10,Wk 10 (London CIN@ATL; Friday stale forecast; estimated salaries),Sunday 09:30 ET,135859-88797,Michael Penix Jr.,QB,ATL,CIN,HOME,6900,15.34,14.63,16.57,14.48,+0.71,+0.86,+0.15,0.86,0.15,false,2.22,2.10,False
+10,Wk 10 (Sun Main; Friday stale forecast 20261106-093450),Sunday 13:00 ET,136184-169410,Quinshon Judkins,RB,CLE,NO,AWAY,6700,14.6,10.87,11.53,5.00,+3.73,+9.60,+5.87,9.60,5.87,false,2.18,0.75,False
+10,Wk 10 (Sun Main; Friday stale forecast 20261106-093450),Sunday 13:00 ET,136184-87260,Isaiah Likely,TE,NYG,PHI,AWAY,5400,13.71,13.14,9.32,13.80,+0.57,-0.09,-0.66,0.09,0.66,true,2.54,2.56,True
+10,Wk 10 (Sun Main; Friday stale forecast 20261106-093450),Sunday 13:00 ET,136184-25079,Stefon Diggs,WR,WAS,LAR,HOME,6300,13.36,11.45,11.21,6.60,+1.91,+6.76,+4.85,6.76,4.85,false,2.12,1.05,True
+10,Wk 10 (Sun Main; Friday stale forecast 20261106-093450),Sunday 13:00 ET,136184-110974,Malik Washington,WR,MIA,DET,HOME,5700,12.29,8.03,10.1,3.10,+4.26,+9.19,+4.93,9.19,4.93,false,2.16,0.54,True
+10,Wk 10 (Sun Main; Friday stale forecast 20261106-093450),Sunday 13:00 ET,136184-152575,J.J. McCarthy,QB,NYG,PHI,AWAY,6800,12.28,6.93,12.65,7.28,+5.35,+5.00,-0.35,5.00,0.35,false,1.81,1.07,False
+10,Wk 10 (Sun Main; Friday stale forecast 20261106-093450),Sunday 13:00 ET,136184-103064,Breece Hall,RB,NYJ,KC,AWAY,7000,11.93,13.5,10.21,10.20,-1.57,+1.73,+3.30,1.73,3.30,true,1.70,1.46,False
+10,Wk 10 (Sun Main; Friday stale forecast 20261106-093450),Sunday 13:00 ET,136184-111311,Rashee Rice,WR,KC,NYJ,HOME,7200,11.91,11.57,13.97,7.40,+0.34,+4.51,+4.17,4.51,4.17,false,1.65,1.03,False
+10,Wk 10 (Sun Main; Friday stale forecast 20261106-093450),Sunday 13:00 ET,136184-29253,Keenan Allen,WR,IND,DAL,HOME,5900,11.57,8.07,9.65,4.60,+3.50,+6.97,+3.47,6.97,3.47,false,1.96,0.78,False
+10,Wk 10 (Sun Main; Friday stale forecast 20261106-093450),Sunday 13:00 ET,136184-201547,Jalen Coker,WR,CAR,DEN,HOME,5800,11.25,11.48,9.41,4.60,-0.23,+6.65,+6.88,6.65,6.88,true,1.94,0.79,False
+10,Wk 10 (Sun Main; Friday stale forecast 20261106-093450),Sunday 13:00 ET,136184-90573,Jaylen Waddle,WR,DEN,CAR,AWAY,6000,11.08,8.41,9.6,2.70,+2.67,+8.38,+5.71,8.38,5.71,false,1.85,0.45,False
+10,Wk 10 (Sun Main; Friday stale forecast 20261106-093450),Sunday 13:00 ET,136184-167110,Denzel Boston,WR,CLE,NO,AWAY,5500,10.44,9.24,9.8,12.80,+1.20,-2.36,-3.56,2.36,3.56,true,1.90,2.33,False
+10,Wk 10 (Sun Main; Friday stale forecast 20261106-093450),Sunday 13:00 ET,136184-172699,Harold Fannin Jr.,TE,CLE,NO,AWAY,5600,10.38,9.45,8.33,11.20,+0.93,-0.82,-1.75,0.82,1.75,true,1.85,2.00,False
+10,Wk 10 (Sun Main; Friday stale forecast 20261106-093450),Sunday 13:00 ET,136184-33076,Travis Kelce,TE,KC,NYJ,HOME,5200,10.29,10.07,10.18,15.30,+0.22,-5.01,-5.23,5.01,5.23,true,1.98,2.94,False
+10,Wk 10 (Sun Main; Friday stale forecast 20261106-093450),Sunday 13:00 ET,136184-166112,Ollie Gordon II,RB,MIA,DET,HOME,6200,10.27,12.53,10.1,6.90,-2.26,+3.37,+5.63,3.37,5.63,true,1.66,1.11,False
+10,Wk 10 (Sun Main; Friday stale forecast 20261106-093450),Sunday 13:00 ET,136184-42104,Alvin Kamara,RB,NO,CLE,HOME,5700,10.12,9.13,10.21,6.40,+0.99,+3.72,+2.73,3.72,2.73,false,1.78,1.12,False
+10,Wk 10 (Sun Main; Friday stale forecast 20261106-093450),Sunday 13:00 ET,136184-167622,Jonah Coleman,RB,DEN,CAR,AWAY,6300,10.11,9.9,9.88,16.80,+0.21,-6.69,-6.90,6.69,6.90,true,1.60,2.67,False
+10,Wk 10 (Sun Main; Friday stale forecast 20261106-093450),Sunday 13:00 ET,136184-111631,Jameson Williams,WR,DET,MIA,AWAY,6700,9.85,12.89,11.96,4.50,-3.04,+5.35,+8.39,5.35,8.39,true,1.47,0.67,False
+10,Wk 10 (Sun Main; Friday stale forecast 20261106-093450),Sunday 13:00 ET,136184-158412,Braelon Allen,RB,NYJ,KC,AWAY,6900,9.85,12.51,8.22,4.40,-2.66,+5.45,+8.11,5.45,8.11,true,1.43,0.64,False
+10,Wk 10 (Sun Main; Friday stale forecast 20261106-093450),Sunday 13:00 ET,136184-129305,Josh Downs,WR,IND,DAL,HOME,5800,9.78,6.84,8.66,3.90,+2.94,+5.88,+2.94,5.88,2.94,false,1.69,0.67,False
+10,Wk 10 (Sun Main; Friday stale forecast 20261106-093450),Sunday 13:00 ET,136184-87787,J.K. Dobbins,RB,DEN,CAR,AWAY,5500,9.65,6.91,9.51,2.70,+2.74,+6.95,+4.21,6.95,4.21,false,1.75,0.49,False
+10,Wk 10 (Sun Main; Friday stale forecast 20261106-093450),Sunday 13:00 ET,136184-105646,Sam LaPorta,TE,DET,MIA,AWAY,5700,9.46,10.06,9.39,5.20,-0.60,+4.26,+4.86,4.26,4.86,true,1.66,0.91,False
+10,Wk 10 (Sun Main; Friday stale forecast 20261106-093450),Sunday 13:00 ET,136184-64401,Saquon Barkley,RB,PHI,NYG,HOME,7200,9.42,7.83,8.22,8.20,+1.59,+1.22,-0.37,1.22,0.37,false,1.31,1.14,False
+10,Wk 10 (Sun Main; Friday stale forecast 20261106-093450),Sunday 13:00 ET,136184-12536,Kansas City Chiefs,DST,KC,NYJ,HOME,4200,9.31,6.14,9.46,11.00,+3.17,-1.69,-4.86,1.69,4.86,true,2.22,2.62,True
+10,Wk 10 (Sun Main; Friday stale forecast 20261106-093450),Sunday 13:00 ET,136184-183649,KC Concepcion Jr.,WR,CLE,NO,AWAY,5600,9.09,7.01,7.8,16.80,+2.08,-7.71,-9.79,7.71,9.79,true,1.62,3.00,False
+10,Wk 10 (Sun Main; Friday stale forecast 20261106-093450),Sunday 13:00 ET,136184-12531,Denver Broncos,DST,DEN,CAR,AWAY,4500,8.97,7.12,8.86,7.00,+1.85,+1.97,+0.12,1.97,0.12,false,1.99,1.56,False
+10,Wk 10 (Sun Main; Friday stale forecast 20261106-093450),Sunday 13:00 ET,136184-103511,Devaughn Vele,WR,NO,CLE,HOME,5900,8.86,9.9,9.79,2.70,-1.04,+6.16,+7.20,6.16,7.20,true,1.50,0.46,False
+10,Wk 10 (Sun Main; Friday stale forecast 20261106-093450),Sunday 13:00 ET,136184-137967,Blake Corum,RB,LAR,WAS,AWAY,6100,8.86,9.73,9.81,11.80,-0.87,-2.94,-2.07,2.94,2.07,false,1.45,1.93,False
+10,Wk 10 (Sun Main; Friday stale forecast 20261106-093450),Sunday 13:00 ET,136184-151789,Adonai Mitchell,WR,NYJ,KC,AWAY,5400,8.81,8.7,7.83,0.00,+0.11,+8.81,+8.70,8.81,8.70,false,1.63,0.00,False
+10,Wk 10 (Sun Main; Friday stale forecast 20261106-093450),Sunday 13:00 ET,136184-158974,Xavier Worthy,WR,KC,NYJ,HOME,5600,8.8,6.07,8.41,7.80,+2.73,+1.00,-1.73,1.00,1.73,true,1.57,1.39,False
+10,Wk 10 (Sun Main; Friday stale forecast 20261106-093450),Sunday 13:00 ET,136184-12538,Los Angeles Rams,DST,LAR,WAS,AWAY,3900,8.06,4.62,8.19,12.00,+3.44,-3.94,-7.38,3.94,7.38,true,2.07,3.08,False
+10,Wk 10 (Sun Main; Friday stale forecast 20261106-093450),Sunday 13:00 ET,136184-12543,New York Giants,DST,NYG,PHI,AWAY,4800,8.06,5.14,7.66,13.00,+2.92,-4.94,-7.86,4.94,7.86,true,1.68,2.71,False
+10,Wk 10 (Sun Main; Friday stale forecast 20261106-093450),Sunday 13:00 ET,136184-137902,Rachaad White,RB,WAS,LAR,HOME,5900,7.81,9.13,8.53,5.90,-1.32,+1.91,+3.23,1.91,3.23,true,1.32,1.00,False
+10,Wk 10 (Sun Main; Friday stale forecast 20261106-093450),Sunday 13:00 ET,136184-12532,Detroit Lions,DST,DET,MIA,AWAY,4900,7.75,5.14,7.58,9.00,+2.61,-1.25,-3.86,1.25,3.86,true,1.58,1.84,False
+10,Wk 10 (Sun Main; Friday stale forecast 20261106-093450),Sunday 13:00 ET,136184-172715,Omar Cooper Jr.,WR,NYJ,KC,AWAY,5500,7.32,16.27,8.84,9.80,-8.95,-2.48,+6.47,2.48,6.47,true,1.33,1.78,False
+10,Wk 10 (Sun Main; Friday stale forecast 20261106-093450),Sunday 13:00 ET,136184-57403,Courtland Sutton,WR,DEN,CAR,AWAY,6100,7.31,4.76,7.23,13.00,+2.55,-5.69,-8.24,5.69,8.24,true,1.20,2.13,False
+10,Wk 10 (Sun Main; Friday stale forecast 20261106-093450),Sunday 13:00 ET,136184-201233,Ryan Flournoy,WR,DAL,IND,AWAY,5400,7.24,7.69,8.2,6.30,-0.45,+0.94,+1.39,0.94,1.39,true,1.34,1.17,False
+10,Wk 10 (Sun Main; Friday stale forecast 20261106-093450),Sunday 13:00 ET,136184-47870,Tyler Higbee,TE,LAR,WAS,AWAY,4700,7.14,6.13,6.58,1.80,+1.01,+5.34,+4.33,5.34,4.33,false,1.52,0.38,False
+10,Wk 10 (London CIN@ATL; Friday stale forecast; estimated salaries),Sunday 09:30 ET,135859-12528,Cincinnati Bengals,DST,CIN,ATL,AWAY,4800,7.12,9.17,7.39,3.00,-2.05,+4.12,+6.17,4.12,6.17,true,1.48,0.62,False
+10,Wk 10 (Sun Main; Friday stale forecast 20261106-093450),Sunday 13:00 ET,136184-172647,Caleb Douglas,WR,MIA,DET,HOME,5200,7.09,8.22,8.68,10.00,-1.13,-2.91,-1.78,2.91,1.78,false,1.36,1.92,False
+10,Wk 10 (Sun Main; Friday stale forecast 20261106-093450),Sunday 13:00 ET,136184-83074,Dallas Goedert,TE,PHI,NYG,HOME,5300,7.08,7.29,5.94,7.50,-0.21,-0.42,-0.21,0.42,0.21,false,1.34,1.42,False
+10,Wk 10 (Sun Main; Friday stale forecast 20261106-093450),Sunday 13:00 ET,136184-12529,Cleveland Browns,DST,CLE,NO,AWAY,4000,7.0,5.88,6.9,9.00,+1.12,-2.00,-3.12,2.00,3.12,true,1.75,2.25,False
+10,Wk 10 (Sun Main; Friday stale forecast 20261106-093450),Sunday 13:00 ET,136184-12542,New Orleans Saints,DST,NO,CLE,HOME,3600,6.88,5.29,6.92,5.00,+1.59,+1.88,+0.29,1.88,0.29,false,1.91,1.39,False
+10,Wk 10 (Sun Main; Friday stale forecast 20261106-093450),Sunday 13:00 ET,136184-183380,Makai Lemon,WR,PHI,NYG,HOME,5800,6.54,5.76,6.14,9.10,+0.78,-2.56,-3.34,2.56,3.34,true,1.13,1.57,False
+10,Wk 10 (London CIN@ATL; Friday stale forecast; estimated salaries),Sunday 09:30 ET,135859-12525,Atlanta Falcons,DST,ATL,CIN,HOME,3700,6.24,6.14,6.6,1.00,+0.10,+5.24,+5.14,5.24,5.14,false,1.69,0.27,False
+10,Wk 10 (Sun Main; Friday stale forecast 20261106-093450),Sunday 13:00 ET,136184-12530,Dallas Cowboys,DST,DAL,IND,AWAY,4300,6.2,3.0,6.12,6.00,+3.20,+0.20,-3.00,0.20,3.00,true,1.44,1.40,False
+10,Wk 10 (London CIN@ATL; Friday stale forecast; estimated salaries),Sunday 09:30 ET,135859-56265,Mike Gesicki,TE,CIN,ATL,AWAY,5300,6.1,11.43,9.32,2.10,-5.33,+4.00,+9.33,4.00,9.33,true,1.15,0.40,False
+10,Wk 10 (Sun Main; Friday stale forecast 20261106-093450),Sunday 13:00 ET,136184-12552,Washington Commanders,DST,WAS,LAR,HOME,3100,6.06,5.71,6.48,6.00,+0.35,+0.06,-0.29,0.06,0.29,true,1.95,1.94,False
+10,Wk 10 (Sun Main; Friday stale forecast 20261106-093450),Sunday 13:00 ET,136184-91931,Greg Dulcich,TE,MIA,DET,HOME,4900,5.95,6.43,6.47,2.40,-0.48,+3.55,+4.03,3.55,4.03,true,1.21,0.49,False
+10,Wk 10 (Sun Main; Friday stale forecast 20261106-093450),Sunday 13:00 ET,136184-166323,Antonio Williams,WR,WAS,LAR,HOME,5500,5.85,6.2,6.63,4.00,-0.35,+1.85,+2.20,1.85,2.20,true,1.06,0.73,False
+10,Wk 10 (Sun Main; Friday stale forecast 20261106-093450),Sunday 13:00 ET,136184-64808,Juwan Johnson,TE,NO,CLE,HOME,5000,5.83,7.79,7.33,10.40,-1.96,-4.57,-2.61,4.57,2.61,false,1.17,2.08,False
+10,Wk 10 (Sun Main; Friday stale forecast 20261106-093450),Sunday 13:00 ET,136184-12544,New York Jets,DST,NYJ,KC,AWAY,3400,5.69,5.25,5.89,2.00,+0.44,+3.69,+3.25,3.69,3.25,false,1.67,0.59,False
+10,Wk 10 (Sun Main; Friday stale forecast 20261106-093450),Sunday 13:00 ET,136184-12545,Philadelphia Eagles,DST,PHI,NYG,HOME,4400,5.64,2.25,5.21,9.00,+3.39,-3.36,-6.75,3.36,6.75,true,1.28,2.05,False
+10,Wk 10 (Sun Main; Friday stale forecast 20261106-093450),Sunday 13:00 ET,136184-92413,Elijah Mitchell,RB,PHI,NYG,HOME,5800,5.39,5.3,5.7,4.10,+0.09,+1.29,+1.20,1.29,1.20,false,0.93,0.71,False
+10,Wk 10 (Sun Main; Friday stale forecast 20261106-093450),Sunday 13:00 ET,136184-88297,Chig Okonkwo,TE,WAS,LAR,HOME,4800,5.33,4.12,5.27,8.70,+1.21,-3.37,-4.58,3.37,4.58,true,1.11,1.81,False
+10,Wk 10 (Sun Main; Friday stale forecast 20261106-093450),Sunday 13:00 ET,136184-12535,Indianapolis Colts,DST,IND,DAL,HOME,3200,5.21,2.88,5.62,7.00,+2.33,-1.79,-4.12,1.79,4.12,true,1.63,2.19,False
+10,Wk 10 (Sun Main; Friday stale forecast 20261106-093450),Sunday 13:00 ET,136184-12539,Miami Dolphins,DST,MIA,DET,HOME,3000,5.21,2.43,5.53,6.00,+2.78,-0.79,-3.57,0.79,3.57,true,1.74,2.00,False
+10,Wk 10 (Sun Main; Friday stale forecast 20261106-093450),Sunday 13:00 ET,136184-12553,Carolina Panthers,DST,CAR,DEN,HOME,3500,5.13,5.29,5.62,3.00,-0.16,+2.13,+2.29,2.13,2.29,true,1.47,0.86,False
+10,Wk 10 (London CIN@ATL; Friday stale forecast; estimated salaries),Sunday 09:30 ET,135859-86080,Kyle Pitts Sr.,TE,ATL,CIN,HOME,5300,4.9,6.84,7.17,3.80,-1.94,+1.10,+3.04,1.10,3.04,true,0.92,0.72,False
+10,Wk 10 (Sun Main; Friday stale forecast 20261106-093450),Sunday 13:00 ET,136184-174486,Dylan Sampson,RB,CLE,NO,AWAY,5000,4.33,6.37,6.06,6.30,-2.04,-1.97,+0.07,1.97,0.07,false,0.87,1.26,False
+10,Wk 10 (Sun Main; Friday stale forecast 20261106-093450),Sunday 13:00 ET,136184-156740,Malachi Fields,WR,NYG,PHI,AWAY,5200,4.3,5.54,5.97,5.50,-1.24,-1.20,+0.04,1.20,0.04,false,0.83,1.06,False
+10,Wk 10 (London CIN@ATL; Friday stale forecast; estimated salaries),Sunday 09:30 ET,135859-86229,Jahan Dotson,WR,ATL,CIN,HOME,5500,4.12,6.59,6.66,2.60,-2.47,+1.52,+3.99,1.52,3.99,true,0.75,0.47,False
+10,Wk 10 (Sun Main; Friday stale forecast 20261106-093450),Sunday 13:00 ET,136184-25011,Darren Waller,TE,CAR,DEN,HOME,5200,4.04,6.63,5.28,19.00,-2.59,-14.96,-12.37,14.96,12.37,false,0.78,3.65,False
+10,Wk 10 (London CIN@ATL; Friday stale forecast; estimated salaries),Sunday 09:30 ET,135859-52451,Samaje Perine,RB,CIN,ATL,AWAY,5000,3.92,5.23,6.44,4.30,-1.31,-0.38,+0.93,0.38,0.93,true,0.78,0.86,False
+10,Wk 10 (Sun Main; Friday stale forecast 20261106-093450),Sunday 13:00 ET,136184-168054,Mason Taylor,TE,NYJ,KC,AWAY,4900,3.9,6.02,4.87,1.60,-2.12,+2.30,+4.42,2.30,4.42,true,0.80,0.33,False
+10,Wk 10 (Sun Main; Friday stale forecast 20261106-093450),Sunday 13:00 ET,136184-70603,Devin Singletary,RB,NYG,PHI,AWAY,5200,3.86,5.9,7.71,4.90,-2.04,-1.04,+1.00,1.04,1.00,false,0.74,0.94,False
+10,Wk 10 (Sun Main; Friday stale forecast 20261106-093450),Sunday 13:00 ET,136184-170825,Chris Bell,WR,MIA,DET,HOME,4800,3.64,3.31,5.05,0.00,+0.33,+3.64,+3.31,3.64,3.31,false,0.76,0.00,False
+10,Wk 10 (Sun Main; Friday stale forecast 20261106-093450),Sunday 13:00 ET,136184-90561,Jerry Jeudy,WR,CLE,NO,AWAY,5000,3.42,3.14,5.18,4.70,+0.28,-1.28,-1.56,1.28,1.56,true,0.68,0.94,False
+10,Wk 10 (Sun Main; Friday stale forecast 20261106-093450),Sunday 13:00 ET,136184-80001,Austin Ekeler,RB,WAS,LAR,HOME,5100,3.37,3.42,4.4,4.40,-0.05,-1.03,-0.98,1.03,0.98,false,0.66,0.86,False
+10,Wk 10 (London CIN@ATL; Friday stale forecast; estimated salaries),Sunday 09:30 ET,135859-241064,Dohnte Meyers,WR,CIN,ATL,AWAY,4600,3.34,3.79,4.69,7.30,-0.45,-3.96,-3.51,3.96,3.51,false,0.73,1.59,False
+10,Wk 10 (Sun Main; Friday stale forecast 20261106-093450),Sunday 13:00 ET,136184-102696,John Metchie III,WR,CAR,DEN,HOME,4500,3.28,3.9,4.4,5.00,-0.62,-1.72,-1.10,1.72,1.10,false,0.73,1.11,False
+10,Wk 10 (Sun Main; Friday stale forecast 20261106-093450),Sunday 13:00 ET,136184-183828,Kevin Coleman Jr.,WR,MIA,DET,HOME,4600,3.26,4.03,5.27,1.60,-0.77,+1.66,+2.43,1.66,2.43,true,0.71,0.35,False
+10,Wk 10 (Sun Main; Friday stale forecast 20261106-093450),Sunday 13:00 ET,136184-89588,Colby Parkinson,TE,LAR,WAS,AWAY,5000,3.2,3.88,4.54,3.30,-0.68,-0.10,+0.58,0.10,0.58,true,0.64,0.66,False
+10,Wk 10 (Sun Main; Friday stale forecast 20261106-093450),Sunday 13:00 ET,136184-69777,Darnell Mooney,WR,NYG,PHI,AWAY,4800,3.04,2.71,4.18,6.50,+0.33,-3.46,-3.79,3.46,3.79,true,0.63,1.35,False
+10,Wk 10 (Sun Main; Friday stale forecast 20261106-093450),Sunday 13:00 ET,136184-120093,Marvin Mims Jr.,WR,DEN,CAR,AWAY,4500,3.01,2.03,3.69,1.00,+0.98,+2.01,+1.03,2.01,1.03,false,0.67,0.22,False
+10,Wk 10 (Sun Main; Friday stale forecast 20261106-093450),Sunday 13:00 ET,136184-154000,Konata Mumpfield,WR,LAR,WAS,AWAY,4500,2.85,3.53,4.77,3.00,-0.68,-0.15,+0.53,0.15,0.53,true,0.63,0.67,False
+10,Wk 10 (Sun Main; Friday stale forecast 20261106-093450),Sunday 13:00 ET,136184-226859,Darius Cooper,WR,PHI,NYG,HOME,5200,2.84,5.88,4.91,3.50,-3.04,-0.66,+2.38,0.66,2.38,true,0.55,0.67,False
+10,Wk 10 (Sun Main; Friday stale forecast 20261106-093450),Sunday 13:00 ET,136184-41872,Evan Engram,TE,DEN,CAR,AWAY,4800,2.69,3.26,3.95,5.30,-0.57,-2.61,-2.04,2.61,2.04,false,0.56,1.10,False
+10,Wk 10 (Sun Main; Friday stale forecast 20261106-093450),Sunday 13:00 ET,136184-166860,Emmett Johnson,RB,KC,NYJ,HOME,5400,2.64,6.77,8.49,9.40,-4.13,-6.76,-2.63,6.76,2.63,false,0.49,1.74,False
+10,Wk 10 (Sun Main; Friday stale forecast 20261106-093450),Sunday 13:00 ET,136184-41806,Laquon Treadwell,WR,IND,DAL,HOME,4600,2.56,3.69,4.15,0.00,-1.13,+2.56,+3.69,2.56,3.69,true,0.56,0.00,False
+10,Wk 10 (Sun Main; Friday stale forecast 20261106-093450),Sunday 13:00 ET,136184-91101,Tommy Tremble,TE,CAR,DEN,HOME,4400,2.54,5.14,3.85,10.40,-2.60,-7.86,-5.26,7.86,5.26,false,0.58,2.36,False
+10,Wk 10 (Sun Main; Friday stale forecast 20261106-093450),Sunday 13:00 ET,136184-184873,Kenyon Sadiq,TE,NYJ,KC,AWAY,4800,2.47,5.05,3.47,6.90,-2.58,-4.43,-1.85,4.43,1.85,false,0.51,1.44,False
+10,Wk 10 (Sun Main; Friday stale forecast 20261106-093450),Sunday 13:00 ET,136184-151903,Troy Franklin,WR,DEN,CAR,AWAY,4600,2.42,1.49,3.66,4.60,+0.93,-2.18,-3.11,2.18,3.11,true,0.53,1.00,False
+10,Wk 10 (Sun Main; Friday stale forecast 20261106-093450),Sunday 13:00 ET,136184-183488,Isaac TeSlaa,WR,DET,MIA,AWAY,4600,2.22,4.12,5.1,1.40,-1.90,+0.82,+2.72,0.82,2.72,true,0.48,0.30,False
+10,Wk 10 (Sun Main; Friday stale forecast 20261106-093450),Sunday 13:00 ET,136184-105648,Tyler Goodson,RB,DAL,IND,AWAY,4600,2.15,2.58,3.35,7.70,-0.43,-5.55,-5.12,5.55,5.12,false,0.47,1.67,False
+10,Wk 10 (Sun Main; Friday stale forecast 20261106-093450),Sunday 13:00 ET,136184-169046,Cyrus Allen,WR,KC,NYJ,HOME,4700,1.94,1.5,3.93,0.00,+0.44,+1.94,+1.50,1.94,1.50,false,0.41,0.00,False
+10,Wk 10 (Sun Main; Friday stale forecast 20261106-093450),Sunday 13:00 ET,136184-92976,Tutu Atwell,WR,LAR,WAS,AWAY,4700,1.84,2.16,3.77,2.60,-0.32,-0.76,-0.44,0.76,0.44,false,0.39,0.55,False
+10,Wk 10 (Sun Main; Friday stale forecast 20261106-093450),Sunday 13:00 ET,136184-120085,Seth McGowan,RB,IND,DAL,HOME,5900,1.8,2.44,3.49,10.70,-0.64,-8.90,-8.26,8.90,8.26,false,0.31,1.81,False
+10,Wk 10 (Sun Main; Friday stale forecast 20261106-093450),Sunday 13:00 ET,136184-208430,Bryce Lance,WR,NO,CLE,HOME,4600,1.77,2.61,3.82,0.00,-0.84,+1.77,+2.61,1.77,2.61,true,0.38,0.00,False
+10,Wk 10 (Sun Main; Friday stale forecast 20261106-093450),Sunday 13:00 ET,136184-89680,Jake Ferguson,TE,DAL,IND,AWAY,5300,1.7,5.14,6.15,9.10,-3.44,-7.40,-3.96,7.40,3.96,false,0.32,1.72,False
+10,Wk 10 (Sun Main; Friday stale forecast 20261106-093450),Sunday 13:00 ET,136184-93143,Noah Gray,TE,KC,NYJ,HOME,4400,1.67,4.33,4.45,1.60,-2.66,+0.07,+2.73,0.07,2.73,true,0.38,0.36,False
+10,Wk 10 (London CIN@ATL; Friday stale forecast; estimated salaries),Sunday 09:30 ET,135859-64496,Olamide Zaccheaus,WR,ATL,CIN,HOME,5000,1.32,0.66,2.79,1.00,+0.66,+0.32,-0.34,0.32,0.34,true,0.26,0.20,False
+10,Wk 10 (Sun Main; Friday stale forecast 20261106-093450),Sunday 13:00 ET,136184-152607,Deion Burks,WR,IND,DAL,HOME,4300,1.29,1.51,2.86,0.50,-0.22,+0.79,+1.01,0.79,1.01,true,0.30,0.12,False
+10,Wk 10 (Sun Main; Friday stale forecast 20261106-093450),Sunday 13:00 ET,136184-71705,Noah Fant,TE,NO,CLE,HOME,4700,1.27,5.32,4.48,1.70,-4.05,-0.43,+3.62,0.43,3.62,true,0.27,0.36,False
+10,Wk 10 (Sun Main; Friday stale forecast 20261106-093450),Sunday 13:00 ET,136184-173626,Nate Adkins,TE,DEN,CAR,AWAY,4100,1.16,5.2,3.88,0.00,-4.04,+1.16,+5.20,1.16,5.20,true,0.28,0.00,False
+10,Wk 10 (London CIN@ATL; Friday stale forecast; estimated salaries),Sunday 09:30 ET,135859-72412,Khalil Herbert,RB,ATL,CIN,HOME,4400,1.07,2.65,3.67,1.90,-1.58,-0.83,+0.75,0.83,0.75,false,0.24,0.43,False
+10,Wk 10 (Sun Main; Friday stale forecast 20261106-093450),Sunday 13:00 ET,136184-168076,Sione Vaki,RB,DET,MIA,AWAY,4800,1.05,2.9,3.39,3.10,-1.85,-2.05,-0.20,2.05,0.20,false,0.22,0.65,False
+10,Wk 10 (London CIN@ATL; Friday stale forecast; estimated salaries),Sunday 09:30 ET,135859-175154,Jack Endries,TE,CIN,ATL,AWAY,4100,0.98,6.6,3.39,0.90,-5.62,+0.08,+5.70,0.08,5.70,true,0.24,0.22,False
+10,Wk 10 (Sun Main; Friday stale forecast 20261106-093450),Sunday 13:00 ET,136184-88575,Elijah Moore,WR,PHI,NYG,HOME,4400,0.97,1.17,1.95,0.20,-0.20,+0.77,+0.97,0.77,0.97,true,0.22,0.05,False
+10,Wk 10 (Sun Main; Friday stale forecast 20261106-093450),Sunday 13:00 ET,136184-85842,Brevyn Spann-Ford,TE,DAL,IND,AWAY,4700,0.95,2.19,2.62,3.00,-1.24,-2.05,-0.81,2.05,0.81,false,0.20,0.64,False
+10,Wk 10 (Sun Main; Friday stale forecast 20261106-093450),Sunday 13:00 ET,136184-151777,Eli Stowers,TE,PHI,NYG,HOME,4700,0.91,3.4,1.89,0.00,-2.49,+0.91,+3.40,0.91,3.40,true,0.19,0.00,False
+10,Wk 10 (Sun Main; Friday stale forecast 20261106-093450),Sunday 13:00 ET,136184-154124,Mitchell Evans,TE,CAR,DEN,HOME,4300,0.89,2.54,2.27,3.00,-1.65,-2.11,-0.46,2.11,0.46,false,0.21,0.70,False
+10,Wk 10 (Sun Main; Friday stale forecast 20261106-093450),Sunday 13:00 ET,136184-112041,Isaiah Williams,WR,NYJ,KC,AWAY,4700,0.88,4.62,4.15,0.40,-3.74,+0.48,+4.22,0.48,4.22,true,0.19,0.09,False
+10,Wk 10 (Sun Main; Friday stale forecast 20261106-093450),Sunday 13:00 ET,136184-174245,Isaiah Bond,WR,CLE,NO,AWAY,4400,0.88,2.22,2.96,0.00,-1.34,+0.88,+2.22,0.88,2.22,true,0.20,0.00,False
+10,Wk 10 (Sun Main; Friday stale forecast 20261106-093450),Sunday 13:00 ET,136184-104012,Ashton Dulin,WR,IND,DAL,HOME,4200,0.87,0.94,1.99,12.30,-0.07,-11.43,-11.36,11.43,11.36,false,0.21,2.93,False
+10,Wk 10 (Sun Main; Friday stale forecast 20261106-093450),Sunday 13:00 ET,136184-130270,Adam Trautman,TE,DEN,CAR,AWAY,4300,0.82,1.2,2.29,2.50,-0.38,-1.68,-1.30,1.68,1.30,false,0.19,0.58,False
+10,Wk 10 (Sun Main; Friday stale forecast 20261106-093450),Sunday 13:00 ET,136184-176467,Jalen Royals,WR,KC,NYJ,HOME,4800,0.79,1.93,3.23,2.80,-1.14,-2.01,-0.87,2.01,0.87,false,0.16,0.58,False
+10,Wk 10 (Sun Main; Friday stale forecast 20261106-093450),Sunday 13:00 ET,136184-166801,Jaydon Blue,RB,PHI,NYG,HOME,5000,0.79,1.4,1.89,0.00,-0.61,+0.79,+1.40,0.79,1.40,true,0.16,0.00,False
+10,Wk 10 (Sun Main; Friday stale forecast 20261106-093450),Sunday 13:00 ET,136184-89627,Brycen Tremayne,WR,CAR,DEN,HOME,4600,0.78,2.3,2.49,0.00,-1.52,+0.78,+2.30,0.78,2.30,true,0.17,0.00,False
+10,Wk 10 (Sun Main; Friday stale forecast 20261106-093450),Sunday 13:00 ET,136184-60451,Tyler Conklin,TE,DET,MIA,AWAY,4200,0.62,0.7,2.45,0.00,-0.08,+0.62,+0.70,0.62,0.70,true,0.15,0.00,False
+10,Wk 10 (Sun Main; Friday stale forecast 20261106-093450),Sunday 13:00 ET,136184-174148,Carlos Washington Jr.,RB,MIA,DET,HOME,4000,0.57,5.8,2.61,1.30,-5.23,-0.73,+4.50,0.73,4.50,true,0.14,0.33,False
+10,Wk 10 (Sun Main; Friday stale forecast 20261106-093450),Sunday 13:00 ET,136184-183290,Andrew Armstrong,WR,KC,NYJ,HOME,4000,0.53,0.87,3.06,0.00,-0.34,+0.53,+0.87,0.53,0.87,true,0.13,0.00,False
+10,Wk 10 (London CIN@ATL; Friday stale forecast; estimated salaries),Sunday 09:30 ET,135859-71351,Charlie Woerner,TE,ATL,CIN,HOME,4000,0.52,0.7,1.66,6.60,-0.18,-6.08,-5.90,6.08,5.90,false,0.13,1.65,False
+10,Wk 10 (Sun Main; Friday stale forecast 20261106-093450),Sunday 13:00 ET,136184-160213,Isaiah Davis,RB,NYJ,KC,AWAY,5100,0.5,1.96,1.85,0.00,-1.46,+0.50,+1.96,0.50,1.96,true,0.10,0.00,False
+10,Wk 10 (Sun Main; Friday stale forecast 20261106-093450),Sunday 13:00 ET,136184-157490,Will Kacmarek,TE,MIA,DET,HOME,4200,0.43,0.65,1.72,1.10,-0.22,-0.67,-0.45,0.67,0.45,false,0.10,0.26,False
+10,Wk 10 (Sun Main; Friday stale forecast 20261106-093450),Sunday 13:00 ET,136184-64581,Van Jefferson,WR,WAS,LAR,HOME,4200,0.4,6.09,1.94,14.30,-5.69,-13.90,-8.21,13.90,8.21,false,0.10,3.40,False
+10,Wk 10 (Sun Main; Friday stale forecast 20261106-093450),Sunday 13:00 ET,136184-173241,Barion Brown,WR,NO,CLE,HOME,4800,0.4,1.14,1.98,3.70,-0.74,-3.30,-2.56,3.30,2.56,false,0.08,0.77,False
+10,Wk 10 (Sun Main; Friday stale forecast 20261106-093450),Sunday 13:00 ET,136184-112192,Jonathan Mingo,WR,DAL,IND,AWAY,4100,0.36,0.64,1.37,2.80,-0.28,-2.44,-2.16,2.44,2.16,false,0.09,0.68,False
+10,Wk 10 (Sun Main; Friday stale forecast 20261106-093450),Sunday 13:00 ET,136184-172646,Trevor Etienne,RB,CAR,DEN,HOME,4700,0.36,1.17,1.24,0.70,-0.81,-0.34,+0.47,0.34,0.47,true,0.08,0.15,False
+10,Wk 10 (Sun Main; Friday stale forecast 20261106-093450),Sunday 13:00 ET,136184-166095,Cody Schrader,RB,DEN,CAR,AWAY,4000,0.33,5.8,1.18,0.00,-5.47,+0.33,+5.80,0.33,5.80,true,0.08,0.00,False
+10,Wk 10 (Sun Main; Friday stale forecast 20261106-093450),Sunday 13:00 ET,136184-103195,Jordan Whittington,WR,LAR,WAS,AWAY,4200,0.33,0.37,1.68,0.00,-0.04,+0.33,+0.37,0.33,0.37,true,0.08,0.00,False
+10,Wk 10 (Sun Main; Friday stale forecast 20261106-093450),Sunday 13:00 ET,136184-65231,Adam Prentice,RB,DEN,CAR,AWAY,4100,0.31,0.36,1.18,0.00,-0.05,+0.31,+0.36,0.31,0.36,true,0.08,0.00,False
+10,Wk 10 (Sun Main; Friday stale forecast 20261106-093450),Sunday 13:00 ET,136184-167950,Oscar Delp,TE,NO,CLE,HOME,4200,0.3,0.67,1.6,0.00,-0.37,+0.30,+0.67,0.30,0.67,true,0.07,0.00,False
+10,Wk 10 (Sun Main; Friday stale forecast 20261106-093450),Sunday 13:00 ET,136184-87634,Blake Whiteheart,TE,CLE,NO,AWAY,4200,0.29,2.13,1.95,0.00,-1.84,+0.29,+2.13,0.29,2.13,true,0.07,0.00,False
+10,Wk 10 (Sun Main; Friday stale forecast 20261106-093450),Sunday 13:00 ET,136184-166896,Kaytron Allen,RB,MIA,DET,HOME,4300,0.23,0.82,1.02,5.00,-0.59,-4.77,-4.18,4.77,4.18,false,0.05,1.16,False
+10,Wk 10 (Sun Main; Friday stale forecast 20261106-093450),Sunday 13:00 ET,136184-79987,David Moore,WR,CAR,DEN,HOME,4100,0.2,0.24,0.56,0.00,-0.04,+0.20,+0.24,0.20,0.24,true,0.05,0.00,False
+10,Wk 10 (Sun Main; Friday stale forecast 20261106-093450),Sunday 13:00 ET,136184-88752,Charlie Jones,WR,NYG,PHI,AWAY,4000,0.19,1.4,0.91,-2.00,-1.21,+2.19,+3.40,2.19,3.40,true,0.05,-0.50,False
+10,Wk 10 (London CIN@ATL; Friday stale forecast; estimated salaries),Sunday 09:30 ET,135859-96254,Nick Muse,TE,ATL,CIN,HOME,4100,0.18,1.2,1.54,0.00,-1.02,+0.18,+1.20,0.18,1.20,true,0.04,0.00,False
+10,Wk 10 (London CIN@ATL; Friday stale forecast; estimated salaries),Sunday 09:30 ET,135859-147168,Chris Blair,WR,ATL,CIN,HOME,4300,0.17,0.52,1.47,0.00,-0.35,+0.17,+0.52,0.17,0.52,true,0.04,0.00,False
+10,Wk 10 (Sun Main; Friday stale forecast 20261106-093450),Sunday 13:00 ET,136184-87515,Tylan Wallace,WR,CLE,NO,AWAY,4200,0.17,0.83,1.19,1.10,-0.66,-0.93,-0.27,0.93,0.27,false,0.04,0.26,False
+10,Wk 10 (Sun Main; Friday stale forecast 20261106-093450),Sunday 13:00 ET,136184-152603,Anthony Tyus III,RB,CAR,DEN,HOME,4000,0.14,2.08,1.14,0.00,-1.94,+0.14,+2.08,0.14,2.08,true,0.04,0.00,False
+10,Wk 10 (Sun Main; Friday stale forecast 20261106-093450),Sunday 13:00 ET,136184-152526,Jake Briningstool,TE,KC,NYJ,HOME,4200,0.14,0.62,1.27,0.80,-0.48,-0.66,-0.18,0.66,0.18,false,0.03,0.19,False
+10,Wk 10 (Sun Main; Friday stale forecast 20261106-093450),Sunday 13:00 ET,136184-103547,Luke McCaffrey,WR,WAS,LAR,HOME,4500,0.12,6.52,0.68,1.10,-6.40,-0.98,+5.42,0.98,5.42,true,0.03,0.24,False
+10,Wk 10 (Sun Main; Friday stale forecast 20261106-093450),Sunday 13:00 ET,136184-86800,Colson Yankoff,TE,WAS,LAR,HOME,4200,0.08,0.37,0.53,1.10,-0.29,-1.02,-0.73,1.02,0.73,false,0.02,0.26,False
+10,Wk 10 (Sun Main; Friday stale forecast 20261106-093450),Sunday 13:00 ET,136184-86687,Hollywood Brown,WR,PHI,NYG,HOME,5000,0.07,1.98,0.32,2.10,-1.91,-2.03,-0.12,2.03,0.12,false,0.01,0.42,False
+10,Wk 10 (Sun Main; Friday stale forecast 20261106-093450),Sunday 13:00 ET,136184-166977,Jordan Hudson,WR,DAL,IND,AWAY,4000,0.07,5.8,0.41,0.00,-5.73,+0.07,+5.80,0.07,5.80,true,0.02,0.00,False
+10,Wk 10 (Sun Main; Friday stale forecast 20261106-093450),Sunday 13:00 ET,136184-166118,Jaydn Ott,RB,KC,NYJ,HOME,4000,0.07,5.8,0.5,1.90,-5.73,-1.83,+3.90,1.83,3.90,true,0.02,0.47,False
+10,Wk 10 (Sun Main; Friday stale forecast 20261106-093450),Sunday 13:00 ET,136184-139114,Jabari Small,RB,DET,MIA,AWAY,4000,0.06,5.8,0.54,0.00,-5.74,+0.06,+5.80,0.06,5.80,true,0.01,0.00,False
+10,Wk 10 (Sun Main; Friday stale forecast 20261106-093450),Sunday 13:00 ET,136184-157150,Audric Estime,RB,NO,CLE,HOME,4200,0.06,7.9,0.45,14.20,-7.84,-14.14,-6.30,14.14,6.30,false,0.01,3.38,False
+10,Wk 10 (Sun Main; Friday stale forecast 20261106-093450),Sunday 13:00 ET,136184-170769,Camden Brown,WR,DAL,IND,AWAY,4000,0.06,5.8,0.41,0.00,-5.74,+0.06,+5.80,0.06,5.80,true,0.01,0.00,False
+10,Wk 10 (London CIN@ATL; Friday stale forecast; estimated salaries),Sunday 09:30 ET,135859-114591,William Wagner,TE,CIN,ATL,AWAY,4100,0.05,5.94,0.25,0.00,-5.89,+0.05,+5.94,0.05,5.94,true,0.01,0.00,False
+10,Wk 10 (Sun Main; Friday stale forecast 20261106-093450),Sunday 13:00 ET,136184-157154,Jaden Bradley,WR,WAS,LAR,HOME,4000,0.05,5.8,0.34,1.70,-5.75,-1.65,+4.10,1.65,4.10,true,0.01,0.42,False
+10,Wk 10 (Sun Main; Friday stale forecast 20261106-093450),Sunday 13:00 ET,136184-152333,Malik McClain,WR,NYJ,KC,AWAY,4000,0.05,5.8,0.34,0.00,-5.75,+0.05,+5.80,0.05,5.80,true,0.01,0.00,False
+10,Wk 10 (Sun Main; Friday stale forecast 20261106-093450),Sunday 13:00 ET,136184-128913,Malachi Corley,WR,CLE,NO,AWAY,4000,0.04,5.8,0.37,0.00,-5.76,+0.04,+5.80,0.04,5.80,true,0.01,0.00,False
+10,Wk 10 (Sun Main; Friday stale forecast 20261106-093450),Sunday 13:00 ET,136184-157579,Rocco Underwood,TE,PHI,NYG,HOME,4000,0.04,5.8,0.2,0.00,-5.76,+0.04,+5.80,0.04,5.80,true,0.01,0.00,False
+10,Wk 10 (Sun Main; Friday stale forecast 20261106-093450),Sunday 13:00 ET,136184-86682,Grant Calcaterra,TE,PHI,NYG,HOME,4400,0.04,2.01,0.2,0.00,-1.97,+0.04,+2.01,0.04,2.01,true,0.01,0.00,False
+10,Wk 10 (Sun Main; Friday stale forecast 20261106-093450),Sunday 13:00 ET,136184-91578,Zamir White,RB,NO,CLE,HOME,4100,0.04,1.52,0.3,0.50,-1.48,-0.46,+1.02,0.46,1.02,true,0.01,0.12,False
+10,Wk 10 (London CIN@ATL; Friday stale forecast; estimated salaries),Sunday 09:30 ET,135859-137122,Tahj Brooks,RB,CIN,ATL,AWAY,4000,0.03,0.12,0.24,0.00,-0.09,+0.03,+0.12,0.03,0.12,true,0.01,0.00,False
+10,Wk 10 (Sun Main; Friday stale forecast 20261106-093450),Sunday 13:00 ET,136184-139094,Jalin Hyatt,WR,NYG,PHI,AWAY,4000,0.03,0.86,0.2,0.00,-0.83,+0.03,+0.86,0.03,0.86,true,0.01,0.00,False
+10,Wk 10 (Sun Main; Friday stale forecast 20261106-093450),Sunday 13:00 ET,136184-54426,Andrew Beck,TE,NYJ,KC,AWAY,4000,0.03,5.8,0.2,0.00,-5.77,+0.03,+5.80,0.03,5.80,true,0.01,0.00,False
+10,Wk 10 (Sun Main; Friday stale forecast 20261106-093450),Sunday 13:00 ET,136184-102882,Anthony Gould,WR,IND,DAL,HOME,4200,0.03,6.09,0.2,2.10,-6.06,-2.07,+3.99,2.07,3.99,true,0.01,0.50,False
+10,Wk 10 (Sun Main; Friday stale forecast 20261106-093450),Sunday 13:00 ET,136184-91481,Nikko Remigio,WR,KC,NYJ,HOME,4400,0.02,6.38,0.2,0.00,-6.36,+0.02,+6.38,0.02,6.38,true,0.00,0.00,False
+10,Wk 10 (Sun Main; Friday stale forecast 20261106-093450),Sunday 13:00 ET,136184-73247,Kene Nwangwu,RB,NYJ,KC,AWAY,4000,0.02,5.8,0.2,0.00,-5.78,+0.02,+5.80,0.02,5.80,true,0.01,0.00,False
+10,Wk 10 (Sun Main; Friday stale forecast 20261106-093450),Sunday 13:00 ET,136184-93845,Tay Martin,WR,DET,MIA,AWAY,4100,0.01,5.94,0.2,1.60,-5.93,-1.59,+4.34,1.59,4.34,true,0.00,0.39,False
+10,Wk 10 (Sun Main; Friday stale forecast 20261106-093450),Sunday 13:00 ET,136184-62628,DeAndre Carter,WR,DET,MIA,AWAY,4000,0.01,5.8,0.2,1.00,-5.79,-0.99,+4.80,0.99,4.80,true,0.00,0.25,False
+10,Wk 10 (Sun Main; Friday stale forecast 20261106-093450),Sunday 13:00 ET,136184-24849,Jameis Winston,QB,NYG,PHI,AWAY,6300,0.0,12.21,14.37,7.94,-12.21,-7.94,+4.27,7.94,4.27,false,0.00,1.26,False
+10,Wk 10 (Sun Main; Friday stale forecast 20261106-093450),Sunday 13:00 ET,136184-91390,Joe Milton III,QB,PHI,NYG,HOME,6300,0.0,3.08,5.92,13.16,-3.08,-13.16,-10.08,13.16,10.08,false,0.00,2.09,False
+10,Wk 10 (Sun Main; Friday stale forecast 20261106-093450),Sunday 13:00 ET,136184-184183,Shedeur Sanders,QB,CLE,NO,AWAY,6200,0.0,0.04,0.49,22.68,-0.04,-22.68,-22.64,22.68,22.64,false,0.00,3.66,False
+10,Wk 10 (Sun Main; Friday stale forecast 20261106-093450),Sunday 13:00 ET,136184-91591,Justin Fields,QB,KC,NYJ,HOME,6000,0.0,0.0,1.06,-2.10,+0.00,+2.10,+2.10,2.10,2.10,true,0.00,-0.35,False
+10,Wk 10 (Sun Main; Friday stale forecast 20261106-093450),Sunday 13:00 ET,136184-155551,Pat Bryant,WR,DEN,CAR,AWAY,4800,0.0,0.0,5.93,13.60,+0.00,-13.60,-13.60,13.60,13.60,true,0.00,2.83,False
+10,Wk 10 (Sun Main; Friday stale forecast 20261106-093450),Sunday 13:00 ET,136184-137530,Tyler Warren,TE,IND,DAL,HOME,5400,0.0,0.0,9.34,6.40,+0.00,-6.40,-6.40,6.40,6.40,true,0.00,1.19,False
+10,Wk 10 (Sun Main; Friday stale forecast 20261106-093450),Sunday 13:00 ET,136184-172675,Jordyn Tyson,WR,NO,CLE,HOME,4700,0.0,0.0,0.39,3.00,+0.00,-3.00,-3.00,3.00,3.00,true,0.00,0.64,False
+10,Wk 10 (Sun Main; Friday stale forecast 20261106-093450),Sunday 13:00 ET,136184-91971,Ronnie Rivers,RB,LAR,WAS,AWAY,4200,0.0,0.0,1.38,0.00,+0.00,+0.00,+0.00,0.00,0.00,true,0.00,0.00,False
+10,Wk 10 (Sun Afternoon; Friday stale forecast 20261106-093450),Sunday 16:25 ET,136184-85607,Brock Purdy,QB,SF,LV,HOME,8500,25.94,21.43,26.35,26.28,+4.51,-0.34,-4.85,0.34,4.85,true,3.05,3.09,False
+10,Wk 10 (Sun Afternoon; Friday stale forecast 20261106-093450),Sunday 16:25 ET,136184-152316,Drake Maye,QB,NE,GB,HOME,8200,25.11,21.86,21.55,21.26,+3.25,+3.85,+0.60,3.85,0.60,false,3.06,2.59,False
+10,Wk 10 (Sun Afternoon; Friday stale forecast 20261106-093450),Sunday 16:25 ET,136184-129458,Jaxon Smith-Njigba,WR,SEA,ARI,HOME,9500,24.53,26.12,21.19,8.60,-1.59,+15.93,+17.52,15.93,17.52,true,2.58,0.91,False
+10,Wk 10 (Sun Afternoon; Friday stale forecast 20261106-093450),Sunday 16:25 ET,136184-55050,Christian McCaffrey,RB,SF,LV,HOME,8700,22.99,18.14,23.34,21.70,+4.85,+1.29,-3.56,1.29,3.56,true,2.64,2.49,False
+10,Wk 10 (Sun Afternoon; Friday stale forecast 20261106-093450),Sunday 16:25 ET,136184-151794,Brock Bowers,TE,LV,SF,AWAY,8000,22.02,18.2,14.68,21.80,+3.82,+0.22,-3.60,0.22,3.60,true,2.75,2.73,False
+10,Wk 10 (Sun Afternoon; Friday stale forecast 20261106-093450),Sunday 16:25 ET,136184-91750,Trey McBride,TE,ARI,SEA,AWAY,7700,21.81,15.05,12.24,8.90,+6.76,+12.91,+6.15,12.91,6.15,false,2.83,1.16,False
+10,Wk 10 (Sun Afternoon; Friday stale forecast 20261106-093450),Sunday 16:05 ET,136184-129471,C.J. Stroud,QB,HOU,LAC,AWAY,7600,20.35,19.81,18.84,39.36,+0.54,-19.01,-19.55,19.01,19.55,true,2.68,5.18,False
+10,Wk 10 (Sun Afternoon; Friday stale forecast 20261106-093450),Sunday 16:25 ET,136184-166916,Matthew Golden,WR,GB,NE,AWAY,6800,18.1,14.88,11.11,30.40,+3.22,-12.30,-15.52,12.30,15.52,true,2.66,4.47,False
+10,Wk 10 (Sun Afternoon; Friday stale forecast 20261106-093450),Sunday 16:25 ET,136184-22038,Kirk Cousins,QB,LV,SF,AWAY,6900,17.89,21.33,17.85,15.64,-3.44,+2.25,+5.69,2.25,5.69,true,2.59,2.27,False
+10,Wk 10 (Sun Afternoon; Friday stale forecast 20261106-093450),Sunday 16:05 ET,136184-69189,Justin Herbert,QB,LAC,HOU,HOME,6700,16.67,11.46,12.15,11.42,+5.21,+5.25,+0.04,5.25,0.04,false,2.49,1.70,False
+10,Wk 10 (Sun Afternoon; Friday stale forecast 20261106-093450),Sunday 16:25 ET,136184-69017,Jordan Love,QB,GB,NE,AWAY,7800,16.34,20.48,16.62,39.18,-4.14,-22.84,-18.70,22.84,18.70,false,2.09,5.02,False
+10,Wk 10 (Sun Afternoon; Friday stale forecast 20261106-093450),Sunday 16:25 ET,136184-89612,Michael Wilson,WR,ARI,SEA,AWAY,6500,15.92,11.15,10.45,9.00,+4.77,+6.92,+2.15,6.92,2.15,false,2.45,1.38,True
+10,Wk 10 (Sun Afternoon; Friday stale forecast 20261106-093450),Sunday 16:25 ET,136184-39793,George Kittle,TE,SF,LV,HOME,6700,15.77,12.5,13.39,7.80,+3.27,+7.97,+4.70,7.97,4.70,false,2.35,1.16,False
+10,Wk 10 (Sun Afternoon; Friday stale forecast 20261106-093450),Sunday 16:25 ET,136184-72731,Josh Jacobs,RB,GB,NE,AWAY,7100,14.71,12.6,11.42,0.50,+2.11,+14.21,+12.10,14.21,12.10,false,2.07,0.07,False
+10,Wk 10 (Sun Afternoon; Friday stale forecast 20261106-093450),Sunday 16:25 ET,136184-167031,Ashton Jeanty,RB,LV,SF,AWAY,6800,14.66,14.6,11.71,4.50,+0.06,+10.16,+10.10,10.16,10.10,false,2.16,0.66,False
+10,Wk 10 (Sun Afternoon; Friday stale forecast 20261106-093450),Sunday 16:05 ET,136184-91419,Nico Collins,WR,HOU,LAC,AWAY,7700,14.29,11.18,13.12,13.50,+3.11,+0.79,-2.32,0.79,2.32,true,1.86,1.75,False
+10,Wk 10 (Sun Afternoon; Friday stale forecast 20261106-093450),Sunday 16:25 ET,136184-111540,Rhamondre Stevenson,RB,NE,GB,HOME,6400,14.26,10.93,12.36,13.30,+3.33,+0.96,-2.37,0.96,2.37,true,2.23,2.08,True
+10,Wk 10 (Sun Afternoon; Friday stale forecast 20261106-093450),Sunday 16:25 ET,136184-169776,Christian Watson,WR,GB,NE,AWAY,7500,12.39,16.85,12.37,29.60,-4.46,-17.21,-12.75,17.21,12.75,false,1.65,3.95,False
+10,Wk 10 (Sun Afternoon; Friday stale forecast 20261106-093450),Sunday 16:05 ET,136184-138774,Woody Marks,RB,HOU,LAC,AWAY,6500,12.24,7.93,10.52,7.90,+4.31,+4.34,+0.03,4.34,0.03,false,1.88,1.22,False
+10,Wk 10 (Sun Afternoon; Friday stale forecast 20261106-093450),Sunday 16:25 ET,136184-64051,Drew Lock,QB,SEA,ARI,HOME,6300,11.33,11.39,15.21,12.60,-0.06,-1.27,-1.21,1.27,1.21,false,1.80,2.00,False
+10,Wk 10 (Sun Afternoon; Friday stale forecast 20261106-093450),Sunday 16:25 ET,136184-12549,San Francisco 49ers,DST,SF,LV,HOME,4600,9.19,6.0,9.21,11.00,+3.19,-1.81,-5.00,1.81,5.00,true,2.00,2.39,False
+10,Wk 10 (Sun Afternoon; Friday stale forecast 20261106-093450),Sunday 16:05 ET,136184-12556,Houston Texans,DST,HOU,LAC,AWAY,5000,8.79,5.43,8.3,12.00,+3.36,-3.21,-6.57,3.21,6.57,true,1.76,2.40,False
+10,Wk 10 (Sun Afternoon; Friday stale forecast 20261106-093450),Sunday 16:25 ET,136184-103619,Tre Tucker,WR,LV,SF,AWAY,5700,8.59,11.41,9.58,7.50,-2.82,+1.09,+3.91,1.09,3.91,true,1.51,1.32,False
+10,Wk 10 (Sun Afternoon; Friday stale forecast 20261106-093450),Sunday 16:25 ET,136184-111876,DeMario Douglas,WR,NE,GB,HOME,5400,8.58,8.52,8.11,15.70,+0.06,-7.12,-7.18,7.12,7.18,true,1.59,2.91,False
+10,Wk 10 (Sun Afternoon; Friday stale forecast 20261106-093450),Sunday 16:05 ET,136184-174215,Omarion Hampton,RB,LAC,HOU,HOME,5600,8.46,8.1,7.58,6.00,+0.36,+2.46,+2.10,2.46,2.10,false,1.51,1.07,False
+10,Wk 10 (Sun Afternoon; Friday stale forecast 20261106-093450),Sunday 16:25 ET,136184-160303,Tucker Kraft,TE,GB,NE,AWAY,5500,8.39,8.88,6.9,1.40,-0.49,+6.99,+7.48,6.99,7.48,true,1.53,0.25,False
+10,Wk 10 (Sun Afternoon; Friday stale forecast 20261106-093450),Sunday 16:25 ET,136184-12550,Seattle Seahawks,DST,SEA,ARI,HOME,4700,8.16,7.38,8.03,10.00,+0.78,-1.84,-2.62,1.84,2.62,true,1.74,2.13,False
+10,Wk 10 (Sun Afternoon; Friday stale forecast 20261106-093450),Sunday 16:05 ET,136184-119788,Xavier Hutchinson,WR,HOU,LAC,AWAY,5300,8.15,6.27,7.28,10.40,+1.88,-2.25,-4.13,2.25,4.13,true,1.54,1.96,False
+10,Wk 10 (Sun Afternoon; Friday stale forecast 20261106-093450),Sunday 16:05 ET,136184-55042,Dalton Schultz,TE,HOU,LAC,AWAY,5100,7.13,7.39,6.99,5.20,-0.26,+1.93,+2.19,1.93,2.19,true,1.40,1.02,False
+10,Wk 10 (Sun Afternoon; Friday stale forecast 20261106-093450),Sunday 16:25 ET,136184-169381,Jadarian Price,RB,SEA,ARI,HOME,5800,6.85,4.18,7.17,9.80,+2.67,-2.95,-5.62,2.95,5.62,true,1.18,1.69,False
+10,Wk 10 (Sun Afternoon; Friday stale forecast 20261106-093450),Sunday 16:25 ET,136184-12533,Green Bay Packers,DST,GB,NE,AWAY,3800,6.67,7.0,6.58,12.00,-0.33,-5.33,-5.00,5.33,5.00,false,1.76,3.16,False
+10,Wk 10 (Sun Afternoon; Friday stale forecast 20261106-093450),Sunday 16:25 ET,136184-12541,New England Patriots,DST,NE,GB,HOME,4100,6.61,6.62,6.52,-1.00,-0.01,+7.61,+7.62,7.61,7.62,true,1.61,-0.24,False
+10,Wk 10 (Sun Afternoon; Friday stale forecast 20261106-093450),Sunday 16:25 ET,136184-90428,Tyler Allgeier,RB,ARI,SEA,AWAY,5800,6.4,9.57,6.63,5.60,-3.17,+0.80,+3.97,0.80,3.97,true,1.10,0.97,False
+10,Wk 10 (Sun Afternoon; Friday stale forecast 20261106-093450),Sunday 16:25 ET,136184-103376,Zach Charbonnet,RB,SEA,ARI,HOME,6600,6.13,4.4,9.45,9.10,+1.73,-2.97,-4.70,2.97,4.70,true,0.93,1.38,False
+10,Wk 10 (Sun Afternoon; Friday stale forecast 20261106-093450),Sunday 16:25 ET,136184-138998,Michael Mayer,TE,LV,SF,AWAY,4900,5.92,7.39,5.65,3.20,-1.47,+2.72,+4.19,2.72,4.19,true,1.21,0.65,False
+10,Wk 10 (Sun Afternoon; Friday stale forecast 20261106-093450),Sunday 16:05 ET,136184-120639,Quentin Johnston,WR,LAC,HOU,HOME,5100,5.78,4.42,5.74,12.80,+1.36,-7.02,-8.38,7.02,8.38,true,1.13,2.51,False
+10,Wk 10 (Sun Afternoon; Friday stale forecast 20261106-093450),Sunday 16:25 ET,136184-167881,Kaelon Black,RB,SF,LV,HOME,5600,5.52,4.17,7.47,7.00,+1.35,-1.48,-2.83,1.48,2.83,true,0.99,1.25,False
+10,Wk 10 (Sun Afternoon; Friday stale forecast 20261106-093450),Sunday 16:05 ET,136184-12548,Los Angeles Chargers,DST,LAC,HOU,HOME,3700,5.46,4.71,5.95,-1.00,+0.75,+6.46,+5.71,6.46,5.71,false,1.48,-0.27,False
+10,Wk 10 (Sun Afternoon; Friday stale forecast 20261106-093450),Sunday 16:25 ET,136184-134014,Jordan Watkins,WR,SF,LV,HOME,5600,5.18,5.6,8.73,16.60,-0.42,-11.42,-11.00,11.42,11.00,false,0.92,2.96,False
+10,Wk 10 (Sun Afternoon; Friday stale forecast 20261106-093450),Sunday 16:25 ET,136184-137953,AJ Barner,TE,SEA,ARI,HOME,5000,5.1,4.66,5.33,14.00,+0.44,-8.90,-9.34,8.90,9.34,true,1.02,2.80,False
+10,Wk 10 (Sun Afternoon; Friday stale forecast 20261106-093450),Sunday 16:25 ET,136184-12546,Arizona Cardinals,DST,ARI,SEA,AWAY,3000,4.89,3.38,4.56,1.00,+1.51,+3.89,+2.38,3.89,2.38,false,1.63,0.33,False
+10,Wk 10 (Sun Afternoon; Friday stale forecast 20261106-093450),Sunday 16:25 ET,136184-40845,Hunter Henry,TE,NE,GB,HOME,5300,4.86,7.39,6.75,5.00,-2.53,-0.14,+2.39,0.14,2.39,true,0.92,0.94,False
+10,Wk 10 (Sun Afternoon; Friday stale forecast 20261106-093450),Sunday 16:05 ET,136184-152651,Marvin Harrison Jr.,WR,HOU,LAC,AWAY,5700,4.69,4.83,6.69,3.00,-0.14,+1.69,+1.83,1.69,1.83,true,0.82,0.53,False
+10,Wk 10 (Sun Afternoon; Friday stale forecast 20261106-093450),Sunday 16:25 ET,136184-12537,Las Vegas Raiders,DST,LV,SF,AWAY,3300,4.66,6.0,4.97,-1.00,-1.34,+5.66,+7.00,5.66,7.00,true,1.41,-0.30,False
+10,Wk 10 (Sun Afternoon; Friday stale forecast 20261106-093450),Sunday 16:05 ET,136184-129546,Tre' Harris,WR,LAC,HOU,HOME,5200,4.36,5.77,5.04,2.10,-1.41,+2.26,+3.67,2.26,3.67,true,0.84,0.40,False
+10,Wk 10 (Sun Afternoon; Friday stale forecast 20261106-093450),Sunday 16:05 ET,136184-128633,Kimani Vidal,RB,LAC,HOU,HOME,5200,4.14,5.78,5.42,4.10,-1.64,+0.04,+1.68,0.04,1.68,true,0.80,0.79,False
+10,Wk 10 (Sun Afternoon; Friday stale forecast 20261106-093450),Sunday 16:25 ET,136184-154008,Mike Washington Jr.,RB,LV,SF,AWAY,5700,3.94,4.55,4.7,-0.30,-0.61,+4.24,+4.85,4.24,4.85,true,0.69,-0.05,False
+10,Wk 10 (Sun Afternoon; Friday stale forecast 20261106-093450),Sunday 16:25 ET,136184-79970,Cooper Kupp,WR,SEA,ARI,HOME,5500,3.85,5.26,5.83,4.70,-1.41,-0.85,+0.56,0.85,0.56,false,0.70,0.85,False
+10,Wk 10 (Sun Afternoon; Friday stale forecast 20261106-093450),Sunday 16:25 ET,136184-134837,Tory Horton,WR,SEA,ARI,HOME,4900,3.82,4.26,5.37,3.20,-0.44,+0.62,+1.06,0.62,1.06,true,0.78,0.65,False
+10,Wk 10 (Sun Afternoon; Friday stale forecast 20261106-093450),Sunday 16:05 ET,136184-158438,Oronde Gadsden II,TE,LAC,HOU,HOME,5100,3.41,4.31,3.63,2.70,-0.90,+0.71,+1.61,0.71,1.61,true,0.67,0.53,False
+10,Wk 10 (Sun Afternoon; Friday stale forecast 20261106-093450),Sunday 16:25 ET,136184-92859,Jalen Nailor,WR,LV,SF,AWAY,5000,3.38,3.88,4.76,1.90,-0.50,+1.48,+1.98,1.48,1.98,true,0.68,0.38,False
+10,Wk 10 (Sun Afternoon; Friday stale forecast 20261106-093450),Sunday 16:25 ET,136184-29501,Brandin Cooks,WR,SF,LV,HOME,5300,2.96,2.7,5.77,3.50,+0.26,-0.54,-0.80,0.54,0.80,true,0.56,0.66,False
+10,Wk 10 (Sun Afternoon; Friday stale forecast 20261106-093450),Sunday 16:05 ET,136184-134023,Keaton Mitchell,RB,LAC,HOU,HOME,4900,2.94,4.99,4.25,6.20,-2.05,-3.26,-1.21,3.26,1.21,false,0.60,1.27,False
+10,Wk 10 (Sun Afternoon; Friday stale forecast 20261106-093450),Sunday 16:05 ET,136184-119653,Kayshon Boutte,WR,HOU,LAC,AWAY,4900,2.93,3.84,5.24,29.50,-0.91,-26.57,-25.66,26.57,25.66,false,0.60,6.02,False
+10,Wk 10 (Sun Afternoon; Friday stale forecast 20261106-093450),Sunday 16:25 ET,136184-176734,Eli Raridon,TE,NE,GB,HOME,4500,2.65,4.47,4.27,6.70,-1.82,-4.05,-2.23,4.05,2.23,false,0.59,1.49,False
+10,Wk 10 (Sun Afternoon; Friday stale forecast 20261106-093450),Sunday 16:25 ET,136184-131835,Efton Chism III,WR,NE,GB,HOME,5100,2.62,3.92,4.13,13.40,-1.30,-10.78,-9.48,10.78,9.48,false,0.51,2.63,False
+10,Wk 10 (Sun Afternoon; Friday stale forecast 20261106-093450),Sunday 16:25 ET,136184-120642,Savion Williams,WR,GB,NE,AWAY,4400,2.13,5.17,3.34,11.30,-3.04,-9.17,-6.13,9.17,6.13,false,0.48,2.57,False
+10,Wk 10 (Sun Afternoon; Friday stale forecast 20261106-093450),Sunday 16:25 ET,136184-160306,Pierre Strong Jr.,RB,GB,NE,AWAY,4000,1.98,4.23,4.04,4.30,-2.25,-2.32,-0.07,2.32,0.07,false,0.49,1.07,False
+10,Wk 10 (Sun Afternoon; Friday stale forecast 20261106-093450),Sunday 16:25 ET,136184-151740,Corey Kiner,RB,NE,GB,HOME,4800,1.97,2.44,2.79,11.50,-0.47,-9.53,-9.06,9.53,9.06,false,0.41,2.40,False
+10,Wk 10 (Sun Afternoon; Friday stale forecast 20261106-093450),Sunday 16:05 ET,136184-129291,Tank Dell,WR,HOU,LAC,AWAY,5200,1.91,5.0,4.36,21.50,-3.09,-19.59,-16.50,19.59,16.50,false,0.37,4.13,False
+10,Wk 10 (Sun Afternoon; Friday stale forecast 20261106-093450),Sunday 16:05 ET,136184-85635,Charlie Kolar,TE,LAC,HOU,HOME,4400,1.84,2.56,2.26,4.90,-0.72,-3.06,-2.34,3.06,2.34,false,0.42,1.11,False
+10,Wk 10 (Sun Afternoon; Friday stale forecast 20261106-093450),Sunday 16:05 ET,136184-94579,Emari Demercado,RB,HOU,LAC,AWAY,4400,1.67,0.5,4.13,2.90,+1.17,-1.23,-2.40,1.23,2.40,true,0.38,0.66,False
+10,Wk 10 (Sun Afternoon; Friday stale forecast 20261106-093450),Sunday 16:25 ET,136184-171332,Reggie Virgil,WR,ARI,SEA,AWAY,4200,1.67,1.3,2.79,3.00,+0.37,-1.33,-1.70,1.33,1.70,true,0.40,0.71,False
+10,Wk 10 (Sun Afternoon; Friday stale forecast 20261106-093450),Sunday 16:25 ET,136184-151741,Jack Bech,WR,LV,SF,AWAY,4500,1.65,4.43,4.46,1.40,-2.78,+0.25,+3.03,0.25,3.03,true,0.37,0.31,False
+10,Wk 10 (Sun Afternoon; Friday stale forecast 20261106-093450),Sunday 16:25 ET,136184-136538,Kyle Williams,WR,NE,GB,HOME,4700,1.62,4.31,4.18,0.00,-2.69,+1.62,+4.31,1.62,4.31,true,0.34,0.00,False
+10,Wk 10 (Sun Afternoon; Friday stale forecast 20261106-093450),Sunday 16:25 ET,136184-114231,George Holani,RB,SEA,ARI,HOME,4900,1.6,3.81,4.72,0.00,-2.21,+1.60,+3.81,1.60,3.81,true,0.33,0.00,False
+10,Wk 10 (Sun Afternoon; Friday stale forecast 20261106-093450),Sunday 16:25 ET,136184-114530,Jacob Cowing,WR,SF,LV,HOME,5800,1.58,0.84,3.77,1.00,+0.74,+0.58,-0.16,0.58,0.16,false,0.27,0.17,False
+10,Wk 10 (Sun Afternoon; Friday stale forecast 20261106-093450),Sunday 16:05 ET,136184-128805,KeAndre Lambert-Smith,WR,LAC,HOU,HOME,4600,1.57,1.85,2.96,5.50,-0.28,-3.93,-3.65,3.93,3.65,false,0.34,1.20,False
+10,Wk 10 (Sun Afternoon; Friday stale forecast 20261106-093450),Sunday 16:25 ET,136184-102986,Elijah Higgins,TE,ARI,SEA,AWAY,4500,1.4,4.16,2.14,2.10,-2.76,-0.70,+2.06,0.70,2.06,true,0.31,0.47,False
+10,Wk 10 (Sun Afternoon; Friday stale forecast 20261106-093450),Sunday 16:25 ET,136184-39428,Kyle Juszczyk,RB,SF,LV,HOME,4200,1.12,4.72,5.42,0.40,-3.60,+0.72,+4.32,0.72,4.32,true,0.27,0.10,False
+10,Wk 10 (Sun Afternoon; Friday stale forecast 20261106-093450),Sunday 16:25 ET,136184-93026,Teagan Quitoriano,TE,ARI,SEA,AWAY,4200,0.78,14.5,2.66,1.30,-13.72,-0.52,+13.20,0.52,13.20,true,0.19,0.31,False
+10,Wk 10 (Sun Afternoon; Friday stale forecast 20261106-093450),Sunday 16:05 ET,136184-28827,Dare Ogunbowale,RB,HOU,LAC,AWAY,4200,0.73,6.09,2.6,0.80,-5.36,-0.07,+5.29,0.07,5.29,true,0.17,0.19,False
+10,Wk 10 (Sun Afternoon; Friday stale forecast 20261106-093450),Sunday 16:25 ET,136184-168916,Kaleb Johnson,RB,GB,NE,AWAY,5300,0.72,1.65,1.84,12.80,-0.93,-12.08,-11.15,12.08,11.15,false,0.14,2.42,False
+10,Wk 10 (Sun Afternoon; Friday stale forecast 20261106-093450),Sunday 16:25 ET,136184-131266,Lan Larison,RB,NE,GB,HOME,4000,0.51,1.25,1.46,0.40,-0.74,+0.11,+0.85,0.11,0.85,true,0.13,0.10,False
+10,Wk 10 (Sun Afternoon; Friday stale forecast 20261106-093450),Sunday 16:25 ET,136184-92606,Bo Melton,WR,GB,NE,AWAY,4300,0.47,0.74,1.51,0.00,-0.27,+0.47,+0.74,0.47,0.74,true,0.11,0.00,False
+10,Wk 10 (Sun Afternoon; Friday stale forecast 20261106-093450),Sunday 16:25 ET,136184-157973,J. Michael Sturdivant,WR,GB,NE,AWAY,4500,0.47,0.83,1.78,0.00,-0.36,+0.47,+0.83,0.47,0.83,true,0.10,0.00,False
+10,Wk 10 (Sun Afternoon; Friday stale forecast 20261106-093450),Sunday 16:25 ET,136184-73176,Luke Farrell,TE,SF,LV,HOME,4600,0.35,0.69,1.83,0.00,-0.34,+0.35,+0.69,0.35,0.69,true,0.08,0.00,False
+10,Wk 10 (Sun Afternoon; Friday stale forecast 20261106-093450),Sunday 16:25 ET,136184-175021,Jordan James,RB,SF,LV,HOME,4600,0.27,0.74,1.5,1.10,-0.47,-0.83,-0.36,0.83,0.36,false,0.06,0.24,False
+10,Wk 10 (Sun Afternoon; Friday stale forecast 20261106-093450),Sunday 16:05 ET,136184-114079,Hayden Rucci,TE,LAC,HOU,HOME,4000,0.17,2.4,1.45,0.00,-2.23,+0.17,+2.40,0.17,2.40,true,0.04,0.00,False
+10,Wk 10 (Sun Afternoon; Friday stale forecast 20261106-093450),Sunday 16:25 ET,136184-89613,Simi Fehoko,WR,ARI,SEA,AWAY,4000,0.16,0.37,0.67,0.00,-0.21,+0.16,+0.37,0.16,0.37,true,0.04,0.00,False
+10,Wk 10 (Sun Afternoon; Friday stale forecast 20261106-093450),Sunday 16:25 ET,136184-71032,Devin Duvernay,WR,ARI,SEA,AWAY,4900,0.13,0.3,0.71,1.80,-0.17,-1.67,-1.50,1.67,1.50,false,0.03,0.37,False
+10,Wk 10 (Sun Afternoon; Friday stale forecast 20261106-093450),Sunday 16:25 ET,136184-79980,Eric Saubert,TE,SEA,ARI,HOME,4200,0.12,1.36,1.41,0.00,-1.24,+0.12,+1.36,0.12,1.36,true,0.03,0.00,False
+10,Wk 10 (Sun Afternoon; Friday stale forecast 20261106-093450),Sunday 16:25 ET,136184-169834,Dareke Young,WR,LV,SF,AWAY,4100,0.11,0.43,0.68,0.00,-0.32,+0.11,+0.43,0.11,0.43,true,0.03,0.00,False
+10,Wk 10 (Sun Afternoon; Friday stale forecast 20261106-093450),Sunday 16:25 ET,136184-201230,Dylan Laube,RB,LV,SF,AWAY,4400,0.09,1.8,1.27,0.00,-1.71,+0.09,+1.80,0.09,1.80,true,0.02,0.00,False
+10,Wk 10 (Sun Afternoon; Friday stale forecast 20261106-093450),Sunday 16:05 ET,136184-94094,Brevin Jordan,TE,HOU,LAC,AWAY,4000,0.06,0.44,0.68,0.00,-0.38,+0.06,+0.44,0.06,0.44,true,0.01,0.00,False
+10,Wk 10 (Sun Afternoon; Friday stale forecast 20261106-093450),Sunday 16:05 ET,136184-94621,Derius Davis,WR,LAC,HOU,HOME,4200,0.05,6.09,0.2,8.00,-6.04,-7.95,-1.91,7.95,1.91,false,0.01,1.90,False
+10,Wk 10 (Sun Afternoon; Friday stale forecast 20261106-093450),Sunday 16:25 ET,136184-110978,Evan Hull,RB,ARI,SEA,AWAY,4000,0.05,0.98,0.2,0.00,-0.93,+0.05,+0.98,0.05,0.98,true,0.01,0.00,False
+10,Wk 10 (Sun Afternoon; Friday stale forecast 20261106-093450),Sunday 16:25 ET,136184-201903,Coleman Owen,WR,GB,NE,AWAY,4000,0.04,5.8,0.2,0.00,-5.76,+0.04,+5.80,0.04,5.80,true,0.01,0.00,False
+10,Wk 10 (Sun Afternoon; Friday stale forecast 20261106-093450),Sunday 16:25 ET,136184-92166,Marcus Jones,WR,NE,GB,HOME,4000,0.04,5.8,0.2,0.00,-5.76,+0.04,+5.80,0.04,5.80,true,0.01,0.00,False
+10,Wk 10 (Sun Afternoon; Friday stale forecast 20261106-093450),Sunday 16:05 ET,136184-87731,Dominique Robinson,WR,HOU,LAC,AWAY,4000,0.03,5.8,0.2,0.00,-5.77,+0.03,+5.80,0.03,5.80,true,0.01,0.00,False
+10,Wk 10 (Sun Afternoon; Friday stale forecast 20261106-093450),Sunday 16:25 ET,136184-86612,Brayden Willis,TE,SF,LV,HOME,4000,0.02,5.8,0.36,0.00,-5.78,+0.02,+5.80,0.02,5.80,true,0.01,0.00,False
+10,Wk 10 (Sun Afternoon; Friday stale forecast 20261106-093450),Sunday 16:05 ET,136184-129010,DJ Uiagalelei,QB,LAC,HOU,HOME,6000,0.0,0.0,0.55,4.96,+0.00,-4.96,-4.96,4.96,4.96,true,0.00,0.83,False
+10,Wk 10 (Sun Afternoon; Friday stale forecast 20261106-093450),Sunday 16:25 ET,136184-94748,Tommy DeVito,QB,NE,GB,HOME,6000,0.0,1.4,0.99,0.84,-1.40,-0.84,+0.56,0.84,0.56,false,0.00,0.14,False
+10,Wk 10 (Sun Afternoon; Friday stale forecast 20261106-093450),Sunday 16:05 ET,136184-89628,Davis Mills,QB,HOU,LAC,AWAY,6000,0.0,0.0,0.72,0.08,+0.00,-0.08,-0.08,0.08,0.08,true,0.00,0.01,False
+10,Wk 10 (Sun Afternoon; Friday stale forecast 20261106-093450),Sunday 16:25 ET,136184-90584,Mac Jones,QB,SF,LV,HOME,6000,0.0,0.0,0.74,-0.30,+0.00,+0.30,+0.30,0.30,0.30,true,0.00,-0.05,False
+10,Wk 10 (Sun Afternoon; Friday stale forecast 20261106-093450),Sunday 16:25 ET,136184-25267,Mack Hollins,WR,NE,GB,HOME,5400,0.0,0.0,7.82,11.10,+0.00,-11.10,-11.10,11.10,11.10,true,0.00,2.06,False
+10,Wk 10 (Sun Afternoon; Friday stale forecast 20261106-093450),Sunday 16:25 ET,136184-38264,Demarcus Robinson,WR,SF,LV,HOME,5300,0.0,0.0,9.96,3.70,+0.00,-3.70,-3.70,3.70,3.70,true,0.00,0.70,False
+10,Wk 10 (Sun Afternoon; Friday stale forecast 20261106-093450),Sunday 16:25 ET,136184-61798,Gardner Minshew II,QB,ARI,SEA,AWAY,6600,0.0,9.76,6.86,7.04,-9.76,-7.04,+2.72,7.04,2.72,false,0.00,1.07,False
+10,Wk 10 (Sun Night; Friday stale forecast 20261106-093450),Sunday 20:20 ET,135326-152113,Caleb Williams,QB,CHI,TB,HOME,7900,22.53,19.72,21.91,16.76,+2.81,+5.77,+2.96,5.77,2.96,false,2.85,2.12,False
+10,Wk 10 (Sun Night; Friday stale forecast 20261106-093450),Sunday 20:20 ET,135326-91598,D'Andre Swift,RB,CHI,TB,HOME,6600,18.7,17.34,18.77,3.10,+1.36,+15.60,+14.24,15.60,14.24,false,2.83,0.47,True
+10,Wk 10 (Sun Night; Friday stale forecast 20261106-093450),Sunday 20:20 ET,135859-152664,Bucky Irving,RB,TB,CHI,AWAY,7300,15.3,15.2,12.12,26.50,+0.10,-11.20,-11.30,11.20,11.30,true,2.10,3.63,False
+10,Wk 10 (Sun Night; Friday stale forecast 20261106-093450),Sunday 20:20 ET,135326-166092,Luther Burden III,WR,CHI,TB,HOME,5800,13.71,11.82,11.9,17.20,+1.89,-3.49,-5.38,3.49,5.38,true,2.36,2.97,True
+10,Wk 10 (Sun Night; Friday stale forecast 20261106-093450),Sunday 20:20 ET,135859-41535,Baker Mayfield,QB,TB,CHI,AWAY,7000,12.32,9.03,12.11,9.72,+3.29,+2.60,-0.69,2.60,0.69,false,1.76,1.39,False
+10,Wk 10 (Sun Night; Friday stale forecast 20261106-093450),Sunday 20:20 ET,135326-120033,Rome Odunze,WR,CHI,TB,HOME,5900,10.53,7.35,9.8,14.00,+3.18,-3.47,-6.65,3.47,6.65,true,1.78,2.37,False
+10,Wk 10 (Sun Night; Friday stale forecast 20261106-093450),Sunday 20:20 ET,135561-33714,Cairo Santos,K,CHI,TB,HOME,4800,10.4,9.25,10.4,9.00,+1.15,+1.40,+0.25,1.40,0.25,false,2.17,1.88,False
+10,Wk 10 (Sun Night; Friday stale forecast 20261106-093450),Sunday 20:20 ET,135326-166588,Colston Loveland,TE,CHI,TB,HOME,5300,10.34,7.17,8.36,7.40,+3.17,+2.94,-0.23,2.94,0.23,false,1.95,1.40,False
+10,Wk 10 (Sun Night; Friday stale forecast 20261106-093450),Sunday 20:20 ET,135326-12527,Chicago Bears,DST,CHI,TB,HOME,4100,7.97,6.6,7.98,14.00,+1.37,-6.03,-7.40,6.03,7.40,true,1.94,3.41,False
+10,Wk 10 (Sun Night; Friday stale forecast 20261106-093450),Sunday 20:20 ET,135859-55635,Chris Godwin Jr.,WR,TB,CHI,AWAY,5400,7.14,4.95,6.25,3.80,+2.19,+3.34,+1.15,3.34,1.15,false,1.32,0.70,False
+10,Wk 10 (Sun Night; Friday stale forecast 20261106-093450),Sunday 20:20 ET,135859-12551,Tampa Bay Buccaneers,DST,TB,CHI,AWAY,3900,5.99,9.0,6.08,12.00,-3.01,-6.01,-3.00,6.01,3.00,false,1.54,3.08,False
+10,Wk 10 (Sun Night; Friday stale forecast 20261106-093450),Sunday 20:20 ET,135859-86811,Cade Otton,TE,TB,CHI,AWAY,4800,4.76,4.01,4.26,4.50,+0.75,+0.26,-0.49,0.26,0.49,true,0.99,0.94,False
+10,Wk 10 (Sun Night; Friday stale forecast 20261106-093450),Sunday 20:20 ET,135326-70422,Kalif Raymond,WR,CHI,TB,HOME,5000,4.69,6.19,6.72,5.20,-1.50,-0.51,+0.99,0.51,0.99,true,0.94,1.04,False
+10,Wk 10 (Sun Night; Friday stale forecast 20261106-093450),Sunday 20:20 ET,135859-90912,Kenny Gainwell,RB,TB,CHI,AWAY,5200,3.9,5.88,4.2,9.10,-1.98,-5.20,-3.22,5.20,3.22,false,0.75,1.75,False
+10,Wk 10 (Sun Night; Friday stale forecast 20261106-093450),Sunday 20:20 ET,135859-206341,Ted Hurst III,WR,TB,CHI,AWAY,4800,3.34,4.04,4.87,0.00,-0.70,+3.34,+4.04,3.34,4.04,true,0.70,0.00,False
+10,Wk 10 (Sun Night; Friday stale forecast 20261106-093450),Sunday 20:20 ET,135859-128624,Tez Johnson,WR,TB,CHI,AWAY,4800,2.22,3.79,4.17,8.60,-1.57,-6.38,-4.81,6.38,4.81,false,0.46,1.79,False
+10,Wk 10 (Sun Night; Friday stale forecast 20261106-093450),Sunday 20:20 ET,135326-103187,Roschon Johnson,RB,CHI,TB,HOME,5100,2.02,4.57,4.41,0.00,-2.55,+2.02,+4.57,2.02,4.57,true,0.40,0.00,False
+10,Wk 10 (Sun Night; Friday stale forecast 20261106-093450),Sunday 20:20 ET,135859-61555,David Sills V,WR,TB,CHI,AWAY,4000,0.97,5.8,2.7,0.00,-4.83,+0.97,+5.80,0.97,5.80,true,0.24,0.00,False
+10,Wk 10 (Sun Night; Friday stale forecast 20261106-093450),Sunday 20:20 ET,135859-137059,Sean Tucker,RB,TB,CHI,AWAY,4400,0.84,5.0,2.89,0.00,-4.16,+0.84,+5.00,0.84,5.00,true,0.19,0.00,False
+10,Wk 10 (Sun Night; Friday stale forecast 20261106-093450),Sunday 20:20 ET,135326-173994,Zavion Thomas,WR,CHI,TB,HOME,4100,0.62,1.17,1.81,1.80,-0.55,-1.18,-0.63,1.18,0.63,false,0.15,0.44,False
+10,Wk 10 (Sun Night; Friday stale forecast 20261106-093450),Sunday 20:20 ET,135326-166253,Sam Roush,TE,CHI,TB,HOME,4100,0.6,0.96,2.06,3.30,-0.36,-2.70,-2.34,2.70,2.34,false,0.15,0.80,False
+10,Wk 10 (Sun Night; Friday stale forecast 20261106-093450),Sunday 20:20 ET,135859-93391,Payne Durham,TE,TB,CHI,AWAY,4100,0.25,0.5,0.95,0.00,-0.25,+0.25,+0.50,0.25,0.50,true,0.06,0.00,False
+10,Wk 10 (Sun Night; Friday stale forecast 20261106-093450),Sunday 20:20 ET,135326-193004,Jahdae Walker,WR,CHI,TB,HOME,4500,0.19,1.32,1.66,0.00,-1.13,+0.19,+1.32,0.19,1.32,true,0.04,0.00,False
+10,Wk 10 (Sun Night; Friday stale forecast 20261106-093450),Sunday 20:20 ET,135859-201535,Kameron Johnson,WR,TB,CHI,AWAY,4200,0.06,0.11,0.29,0.00,-0.05,+0.06,+0.11,0.06,0.11,true,0.01,0.00,False
+10,Wk 10 (Sun Night; Friday stale forecast 20261106-093450),Sunday 20:20 ET,135859-68714,Ko Kieft,TE,TB,CHI,AWAY,4000,0.03,5.8,0.2,0.00,-5.77,+0.03,+5.80,0.03,5.80,true,0.01,0.00,False
+10,Wk 10 (Sun Night; Friday stale forecast 20261106-093450),Sunday 20:20 ET,135326-86780,Salvon Ahmed,RB,CHI,TB,HOME,4000,0.01,5.8,0.5,2.50,-5.79,-2.49,+3.30,2.49,3.30,true,0.00,0.62,False
+10,Wk 10 (Sun Night; Friday stale forecast 20261106-093450),Sunday 20:20 ET,135859-152655,Emeka Egbuka,WR,TB,CHI,AWAY,6000,0.0,0.0,9.98,5.40,+0.00,-5.40,-5.40,5.40,5.40,true,0.00,0.90,False

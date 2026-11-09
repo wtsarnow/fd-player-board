@@ -1,14 +1,14 @@
 key,value
-title,Week 10 Pre-Game Player Selection Board (Sun Main + London + SNF TB@CHI + MNF BUF@MIN) • TNF JAX@BAL Graded
+title,Week 10 Monday Night Football Board (BUF@MIN Mon Nov 9 8:15 PM ET) • Sunday + SNF Completed
 active_week,10
-slate_id,WK10-MAIN-136184
-contest_name,"Week 10 Sunday Main Classic Board (Featured Optimal OPT-WK10-MAIN-1: 176.40 v9 pts • $60,000 • LIVE FD Classic #136184 (11 Sun games); London/SNF/MNF seed-estimated pending live FD)"
-lock_time,Sun Main Nov 8 1:00 PM ET • London CIN@ATL 9:30 AM ET • SNF TB@CHI 8:20 PM ET • MNF BUF@MIN Mon Nov 9 8:15 PM ET
+slate_id,WK10-MNF-136436
+contest_name,Week 10 MNF BUF@MIN Showdown Board (Featured Optimal OPT-WK10-MNF-1: 99.65 v9 pts • tonight 8:15 PM ET)
+lock_time,MNF BUF@MIN Mon Nov 9 8:15 PM ET
 salary_cap,60000
 roster_slots,9
 active_version,v9 LOCKED (15 SIGNALS + TEAM-OWNED STADIUM/WX + STRATEGY EXCHANGE)
-generated_at,"Fri Nov 6, 2026 9:34 AM ET (Build 20261106-093450 • Fri Sunday Main prep: deterministic wk10-seed baseline + PuLP Classic; LIVE #136184 for 11 Sun games; CIN@ATL/SNF/MNF estimated Classic)"
-build_id,20261106-093450
+generated_at,"Mon Nov 9, 2026 9:16 AM ET (Build 20261109-091640 • Mon MNF morning prep (LIVE Showdown rebuild): deterministic BUF@MIN baseline + PuLP Showdown; Kyler Murray/Jauan Jennings/Josh Palmer/Demond Claiborne OUT -> 0; salaries LIVE FD Showdown #136436 (47 players, FLEX salary; MVP 1.5x applied by ILP); historic rows preserved from post-SNF draft; Sunday games completed, MNF is the active slate)"
+build_id,20261109-091640
 updater_bot,@fd-board-updater
 updater_bot_id,7f63a5f1-23e8-4a34-b1c8-fd8b0a4d2026
 middleman_bot,@fd-strategy-exchange
@@ -17,7 +17,7 @@ weather_bot,@fd-stadium-weather
 weather_bot_id,53977200-89b4-45e7-8791-b8a378bbc2d3
 pregame_schedule,Thu 9AM (TNF) • Fri 9AM (Sun Main/SNF) • Mon 9AM (MNF) • Refresh 3h Pre-Kickoff
 postgame_schedule,Tue 9AM Weekly Wrap (Finalize Wk8 Actuals vs Projections + Seed Wk9 Board)
-historic_weeks_covered,Weeks 3–9 Completed + Week 10 TNF JAX@BAL Graded (53 Player-Weeks)
+historic_weeks_covered,Weeks 3–9 unchanged; W10 TNF + London/early/afternoon draft preserved + 27 ESPN-box-matched SNF rows; 354 Sunday/London unresolved excluded (218 early + 111 afternoon) + 25 SNF unresolved excluded
 overall_our_rho,0.6518
 overall_fd_rho,0.4492
 overall_rho_gain,+0.2026
@@ -38,7 +38,7 @@ wk9_all_games_optimal_pts,179.06
 wk10_featured_optimal_id,OPT-WK10-MAIN-1
 wk10_featured_optimal_pts,176.40
 wk10_featured_optimal_salary,60000
-wk10_featured_optimal_actual,68.47
+wk10_featured_optimal_actual,
 wk10_tnf_our_mae,2.115
 wk10_tnf_fd_mae,2.619
 wk10_tnf_our_rho,0.6899
@@ -48,3 +48,25 @@ wk10_all_games_optimal_pts,176.70
 wk10_salary_source,LIVE FD Classic #136184 (11 Sun games)
 wk10_player_count,770
 wk10_game_count,15
+pregame_snapshot_build,20261106-093450
+pregame_snapshot_provenance,Friday Nov 6 9:34:50 AM ET current_players.csv; authentic early-issued but stale forecast; NO valid Sunday/SNF lock snapshot (model falseOUT/salary-gate bugs); Sunday/SNF provisional baselines unused and NOT substituted
+model_limitations,Unrepaired false Tyler Warren OUT and starter QB salary-gate issues blocked Sunday refresh; Egbuka hardcoded OUT blocked SNF certify (Egbuka was actually ACTIVE); weather defaults/no fresh strategy packets; no repair/rebuild after kickoff
+fd_projection_column_provenance,"All fd_proj/fd_proj_pregame and fd_* comparison fields mean historical FPPG or synthetic fallback PROXY, NOT a FanDuel vendor forecast. No claim of beating FanDuel predictions."
+actuals_source,ESPN final summary box scores + existing fdscore.py; CALCULATED actuals NOT reconciled against official FanDuel results
+actuals_verification_status,PROVISIONAL ESPN-derived calculated grading; FanDuel reconciliation outstanding; scoring-rule verification outstanding
+no_box_line_policy,"354 unmatched Sunday/London snapshot players excluded from actuals/metrics (218 early + 111 afternoon) + 25 SNF unresolved excluded; NOT assigned zero or presumed inactive. Official OUT noted for Kyle Monangai (CHI RB) and Malik Muhammad (CHI CB) per Bucs inactives page. See /workspace/w10early-20261108/no-box-line-unresolved.csv, /workspace/w10late-20261108/no-box-line-unresolved-afternoon.csv, /workspace/w10snf-20261109/no-box-line-unresolved-snf.csv. Existing TNF zero policy retained untouched."
+wk10_summary_scope,"TNF legacy rows (incl. legacy zero policy) + London/early/afternoon/SNF matched box lines only; unresolved excluded; heterogeneous zero policies/selection bias. MNF not graded. Non-W10/ALL summaries unchanged, not recomputed."
+headline_status,"Featured OPT-WK10-MNF-1 99.65 pts / $59,800 (MVP Josh Allen) on LIVE FD Showdown #136436; Sunday + SNF completed; historic rows preserved from post-SNF draft"
+london_provenance,"CIN@ATL standalone 9:30 AM ET, not #136184; Friday early-issued forecast, estimated Classic salaries; preserved from early draft"
+publish_status,LOCAL DRAFT ONLY; staged for review at /workspace/fd-upload-postsnf-20261109; NOT published; UI still labels proxy as FanDuel and stale Friday lineups remain; publication blocked by false vendor labels/stale headline
+wk10_our_mae,3.622
+wk10_historical_synthetic_proxy_mae,4.027
+afternoon_finals,HOU@LAC 44-22; GB@NE 45-27; LV@SF 17-38; ARI@SEA 3-17 (ESPN 401873046/049/047/048). SNF TB@CHI FINAL CHI 27-24 (ESPN 401873050) graded this draft. MNF BUF@MIN not graded.
+early_draft_preserved,Unpublished early draft build 20261108-170406 and afternoon draft build 20261108-200626 historic bytes preserved as prefix; SNF append-only
+snf_final,"TB@CHI FINAL CHI 27, TB 24 (ESPN 401873050); graded with Friday Classic-price forecasts only; provisional 136321-review baseline/mock NOT used"
+snf_stale_seed_lineup_note,"Friday OPT-WK10-SNF-1 seed (Classic salaries, NOT live Showdown) MVP Caleb Williams + Swift/Irving/Burden III/Mayfield/Odunze scored 95.66 Showdown pts (MVP 1.5x). STALE Friday Classic-price seed — NOT a valid pre-lock."
+salary_source,LIVE FD Showdown #136436 (47 players)
+player_count,47
+featured_optimal_id,OPT-WK10-MNF-1
+featured_optimal_pts,99.65
+featured_optimal_salary,59800

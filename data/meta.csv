@@ -1,14 +1,14 @@
 key,value
-title,Week 10 complete postgame audit (TNF + Sunday + SNF + MNF BUF@MIN) — NOT current lineup advice
-active_week,10
-slate_id,WK10-MNF-136436
-contest_name,"Week 10 complete (MNF BUF@MIN FINAL BUF 23–6). Featured pre-lock OPT-WK10-MNF-1 is a graded audit, not a current recommendation."
-lock_time,MNF BUF@MIN FINAL (kicked off Mon Nov 9 8:15 PM ET)
+title,Week 11 Pre-Game Player Selection Board (ESTIMATED salaries) • Week 10 Final
+active_week,11
+slate_id,WK11-SEED-ESTIMATED
+contest_name,"Week 11 Sunday Main Classic Board (Featured Optimal OPT-WK11-MAIN-1: 170.86 v9 pts • $60,000 • ESTIMATED salaries — no live FanDuel Week 11 slate posted)"
+lock_time,TNF WAS@NYG Thu Nov 12 8:15 PM ET • London NE@DET Sun Nov 15 9:30 AM ET • Sun Main 1:00 PM ET • SNF PIT@CIN 8:20 PM ET • MNF LAC@BAL Mon Nov 16 8:15 PM ET
 salary_cap,60000
 roster_slots,9
 active_version,v9 LOCKED (15 SIGNALS + TEAM-OWNED STADIUM/WX + STRATEGY EXCHANGE)
-generated_at,"Tue Nov 10, 2026 12:42:35 AM ET (MNF postgame grading only; no pregame rebuild; Week 10 complete)"
-build_id,20261110-004235
+generated_at,"Tue Nov 10, 2026 7:25 AM ET (Build 20261110-072520 • Tue weekly wrap: Week 10 finalized; Week 11 seed from deterministic wk11-seed baseline + PuLP Classic; ALL salaries ESTIMATED from prior verified Classic boards; no live FD Week 11 slate)"
+build_id,20261110-072520
 updater_bot,@fd-board-updater
 updater_bot_id,7f63a5f1-23e8-4a34-b1c8-fd8b0a4d2026
 middleman_bot,@fd-strategy-exchange
@@ -50,26 +50,33 @@ wk10_player_count,770
 wk10_game_count,15
 pregame_snapshot_build,20261109-175813
 pregame_snapshot_provenance,Mon Nov 9 5:58:13 PM ET PRE-LOCK current_players.csv BUF@MIN rows from LIVE FD Showdown #136436 (morning 09:14 ET salaries) locked into historic_player_projections.csv (47 rows). This run filled actual_fd only on box-matched rows; our_proj_pregame/fd_proj_pregame never changed.
-model_limitations,baseline.py still has hardcoded confirmed_out_keys (Evans/Samuel/Egbuka/Warren/Love/B.Robinson/Montgomery) — none on BUF@MIN slate so no effect; QB salary/depth gate correctly zeroed Kyle Allen & Max Brosmer as backups (Brosmer later entered and scored; Allen knelt). weather defaults/no fresh strategy packets. FD salaries from morning 09:14 ET live pull.
+model_limitations,"baseline.py still has hardcoded confirmed_out_keys (Evans/Samuel/Egbuka/Warren/Love/B.Robinson/Montgomery). Week 11 impact: Tyler Warren (IND TE, otherwise untagged) and Brian Robinson Jr. (ATL RB, last official Q) are zeroed; Mike Evans & Deebo Samuel Sr. (SF, last official O), David Montgomery (HOU, last official O), Jeremiyah Love (ARI, IR) also zeroed; Emeka Egbuka (TB) is on bye so no effect. QB salary/depth gate zeroes non-highest-salary active QBs: Shedeur Sanders (CLE) zeroed in favor of Deshaun Watson (Q, higher estimated salary) despite Sanders starting Weeks 8-9; Kyler Murray last official O so Carson Wentz is the MIN starter in this seed; Sam Darnold last official O so Drew Lock is the SEA starter. Weather defaults; no Week 11 strategy-exchange packets (exchange/wk10 missing). nflverse Week 11 injury reports not posted yet (Tuesday); tags are last official Week 10 FanDuel statuses plus IR carry-forward. BUF@MIN snap counts not yet in nflverse (stats/PBP/games refreshed with MNF final BUF 23–6)."
 fd_projection_column_provenance,"All fd_proj/fd_proj_pregame and fd_* comparison fields mean historical FPPG or synthetic fallback PROXY, NOT a FanDuel vendor forecast. No claim of beating FanDuel predictions."
 actuals_source,ESPN final summary box scores + existing fdscore.py; CALCULATED actuals NOT reconciled against official FanDuel results
 actuals_verification_status,PROVISIONAL ESPN-derived calculated grading; FanDuel reconciliation outstanding; scoring-rule verification outstanding
 no_box_line_policy,"20 unmatched MNF snapshot players excluded from actuals/metrics; NOT assigned zero or presumed inactive. Official inactives in pool: Skyler Bell (BUF); Kyler Murray, Jauan Jennings, Demond Claiborne (MIN). Pre-lock OUT/IR with no box line: Joshua Palmer (OUT), Josh Oliver (IR). Official inactives not in the 47-player pool: BUF Kilgore, Danna, Anderson, Dawkins, Gaines; MIN Thomas, Demmings, Banks. See /workspace/w10mnf-20261110/no-box-line-unresolved-mnf.csv. Existing TNF zero policy and Sunday/SNF exclusion lists retained untouched."
 wk10_summary_scope,"TNF legacy rows (incl. legacy zero policy) + London/early/afternoon/SNF/MNF matched box lines only; unresolved excluded; heterogeneous zero policies/selection bias. Week 10 now complete. Non-W10/ALL summaries unchanged, not recomputed."
-headline_status,STALE / completed Week 10 MNF pre-lock lineup retained for audit; lineups/current_players/optimal_lineups intentionally unchanged
+headline_status,Week 11 Tuesday seed; ESTIMATED salaries pending live FanDuel; not a pre-lock entry
 london_provenance,"CIN@ATL standalone 9:30 AM ET, not #136184; Friday early-issued forecast, estimated Classic salaries; preserved from early draft"
-publish_status,LOCAL DRAFT staged at /workspace/fd-upload-postmnf-20261110; awaiting GitHub web upload (box has no gh credentials)
+publish_status,LOCAL DRAFT staged at /workspace/fd-upload-tuewrap-20261110; NOT published
 wk10_our_mae,3.671
 wk10_historical_synthetic_proxy_mae,4.01
 afternoon_finals,HOU@LAC 44-22; GB@NE 45-27; LV@SF 17-38; ARI@SEA 3-17 (ESPN 401873046/049/047/048). SNF TB@CHI FINAL CHI 27-24 (ESPN 401873050). MNF BUF@MIN FINAL BUF 23-6 (ESPN 401873051) graded this run.
 early_draft_preserved,Unpublished early draft build 20261108-170406 and afternoon draft build 20261108-200626 historic bytes preserved as prefix; SNF append-only
 snf_final,"TB@CHI FINAL CHI 27, TB 24 (ESPN 401873050); graded with Friday Classic-price forecasts only; provisional 136321-review baseline/mock NOT used"
 snf_stale_seed_lineup_note,"Friday OPT-WK10-SNF-1 seed (Classic salaries, NOT live Showdown) MVP Caleb Williams + Swift/Irving/Burden III/Mayfield/Odunze scored 95.66 Showdown pts (MVP 1.5x). STALE Friday Classic-price seed — NOT a valid pre-lock."
-salary_source,LIVE FD Showdown #136436 (47 players)
-player_count,47
-featured_optimal_id,OPT-WK10-MNF-1
-featured_optimal_pts,101.56
-featured_optimal_salary,59800
+salary_source,ESTIMATED (no live FanDuel Week 11 slate posted)
+player_count,752
+featured_optimal_id,OPT-WK11-MAIN-1
+featured_optimal_pts,170.86
+featured_optimal_salary,60000
 mnf_final,"BUF@MIN FINAL BUF 23, MIN 6 (ESPN 401873051); graded from PRE-LOCK live Showdown #136436 snapshot 20261109-175813; CALCULATED ESPN-box actuals"
 mnf_featured_seed_lineup_note,"OPT-WK10-MNF-1 (LIVE Showdown #136436, proj 101.56, $59,800) MVP Josh Allen + Cook/DJ Moore/Addison/Hockenson/K. Coleman scored 57.89 Showdown pts (MVP 1.5x). Calculated actuals, not official FanDuel results."
 mnf_hindsight_optimal_note,"Hindsight Showdown optimal (box-matched only, MVP 1.5x salary/points, $60,000 cap) scored 89.41 on $51900: MVP James Cook III + Buffalo Bills, Josh Allen, Tyler Bass, Will Reichard, Keleki Latu."
+wk11_featured_optimal_id,OPT-WK11-MAIN-1
+wk11_featured_optimal_pts,170.86
+wk11_featured_optimal_salary,60000
+wk11_all_games_optimal_pts,172.75
+wk11_salary_source,ESTIMATED (no live FanDuel Week 11 slate; prior-week verified Classic #136184/#135859 and mapped Showdown)
+wk11_player_count,752
+wk11_game_count,14

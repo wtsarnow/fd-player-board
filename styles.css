@@ -158,6 +158,7 @@ html, body {
 .tab-dot.live { background: #00e699; box-shadow: 0 0 6px #00e699; }
 .tab-dot.trend { background: #38bdf8; }
 .tab-dot.math { background: #ffb800; }
+.tab-dot.acc { background: #a78bfa; }
 
 .fd-topbar-right {
   display: flex;
@@ -1342,7 +1343,7 @@ html, body {
   .fd-nav-tabs {
     width: 100%;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 4px;
   }
 
@@ -1801,4 +1802,38 @@ html, body {
     font-size: 11px;
     text-align: center;
   }
+}
+
+/* ---------- ACCURACY: FANDUEL vs MY MODEL (TAB 4) ---------- */
+.acc-pos-tabs { display: flex; flex-wrap: wrap; gap: 4px; }
+.acc-winner {
+  padding: 14px 16px 6px;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--fd-text);
+  line-height: 1.45;
+}
+.acc-winner .win-model { color: var(--fd-green); }
+.acc-winner .win-fd { color: #f59e0b; }
+.acc-caveat {
+  padding: 4px 16px 14px;
+  font-size: 11.5px;
+  color: var(--fd-gold);
+  line-height: 1.45;
+}
+.acc-method {
+  padding: 10px 16px 14px;
+  font-size: 11px;
+  color: var(--fd-muted);
+  line-height: 1.5;
+  border-top: 1px solid var(--fd-border);
+}
+.data-table td.acc-better { color: var(--fd-green); font-weight: 700; }
+.data-table td.acc-worse { color: var(--fd-red); }
+.data-table tr.acc-std-row { background: rgba(20, 147, 255, 0.08); font-weight: 700; }
+#acc-weekly-table td.sticky-col, #acc-slate-table td:nth-child(2) { white-space: nowrap; }
+.acc-sub-lbl { display: block; font-size: 10px; color: var(--fd-muted); font-weight: 500; }
+@media (max-width: 640px) {
+  .fd-nav-tabs { grid-template-columns: repeat(2, 1fr); }
+  .acc-winner { font-size: 13.5px; }
 }

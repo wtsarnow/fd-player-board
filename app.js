@@ -84,7 +84,12 @@
     histSortBy: "actual_desc",
     histSearch: "",
     histPage: 1,
-    histPageSize: 100
+    histPageSize: 100,
+
+    accWeekly: [],
+    accMeta: {},
+    accPlayersCount: 0,
+    accPos: "ALL"
   };
 
   function parseCSV(text) {
@@ -183,7 +188,10 @@
       revertedRows,
       btVersionRows,
       strategyExRows,
-      optimalLuRows
+      optimalLuRows,
+      accWeeklyRows,
+      accMetaRows,
+      accPlayerRows
     ] = await Promise.all([
       fetchCSV("data/meta.csv"),
       fetchCSV("data/current_players.csv"),
@@ -195,8 +203,18 @@
       fetchCSV("data/reverted_signals.csv"),
       fetchCSV("data/backtest_versions.csv"),
       fetchCSV("data/strategy_exchange_board.csv").catch(() => []),
-      fetchCSV("data/optimal_lineups.csv").catch(() => [])
+      fetchCSV("data/optimal_lineups.csv").catch(() => []),
+      fetchCSV("data/accuracy_weekly.csv").catch(() => []),
+      fetchCSV("data/accuracy_meta.csv").catch(() => []),
+      fetchCSV("data/accuracy_players.csv").catch(() => [])
     ]);
+
+    state.accWeekly = accWeeklyRows;
+    state.accMeta = {};
+    accMetaRows.forEach((r) => {
+      state.accMeta[r.key] = r.value;
+    });
+    state.accPlayersCount = accPlayerRows.length;
 
     metaRows.forEach((r) => {
       state.meta[r.key] = r.value;
@@ -1884,6 +1902,213 @@
     panel.classList.toggle("mobile-open", open);
   }
 
+  // ---------- TAB 4: ACCURACY — FANDUEL vs MY MODEL (data/accuracy_*.csv) ----------
+  function accNum(v) {
+    const n = parseFloat(v);
+    return Number.isFinite(n) ? n : null;
+  }
+
+  function accFmt(v, d = 2) {
+    const n = accNum(v);
+    return n === null ? "—" : n.toFixed(d);
+  }
+
+  function accPct(v) {
+    const n = accNum(v);
+    return n === null ? "—" : (n * 100).toFixed(1) + "%";
+  }
+
+  function accWeekLabel(r) {
+    return `Board Wk ${escapeHtml(r.board_week)}<span class="acc-sub-lbl">NFL Wk ${escapeHtml(r.nfl_week)}</span>`;
+  }
+
+  function renderAccuracyTab() {
+    const winnerEl = document.getElementById("acc-winner");
+    if (!winnerEl) return;
+    const meta = state.accMeta;
+    const pos = state.accPos;
+    const bench = meta.benchmark_label || "FanDuel FPPG";
+    const rows = state.accWeekly.filter((r) => r.position === pos);
+    const weeks = rows
+      .filter((r) => r.level === "week")
+      .sort((a, b) => (parseInt(a.nfl_week, 10) || 0) - (parseInt(b.nfl_week, 10) || 0));
+    const stdRows = rows
+      .filter((r) => r.level === "season_to_date")
+      .sort((a, b) => (parseInt(a.nfl_week, 10) || 0) - (parseInt(b.nfl_week, 10) || 0));
+    const std = stdRows[stdRows.length - 1];
+    const slates = rows.filter((r) => r.level === "slate");
+    const hasFdr = rows.some((r) => (parseInt(r.fdr_n, 10) || 0) > 0);
+
+    document.querySelectorAll("#acc-pos-tabs .pos-tab").forEach((b) => {
+      b.classList.toggle("active", b.getAttribute("data-acc-pos") === pos);
+    });
+    document.getElementById("acc-table-pos").textContent = pos;
+    document.getElementById("acc-slate-pos").textContent = pos;
+    document.getElementById("acc-bench-label-chart").textContent = bench;
+    document.getElementById("acc-players-count").textContent = state.accPlayersCount.toLocaleString("en-US") + " rows";
+    document.getElementById("acc-caveat").textContent = meta.caveat ? "⚠ " + meta.caveat : "";
+
+    if (!std) {
+      winnerEl.textContent = state.accWeekly.length ? `No completed head-to-head data for ${pos} yet.` : "Accuracy CSV (data/accuracy_weekly.csv) not available.";
+      document.getElementById("acc-kpi-grid").innerHTML = "";
+      document.getElementById("chart-acc-mae").innerHTML = "";
+      document.getElementById("acc-weekly-thead").innerHTML = "";
+      document.getElementById("acc-weekly-tbody").innerHTML = "";
+      document.getElementById("acc-slate-thead").innerHTML = "";
+      document.getElementById("acc-slate-tbody").innerHTML = "";
+      return;
+    }
+
+    // ---- Headline: season to date ----
+    const mMae = accNum(std.model_mae);
+    const fMae = accNum(std.fd_mae);
+    const edge = accNum(std.mae_edge_model_minus_fd);
+    const posTxt = pos === "ALL" ? "" : ` at ${pos}`;
+    const thru = `through Board Week ${escapeHtml(std.board_week)} (NFL Week ${escapeHtml(std.nfl_week)})`;
+    let verdict;
+    if (std.more_accurate === "Model") {
+      verdict = `<span class="win-model">My model was more accurate${posTxt}</span> than ${escapeHtml(bench)} season to date`;
+    } else if (std.more_accurate === "Tie") {
+      verdict = `My model and ${escapeHtml(bench)} were tied${posTxt} season to date`;
+    } else {
+      verdict = `<span class="win-fd">${escapeHtml(bench)} was more accurate${posTxt}</span> than my model season to date`;
+    }
+    const gap = edge === null ? "" : ` — ${Math.abs(edge).toFixed(2)} pts per player ${edge <= 0 ? "less" : "more"} error`;
+    winnerEl.innerHTML = `${verdict} ${thru}: average miss <strong>${accFmt(std.model_mae)}</strong> vs <strong>${accFmt(std.fd_mae)}</strong> FD pts${gap}, and my model was closer on <strong>${accPct(std.model_win_rate)}</strong> of ${escapeHtml(std.n_head_to_head)} players.`;
+
+    const mClass = mMae !== null && fMae !== null && mMae <= fMae ? "pos" : "gold";
+    let kpis = `
+      <div class="hist-kpi-card">
+        <div class="hk-label">SEASON-TO-DATE MAE (LOWER IS BETTER)</div>
+        <div class="hk-val ${mClass}">${accFmt(std.model_mae)} <span class="hk-vs">vs FD ${accFmt(std.fd_mae)}</span></div>
+        <div class="hk-sub">My model vs <strong>${escapeHtml(bench)}</strong> • edge ${edge === null ? "—" : fmtSigned(edge, 3)} (negative = model better)</div>
+      </div>
+      <div class="hist-kpi-card">
+        <div class="hk-label">MODEL WIN RATE (CLOSER TO ACTUAL)</div>
+        <div class="hk-val ${(accNum(std.model_win_rate) || 0) >= 0.5 ? "pos" : "gold"}">${accPct(std.model_win_rate)}</div>
+        <div class="hk-sub">Share of ${escapeHtml(std.n_head_to_head)} head-to-head players where my model was closer than FanDuel (ties count half)</div>
+      </div>
+      <div class="hist-kpi-card">
+        <div class="hk-label">SPEARMAN ρ (RANK ACCURACY, HIGHER IS BETTER)</div>
+        <div class="hk-val accent">${accFmt(std.model_spearman, 3)} <span class="hk-vs">vs FD ${accFmt(std.fd_spearman, 3)}</span></div>
+        <div class="hk-sub">How well each ranked players vs. actual FanDuel points</div>
+      </div>`;
+    if (hasFdr && (parseInt(std.fdr_n, 10) || 0) > 0) {
+      kpis += `
+      <div class="hist-kpi-card">
+        <div class="hk-label">VS ${escapeHtml((meta.fdr_label || "FanDuel Research projection").split(" (")[0].toUpperCase())} (n=${escapeHtml(std.fdr_n)})</div>
+        <div class="hk-val accent">${accFmt(std.fdr_mae)} <span class="hk-vs">MAE • ρ ${accFmt(std.fdr_spearman, 3)}</span></div>
+        <div class="hk-sub">My model closer on <strong>${accPct(std.model_win_rate_vs_fdr)}</strong> of these players</div>
+      </div>`;
+    } else {
+      kpis += `
+      <div class="hist-kpi-card">
+        <div class="hk-label">BIAS (PROJECTION − ACTUAL)</div>
+        <div class="hk-val gold">${fmtSigned(accNum(std.model_bias) || 0)} <span class="hk-vs">vs FD ${fmtSigned(accNum(std.fd_bias) || 0)}</span></div>
+        <div class="hk-sub">Positive = over-projects • RMSE ${accFmt(std.model_rmse)} vs ${accFmt(std.fd_rmse)}</div>
+      </div>`;
+    }
+    document.getElementById("acc-kpi-grid").innerHTML = kpis;
+
+    // ---- Line chart: model MAE vs FD MAE by week ----
+    const legend = document.getElementById("acc-chart-legend");
+    legend.innerHTML = `<span class="c-leg our">My Model MAE</span><span class="c-leg fd">${escapeHtml(bench)} MAE</span>` +
+      (hasFdr ? `<span class="c-leg tysa">FanDuel Research MAE</span>` : "");
+    const wrap = document.getElementById("chart-acc-mae");
+    const W = 760, H = 270, padL = 48, padR = 28, padT = 26, padB = 50;
+    const plotW = W - padL - padR, plotH = H - padT - padB;
+    const series = [
+      { key: "model_mae", color: "#00d68f" },
+      { key: "fd_mae", color: "#f59e0b" }
+    ];
+    if (hasFdr) series.push({ key: "fdr_mae", color: "#38bdf8" });
+    const vals = [];
+    weeks.forEach((w) => series.forEach((sr) => { const v = accNum(w[sr.key]); if (v !== null) vals.push(v); }));
+    const vMax = vals.length ? Math.ceil(Math.max(...vals) + 0.5) : 1;
+    const vMin = vals.length ? Math.max(0, Math.floor(Math.min(...vals) - 0.5)) : 0;
+    const y = (v) => padT + plotH - ((v - vMin) / Math.max(0.0001, vMax - vMin)) * plotH;
+    const n = weeks.length;
+    const x = (i) => (n <= 1 ? padL + plotW / 2 : padL + 40 + (i * (plotW - 80)) / (n - 1));
+    let svg = "";
+    const step = vMax - vMin > 6 ? 2 : vMax - vMin > 3 ? 1 : 0.5;
+    for (let t = vMin; t <= vMax + 1e-9; t += step) {
+      svg += `<line x1="${padL}" y1="${y(t)}" x2="${W - padR}" y2="${y(t)}" stroke="#1f2d47" stroke-dasharray="3,3" />
+        <text x="${padL - 8}" y="${y(t) + 4}" text-anchor="end" fill="#94a3b8" font-size="10" font-family="JetBrains Mono">${t.toFixed(step < 1 ? 1 : 0)}</text>`;
+    }
+    svg += `<text x="12" y="${padT + plotH / 2}" fill="#94a3b8" font-size="10" transform="rotate(-90 12 ${padT + plotH / 2})" text-anchor="middle">MAE (FD pts)</text>`;
+    series.forEach((sr, si) => {
+      const pts = weeks.map((w, i) => ({ i, v: accNum(w[sr.key]) })).filter((p) => p.v !== null);
+      if (pts.length > 1) {
+        svg += `<polyline fill="none" stroke="${sr.color}" stroke-width="2.5" points="${pts.map((p) => `${x(p.i)},${y(p.v)}`).join(" ")}" />`;
+      }
+      pts.forEach((p) => {
+        // label above the higher point, below the lower one, so overlapping series stay readable
+        const others = series.filter((o) => o !== sr).map((o) => accNum(weeks[p.i][o.key])).filter((v) => v !== null);
+        const isHigh = others.every((v) => p.v > v || (p.v === v && si === 0));
+        const dy = isHigh ? -10 : 18;
+        svg += `<circle cx="${x(p.i)}" cy="${y(p.v)}" r="4.5" fill="${sr.color}" />
+          <text x="${x(p.i)}" y="${y(p.v) + dy}" text-anchor="middle" fill="${sr.color}" font-size="10.5" font-weight="700" font-family="JetBrains Mono">${p.v.toFixed(2)}</text>`;
+      });
+    });
+    weeks.forEach((w, i) => {
+      svg += `<text x="${x(i)}" y="${H - 26}" text-anchor="middle" fill="#e2e8f0" font-size="11" font-weight="700">Board Wk ${escapeHtml(w.board_week)}</text>
+        <text x="${x(i)}" y="${H - 11}" text-anchor="middle" fill="#94a3b8" font-size="9.5">NFL Wk ${escapeHtml(w.nfl_week)} • n=${escapeHtml(w.n_head_to_head)}</text>`;
+    });
+    wrap.innerHTML = `<svg viewBox="0 0 ${W} ${H}" class="resp-svg" role="img" aria-label="Week by week MAE, my model vs FanDuel">${svg}</svg>`;
+
+    // ---- Week-by-week table ----
+    const cmpCls = (a, b) => {
+      const A = accNum(a), B = accNum(b);
+      if (A === null || B === null) return "";
+      return A < B ? "acc-better" : A > B ? "acc-worse" : "";
+    };
+    let head = `<tr><th class="sticky-col">WEEK</th><th>SLATES</th><th>PLAYERS (H2H)</th><th>MY MODEL MAE</th><th>${escapeHtml(bench).toUpperCase()} MAE</th><th>EDGE (MODEL − FD)</th><th>MORE ACCURATE</th><th>MODEL WIN RATE</th><th>MODEL ρ</th><th>FD ρ</th><th>MODEL BIAS</th><th>FD BIAS</th>`;
+    if (hasFdr) head += `<th>FDR n</th><th>FDR MAE</th><th>FDR ρ</th><th>WIN RATE vs FDR</th>`;
+    head += `<th>MODEL VERSION</th></tr>`;
+    document.getElementById("acc-weekly-thead").innerHTML = head;
+    const rowHtml = (r, label, cls) => {
+      let h = `<tr class="${cls}"><td class="sticky-col">${label}</td>
+        <td>${escapeHtml(r.level === "week" ? r.slate.split("+").length : weeks.reduce((t, w) => t + w.slate.split("+").length, 0))}</td>
+        <td>${escapeHtml(r.n_head_to_head)}</td>
+        <td class="${cmpCls(r.model_mae, r.fd_mae)}">${accFmt(r.model_mae, 3)}</td>
+        <td class="${cmpCls(r.fd_mae, r.model_mae)}">${accFmt(r.fd_mae, 3)}</td>
+        <td>${accNum(r.mae_edge_model_minus_fd) === null ? "—" : fmtSigned(accNum(r.mae_edge_model_minus_fd), 3)}</td>
+        <td>${escapeHtml(r.more_accurate === "Model" ? "My model" : r.more_accurate || "—")}</td>
+        <td>${accPct(r.model_win_rate)}</td>
+        <td class="${cmpCls(r.fd_spearman, r.model_spearman)}">${accFmt(r.model_spearman, 3)}</td>
+        <td>${accFmt(r.fd_spearman, 3)}</td>
+        <td>${accNum(r.model_bias) === null ? "—" : fmtSigned(accNum(r.model_bias))}</td>
+        <td>${accNum(r.fd_bias) === null ? "—" : fmtSigned(accNum(r.fd_bias))}</td>`;
+      if (hasFdr) h += `<td>${escapeHtml(r.fdr_n || "0")}</td><td>${accFmt(r.fdr_mae, 3)}</td><td>${accFmt(r.fdr_spearman, 3)}</td><td>${accPct(r.model_win_rate_vs_fdr)}</td>`;
+      h += `<td>${escapeHtml(r.model_version || "—")}</td></tr>`;
+      return h;
+    };
+    let body = weeks.map((w) => rowHtml(w, accWeekLabel(w), "")).join("");
+    body += rowHtml(std, `Season to date<span class="acc-sub-lbl">through Board Wk ${escapeHtml(std.board_week)} / NFL Wk ${escapeHtml(std.nfl_week)}</span>`, "acc-std-row");
+    document.getElementById("acc-weekly-tbody").innerHTML = body;
+    document.getElementById("acc-table-note").innerHTML = `Benchmark: <strong>${escapeHtml(bench)}</strong>${hasFdr ? " plus FanDuel Research projection columns (FDR)" : " • FanDuel Research projection columns appear once captured slates go final"} • Green = lower error`;
+
+    // ---- Slate detail table ----
+    document.getElementById("acc-slate-thead").innerHTML = `<tr><th class="sticky-col">SLATE</th><th>WEEK</th><th>TYPE</th><th>DATE</th><th>GAMES</th><th>H2H</th><th>MY MODEL MAE</th><th>FD MAE</th><th>MORE ACCURATE</th><th>WIN RATE</th>${hasFdr ? "<th>FDR n</th><th>FDR MAE</th>" : ""}<th>PROJECTION FILE</th></tr>`;
+    const sortedSlates = slates.slice().sort((a, b) => String(a.gameday).localeCompare(String(b.gameday)) || String(a.slate).localeCompare(String(b.slate)));
+    document.getElementById("acc-slate-tbody").innerHTML = sortedSlates.map((r) => `<tr>
+        <td class="sticky-col">#${escapeHtml(r.slate)}</td>
+        <td>${accWeekLabel(r)}</td>
+        <td>${escapeHtml(r.slate_type)}</td>
+        <td>${escapeHtml(r.gameday)}</td>
+        <td>${escapeHtml(r.games)}</td>
+        <td>${escapeHtml(r.n_head_to_head)}</td>
+        <td class="${cmpCls(r.model_mae, r.fd_mae)}">${accFmt(r.model_mae, 3)}</td>
+        <td class="${cmpCls(r.fd_mae, r.model_mae)}">${accFmt(r.fd_mae, 3)}</td>
+        <td>${escapeHtml(r.more_accurate === "Model" ? "My model" : r.more_accurate || "— (no FPPG)")}</td>
+        <td>${accPct(r.model_win_rate)}</td>
+        ${hasFdr ? `<td>${escapeHtml(r.fdr_n || "0")}</td><td>${accFmt(r.fdr_mae, 3)}</td>` : ""}
+        <td><code>${escapeHtml(r.baseline_file)}</code></td>
+      </tr>`).join("");
+
+    document.getElementById("acc-method").innerHTML = `<strong>Method:</strong> ${escapeHtml(meta.filter || "")} • ${escapeHtml(meta.win_rate_note || "")} • ${escapeHtml(meta.week_note || "")}${meta.slates_skipped ? " • Skipped: " + escapeHtml(meta.slates_skipped) : ""} • Source: <code>${escapeHtml(meta.source_generated_by || "")}</code> built ${escapeHtml(meta.source_built_at || "")}`;
+  }
+
   function bindEvents() {
     document.querySelectorAll(".fd-nav-tab").forEach((btn) => {
       btn.addEventListener("click", () => {
@@ -1897,6 +2122,13 @@
         document.querySelectorAll(".fd-view").forEach((v) => {
           v.classList.toggle("active", v.id === `tab-${tab}`);
         });
+      });
+    });
+
+    document.querySelectorAll("#acc-pos-tabs .pos-tab").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        state.accPos = btn.getAttribute("data-acc-pos") || "ALL";
+        renderAccuracyTab();
       });
     });
 
@@ -2056,6 +2288,7 @@
           renderLineupPanel();
           renderHistoricTrendsTab();
           renderWeightsAndBacktestTab();
+          renderAccuracyTab();
           btnRefresh.textContent = "✓ Refreshed CSVs";
           setTimeout(() => {
             btnRefresh.textContent = "🔄 Refresh Live Data";
@@ -2091,6 +2324,7 @@
       if (topOpt) loadPresetLineup(topOpt.preset_id);
       renderHistoricTrendsTab();
       renderWeightsAndBacktestTab();
+      renderAccuracyTab();
     } catch (err) {
       console.error("Failed to initialize CSV board:", err);
       document.getElementById("hdr-slate-title").textContent = "Error loading CSV files: " + err.message;

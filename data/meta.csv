@@ -2,13 +2,13 @@ key,value
 title,Week 11 Thursday Night Football Board (WAS@NYG Thu Nov 12 8:15 PM ET) • LIVE FD Showdown #136467
 active_week,11
 slate_id,WK11-TNF-136467
-contest_name,"Week 11 TNF WAS@NYG Showdown Board (Featured Optimal OPT-WK11-TNF-1: 117.15 v9 pts • $58,800 • MVP Malik Nabers • LIVE FD Showdown #136467)"
+contest_name,"Week 11 TNF WAS@NYG Showdown Board (Featured Optimal OPT-WK11-TNF-1: 117.50 v9 pts • $58,800 • MVP Malik Nabers • LIVE FD Showdown #136467)"
 lock_time,TNF WAS@NYG Thu Nov 12 8:15 PM ET • London NE@DET Sun Nov 15 9:30 AM ET • Sun Main 1:00 PM ET • SNF PIT@CIN 8:20 PM ET • MNF LAC@BAL Mon Nov 16 8:15 PM ET
 salary_cap,60000
 roster_slots,9
 active_version,v9 LOCKED (15 SIGNALS + TEAM-OWNED STADIUM/WX + STRATEGY EXCHANGE)
-generated_at,"Thu Nov 12, 2026 8:57 AM ET (Build 20261112-085759 • Thu TNF morning prep: deterministic WAS@NYG baseline + PuLP Showdown; salaries LIVE FD Showdown #136467 morning 08:27 ET (58 players, FLEX; MVP 1.5x by ILP); official tags Out/IR/Doubtful -> 0 (Yankoff O; 11 IR); Skattebo cleared (full practice, no designation); Burks DNP but no report_status, left ACTIVE per official tag-only rule; QB starters Daniels / McCarthy; total 40.5 (was 41.5), NYG -2.5; historic rows byte-preserved; other Week 11 games remain Tuesday-seed ESTIMATED Classic)"
-build_id,20261112-085759
+generated_at,"Thu Nov 12, 2026 5:16 PM ET (Build 20261112-171645 • Thu TNF PRE-LOCK: deterministic WAS@NYG baseline + PuLP Showdown; salaries LIVE FD Showdown #136467 morning 08:27 ET (58 players, FLEX; MVP 1.5x by ILP; afternoon re-pull unavailable without FanDuel auth); FDR fd_proj snapshot 2026-11-12T17:14:38-0500 (38 rows mapped onto the 58-player slate); official nflverse week-10 report_status Out/IR/Doubtful -> 0 (Yankoff O; 10 IR); Skattebo cleared (full practice, no designation); Burks DNP but no report_status, left ACTIVE per official tag-only rule; Harrison Q and Lucas Patrick O are official but not on the FD Showdown slate; QB starters Daniels / McCarthy; total 40.5, NYG -2.5; historic rows byte-preserved; other Week 11 games remain Tuesday-seed ESTIMATED Classic)"
+build_id,20261112-171645
 updater_bot,@fd-board-updater
 updater_bot_id,7f63a5f1-23e8-4a34-b1c8-fd8b0a4d2026
 middleman_bot,@fd-strategy-exchange
@@ -50,13 +50,13 @@ wk10_player_count,770
 wk10_game_count,15
 pregame_snapshot_build,20261109-175813
 pregame_snapshot_provenance,Mon Nov 9 5:58:13 PM ET PRE-LOCK current_players.csv BUF@MIN rows from LIVE FD Showdown #136436 (morning 09:14 ET salaries) locked into historic_player_projections.csv (47 rows). This run filled actual_fd only on box-matched rows; our_proj_pregame/fd_proj_pregame never changed.
-model_limitations,"TNF WAS@NYG uses LIVE FD Showdown #136467 salaries and this-morning baseline (games total 40.5, spread NYG -2.5; nflverse week 10 injuries installed into inj2026.csv). Official O/IR/D only are zeroed: Colson Yankoff (O, Knee) and IR: Dart, Tracy Jr., Olszewski, Berrios, Austin III, Croskey-Merritt, McNichols, McLaurin, Lane, Dyami Brown. Skattebo full practice / no designation (was Doubtful week 9). Treylon Burks DNP without report_status, not zeroed. Backup QBs Winston/Mariota/Hartman/Kaliakmanis zeroed by confirmed-starter gate (Daniels / McCarthy). No official inactives yet (afternoon game-status still pending). Sunday/London/SNF/MNF rows and all_games Classic optimals remain Tuesday-seed ESTIMATED salaries. fd_proj is historical FPPG or synthetic proxy, not a FanDuel vendor forecast. Weather/strategy signals from baseline.py; no new Week 11 strategy-exchange packets required for this TNF overlay."
-fd_projection_column_provenance,"All fd_proj/fd_proj_pregame and fd_* comparison fields mean historical FPPG or synthetic fallback PROXY, NOT a FanDuel vendor forecast. No claim of beating FanDuel predictions."
+model_limitations,"TNF WAS@NYG PRE-LOCK uses LIVE FD Showdown #136467 salaries (morning 08:27 ET pull; afternoon re-pull unavailable without FanDuel auth) and refreshed baseline.py (slate date 2026-11-12; games total 40.5, spread NYG -2.5; official nflverse week-10 injuries refreshed 17:14 ET into inj2026.csv; WAS@NYG designations unchanged vs morning). Official O/IR/D only are zeroed: Colson Yankoff (O, Knee) and IR: Dart, Tracy Jr., Olszewski, Berrios, Austin III, Croskey-Merritt, McNichols, McLaurin, Lane, Dyami Brown. Skattebo full practice / no designation. Treylon Burks DNP without report_status, not zeroed. Official but off-slate: Malik Harrison (NYG, Questionable, Groin) and Lucas Patrick (WAS, Out, Concussion). Backup QBs Winston/Mariota/Hartman/Kaliakmanis zeroed by confirmed-starter gate (Daniels / McCarthy). No official inactives posted in nflverse as of this run. Sunday/London/SNF/MNF rows and all_games Classic optimals remain Tuesday-seed ESTIMATED salaries. WAS@NYG fd_proj is the FDR capture, not FPPG. Weather/strategy signals from baseline.py; no new Week 11 strategy-exchange packets required for this TNF overlay."
+fd_projection_column_provenance,"WAS@NYG TNF fd_proj / fd_proj_pregame = FanDuel Research (FDR) projections captured 2026-11-12T17:14:38-0500 via tools/capture_fd_projections.py (public GraphQL). O/IR/D locked at 0. Unmatched deep-bench Showdown players with no FDR row have fd_proj=0 (not a FPPG or synthetic proxy). All other Week 11 games still use historical FPPG or synthetic fallback PROXY, NOT a FanDuel vendor forecast."
 actuals_source,ESPN final summary box scores + existing fdscore.py; CALCULATED actuals NOT reconciled against official FanDuel results
 actuals_verification_status,PROVISIONAL ESPN-derived calculated grading; FanDuel reconciliation outstanding; scoring-rule verification outstanding
 no_box_line_policy,"20 unmatched MNF snapshot players excluded from actuals/metrics; NOT assigned zero or presumed inactive. Official inactives in pool: Skyler Bell (BUF); Kyler Murray, Jauan Jennings, Demond Claiborne (MIN). Pre-lock OUT/IR with no box line: Joshua Palmer (OUT), Josh Oliver (IR). Official inactives not in the 47-player pool: BUF Kilgore, Danna, Anderson, Dawkins, Gaines; MIN Thomas, Demmings, Banks. See /workspace/w10mnf-20261110/no-box-line-unresolved-mnf.csv. Existing TNF zero policy and Sunday/SNF exclusion lists retained untouched."
 wk10_summary_scope,"TNF legacy rows (incl. legacy zero policy) + London/early/afternoon/SNF/MNF matched box lines only; unresolved excluded; heterogeneous zero policies/selection bias. Week 10 now complete. Non-W10/ALL summaries unchanged, not recomputed."
-headline_status,Week 11 TNF morning prep; LIVE FD Showdown #136467; not a pre-lock entry
+headline_status,Week 11 TNF PRE-LOCK; LIVE FD Showdown #136467; kickoff Thu Nov 12 8:15 PM ET
 london_provenance,"CIN@ATL standalone 9:30 AM ET, not #136184; Friday early-issued forecast, estimated Classic salaries; preserved from early draft"
 publish_status,LOCAL DRAFT pending GitHub data/*.csv publish
 wk10_our_mae,3.671
@@ -65,10 +65,10 @@ afternoon_finals,HOU@LAC 44-22; GB@NE 45-27; LV@SF 17-38; ARI@SEA 3-17 (ESPN 401
 early_draft_preserved,Unpublished early draft build 20261108-170406 and afternoon draft build 20261108-200626 historic bytes preserved as prefix; SNF append-only
 snf_final,"TB@CHI FINAL CHI 27, TB 24 (ESPN 401873050); graded with Friday Classic-price forecasts only; provisional 136321-review baseline/mock NOT used"
 snf_stale_seed_lineup_note,"Friday OPT-WK10-SNF-1 seed (Classic salaries, NOT live Showdown) MVP Caleb Williams + Swift/Irving/Burden III/Mayfield/Odunze scored 95.66 Showdown pts (MVP 1.5x). STALE Friday Classic-price seed — NOT a valid pre-lock."
-salary_source,"LIVE FD Showdown #136467 (58 players, morning 08:27 ET pull)"
+salary_source,"LIVE FD Showdown #136467 (58 players, morning 08:27 ET pull; afternoon re-pull unavailable without FanDuel auth)"
 player_count,58
 featured_optimal_id,OPT-WK11-TNF-1
-featured_optimal_pts,117.15
+featured_optimal_pts,117.50
 featured_optimal_salary,58800
 mnf_final,"BUF@MIN FINAL BUF 23, MIN 6 (ESPN 401873051); graded from PRE-LOCK live Showdown #136436 snapshot 20261109-175813; CALCULATED ESPN-box actuals"
 mnf_featured_seed_lineup_note,"OPT-WK10-MNF-1 (LIVE Showdown #136436, proj 101.56, $59,800) MVP Josh Allen + Cook/DJ Moore/Addison/Hockenson/K. Coleman scored 57.89 Showdown pts (MVP 1.5x). Calculated actuals, not official FanDuel results."
@@ -80,7 +80,7 @@ wk11_all_games_optimal_pts,172.75
 wk11_salary_source,ESTIMATED (no live FanDuel Week 11 slate; prior-week verified Classic #136184/#135859 and mapped Showdown)
 wk11_player_count,752
 wk11_game_count,14
-wk11_tnf_salary_source,"LIVE FD Showdown #136467 (58 players, morning 08:27 ET pull)"
+wk11_tnf_salary_source,"LIVE FD Showdown #136467 (58 players, morning 08:27 ET pull; afternoon re-pull unavailable without FanDuel auth)"
 wk11_tnf_featured_optimal_id,OPT-WK11-TNF-1
-wk11_tnf_featured_optimal_pts,117.15
+wk11_tnf_featured_optimal_pts,117.50
 wk11_tnf_featured_optimal_salary,58800

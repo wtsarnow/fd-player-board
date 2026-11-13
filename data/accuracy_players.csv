@@ -853,7 +853,7 @@ nfl_week,board_week,slate,slate_type,gameday,game,player,pos,team,salary,injury_
 9,10,136184,Classic,2026-11-08,HOU@LAC,Amar Johnson,RB,LAC,4000,,0.03,0.80,,0.00,False,did_not_play,False,0.03,0.80,1.00
 9,10,136184,Classic,2026-11-08,DEN@CAR,Anthony Tyus III,RB,CAR,4000,,0.14,2.08,,0.00,True,stats,True,0.14,2.08,1.00
 9,10,136184,Classic,2026-11-08,LV@SF,Ashton Jeanty,RB,LV,6800,,15.19,14.60,,4.50,True,stats,True,10.69,10.10,-1.00
-9,10,136184,Classic,2026-11-08,CLE@NO,Audric Estime,RB,NO,4200,,0.07,7.90,,0.00,True,snaps_no_stats,True,0.07,7.90,1.00
+9,10,136184,Classic,2026-11-08,CLE@NO,Audric Estime,RB,NO,4200,,0.07,7.90,,14.20,True,stats,True,14.13,6.30,-1.00
 9,10,136184,Classic,2026-11-08,LA@WAS,Austin Ekeler,RB,WAS,5100,,3.37,3.42,,4.40,True,stats,True,1.03,0.98,-1.00
 9,10,136184,Classic,2026-11-08,ARI@SEA,Bam Knight,RB,ARI,4800,O,0.00,3.68,,0.00,False,did_not_play,False,0.00,3.68,1.00
 9,10,136184,Classic,2026-11-08,LA@WAS,Blake Corum,RB,LA,6100,,9.08,9.73,,11.80,True,stats,True,2.72,2.07,-1.00
@@ -1418,3 +1418,61 @@ nfl_week,board_week,slate,slate_type,gameday,game,player,pos,team,salary,injury_
 9,10,136436,Showdown,2026-11-09,BUF@MIN,Stephen Gosnell,WR,BUF,1000,,0.04,,,0.00,False,did_not_play,False,0.04,,
 9,10,136436,Showdown,2026-11-09,BUF@MIN,Tai Felton,WR,MIN,1800,,0.54,1.40,,0.00,True,snaps_no_stats,True,0.54,1.40,1.00
 9,10,136436,Showdown,2026-11-09,BUF@MIN,Trent Sherfield Sr.,WR,BUF,1000,,0.07,0.00,,0.00,True,snaps_no_stats,False,0.07,0.00,-1.00
+10,11,136467,Showdown,2026-11-12,WAS@NYG,New York Giants,DST,NYG,6600,,7.53,6.12,6.40,5.00,True,pbp_dst,True,2.53,1.12,-1.00
+10,11,136467,Showdown,2026-11-12,WAS@NYG,Washington Commanders,DST,WAS,6400,,6.35,5.75,7.10,5.00,True,pbp_dst,True,1.35,0.75,-1.00
+10,11,136467,Showdown,2026-11-12,WAS@NYG,Dominic Zvada,K,NYG,6800,,9.59,9.88,7.80,3.00,True,stats,True,6.59,6.88,1.00
+10,11,136467,Showdown,2026-11-12,WAS@NYG,Drew Stevens,K,WAS,6200,,8.21,9.00,7.40,7.00,True,stats,True,1.21,2.00,1.00
+10,11,136467,Showdown,2026-11-12,WAS@NYG,Athan Kaliakmanis,QB,WAS,1000,,0.00,6.02,0.00,0.00,False,did_not_play,False,0.00,6.02,1.00
+10,11,136467,Showdown,2026-11-12,WAS@NYG,J.J. McCarthy,QB,NYG,11600,,13.80,7.00,15.90,18.12,True,stats,True,4.32,11.12,1.00
+10,11,136467,Showdown,2026-11-12,WAS@NYG,Jameis Winston,QB,NYG,10000,,0.00,11.60,0.00,0.10,True,stats,False,0.10,11.50,1.00
+10,11,136467,Showdown,2026-11-12,WAS@NYG,Jaxson Dart,QB,NYG,1000,IR,0.00,13.70,,0.00,False,did_not_play,False,0.00,13.70,1.00
+10,11,136467,Showdown,2026-11-12,WAS@NYG,Jayden Daniels,QB,WAS,12600,,20.96,17.31,17.30,22.76,True,stats,True,1.80,5.45,1.00
+10,11,136467,Showdown,2026-11-12,WAS@NYG,Marcus Mariota,QB,WAS,8000,,0.00,11.50,0.00,0.00,False,did_not_play,False,0.00,11.50,1.00
+10,11,136467,Showdown,2026-11-12,WAS@NYG,Sam Hartman,QB,WAS,1000,,0.00,,0.00,0.00,False,did_not_play,False,0.00,,
+10,11,136467,Showdown,2026-11-12,WAS@NYG,Austin Ekeler,RB,WAS,5800,,5.71,3.62,8.90,7.20,True,stats,True,1.49,3.58,1.00
+10,11,136467,Showdown,2026-11-12,WAS@NYG,Cam Skattebo,RB,NYG,9400,,18.76,11.32,10.90,25.70,True,stats,True,6.94,14.38,1.00
+10,11,136467,Showdown,2026-11-12,WAS@NYG,Craig Reynolds,RB,WAS,1200,,0.16,0.40,,0.00,False,did_not_play,False,0.16,0.40,1.00
+10,11,136467,Showdown,2026-11-12,WAS@NYG,Devin Neal,RB,WAS,1400,,0.12,5.72,,0.00,False,did_not_play,False,0.12,5.72,1.00
+10,11,136467,Showdown,2026-11-12,WAS@NYG,Devin Singletary,RB,NYG,8800,,7.66,5.73,8.10,0.30,True,stats,True,7.36,5.43,-1.00
+10,11,136467,Showdown,2026-11-12,WAS@NYG,Eric Gray,RB,NYG,1400,,0.08,0.00,,0.00,False,did_not_play,False,0.08,0.00,-1.00
+10,11,136467,Showdown,2026-11-12,WAS@NYG,Grant Finley,RB,NYG,1000,,0.08,,,0.00,False,did_not_play,False,0.08,,
+10,11,136467,Showdown,2026-11-12,WAS@NYG,Gregory Desrosiers,RB,NYG,3800,,0.99,2.00,,0.00,True,stats,True,0.99,2.00,1.00
+10,11,136467,Showdown,2026-11-12,WAS@NYG,Jacory Croskey-Merritt,RB,WAS,3000,IR,0.00,8.48,0.00,0.00,False,did_not_play,False,0.00,8.48,1.00
+10,11,136467,Showdown,2026-11-12,WAS@NYG,Jeremy McNichols,RB,WAS,1000,IR,0.00,2.30,0.00,0.00,False,did_not_play,False,0.00,2.30,1.00
+10,11,136467,Showdown,2026-11-12,WAS@NYG,Patrick Ricard,RB,NYG,1600,,0.47,0.20,0.10,0.00,False,did_not_play,False,0.47,0.20,-1.00
+10,11,136467,Showdown,2026-11-12,WAS@NYG,Phil Mafah,RB,NYG,1800,,0.11,9.90,,0.00,False,did_not_play,False,0.11,9.90,1.00
+10,11,136467,Showdown,2026-11-12,WAS@NYG,Rachaad White,RB,WAS,10200,,9.30,8.67,8.20,5.70,True,stats,True,3.60,2.97,-1.00
+10,11,136467,Showdown,2026-11-12,WAS@NYG,Robert Henry Jr.,RB,WAS,1000,,0.07,,,0.40,True,stats,True,0.33,,
+10,11,136467,Showdown,2026-11-12,WAS@NYG,Tyrone Tracy Jr.,RB,NYG,1000,IR,0.00,4.20,0.00,0.00,False,did_not_play,False,0.00,4.20,1.00
+10,11,136467,Showdown,2026-11-12,WAS@NYG,Ben Mann,TE,NYG,1000,,0.02,0.00,,0.00,False,did_not_play,False,0.02,0.00,-1.00
+10,11,136467,Showdown,2026-11-12,WAS@NYG,Ben Sinnott,TE,WAS,2400,,0.50,0.37,0.70,12.20,True,stats,True,11.70,11.83,1.00
+10,11,136467,Showdown,2026-11-12,WAS@NYG,Chig Okonkwo,TE,WAS,5400,,6.17,4.77,,4.40,True,stats,True,1.77,0.37,-1.00
+10,11,136467,Showdown,2026-11-12,WAS@NYG,Chris Manhertz,TE,NYG,1000,,0.07,0.00,0.30,0.00,True,stats,False,0.07,0.00,-1.00
+10,11,136467,Showdown,2026-11-12,WAS@NYG,Colson Yankoff,TE,WAS,2800,O,0.00,0.46,0.00,0.00,False,did_not_play,False,0.00,0.46,1.00
+10,11,136467,Showdown,2026-11-12,WAS@NYG,Isaiah Likely,TE,NYG,8200,,15.86,13.23,9.40,26.20,True,stats,True,10.34,12.97,1.00
+10,11,136467,Showdown,2026-11-12,WAS@NYG,Jack Westover,TE,WAS,1000,,0.04,0.60,,0.00,False,did_not_play,False,0.04,0.60,1.00
+10,11,136467,Showdown,2026-11-12,WAS@NYG,John Bates,TE,WAS,2000,,0.46,1.04,1.00,0.00,True,stats,True,0.46,1.04,1.00
+10,11,136467,Showdown,2026-11-12,WAS@NYG,Quentin Moore,TE,WAS,1000,,0.06,,,0.00,False,did_not_play,False,0.06,,
+10,11,136467,Showdown,2026-11-12,WAS@NYG,Theo Johnson,TE,NYG,4200,,1.42,2.70,2.30,1.30,True,stats,True,0.12,1.40,1.00
+10,11,136467,Showdown,2026-11-12,WAS@NYG,Thomas Fidone II,TE,NYG,1200,,0.14,1.70,0.00,0.00,False,did_not_play,False,0.14,1.70,1.00
+10,11,136467,Showdown,2026-11-12,WAS@NYG,Tyler Ott,TE,WAS,1000,,0.04,0.00,,0.00,False,did_not_play,False,0.04,0.00,-1.00
+10,11,136467,Showdown,2026-11-12,WAS@NYG,Antonio Williams,WR,WAS,7200,,12.77,5.93,7.60,11.20,True,stats,True,1.57,5.27,1.00
+10,11,136467,Showdown,2026-11-12,WAS@NYG,Braxton Berrios,WR,NYG,1000,IR,0.00,0.00,,0.00,False,did_not_play,False,0.00,0.00,0.00
+10,11,136467,Showdown,2026-11-12,WAS@NYG,Calvin Austin III,WR,NYG,1000,IR,0.00,4.87,,0.00,False,did_not_play,False,0.00,4.87,1.00
+10,11,136467,Showdown,2026-11-12,WAS@NYG,Charlie Jones,WR,NYG,1000,,0.18,0.72,0.30,0.00,True,stats,True,0.18,0.72,1.00
+10,11,136467,Showdown,2026-11-12,WAS@NYG,Dalen Cambre,WR,NYG,1000,,0.04,0.00,,0.00,False,did_not_play,False,0.04,0.00,-1.00
+10,11,136467,Showdown,2026-11-12,WAS@NYG,Darnell Mooney,WR,NYG,4800,,5.15,3.19,4.10,1.80,True,stats,True,3.35,1.39,-1.00
+10,11,136467,Showdown,2026-11-12,WAS@NYG,Dontae Fleming,WR,NYG,1000,,0.06,,,0.00,False,did_not_play,False,0.06,,
+10,11,136467,Showdown,2026-11-12,WAS@NYG,Dyami Brown,WR,WAS,1000,IR,0.00,1.70,0.00,0.00,False,did_not_play,False,0.00,1.70,1.00
+10,11,136467,Showdown,2026-11-12,WAS@NYG,Gunner Olszewski,WR,NYG,1000,IR,0.00,1.99,,0.00,False,did_not_play,False,0.00,1.99,1.00
+10,11,136467,Showdown,2026-11-12,WAS@NYG,Jaden Bradley,WR,WAS,1000,,1.06,1.70,0.00,0.00,False,did_not_play,False,1.06,1.70,1.00
+10,11,136467,Showdown,2026-11-12,WAS@NYG,Jalin Hyatt,WR,NYG,1000,,0.26,0.00,,0.00,False,did_not_play,False,0.26,0.00,-1.00
+10,11,136467,Showdown,2026-11-12,WAS@NYG,Jaylin Lane,WR,WAS,1000,IR,0.00,0.88,,0.00,False,did_not_play,False,0.00,0.88,1.00
+10,11,136467,Showdown,2026-11-12,WAS@NYG,Luke McCaffrey,WR,WAS,3400,,0.75,0.22,0.30,0.00,True,stats,True,0.75,0.22,-1.00
+10,11,136467,Showdown,2026-11-12,WAS@NYG,Malachi Fields,WR,NYG,4600,,8.47,5.54,5.10,7.70,True,stats,True,0.77,2.16,1.00
+10,11,136467,Showdown,2026-11-12,WAS@NYG,Malik Nabers,WR,NYG,11200,,27.12,14.41,12.60,4.90,True,stats,True,22.22,9.51,-1.00
+10,11,136467,Showdown,2026-11-12,WAS@NYG,Nick DeGennaro,WR,WAS,1000,,0.07,,,0.00,False,did_not_play,False,0.07,,
+10,11,136467,Showdown,2026-11-12,WAS@NYG,Stefon Diggs,WR,WAS,10800,,17.61,10.76,9.30,17.30,True,stats,True,0.31,6.54,1.00
+10,11,136467,Showdown,2026-11-12,WAS@NYG,Terry McLaurin,WR,WAS,1000,IR,0.00,7.70,0.00,0.00,False,did_not_play,False,0.00,7.70,1.00
+10,11,136467,Showdown,2026-11-12,WAS@NYG,Treylon Burks,WR,WAS,4000,,4.79,6.88,4.80,3.70,True,stats,True,1.09,3.18,1.00
+10,11,136467,Showdown,2026-11-12,WAS@NYG,Van Jefferson,WR,WAS,7600,,8.79,7.15,2.10,0.00,False,did_not_play,False,8.79,7.15,-1.00

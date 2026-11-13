@@ -5,12 +5,12 @@ model_label,"My model (pre-slate projection, exactly as saved)"
 filter,model_proj > 0 AND FanDuel FPPG > 0 AND player played (stat line or >0 snaps; DST always)
 week_note,nfl_week = official NFL/nflverse week; board_week = nfl_week + 1 (label used in results.csv and the board)
 win_rate_note,share of head-to-head players where |model - actual| < |FPPG - actual|; exact ties count 0.5
-caveat,"Two head-to-head weeks so far (Board Weeks 9, 10). Past slates were projected with older model versions (v9 weights); current model is v10 weights + QB-gate/OUT-list fix. QB numbers predate the 2026-11-12 QB starter-check fix."
+caveat,"Three head-to-head weeks so far (Board Weeks 9, 10, 11). Past slates were projected with older model versions (v10 weights + QB-gate/OUT-list fix + yardage bonuses, v9 weights); current model is v10 weights + QB-gate/OUT-list fix + yardage bonuses."
 season,2026
 source_generated_by,tools/build_accuracy.py
-source_built_at,2026-11-12 09:01 AM ET
-source_weekly_sha256,c21c3dde001d7e00afd976073e4befcc30e2b8cd83e75d2e30e380ebe483412e
-source_players_sha256,4cfeb31917ae685011cf4b05f97239c99844e84d850e159048ae0329ce2c987f
-slates_included_count,8
-slates_included,"135859 Classic 2026-11-01 ARI@DAL ATL@TB BAL@BUF CLE@PIT IND@JAX KC@DEN LAC@LA LV@NYJ MIN@DET NE@MIA TEN@CIN (Board Wk 9, v9 weights); 135860 Showdown 2026-10-29 CAR@GB (Board Wk 9, v9 weights); 136032 Showdown 2026-11-01 PHI@WAS (Board Wk 9, v9 weights); 136135 Showdown 2026-11-02 CHI@SEA (Board Wk 9, v9 weights, no FPPG in export); 136167 Showdown 2026-11-05 JAX@BAL (Board Wk 10, v9 weights); 136184 Classic 2026-11-08 ARI@SEA CLE@NO DAL@IND DEN@CAR DET@MIA GB@NE HOU@LAC LA@WAS LV@SF NYG@PHI NYJ@KC (Board Wk 10, v9 weights); 136321 Showdown 2026-11-08 TB@CHI (Board Wk 10, v9 weights); 136436 Showdown 2026-11-09 BUF@MIN (Board Wk 10, v9 weights)"
-slates_skipped,136467: games not final yet: WAS@NYG; fd_mnf_buf_min_live.csv: not a canonical fd_<id>_live.csv export (alias/backup)
+source_built_at,2026-11-13 12:47 AM ET
+source_weekly_sha256,55af994ab7ddaf22dab403b2cc509db6e2691eda794f9f7f09e9c6d8ebf694f9
+source_players_sha256,e3bb451ec6cfb802a6231ba72ea8a40ff0e95d137853f839e5e4fb3e7836ade0
+slates_included_count,9
+slates_included,"135859 Classic 2026-11-01 ARI@DAL ATL@TB BAL@BUF CLE@PIT IND@JAX KC@DEN LAC@LA LV@NYJ MIN@DET NE@MIA TEN@CIN (Board Wk 9, v9 weights); 135860 Showdown 2026-10-29 CAR@GB (Board Wk 9, v9 weights); 136032 Showdown 2026-11-01 PHI@WAS (Board Wk 9, v9 weights); 136135 Showdown 2026-11-02 CHI@SEA (Board Wk 9, v9 weights, no FPPG in export); 136167 Showdown 2026-11-05 JAX@BAL (Board Wk 10, v9 weights); 136184 Classic 2026-11-08 ARI@SEA CLE@NO DAL@IND DEN@CAR DET@MIA GB@NE HOU@LAC LA@WAS LV@SF NYG@PHI NYJ@KC (Board Wk 10, v9 weights); 136321 Showdown 2026-11-08 TB@CHI (Board Wk 10, v9 weights); 136436 Showdown 2026-11-09 BUF@MIN (Board Wk 10, v9 weights); 136467 Showdown 2026-11-12 WAS@NYG (Board Wk 11, v10 weights + QB-gate/OUT-list fix + yardage bonuses)"
+slates_skipped,fd_mnf_buf_min_live.csv: not a canonical fd_<id>_live.csv export (alias/backup)

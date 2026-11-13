@@ -1,14 +1,14 @@
 key,value
-title,Week 11 Thursday Night Football Board (WAS@NYG Thu Nov 12 8:15 PM ET) • LIVE FD Showdown #136467
+title,Week 11 TNF WAS@NYG Graded (WAS 24-21 Final) • London + Sun Main + SNF + MNF Pending
 active_week,11
 slate_id,WK11-TNF-136467
-contest_name,"Week 11 TNF WAS@NYG Showdown Board (Featured Optimal OPT-WK11-TNF-1: 117.50 v9 pts • $58,800 • MVP Malik Nabers • LIVE FD Showdown #136467)"
-lock_time,TNF WAS@NYG Thu Nov 12 8:15 PM ET • London NE@DET Sun Nov 15 9:30 AM ET • Sun Main 1:00 PM ET • SNF PIT@CIN 8:20 PM ET • MNF LAC@BAL Mon Nov 16 8:15 PM ET
+contest_name,"Week 11 TNF WAS@NYG Graded (OPT-WK11-TNF-1 actual 100.91 vs 117.50 proj • $58,800 • MVP Malik Nabers) • LIVE FD Showdown #136467 • FDR fd_proj_pregame 5:14 PM ET"
+lock_time,TNF WAS@NYG Final Thu Nov 12 (WAS 24-21) • London NE@DET Sun Nov 15 9:30 AM ET • Sun Main 1:00 PM ET • SNF PIT@CIN 8:20 PM ET • MNF LAC@BAL Mon Nov 16 8:15 PM ET
 salary_cap,60000
 roster_slots,9
 active_version,v9 LOCKED (15 SIGNALS + TEAM-OWNED STADIUM/WX + STRATEGY EXCHANGE)
-generated_at,"Thu Nov 12, 2026 5:16 PM ET (Build 20261112-171645 • Thu TNF PRE-LOCK: deterministic WAS@NYG baseline + PuLP Showdown; salaries LIVE FD Showdown #136467 morning 08:27 ET (58 players, FLEX; MVP 1.5x by ILP; afternoon re-pull unavailable without FanDuel auth); FDR fd_proj snapshot 2026-11-12T17:14:38-0500 (38 rows mapped onto the 58-player slate); official nflverse week-10 report_status Out/IR/Doubtful -> 0 (Yankoff O; 10 IR); Skattebo cleared (full practice, no designation); Burks DNP but no report_status, left ACTIVE per official tag-only rule; Harrison Q and Lucas Patrick O are official but not on the FD Showdown slate; QB starters Daniels / McCarthy; total 40.5, NYG -2.5; historic rows byte-preserved; other Week 11 games remain Tuesday-seed ESTIMATED Classic)"
-build_id,20261112-171645
+generated_at,"Fri Nov 13, 2026 12:45 AM ET (Build 20261113-004559 • Post-TNF grade: WAS@NYG Final WAS 24-21 • ESPN 401873052 • slate #136467 • calculated actuals via fdscore.py • 25 boxed / 33 no-box-line excluded • pregame copied exactly from lock 20261112-171645 • fd_proj_pregame = FDR 5:14 PM ET • historic append only)"
+build_id,20261113-004559
 updater_bot,@fd-board-updater
 updater_bot_id,7f63a5f1-23e8-4a34-b1c8-fd8b0a4d2026
 middleman_bot,@fd-strategy-exchange
@@ -17,7 +17,7 @@ weather_bot,@fd-stadium-weather
 weather_bot_id,53977200-89b4-45e7-8791-b8a378bbc2d3
 pregame_schedule,Thu 9AM (TNF) • Fri 9AM (Sun Main/SNF) • Mon 9AM (MNF) • Refresh 3h Pre-Kickoff
 postgame_schedule,Tue 9AM Weekly Wrap (Finalize Wk8 Actuals vs Projections + Seed Wk9 Board)
-historic_weeks_covered,Weeks 3–9 unchanged; W10 TNF + London/early/afternoon/SNF preserved + 27 ESPN-box-matched MNF rows (actual_fd filled on locked pre-lock rows); 20 MNF unresolved excluded; 354 Sunday/London/SNF unresolved remain excluded
+historic_weeks_covered,"Weeks 3–9 unchanged; W10 complete (TNF + London/early/afternoon/SNF + 27 ESPN-box-matched MNF rows); Week 11 TNF WAS@NYG graded (25 boxed players, no-box-line excluded)"
 overall_our_rho,0.6518
 overall_fd_rho,0.4492
 overall_rho_gain,+0.2026
@@ -48,15 +48,15 @@ wk10_all_games_optimal_pts,176.70
 wk10_salary_source,LIVE FD Classic #136184 (11 Sun games)
 wk10_player_count,770
 wk10_game_count,15
-pregame_snapshot_build,20261109-175813
-pregame_snapshot_provenance,Mon Nov 9 5:58:13 PM ET PRE-LOCK current_players.csv BUF@MIN rows from LIVE FD Showdown #136436 (morning 09:14 ET salaries) locked into historic_player_projections.csv (47 rows). This run filled actual_fd only on box-matched rows; our_proj_pregame/fd_proj_pregame never changed.
-model_limitations,"TNF WAS@NYG PRE-LOCK uses LIVE FD Showdown #136467 salaries (morning 08:27 ET pull; afternoon re-pull unavailable without FanDuel auth) and refreshed baseline.py (slate date 2026-11-12; games total 40.5, spread NYG -2.5; official nflverse week-10 injuries refreshed 17:14 ET into inj2026.csv; WAS@NYG designations unchanged vs morning). Official O/IR/D only are zeroed: Colson Yankoff (O, Knee) and IR: Dart, Tracy Jr., Olszewski, Berrios, Austin III, Croskey-Merritt, McNichols, McLaurin, Lane, Dyami Brown. Skattebo full practice / no designation. Treylon Burks DNP without report_status, not zeroed. Official but off-slate: Malik Harrison (NYG, Questionable, Groin) and Lucas Patrick (WAS, Out, Concussion). Backup QBs Winston/Mariota/Hartman/Kaliakmanis zeroed by confirmed-starter gate (Daniels / McCarthy). No official inactives posted in nflverse as of this run. Sunday/London/SNF/MNF rows and all_games Classic optimals remain Tuesday-seed ESTIMATED salaries. WAS@NYG fd_proj is the FDR capture, not FPPG. Weather/strategy signals from baseline.py; no new Week 11 strategy-exchange packets required for this TNF overlay."
-fd_projection_column_provenance,"WAS@NYG TNF fd_proj / fd_proj_pregame = FanDuel Research (FDR) projections captured 2026-11-12T17:14:38-0500 via tools/capture_fd_projections.py (public GraphQL). O/IR/D locked at 0. Unmatched deep-bench Showdown players with no FDR row have fd_proj=0 (not a FPPG or synthetic proxy). All other Week 11 games still use historical FPPG or synthetic fallback PROXY, NOT a FanDuel vendor forecast."
-actuals_source,ESPN final summary box scores + existing fdscore.py; CALCULATED actuals NOT reconciled against official FanDuel results
+pregame_snapshot_build,20261112-171645
+pregame_snapshot_provenance,Thu Nov 12 5:16:45 PM ET PRE-LOCK current_players.csv WAS@NYG rows from LIVE FD Showdown #136467 (morning 08:27 ET salaries) locked; our_proj_pregame/fd_proj_pregame copied exactly into historic and never changed. fd_proj_pregame is the FDR capture at 5:14:38 PM ET.
+model_limitations,"TNF WAS@NYG graded from locked build 20261112-171645. Official O/IR/D were already zeroed pregame. No-box-line players (including Van Jefferson, backup QBs, IR/Out, and deep bench) excluded from metrics, not zeroed. fd_proj_pregame is FDR (5:14 PM ET), not FPPG. Sunday/London/SNF/MNF rows and all_games Classic optimals remain Tuesday-seed ESTIMATED salaries and are not graded in this run. Calculated ESPN-box actuals, not official FanDuel results."
+fd_projection_column_provenance,"WAS@NYG TNF fd_proj / fd_proj_pregame = FanDuel Research (FDR) projections captured 2026-11-12T17:14:38-0500 (5:14 PM ET) via tools/capture_fd_projections.py (public GraphQL), copied byte-exact from locked current_players build 20261112-171645. O/IR/D were locked at 0 pregame; unmatched deep-bench fd_proj=0. Pregame values were not altered in this post-game append. All other weeks / other Week 11 games still use historical FPPG or synthetic fallback PROXY where previously labeled."
+actuals_source,ESPN final summary box score 401873052 + fdscore.py; CALCULATED actuals NOT reconciled against official FanDuel results
 actuals_verification_status,PROVISIONAL ESPN-derived calculated grading; FanDuel reconciliation outstanding; scoring-rule verification outstanding
-no_box_line_policy,"20 unmatched MNF snapshot players excluded from actuals/metrics; NOT assigned zero or presumed inactive. Official inactives in pool: Skyler Bell (BUF); Kyler Murray, Jauan Jennings, Demond Claiborne (MIN). Pre-lock OUT/IR with no box line: Joshua Palmer (OUT), Josh Oliver (IR). Official inactives not in the 47-player pool: BUF Kilgore, Danna, Anderson, Dawkins, Gaines; MIN Thomas, Demmings, Banks. See /workspace/w10mnf-20261110/no-box-line-unresolved-mnf.csv. Existing TNF zero policy and Sunday/SNF exclusion lists retained untouched."
+no_box_line_policy,"33 Week 11 TNF snapshot players with no ESPN box line excluded from actuals/metrics; NOT assigned zero or presumed inactive. Excluded: Van Jefferson (WR WAS), Jaden Bradley (WR WAS), Patrick Ricard (RB NYG), John Bates (TE WAS), Jalin Hyatt (WR NYG), Craig Reynolds (RB WAS), Thomas Fidone II (TE NYG), Devin Neal (RB WAS), Phil Mafah (RB NYG), Grant Finley (RB NYG), Eric Gray (RB NYG), Chris Manhertz (TE NYG), Nick DeGennaro (WR WAS), Dontae Fleming (WR NYG), Quentin Moore (TE WAS), Dalen Cambre (WR NYG), Tyler Ott (TE WAS), Jack Westover (TE WAS), Ben Mann (TE NYG), Marcus Mariota (QB WAS), Jacory Croskey-Merritt (RB WAS), Colson Yankoff (TE WAS), Jaxson Dart (QB NYG), Tyrone Tracy Jr. (RB NYG), Gunner Olszewski (WR NYG), Braxton Berrios (WR NYG), Calvin Austin III (WR NYG), Sam Hartman (QB WAS), Athan Kaliakmanis (QB WAS), Jeremy McNichols (RB WAS), Terry McLaurin (WR WAS), Jaylin Lane (WR WAS), Dyami Brown (WR WAS). Existing Week 10 exclusion lists and TNF legacy zero policy retained untouched."
 wk10_summary_scope,"TNF legacy rows (incl. legacy zero policy) + London/early/afternoon/SNF/MNF matched box lines only; unresolved excluded; heterogeneous zero policies/selection bias. Week 10 now complete. Non-W10/ALL summaries unchanged, not recomputed."
-headline_status,Week 11 TNF PRE-LOCK; LIVE FD Showdown #136467; kickoff Thu Nov 12 8:15 PM ET
+headline_status,Week 11 TNF WAS@NYG GRADED (WAS 24-21); London + Sun Main + SNF + MNF pending
 london_provenance,"CIN@ATL standalone 9:30 AM ET, not #136184; Friday early-issued forecast, estimated Classic salaries; preserved from early draft"
 publish_status,LOCAL DRAFT pending GitHub data/*.csv publish
 wk10_our_mae,3.671
@@ -84,3 +84,13 @@ wk11_tnf_salary_source,"LIVE FD Showdown #136467 (58 players, morning 08:27 ET p
 wk11_tnf_featured_optimal_id,OPT-WK11-TNF-1
 wk11_tnf_featured_optimal_pts,117.50
 wk11_tnf_featured_optimal_salary,58800
+wk11_tnf_featured_optimal_actual,100.91
+wk11_tnf_hindsight_optimal_note,"Hindsight Showdown optimal (box-matched only, MVP 1.5x salary/points, $60,000 cap) scored 135.38 on $59100: MVP Isaiah Likely + Cam Skattebo, Jayden Daniels, J.J. McCarthy, Stefon Diggs, Ben Sinnott."
+wk11_tnf_our_mae,3.711
+wk11_tnf_fd_mae,4.067
+wk11_tnf_our_rho,0.7203
+wk11_tnf_fd_rho,0.7372
+wk11_tnf_beat_fd_pct,56.0%
+wk11_tnf_n_graded,25
+wk11_tnf_n_excluded,33
+wk11_tnf_final,"WAS@NYG FINAL WAS 24, NYG 21 (ESPN 401873052); graded from PRE-LOCK live Showdown #136467 snapshot 20261112-171645; CALCULATED ESPN-box actuals"

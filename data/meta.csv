@@ -1,14 +1,14 @@
 key,value
-title,Week 11 TNF WAS@NYG Graded (WAS 24-21 Final) • London + Sun Main + SNF + MNF Pending
+title,Week 11 Sunday Main Board (LIVE FD Classic #136490) • TNF WAS@NYG Graded • London/SNF LIVE Showdown • MNF Pending
 active_week,11
-slate_id,WK11-TNF-136467
-contest_name,"Week 11 TNF WAS@NYG Graded (OPT-WK11-TNF-1 actual 100.91 vs 117.50 proj • $58,800 • MVP Malik Nabers) • LIVE FD Showdown #136467 • FDR fd_proj_pregame 5:14 PM ET"
-lock_time,TNF WAS@NYG Final Thu Nov 12 (WAS 24-21) • London NE@DET Sun Nov 15 9:30 AM ET • Sun Main 1:00 PM ET • SNF PIT@CIN 8:20 PM ET • MNF LAC@BAL Mon Nov 16 8:15 PM ET
+slate_id,WK11-MAIN-136490
+contest_name,"Week 11 Sunday Main Classic (10 Games • Featured Optimal OPT-WK11-MAIN-1: 171.32 v9 pts • $60,000 • LIVE FD Classic #136490)"
+lock_time,London NE@DET Sun Nov 15 9:30 AM ET • Sun Main #136490 1:00 PM ET (4:05/4:25 PM ET late games) • SNF PIT@CIN 8:20 PM ET • MNF LAC@BAL Mon Nov 16 8:15 PM ET • TNF WAS@NYG final (WAS 24-21)
 salary_cap,60000
 roster_slots,9
 active_version,v9 LOCKED (15 SIGNALS + TEAM-OWNED STADIUM/WX + STRATEGY EXCHANGE)
-generated_at,"Fri Nov 13, 2026 12:45 AM ET (Build 20261113-004559 • Post-TNF grade: WAS@NYG Final WAS 24-21 • ESPN 401873052 • slate #136467 • calculated actuals via fdscore.py • 25 boxed / 33 no-box-line excluded • pregame copied exactly from lock 20261112-171645 • fd_proj_pregame = FDR 5:14 PM ET • historic append only)"
-build_id,20261113-004559
+generated_at,"Fri Nov 13, 2026 9:05 AM ET (Build 20261113-090537 • Fri Sunday Main prep: deterministic baseline + PuLP; LIVE FD Classic #136490 (10 games, 503 players); LIVE FD Showdown #136634 London and #136633 SNF; MNF ESTIMATED; TNF rows locked from the pre-game board)"
+build_id,20261113-090537
 updater_bot,@fd-board-updater
 updater_bot_id,7f63a5f1-23e8-4a34-b1c8-fd8b0a4d2026
 middleman_bot,@fd-strategy-exchange
@@ -56,29 +56,29 @@ actuals_source,ESPN final summary box score 401873052 + fdscore.py; CALCULATED a
 actuals_verification_status,PROVISIONAL ESPN-derived calculated grading; FanDuel reconciliation outstanding; scoring-rule verification outstanding
 no_box_line_policy,"33 Week 11 TNF snapshot players with no ESPN box line excluded from actuals/metrics; NOT assigned zero or presumed inactive. Excluded: Van Jefferson (WR WAS), Jaden Bradley (WR WAS), Patrick Ricard (RB NYG), John Bates (TE WAS), Jalin Hyatt (WR NYG), Craig Reynolds (RB WAS), Thomas Fidone II (TE NYG), Devin Neal (RB WAS), Phil Mafah (RB NYG), Grant Finley (RB NYG), Eric Gray (RB NYG), Chris Manhertz (TE NYG), Nick DeGennaro (WR WAS), Dontae Fleming (WR NYG), Quentin Moore (TE WAS), Dalen Cambre (WR NYG), Tyler Ott (TE WAS), Jack Westover (TE WAS), Ben Mann (TE NYG), Marcus Mariota (QB WAS), Jacory Croskey-Merritt (RB WAS), Colson Yankoff (TE WAS), Jaxson Dart (QB NYG), Tyrone Tracy Jr. (RB NYG), Gunner Olszewski (WR NYG), Braxton Berrios (WR NYG), Calvin Austin III (WR NYG), Sam Hartman (QB WAS), Athan Kaliakmanis (QB WAS), Jeremy McNichols (RB WAS), Terry McLaurin (WR WAS), Jaylin Lane (WR WAS), Dyami Brown (WR WAS). Existing Week 10 exclusion lists and TNF legacy zero policy retained untouched."
 wk10_summary_scope,"TNF legacy rows (incl. legacy zero policy) + London/early/afternoon/SNF/MNF matched box lines only; unresolved excluded; heterogeneous zero policies/selection bias. Week 10 now complete. Non-W10/ALL summaries unchanged, not recomputed."
-headline_status,Week 11 TNF WAS@NYG GRADED (WAS 24-21); London + Sun Main + SNF + MNF pending
+headline_status,Week 11 Friday Sunday Main prep; LIVE FD #136490; not a pre-lock entry
 london_provenance,"CIN@ATL standalone 9:30 AM ET, not #136184; Friday early-issued forecast, estimated Classic salaries; preserved from early draft"
-publish_status,LOCAL DRAFT pending GitHub data/*.csv publish
+publish_status,LOCAL DRAFT staged at /workspace/fd-upload-fri-prep-20261113; NOT published (no git push)
 wk10_our_mae,3.671
 wk10_historical_synthetic_proxy_mae,4.01
 afternoon_finals,HOU@LAC 44-22; GB@NE 45-27; LV@SF 17-38; ARI@SEA 3-17 (ESPN 401873046/049/047/048). SNF TB@CHI FINAL CHI 27-24 (ESPN 401873050). MNF BUF@MIN FINAL BUF 23-6 (ESPN 401873051) graded this run.
 early_draft_preserved,Unpublished early draft build 20261108-170406 and afternoon draft build 20261108-200626 historic bytes preserved as prefix; SNF append-only
 snf_final,"TB@CHI FINAL CHI 27, TB 24 (ESPN 401873050); graded with Friday Classic-price forecasts only; provisional 136321-review baseline/mock NOT used"
 snf_stale_seed_lineup_note,"Friday OPT-WK10-SNF-1 seed (Classic salaries, NOT live Showdown) MVP Caleb Williams + Swift/Irving/Burden III/Mayfield/Odunze scored 95.66 Showdown pts (MVP 1.5x). STALE Friday Classic-price seed — NOT a valid pre-lock."
-salary_source,"LIVE FD Showdown #136467 (58 players, morning 08:27 ET pull; afternoon re-pull unavailable without FanDuel auth)"
-player_count,58
-featured_optimal_id,OPT-WK11-TNF-1
-featured_optimal_pts,117.50
-featured_optimal_salary,58800
+salary_source,LIVE FD #136490 Main + LIVE Showdown #136634/#136633; MNF ESTIMATED
+player_count,725
+featured_optimal_id,OPT-WK11-MAIN-1
+featured_optimal_pts,171.32
+featured_optimal_salary,60000
 mnf_final,"BUF@MIN FINAL BUF 23, MIN 6 (ESPN 401873051); graded from PRE-LOCK live Showdown #136436 snapshot 20261109-175813; CALCULATED ESPN-box actuals"
 mnf_featured_seed_lineup_note,"OPT-WK10-MNF-1 (LIVE Showdown #136436, proj 101.56, $59,800) MVP Josh Allen + Cook/DJ Moore/Addison/Hockenson/K. Coleman scored 57.89 Showdown pts (MVP 1.5x). Calculated actuals, not official FanDuel results."
 mnf_hindsight_optimal_note,"Hindsight Showdown optimal (box-matched only, MVP 1.5x salary/points, $60,000 cap) scored 89.41 on $51900: MVP James Cook III + Buffalo Bills, Josh Allen, Tyler Bass, Will Reichard, Keleki Latu."
 wk11_featured_optimal_id,OPT-WK11-MAIN-1
-wk11_featured_optimal_pts,170.86
+wk11_featured_optimal_pts,171.32
 wk11_featured_optimal_salary,60000
-wk11_all_games_optimal_pts,172.75
-wk11_salary_source,ESTIMATED (no live FanDuel Week 11 slate; prior-week verified Classic #136184/#135859 and mapped Showdown)
-wk11_player_count,752
+wk11_all_games_optimal_pts,171.32
+wk11_salary_source,"LIVE FD Classic #136490 (Sunday Main, 10 games) + LIVE FD Showdown #136634 (London NE@DET) and #136633 (SNF PIT@CIN); ESTIMATED Classic for MNF LAC@BAL"
+wk11_player_count,725
 wk11_game_count,14
 wk11_tnf_salary_source,"LIVE FD Showdown #136467 (58 players, morning 08:27 ET pull; afternoon re-pull unavailable without FanDuel auth)"
 wk11_tnf_featured_optimal_id,OPT-WK11-TNF-1
@@ -94,3 +94,9 @@ wk11_tnf_beat_fd_pct,56.0%
 wk11_tnf_n_graded,25
 wk11_tnf_n_excluded,33
 wk11_tnf_final,"WAS@NYG FINAL WAS 24, NYG 21 (ESPN 401873052); graded from PRE-LOCK live Showdown #136467 snapshot 20261112-171645; CALCULATED ESPN-box actuals"
+wk11_main_slate_id,136490
+wk11_london_slate_id,136634
+wk11_snf_slate_id,136633
+wk11_mnf_salary_status,ESTIMATED (LAC@BAL Showdown not posted as of Fri 9:02 AM ET)
+wk11_line_moves,NE@DET total 50.5->49.5; KC@ATL total 46.5->47.5 vs Thu overnight backup
+wk11_official_injury_rule,Official FD Injury Indicator and nflverse report_status Out/IR/Doubtful => our_proj 0; Q/DNP/Limited without Out stays ACTIVE

@@ -2,13 +2,13 @@ key,value
 title,Week 11 Sunday Pregame Lock (LIVE FD Classic #136490) • London NE@DET Locked • TNF WAS@NYG Graded • SNF LIVE • MNF Pending
 active_week,11
 slate_id,WK11-MAIN-136490
-contest_name,"Week 11 Sunday Main Classic (10 Games • Featured Optimal OPT-WK11-MAIN-1: 171.40 v9 pts • $60,000 • LIVE FD Classic #136490)"
+contest_name,"Week 11 Sunday Main Classic (10 Games • Featured Optimal OPT-WK11-MAIN-1: 171.37 v9 pts • $60,000 • LIVE FD Classic #136490)"
 lock_time,"London NE@DET Sun Nov 15 9:30 AM ET • Sun Main #136490 1:00 PM ET (4:05/4:25 PM ET late games, also Classic #136525) • SNF PIT@CIN 8:20 PM ET • MNF LAC@BAL Mon Nov 16 8:15 PM ET • TNF WAS@NYG final (WAS 24-21)"
 salary_cap,60000
 roster_slots,9
 active_version,v9 LOCKED (15 SIGNALS + TEAM-OWNED STADIUM/WX + STRATEGY EXCHANGE)
-generated_at,"Sun Nov 15, 2026 8:57 AM ET (Build 20261115-085732 • Sunday pre-game lock: baseline.py re-run date 2026-11-15 on last-night live salaries; independently re-solved PuLP optima; Main OPT-WK11-MAIN-1 171.40; London #136634 127.07 MVP Amon-Ra St. Brown; 4pm #136525 144.24; SNF #136633 135.93 MVP Germie Bernard; FDR fd_proj capture 2026-11-15T08:54:42-0500; TNF rows locked 20261112-171645; historic append-only preserved)"
-build_id,20261115-085732
+generated_at,"Sun Nov 15, 2026 12:24 PM ET (Build 20261115-122454 • Sunday pre-game lock: baseline.py re-run date 2026-11-15 on last-night live salaries; independently re-solved PuLP optima; Main OPT-WK11-MAIN-1 171.37; London #136634 127.07 MVP Amon-Ra St. Brown; 4pm #136525 144.24; SNF #136633 135.93 MVP Germie Bernard; FDR fd_proj capture 2026-11-15T12:23:52-0500; TNF rows locked 20261112-171645; historic append-only preserved)"
+build_id,20261115-122454
 updater_bot,@fd-board-updater
 updater_bot_id,7f63a5f1-23e8-4a34-b1c8-fd8b0a4d2026
 middleman_bot,@fd-strategy-exchange
@@ -51,14 +51,14 @@ wk10_game_count,15
 pregame_snapshot_build,20261112-171645
 pregame_snapshot_provenance,Thu Nov 12 5:16:45 PM ET PRE-LOCK current_players.csv WAS@NYG rows from LIVE FD Showdown #136467 (morning 08:27 ET salaries) locked; our_proj_pregame/fd_proj_pregame copied exactly into historic and never changed. fd_proj_pregame is the FDR capture at 5:14:38 PM ET.
 model_limitations,"TNF WAS@NYG graded from locked build 20261112-171645. Official O/IR/D were already zeroed pregame. No-box-line players (including Van Jefferson, backup QBs, IR/Out, and deep bench) excluded from metrics, not zeroed. fd_proj_pregame is FDR (5:14 PM ET), not FPPG. Sunday/London/SNF/MNF rows and all_games Classic optimals remain Tuesday-seed ESTIMATED salaries and are not graded in this run. Calculated ESPN-box actuals, not official FanDuel results."
-fd_projection_column_provenance,Sunday Main / 4pm / SNF / London / MNF fd_proj = FanDuel Research (FDR) capture 2026-11-15T08:54:42-0500 (8:54 AM ET Nov 15) via tools/capture_fd_projections.py where names matched; O/IR/D locked at 0; unmatched fd_proj=0 (not a FPPG proxy). WAS@NYG TNF fd_proj_pregame remains the locked Thursday 5:14 PM ET FDR capture from build 20261112-171645 and was not altered.
+fd_projection_column_provenance,"Sunday Main / 4pm / SNF / London / MNF fd_proj = FanDuel Research (FDR) capture 2026-11-15T12:23:52-0500 (12:23 PM ET Nov 15, post-inactives) via tools/capture_fd_projections.py where names matched; O/IR/D locked at 0; unmatched fd_proj=0 (not a FPPG proxy). WAS@NYG TNF fd_proj_pregame remains the locked Thursday 5:14 PM ET FDR capture from build 20261112-171645 and was not altered."
 actuals_source,ESPN final summary box score 401873052 + fdscore.py; CALCULATED actuals NOT reconciled against official FanDuel results
 actuals_verification_status,PROVISIONAL ESPN-derived calculated grading; FanDuel reconciliation outstanding; scoring-rule verification outstanding
 no_box_line_policy,"33 Week 11 TNF snapshot players with no ESPN box line excluded from actuals/metrics; NOT assigned zero or presumed inactive. Excluded: Van Jefferson (WR WAS), Jaden Bradley (WR WAS), Patrick Ricard (RB NYG), John Bates (TE WAS), Jalin Hyatt (WR NYG), Craig Reynolds (RB WAS), Thomas Fidone II (TE NYG), Devin Neal (RB WAS), Phil Mafah (RB NYG), Grant Finley (RB NYG), Eric Gray (RB NYG), Chris Manhertz (TE NYG), Nick DeGennaro (WR WAS), Dontae Fleming (WR NYG), Quentin Moore (TE WAS), Dalen Cambre (WR NYG), Tyler Ott (TE WAS), Jack Westover (TE WAS), Ben Mann (TE NYG), Marcus Mariota (QB WAS), Jacory Croskey-Merritt (RB WAS), Colson Yankoff (TE WAS), Jaxson Dart (QB NYG), Tyrone Tracy Jr. (RB NYG), Gunner Olszewski (WR NYG), Braxton Berrios (WR NYG), Calvin Austin III (WR NYG), Sam Hartman (QB WAS), Athan Kaliakmanis (QB WAS), Jeremy McNichols (RB WAS), Terry McLaurin (WR WAS), Jaylin Lane (WR WAS), Dyami Brown (WR WAS). Existing Week 10 exclusion lists and TNF legacy zero policy retained untouched."
 wk10_summary_scope,"TNF legacy rows (incl. legacy zero policy) + London/early/afternoon/SNF/MNF matched box lines only; unresolved excluded; heterogeneous zero policies/selection bias. Week 10 now complete. Non-W10/ALL summaries unchanged, not recomputed."
 headline_status,Week 11 Sunday pre-game lock; London NE@DET locked before 9:30 AM ET; LIVE FD #136490 / #136525 / #136633 / #136634; TNF graded; MNF not posted
 london_provenance,"CIN@ATL standalone 9:30 AM ET, not #136184; Friday early-issued forecast, estimated Classic salaries; preserved from early draft"
-publish_status,LOCAL DRAFT staged at /workspace/fd-upload-sunlock-20261115/; NOT published
+publish_status,LOCAL DRAFT staged at /workspace/wk11-prelock-publish/; NOT published
 wk10_our_mae,3.671
 wk10_historical_synthetic_proxy_mae,4.01
 afternoon_finals,HOU@LAC 44-22; GB@NE 45-27; LV@SF 17-38; ARI@SEA 3-17 (ESPN 401873046/049/047/048). SNF TB@CHI FINAL CHI 27-24 (ESPN 401873050). MNF BUF@MIN FINAL BUF 23-6 (ESPN 401873051) graded this run.
@@ -68,13 +68,13 @@ snf_stale_seed_lineup_note,"Friday OPT-WK10-SNF-1 seed (Classic salaries, NOT li
 salary_source,LIVE FD #136490 Main + #136525 4pm + Showdown #136633 SNF (Sat Nov 14 8:48 PM ET); London Friday #136634; MNF ESTIMATED
 player_count,725
 featured_optimal_id,OPT-WK11-MAIN-1
-featured_optimal_pts,171.40
+featured_optimal_pts,171.37
 featured_optimal_salary,60000
 mnf_final,"BUF@MIN FINAL BUF 23, MIN 6 (ESPN 401873051); graded from PRE-LOCK live Showdown #136436 snapshot 20261109-175813; CALCULATED ESPN-box actuals"
 mnf_featured_seed_lineup_note,"OPT-WK10-MNF-1 (LIVE Showdown #136436, proj 101.56, $59,800) MVP Josh Allen + Cook/DJ Moore/Addison/Hockenson/K. Coleman scored 57.89 Showdown pts (MVP 1.5x). Calculated actuals, not official FanDuel results."
 mnf_hindsight_optimal_note,"Hindsight Showdown optimal (box-matched only, MVP 1.5x salary/points, $60,000 cap) scored 89.41 on $51900: MVP James Cook III + Buffalo Bills, Josh Allen, Tyler Bass, Will Reichard, Keleki Latu."
 wk11_featured_optimal_id,OPT-WK11-MAIN-1
-wk11_featured_optimal_pts,171.40
+wk11_featured_optimal_pts,171.37
 wk11_featured_optimal_salary,60000
 wk11_all_games_optimal_pts,171.32
 wk11_salary_source,"LIVE FD Classic #136490 (Sunday Main, 10 games, Sat Nov 14 8:48 PM ET) + LIVE FD Classic #136525 (4pm window, same prices) + LIVE FD Showdown #136633 (SNF); London #136634 Friday salaries; ESTIMATED Classic for MNF LAC@BAL (not posted)"
@@ -99,7 +99,7 @@ wk11_london_slate_id,136634
 wk11_snf_slate_id,136633
 wk11_mnf_salary_status,ESTIMATED (LAC@BAL Showdown not posted as of Sun 8:54 AM ET)
 wk11_line_moves,NE@DET total 50.5->49.5; KC@ATL total 46.5->47.5 vs Thu overnight backup
-wk11_official_injury_rule,"FanDuel Injury Indicator O/IR/D or official nflverse week-10 report_status Out/Doubtful => our_proj 0; IR kept at 0; Q stays ACTIVE (not zeroed) unless FanDuel lists the player Out. Main #136490 zeros: 19 O, 1 D, 56 IR. FD Out but nflverse Questionable (kept at 0 per FD tag): David Montgomery (HOU), Will Mallory (IND), Kenneth Walker III (KC)."
+wk11_official_injury_rule,"FanDuel Injury Indicator O/IR/D or official nflverse week-10 report_status Out/Doubtful => our_proj 0; IR kept at 0; Q stays ACTIVE (not zeroed) unless FanDuel lists the player Out. Main #136490 zeros: 35 O, 1 D, 56 IR. FD Out but nflverse Questionable (kept at 0 per FD tag): David Montgomery (HOU), Will Mallory (IND), Kenneth Walker III (KC)."
 wk11_late_optimal_id,OPT-WK11-LATE-1
 wk11_late_optimal_pts,144.24
 wk11_late_optimal_salary,60000

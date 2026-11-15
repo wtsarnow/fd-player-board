@@ -1439,12 +1439,12 @@ nfl_week,board_week,slate,slate_type,gameday,game,player,pos,team,salary,injury_
 10,11,136467,Showdown,2026-11-12,WAS@NYG,Gregory Desrosiers,RB,NYG,3800,,0.99,2.00,,0.00,True,stats,True,0.99,2.00,1.00
 10,11,136467,Showdown,2026-11-12,WAS@NYG,Jacory Croskey-Merritt,RB,WAS,3000,IR,0.00,8.48,0.00,0.00,False,did_not_play,False,0.00,8.48,1.00
 10,11,136467,Showdown,2026-11-12,WAS@NYG,Jeremy McNichols,RB,WAS,1000,IR,0.00,2.30,0.00,0.00,False,did_not_play,False,0.00,2.30,1.00
-10,11,136467,Showdown,2026-11-12,WAS@NYG,Patrick Ricard,RB,NYG,1600,,0.47,0.20,0.10,0.00,False,did_not_play,False,0.47,0.20,-1.00
+10,11,136467,Showdown,2026-11-12,WAS@NYG,Patrick Ricard,RB,NYG,1600,,0.47,0.20,0.10,0.00,True,snaps_no_stats,True,0.47,0.20,-1.00
 10,11,136467,Showdown,2026-11-12,WAS@NYG,Phil Mafah,RB,NYG,1800,,0.11,9.90,,0.00,False,did_not_play,False,0.11,9.90,1.00
 10,11,136467,Showdown,2026-11-12,WAS@NYG,Rachaad White,RB,WAS,10200,,9.30,8.67,8.20,5.70,True,stats,True,3.60,2.97,-1.00
 10,11,136467,Showdown,2026-11-12,WAS@NYG,Robert Henry Jr.,RB,WAS,1000,,0.07,,,0.40,True,stats,True,0.33,,
 10,11,136467,Showdown,2026-11-12,WAS@NYG,Tyrone Tracy Jr.,RB,NYG,1000,IR,0.00,4.20,0.00,0.00,False,did_not_play,False,0.00,4.20,1.00
-10,11,136467,Showdown,2026-11-12,WAS@NYG,Ben Mann,TE,NYG,1000,,0.02,0.00,,0.00,False,did_not_play,False,0.02,0.00,-1.00
+10,11,136467,Showdown,2026-11-12,WAS@NYG,Ben Mann,TE,NYG,1000,,0.02,0.00,,0.00,True,snaps_no_stats,False,0.02,0.00,-1.00
 10,11,136467,Showdown,2026-11-12,WAS@NYG,Ben Sinnott,TE,WAS,2400,,0.50,0.37,0.70,12.20,True,stats,True,11.70,11.83,1.00
 10,11,136467,Showdown,2026-11-12,WAS@NYG,Chig Okonkwo,TE,WAS,5400,,6.17,4.77,,4.40,True,stats,True,1.77,0.37,-1.00
 10,11,136467,Showdown,2026-11-12,WAS@NYG,Chris Manhertz,TE,NYG,1000,,0.07,0.00,0.30,0.00,True,stats,False,0.07,0.00,-1.00
@@ -1455,7 +1455,7 @@ nfl_week,board_week,slate,slate_type,gameday,game,player,pos,team,salary,injury_
 10,11,136467,Showdown,2026-11-12,WAS@NYG,Quentin Moore,TE,WAS,1000,,0.06,,,0.00,False,did_not_play,False,0.06,,
 10,11,136467,Showdown,2026-11-12,WAS@NYG,Theo Johnson,TE,NYG,4200,,1.42,2.70,2.30,1.30,True,stats,True,0.12,1.40,1.00
 10,11,136467,Showdown,2026-11-12,WAS@NYG,Thomas Fidone II,TE,NYG,1200,,0.14,1.70,0.00,0.00,False,did_not_play,False,0.14,1.70,1.00
-10,11,136467,Showdown,2026-11-12,WAS@NYG,Tyler Ott,TE,WAS,1000,,0.04,0.00,,0.00,False,did_not_play,False,0.04,0.00,-1.00
+10,11,136467,Showdown,2026-11-12,WAS@NYG,Tyler Ott,TE,WAS,1000,,0.04,0.00,,0.00,True,snaps_no_stats,False,0.04,0.00,-1.00
 10,11,136467,Showdown,2026-11-12,WAS@NYG,Antonio Williams,WR,WAS,7200,,12.77,5.93,7.60,11.20,True,stats,True,1.57,5.27,1.00
 10,11,136467,Showdown,2026-11-12,WAS@NYG,Braxton Berrios,WR,NYG,1000,IR,0.00,0.00,,0.00,False,did_not_play,False,0.00,0.00,0.00
 10,11,136467,Showdown,2026-11-12,WAS@NYG,Calvin Austin III,WR,NYG,1000,IR,0.00,4.87,,0.00,False,did_not_play,False,0.00,4.87,1.00
@@ -1466,7 +1466,7 @@ nfl_week,board_week,slate,slate_type,gameday,game,player,pos,team,salary,injury_
 10,11,136467,Showdown,2026-11-12,WAS@NYG,Dyami Brown,WR,WAS,1000,IR,0.00,1.70,0.00,0.00,False,did_not_play,False,0.00,1.70,1.00
 10,11,136467,Showdown,2026-11-12,WAS@NYG,Gunner Olszewski,WR,NYG,1000,IR,0.00,1.99,,0.00,False,did_not_play,False,0.00,1.99,1.00
 10,11,136467,Showdown,2026-11-12,WAS@NYG,Jaden Bradley,WR,WAS,1000,,1.06,1.70,0.00,0.00,False,did_not_play,False,1.06,1.70,1.00
-10,11,136467,Showdown,2026-11-12,WAS@NYG,Jalin Hyatt,WR,NYG,1000,,0.26,0.00,,0.00,False,did_not_play,False,0.26,0.00,-1.00
+10,11,136467,Showdown,2026-11-12,WAS@NYG,Jalin Hyatt,WR,NYG,1000,,0.26,0.00,,0.00,True,snaps_no_stats,False,0.26,0.00,-1.00
 10,11,136467,Showdown,2026-11-12,WAS@NYG,Jaylin Lane,WR,WAS,1000,IR,0.00,0.88,,0.00,False,did_not_play,False,0.00,0.88,1.00
 10,11,136467,Showdown,2026-11-12,WAS@NYG,Luke McCaffrey,WR,WAS,3400,,0.75,0.22,0.30,0.00,True,stats,True,0.75,0.22,-1.00
 10,11,136467,Showdown,2026-11-12,WAS@NYG,Malachi Fields,WR,NYG,4600,,8.47,5.54,5.10,7.70,True,stats,True,0.77,2.16,1.00
@@ -1475,4 +1475,55 @@ nfl_week,board_week,slate,slate_type,gameday,game,player,pos,team,salary,injury_
 10,11,136467,Showdown,2026-11-12,WAS@NYG,Stefon Diggs,WR,WAS,10800,,17.61,10.76,9.30,17.30,True,stats,True,0.31,6.54,1.00
 10,11,136467,Showdown,2026-11-12,WAS@NYG,Terry McLaurin,WR,WAS,1000,IR,0.00,7.70,0.00,0.00,False,did_not_play,False,0.00,7.70,1.00
 10,11,136467,Showdown,2026-11-12,WAS@NYG,Treylon Burks,WR,WAS,4000,,4.79,6.88,4.80,3.70,True,stats,True,1.09,3.18,1.00
-10,11,136467,Showdown,2026-11-12,WAS@NYG,Van Jefferson,WR,WAS,7600,,8.79,7.15,2.10,0.00,False,did_not_play,False,8.79,7.15,-1.00
+10,11,136467,Showdown,2026-11-12,WAS@NYG,Van Jefferson,WR,WAS,7600,,8.79,7.15,2.10,0.00,True,snaps_no_stats,True,8.79,7.15,-1.00
+10,11,136634,Showdown,2026-11-15,NE@DET,Detroit Lions,DST,DET,6400,,7.21,5.62,6.40,11.00,True,pbp_dst,True,3.79,5.38,1.00
+10,11,136634,Showdown,2026-11-15,NE@DET,New England Patriots,DST,NE,6200,,5.47,5.78,5.10,2.00,True,pbp_dst,True,3.47,3.78,1.00
+10,11,136634,Showdown,2026-11-15,NE@DET,Andy Borregales,K,NE,6600,,7.68,6.44,7.10,4.00,True,stats,True,3.68,2.44,-1.00
+10,11,136634,Showdown,2026-11-15,NE@DET,Jake Bates,K,DET,6800,,8.50,10.00,9.40,5.00,True,stats,True,3.50,5.00,1.00
+10,11,136634,Showdown,2026-11-15,NE@DET,Behren Morton,QB,NE,1000,,0.00,0.00,0.00,0.00,False,did_not_play,False,0.00,0.00,0.00
+10,11,136634,Showdown,2026-11-15,NE@DET,Drake Maye,QB,NE,12600,,26.32,21.80,21.10,3.02,True,stats,True,23.30,18.78,-1.00
+10,11,136634,Showdown,2026-11-15,NE@DET,Jared Goff,QB,DET,12200,,19.60,19.80,17.70,25.42,True,stats,True,5.82,5.62,-1.00
+10,11,136634,Showdown,2026-11-15,NE@DET,Joshua Dobbs,QB,DET,8000,,0.00,0.00,0.00,0.08,True,stats,False,0.08,0.08,0.00
+10,11,136634,Showdown,2026-11-15,NE@DET,Luke Altmyer,QB,DET,1000,,0.00,,0.00,0.00,False,did_not_play,False,0.00,,
+10,11,136634,Showdown,2026-11-15,NE@DET,Tommy DeVito,QB,NE,8000,,0.00,1.12,0.00,8.14,True,stats,False,8.14,7.02,-1.00
+10,11,136634,Showdown,2026-11-15,NE@DET,Corey Kiner,RB,NE,8200,,3.23,3.44,9.20,2.50,True,stats,True,0.73,0.94,1.00
+10,11,136634,Showdown,2026-11-15,NE@DET,Isiah Pacheco,RB,DET,1000,IR,0.00,5.98,0.00,0.00,False,did_not_play,False,0.00,5.98,1.00
+10,11,136634,Showdown,2026-11-15,NE@DET,Jabari Small,RB,DET,1000,,0.03,0.00,,0.00,False,did_not_play,False,0.03,0.00,-1.00
+10,11,136634,Showdown,2026-11-15,NE@DET,Jacob Saylors,RB,DET,1000,,0.01,0.00,0.00,0.90,True,stats,False,0.89,0.90,1.00
+10,11,136634,Showdown,2026-11-15,NE@DET,Jahmyr Gibbs,RB,DET,13400,,27.56,25.52,24.00,43.70,True,stats,True,16.14,18.18,1.00
+10,11,136634,Showdown,2026-11-15,NE@DET,Lan Larison,RB,NE,3000,,1.32,0.97,,8.70,True,stats,True,7.38,7.73,1.00
+10,11,136634,Showdown,2026-11-15,NE@DET,Myles Montgomery,RB,NE,1000,IR,0.00,,0.00,0.00,False,did_not_play,False,0.00,,
+10,11,136634,Showdown,2026-11-15,NE@DET,Reggie Gilliam,RB,NE,1000,IR,0.00,0.45,0.00,1.10,True,stats,False,1.10,0.65,-1.00
+10,11,136634,Showdown,2026-11-15,NE@DET,Rhamondre Stevenson,RB,NE,8800,Q,12.92,11.19,4.80,1.00,True,stats,True,11.92,10.19,-1.00
+10,11,136634,Showdown,2026-11-15,NE@DET,Sione Vaki,RB,DET,2800,Q,1.21,2.92,2.90,5.00,True,stats,True,3.79,2.08,-1.00
+10,11,136634,Showdown,2026-11-15,NE@DET,Terrell Jennings,RB,NE,2200,,0.05,2.45,,0.00,False,did_not_play,False,0.05,2.45,1.00
+10,11,136634,Showdown,2026-11-15,NE@DET,TreVeyon Henderson,RB,NE,1000,O,0.00,5.22,0.00,0.00,False,did_not_play,False,0.00,5.22,1.00
+10,11,136634,Showdown,2026-11-15,NE@DET,Brock Wright,TE,DET,1800,,0.75,1.12,1.50,2.10,True,stats,True,1.35,0.98,-1.00
+10,11,136634,Showdown,2026-11-15,NE@DET,Cameron Latu,TE,NE,1000,Q,0.04,0.00,0.00,0.00,False,did_not_play,False,0.04,0.00,-1.00
+10,11,136634,Showdown,2026-11-15,NE@DET,Eli Raridon,TE,NE,4600,,4.00,4.72,8.30,1.10,True,stats,True,2.90,3.62,1.00
+10,11,136634,Showdown,2026-11-15,NE@DET,Hunter Henry,TE,NE,5800,Q,7.47,7.12,8.90,3.20,True,stats,True,4.27,3.92,-1.00
+10,11,136634,Showdown,2026-11-15,NE@DET,Julian Hill,TE,NE,1000,IR,0.00,2.14,0.00,0.00,False,did_not_play,False,0.00,2.14,1.00
+10,11,136634,Showdown,2026-11-15,NE@DET,Miles Kitselman,TE,DET,1000,,0.04,,0.00,0.00,False,did_not_play,False,0.04,,
+10,11,136634,Showdown,2026-11-15,NE@DET,Ryan Miller,TE,NE,1200,,0.96,5.57,,0.00,False,did_not_play,False,0.96,5.57,1.00
+10,11,136634,Showdown,2026-11-15,NE@DET,Sam LaPorta,TE,DET,7200,,11.06,9.45,9.30,2.10,True,stats,True,8.96,7.35,-1.00
+10,11,136634,Showdown,2026-11-15,NE@DET,Tanner Conner,TE,NE,1000,,0.05,1.94,,0.00,False,did_not_play,False,0.05,1.94,1.00
+10,11,136634,Showdown,2026-11-15,NE@DET,Thomas Gordon,TE,DET,1000,,0.04,,,0.00,False,did_not_play,False,0.04,,
+10,11,136634,Showdown,2026-11-15,NE@DET,Tyler Conklin,TE,DET,1400,,0.50,0.52,0.30,0.00,False,did_not_play,False,0.50,0.52,1.00
+10,11,136634,Showdown,2026-11-15,NE@DET,A.J. Brown,WR,NE,9600,Q,21.72,4.87,3.40,3.70,True,stats,True,18.02,1.17,-1.00
+10,11,136634,Showdown,2026-11-15,NE@DET,Amon-Ra St. Brown,WR,DET,11600,Q,27.17,16.64,16.20,23.80,True,stats,True,3.37,7.16,1.00
+10,11,136634,Showdown,2026-11-15,NE@DET,Chandler Brayboy,WR,NE,1000,,0.11,,,0.00,False,did_not_play,False,0.11,,
+10,11,136634,Showdown,2026-11-15,NE@DET,DeAndre Carter,WR,DET,1000,,0.06,0.33,0.20,0.00,True,stats,True,0.06,0.33,1.00
+10,11,136634,Showdown,2026-11-15,NE@DET,DeMario Douglas,WR,NE,7600,,13.35,9.32,9.20,0.90,True,stats,True,12.45,8.42,-1.00
+10,11,136634,Showdown,2026-11-15,NE@DET,Dominic Lovett,WR,DET,1000,,0.06,0.00,,0.00,False,did_not_play,False,0.06,0.00,-1.00
+10,11,136634,Showdown,2026-11-15,NE@DET,Efton Chism III,WR,NE,5200,,4.72,5.11,5.50,0.00,True,stats,True,4.72,5.11,1.00
+10,11,136634,Showdown,2026-11-15,NE@DET,Isaac TeSlaa,WR,DET,3800,,4.39,3.73,3.90,8.90,True,stats,True,4.51,5.17,1.00
+10,11,136634,Showdown,2026-11-15,NE@DET,Jameson Williams,WR,DET,10400,,16.39,11.84,10.00,7.00,True,stats,True,9.39,4.84,-1.00
+10,11,136634,Showdown,2026-11-15,NE@DET,Kendrick Law,WR,DET,1000,IR,0.00,,0.00,0.00,False,did_not_play,False,0.00,,
+10,11,136634,Showdown,2026-11-15,NE@DET,Kyle Dixon,WR,NE,1000,,0.10,,0.00,0.00,False,did_not_play,False,0.10,,
+10,11,136634,Showdown,2026-11-15,NE@DET,Kyle Williams,WR,NE,4000,,2.67,3.83,5.30,0.00,True,stats,True,2.67,3.83,1.00
+10,11,136634,Showdown,2026-11-15,NE@DET,Lucky Jackson,WR,DET,1000,,0.08,,,0.00,False,did_not_play,False,0.08,,
+10,11,136634,Showdown,2026-11-15,NE@DET,Mack Hollins,WR,NE,6000,,10.60,7.90,7.80,7.30,True,stats,True,3.30,0.60,-1.00
+10,11,136634,Showdown,2026-11-15,NE@DET,Marcus Jones,WR,NE,1000,,0.05,0.11,,0.00,True,stats,True,0.05,0.11,1.00
+10,11,136634,Showdown,2026-11-15,NE@DET,Romeo Doubs,WR,NE,1000,IR,0.00,8.52,0.00,0.00,False,did_not_play,False,0.00,8.52,1.00
+10,11,136634,Showdown,2026-11-15,NE@DET,Tay Martin,WR,DET,1200,,0.08,0.23,0.00,0.00,True,stats,True,0.08,0.23,1.00
+10,11,136634,Showdown,2026-11-15,NE@DET,Tom Kennedy,WR,DET,1000,IR,0.00,0.00,0.00,0.00,False,did_not_play,False,0.00,0.00,0.00

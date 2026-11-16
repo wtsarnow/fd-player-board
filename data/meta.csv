@@ -1,14 +1,14 @@
 key,value
-title,Week 11 Sunday Main + Late Graded • SNF in progress • MNF Pending
+title,Week 11 SNF PIT@CIN Graded (CIN 38-18 Final) • MNF LAC@BAL Pending
 active_week,11
-slate_id,WK11-MAIN-136490
-contest_name,Week 11 Sunday Main OPT-WK11-MAIN-1 actual 74.98 vs 171.37 proj • Late OPT-WK11-LATE-1 boxed actual 84.56 vs 150.37 proj (no box line: Shedrick Jackson) • SNF in progress • MNF pending
-lock_time,"TNF WAS@NYG Final Thu Nov 12 (WAS 24-21) • London NE@DET Final Sun Nov 15 (DET 35-10) • Sun Main 1:00 PM ET games final • Late LAR 34-6 ARI, SEA 21-13 LV, SF 46-40 DAL final • SNF PIT@CIN in progress • MNF LAC@BAL Mon Nov 16 8:15 PM ET"
+slate_id,WK11-SNF-136633
+contest_name,"Week 11 SNF OPT-WK11-SNF-1 actual 85.30 vs 135.93 proj • $59,600 • MVP Germie Bernard 1.5x • LIVE FD Showdown #136633 • MNF pending"
+lock_time,"TNF WAS@NYG Final Thu Nov 12 (WAS 24-21) • London NE@DET Final Sun Nov 15 (DET 35-10) • Sun Main 1:00 PM ET games final • Late LAR 34-6 ARI, SEA 21-13 LV, SF 46-40 DAL final • SNF PIT@CIN Final Sun Nov 15 (CIN 38-18) • MNF LAC@BAL Mon Nov 16 8:15 PM ET"
 salary_cap,60000
 roster_slots,9
 active_version,v9 LOCKED (15 SIGNALS + TEAM-OWNED STADIUM/WX + STRATEGY EXCHANGE)
-generated_at,"Sun Nov 15, 2026 8:25 PM ET (Build 20261115-202511 • Post-late grade: LAR 34-6 ARI (ESPN 401873061), SEA 21-13 LV (401873062), SF 46-40 DAL (401873063) • calculated actuals via fdscore.py • 67 boxed / 87 no-box-line excluded • pregame copied exactly from lock 20261115-151840 • 1pm backfill 0 (no missing box matches) • SNF/MNF and all pregame projections unchanged • historic append only)"
-build_id,20261115-202511
+generated_at,"Mon Nov 16, 2026 12:47 AM ET (Build 20261116-004756 • Post-SNF grade: CIN 38-18 PIT (ESPN 401873064) • Showdown #136633 • calculated actuals via fdscore.py • 28 boxed / 27 no-box-line excluded • pregame copied exactly from lock 20261115-190835 • MNF and all pregame projections unchanged • historic append only)"
+build_id,20261116-004756
 updater_bot,@fd-board-updater
 updater_bot_id,7f63a5f1-23e8-4a34-b1c8-fd8b0a4d2026
 middleman_bot,@fd-strategy-exchange
@@ -17,7 +17,7 @@ weather_bot,@fd-stadium-weather
 weather_bot_id,53977200-89b4-45e7-8791-b8a378bbc2d3
 pregame_schedule,Thu 9AM (TNF) • Fri 9AM (Sun Main/SNF) • Mon 9AM (MNF) • Refresh 3h Pre-Kickoff
 postgame_schedule,Tue 9AM Weekly Wrap (Finalize Wk8 Actuals vs Projections + Seed Wk9 Board)
-historic_weeks_covered,"Weeks 3–10 and prior Week 11 rows unchanged; late window appended (67 boxed players, no-box-line excluded); Sunday Main #136490 now complete"
+historic_weeks_covered,"Weeks 3–10 and prior Week 11 rows unchanged; SNF window appended (28 boxed players, no-box-line excluded)"
 overall_our_rho,0.6518
 overall_fd_rho,0.4492
 overall_rho_gain,+0.2026
@@ -48,17 +48,17 @@ wk10_all_games_optimal_pts,176.70
 wk10_salary_source,LIVE FD Classic #136184 (11 Sun games)
 wk10_player_count,770
 wk10_game_count,15
-pregame_snapshot_build,20261115-151840
-pregame_snapshot_provenance,"Late-window our_proj_pregame/fd_proj_pregame copied exactly from late-lock build 20261115-151840 (including Emanuel Wilson, Brandin Cooks, Dont'e Thornton Jr. already O/0). Sunday 1pm and London pregame remain those locked values. TNF remains 20261112-171645. SNF/MNF current_players rows were not modified."
-model_limitations,"Sunday afternoon games graded from locked build 20261115-151840. Official O/IR/D were already zeroed pregame. No-box-line players excluded from metrics, not zeroed. fd_proj_pregame is FDR 12:23 PM ET, not FPPG. SNF PIT@CIN and MNF LAC@BAL are not graded in this run. Calculated ESPN-box actuals, not official FanDuel results. OPT-WK11-LATE-1 actual is boxed-only if a featured player has no box line."
-fd_projection_column_provenance,"Sunday afternoon fd_proj_pregame = FDR capture 2026-11-15T12:23:52-0500 (12:23 PM ET), copied byte-exact from locked current_players build 20261115-151840. Pregame values were not altered in this post-game append. SNF/MNF projections were not changed."
-actuals_source,"ESPN final summary box scores 401873053 (NE@DET), 401873054 (BUF@NYJ), 401873055 (CAR@NO), 401873056 (HOU@CLE), 401873057 (JAX@TEN), 401873058 (KC@ATL), 401873059 (MIA@IND), 401873060 (MIN@GB) + fdscore.py; CALCULATED actuals NOT reconciled against official FanDuel results; plus ESPN final summaries 401873061 (LAR@ARI), 401873062 (SEA@LV), 401873063 (SF@DAL) + fdscore.py; CALCULATED actuals NOT reconciled against official FanDuel results"
+pregame_snapshot_build,20261115-190835
+pregame_snapshot_provenance,"SNF PIT@CIN our_proj_pregame/fd_proj_pregame copied exactly from pre-SNF lock build 20261115-190835 (Eli Heidenreich, Will Howard, Drew Allar already O/0). Sunday Main/late pregame remain 20261115-151840. London remains 151840 / FDR 8:54 AM ET. TNF remains 20261112-171645. MNF current_players rows were not modified."
+model_limitations,"SNF PIT@CIN graded from locked build 20261115-190835. Official O/IR/D were already zeroed pregame. No-box-line players excluded from metrics, not zeroed. fd_proj_pregame is FDR 7:06 PM ET, not FPPG. MNF LAC@BAL is not graded in this run. Calculated ESPN-box actuals, not official FanDuel results. OPT-WK11-SNF-1 actual applies the 1.5x MVP multiplier to Germie Bernard."
+fd_projection_column_provenance,"SNF fd_proj_pregame = FDR capture 2026-11-15T19:06:43-0500 (7:06 PM ET), copied byte-exact from locked current_players build 20261115-190835. Pregame values were not altered in this post-game append. MNF projections were not changed."
+actuals_source,"ESPN final summary box scores 401873053 (NE@DET), 401873054 (BUF@NYJ), 401873055 (CAR@NO), 401873056 (HOU@CLE), 401873057 (JAX@TEN), 401873058 (KC@ATL), 401873059 (MIA@IND), 401873060 (MIN@GB) + fdscore.py; CALCULATED actuals NOT reconciled against official FanDuel results; plus ESPN final summaries 401873061 (LAR@ARI), 401873062 (SEA@LV), 401873063 (SF@DAL) + fdscore.py; CALCULATED actuals NOT reconciled against official FanDuel results; plus ESPN final summary 401873064 (PIT@CIN) + fdscore.py; CALCULATED actuals NOT reconciled against official FanDuel results"
 actuals_verification_status,PROVISIONAL ESPN-derived calculated grading; FanDuel reconciliation outstanding; scoring-rule verification outstanding
-no_box_line_policy,"87 Sunday afternoon snapshot players with no ESPN box line excluded from actuals/metrics; NOT assigned zero or presumed inactive. Excluded: Emanuel Wilson (RB SEA, SEA@LV, O); Reggie Virgil (WR ARI, LAR@ARI, ACTIVE); Tory Horton (WR SEA, SEA@LV, ACTIVE); Demarcus Robinson (WR SF, SF@DAL, ACTIVE); Shedrick Jackson (WR ARI, LAR@ARI, ACTIVE); Brandin Cooks (WR SF, SF@DAL, O); Elijah Higgins (TE ARI, LAR@ARI, ACTIVE); James Proche II (WR ARI, LAR@ARI, ACTIVE); Kyle Juszczyk (RB SF, SF@DAL, ACTIVE); Jacob Cowing (WR SF, SF@DAL, ACTIVE); George Holani (RB SEA, SEA@LV, ACTIVE); Teagan Quitoriano (TE ARI, LAR@ARI, ACTIVE); Velus Jones Jr. (WR SEA, SEA@LV, ACTIVE); James Mitchell (TE DAL, SF@DAL, ACTIVE); KhaDarel Hodge (WR SF, SF@DAL, ACTIVE); Luke Farrell (TE SF, SF@DAL, ACTIVE); Michael Trigg (TE DAL, SF@DAL, ACTIVE); Malik Benson (WR LV, SEA@LV, ACTIVE); Deven Thompkins (WR LV, SEA@LV, ACTIVE); Eric Saubert (TE SEA, SEA@LV, ACTIVE); Jermar Jefferson (RB ARI, LAR@ARI, ACTIVE); Jerome Ford (RB ARI, LAR@ARI, ACTIVE); Evan Hull (RB ARI, LAR@ARI, ACTIVE); Sincere McCormick (RB SF, SF@DAL, ACTIVE); Wesley Grimes (WR SF, SF@DAL, ACTIVE); Jashaun Corbin (RB DAL, SF@DAL, ACTIVE); Alex Bachman (WR LAR, LAR@ARI, ACTIVE); Will Pauling (WR SF, SF@DAL, ACTIVE); Jordan Hudson (WR DAL, SF@DAL, ACTIVE); Montorie Foster Jr. (WR SEA, SEA@LV, ACTIVE); Roman Hemby (RB LV, SEA@LV, ACTIVE); Max Klare (TE LAR, LAR@ARI, ACTIVE); Anthony Smith (WR DAL, SF@DAL, ACTIVE); Dan Villari (TE LAR, LAR@ARI, ACTIVE); Owen Wright (RB LV, SEA@LV, ACTIVE); Jack Stoll (TE SF, SF@DAL, ACTIVE); Khalil Dinkins (TE SF, SF@DAL, ACTIVE); Rivaldo Fairweather (TE ARI, LAR@ARI, ACTIVE); Shawn Bowman (TE ARI, LAR@ARI, ACTIVE); Jordan Waters (RB LAR, LAR@ARI, ACTIVE); Chris Collier (RB LV, SEA@LV, Q); Patrick Gurd (TE LV, SEA@LV, ACTIVE); Ben Sims (TE SEA, SEA@LV, ACTIVE); Emmanuel Henderson Jr. (WR SEA, SEA@LV, ACTIVE); Ricky White III (WR SEA, SEA@LV, ACTIVE); Carter Runyon (TE LV, SEA@LV, ACTIVE); Dont'e Thornton Jr. (WR LV, SEA@LV, O); Nick Kallerup (TE SEA, SEA@LV, ACTIVE); Brady Russell (TE SEA, SEA@LV, ACTIVE); Irvin Charles (WR SEA, SEA@LV, ACTIVE); Gardner Minshew II (QB ARI, LAR@ARI, IR); Joey Aguilar (QB ARI, LAR@ARI, ACTIVE); James Conner (RB ARI, LAR@ARI, IR); Trey Benson (RB ARI, LAR@ARI, IR); Jeremiyah Love (RB ARI, LAR@ARI, IR); Michael Wilson (WR ARI, LAR@ARI, IR); Jalen Brooks (WR ARI, LAR@ARI, IR); Kendrick Bourne (WR ARI, LAR@ARI, IR); Sam Howell (QB DAL, SF@DAL, ACTIVE); Kyle Trask (QB DAL, SF@DAL, ACTIVE); Tyler Goodson (RB DAL, SF@DAL, IR); Malik Davis (RB DAL, SF@DAL, IR); Jake Ferguson (TE DAL, SF@DAL, O); Princeton Fant (TE DAL, SF@DAL, IR); Jonathan Mingo (WR DAL, SF@DAL, O); Stetson Bennett IV (QB LAR, LAR@ARI, ACTIVE); Ty Simpson (QB LAR, LAR@ARI, ACTIVE); Matthew Caldwell (QB LAR, LAR@ARI, IR); Dean Connors (RB LAR, LAR@ARI, IR); Terrance Ferguson (TE LAR, LAR@ARI, IR); Puka Nacua (WR LAR, LAR@ARI, IR); Jordan Whittington (WR LAR, LAR@ARI, IR); Davante Adams (WR LAR, LAR@ARI, IR); Aidan O'Connell (QB LV, SEA@LV, ACTIVE); Sam Darnold (QB SEA, SEA@LV, O); Jalen Milroe (QB SEA, SEA@LV, ACTIVE); Adrian Martinez (QB SEA, SEA@LV, ACTIVE); Robbie Ouzts (TE SEA, SEA@LV, IR); Elijah Arroyo (TE SEA, SEA@LV, IR); Jake Bobo (WR SEA, SEA@LV, IR); Mac Jones (QB SF, SF@DAL, ACTIVE); Kurtis Rourke (QB SF, SF@DAL, ACTIVE); Jake Tonges (TE SF, SF@DAL, IR); Mike Evans (WR SF, SF@DAL, O); Ricky Pearsall (WR SF, SF@DAL, IR); Christian Kirk (WR SF, SF@DAL, IR); De'Zhaun Stribling (WR SF, SF@DAL, IR). Existing Week 10 and earlier Week 11 exclusion lists retained untouched. 1pm backfill: 0 additional matches."
+no_box_line_policy,"27 Week 11 SNF snapshot players with no ESPN box line excluded from actuals/metrics; NOT assigned zero or presumed inactive. Excluded: Marquez Valdes-Scantling (WR PIT, ACTIVE); Colbie Young (WR CIN, ACTIVE); Brandon Johnson (WR PIT, ACTIVE); Mitch Tinsley (WR CIN, ACTIVE); Riley Nowakowski (TE PIT, ACTIVE); Kentrel Bullock (RB CIN, ACTIVE); Noah Thomas (WR CIN, ACTIVE); Jordan Moore (WR CIN, ACTIVE); Isaiah Hodgins (WR PIT, ACTIVE); Kendall Milton (RB CIN, ACTIVE); Caden Prieskorn (TE CIN, ACTIVE); Cam Grandy (TE CIN, ACTIVE); William Wagner (TE CIN, ACTIVE); Ke'Shawn Williams (WR CIN, ACTIVE); Eli Heidenreich (RB PIT, O); Lake McRee (TE PIT, ACTIVE); Joe Flacco (QB CIN, ACTIVE); Sean Clifford (QB CIN, ACTIVE); Tanner Hudson (TE CIN, IR); Erick All Jr. (TE CIN, IR); Andrei Iosivas (WR CIN, IR); Will Howard (QB PIT, O); Drew Allar (QB PIT, O); Jack Driscoll (TE PIT, IR); Roman Wilson (WR PIT, IR); Cole Burgess (WR PIT, IR); Michael Pittman Jr. (WR PIT, IR). Existing Week 10 and earlier Week 11 exclusion lists retained untouched."
 wk10_summary_scope,"TNF legacy rows (incl. legacy zero policy) + London/early/afternoon/SNF/MNF matched box lines only; unresolved excluded; heterogeneous zero policies/selection bias. Week 10 now complete. Non-W10/ALL summaries unchanged, not recomputed."
-headline_status,Week 11 Sunday Main + late GRADED; OPT-WK11-MAIN-1 actual 74.98 vs 171.37; OPT-WK11-LATE-1 boxed actual 84.56 vs 150.37; SNF in progress; MNF pending
+headline_status,Week 11 SNF PIT@CIN GRADED (CIN 38-18); OPT-WK11-SNF-1 actual 85.30 vs 135.93; MNF LAC@BAL pending
 london_provenance,"CIN@ATL standalone 9:30 AM ET, not #136184; Friday early-issued forecast, estimated Classic salaries; preserved from early draft"
-publish_status,LOCAL DRAFT staged at /workspace/fd-upload-postlate-20261115/; awaiting GitHub Pages data/*.csv upload
+publish_status,LOCAL DRAFT staged at /workspace/fd-upload-postsnf-20261116/; awaiting GitHub Pages data/*.csv upload
 wk10_our_mae,3.671
 wk10_historical_synthetic_proxy_mae,4.01
 afternoon_finals,HOU@LAC 44-22; GB@NE 45-27; LV@SF 17-38; ARI@SEA 3-17 (ESPN 401873046/049/047/048). SNF TB@CHI FINAL CHI 27-24 (ESPN 401873050). MNF BUF@MIN FINAL BUF 23-6 (ESPN 401873051) graded this run.
@@ -67,9 +67,9 @@ snf_final,"TB@CHI FINAL CHI 27, TB 24 (ESPN 401873050); graded with Friday Class
 snf_stale_seed_lineup_note,"Friday OPT-WK10-SNF-1 seed (Classic salaries, NOT live Showdown) MVP Caleb Williams + Swift/Irving/Burden III/Mayfield/Odunze scored 95.66 Showdown pts (MVP 1.5x). STALE Friday Classic-price seed — NOT a valid pre-lock."
 salary_source,LIVE FD #136490 Main + #136525 4pm + Showdown #136633 SNF (Sat Nov 14 8:48 PM ET); London Friday #136634; MNF ESTIMATED
 player_count,725
-featured_optimal_id,OPT-WK11-MAIN-1
-featured_optimal_pts,171.37
-featured_optimal_salary,60000
+featured_optimal_id,OPT-WK11-SNF-1
+featured_optimal_pts,135.93
+featured_optimal_salary,59600
 mnf_final,"BUF@MIN FINAL BUF 23, MIN 6 (ESPN 401873051); graded from PRE-LOCK live Showdown #136436 snapshot 20261109-175813; CALCULATED ESPN-box actuals"
 mnf_featured_seed_lineup_note,"OPT-WK10-MNF-1 (LIVE Showdown #136436, proj 101.56, $59,800) MVP Josh Allen + Cook/DJ Moore/Addison/Hockenson/K. Coleman scored 57.89 Showdown pts (MVP 1.5x). Calculated actuals, not official FanDuel results."
 mnf_hindsight_optimal_note,"Hindsight Showdown optimal (box-matched only, MVP 1.5x salary/points, $60,000 cap) scored 89.41 on $51900: MVP James Cook III + Buffalo Bills, Josh Allen, Tyler Bass, Will Reichard, Keleki Latu."
@@ -163,10 +163,23 @@ wk11_main_full_our_rho,0.6811
 wk11_main_full_fd_rho,0.6307
 wk11_main_full_beat_fd_pct,53.7%
 wk11_main_full_n_graded,246
-wk11_todate_our_mae,4.322
-wk11_todate_fd_mae,4.346
-wk11_todate_our_rho,0.6674
-wk11_todate_fd_rho,0.6161
+wk11_todate_our_mae,4.377
+wk11_todate_fd_mae,4.368
+wk11_todate_our_rho,0.6687
+wk11_todate_fd_rho,0.6217
 wk11_todate_beat_fd_pct,53.2%
-wk11_todate_n_graded,301
+wk11_todate_n_graded,329
 wk11_late_finals,LAR 34-6 ARI (401873061); SEA 21-13 LV (401873062); SF 46-40 DAL (401873063)
+wk11_snf_featured_optimal_id,OPT-WK11-SNF-1
+wk11_snf_featured_optimal_pts,135.93
+wk11_snf_featured_optimal_salary,59600
+wk11_snf_featured_optimal_actual,85.30
+wk11_snf_hindsight_optimal_note,"Hindsight Showdown optimal (box-matched only, MVP 1.5x salary/points, $60,000 cap) scored 146.66 on $59600: MVP Joe Burrow + Ja'Marr Chase, Chase Brown, Aaron Rodgers, Samaje Perine, Drew Sample."
+wk11_snf_our_mae,4.970
+wk11_snf_fd_mae,4.611
+wk11_snf_our_rho,0.7107
+wk11_snf_fd_rho,0.7033
+wk11_snf_beat_fd_pct,53.6%
+wk11_snf_n_graded,28
+wk11_snf_n_excluded,27
+wk11_snf_final,"PIT@CIN FINAL CIN 38, PIT 18 (ESPN 401873064); graded from PRE-LOCK live Showdown #136633 snapshot 20261115-190835; CALCULATED ESPN-box actuals"

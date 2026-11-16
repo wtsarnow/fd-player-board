@@ -1476,6 +1476,661 @@ nfl_week,board_week,slate,slate_type,gameday,game,player,pos,team,salary,injury_
 10,11,136467,Showdown,2026-11-12,WAS@NYG,Terry McLaurin,WR,WAS,1000,IR,0.00,7.70,0.00,0.00,False,did_not_play,False,0.00,7.70,1.00
 10,11,136467,Showdown,2026-11-12,WAS@NYG,Treylon Burks,WR,WAS,4000,,4.79,6.88,4.80,3.70,True,stats,True,1.09,3.18,1.00
 10,11,136467,Showdown,2026-11-12,WAS@NYG,Van Jefferson,WR,WAS,7600,,8.79,7.15,2.10,0.00,True,snaps_no_stats,True,8.79,7.15,-1.00
+10,11,136490,Classic,2026-11-15,LA@ARI,Arizona Cardinals,DST,ARI,3400,,4.48,3.11,5.20,3.00,True,pbp_dst,True,1.48,0.11,-1.00
+10,11,136490,Classic,2026-11-15,KC@ATL,Atlanta Falcons,DST,ATL,3600,,5.84,5.33,4.40,-3.00,True,pbp_dst,True,8.84,8.33,-1.00
+10,11,136490,Classic,2026-11-15,BUF@NYJ,Buffalo Bills,DST,BUF,4600,,7.11,6.25,7.10,12.00,True,pbp_dst,True,4.89,5.75,1.00
+10,11,136490,Classic,2026-11-15,CAR@NO,Carolina Panthers,DST,CAR,3700,,5.94,5.00,5.70,8.00,True,pbp_dst,True,2.06,3.00,1.00
+10,11,136490,Classic,2026-11-15,HOU@CLE,Cleveland Browns,DST,CLE,4000,,6.72,6.22,5.50,3.00,True,pbp_dst,True,3.72,3.22,-1.00
+10,11,136490,Classic,2026-11-15,SF@DAL,Dallas Cowboys,DST,DAL,3500,,4.40,3.33,3.70,1.00,True,pbp_dst,True,3.40,2.33,-1.00
+10,11,136490,Classic,2026-11-15,MIN@GB,Green Bay Packers,DST,GB,4200,,8.51,7.56,6.40,4.00,True,pbp_dst,True,4.51,3.56,-1.00
+10,11,136490,Classic,2026-11-15,HOU@CLE,Houston Texans,DST,HOU,5000,,9.14,6.25,9.20,6.00,True,pbp_dst,True,3.14,0.25,-1.00
+10,11,136490,Classic,2026-11-15,MIA@IND,Indianapolis Colts,DST,IND,4100,,6.34,3.33,7.20,12.00,True,pbp_dst,True,5.66,8.67,1.00
+10,11,136490,Classic,2026-11-15,JAX@TEN,Jacksonville Jaguars,DST,JAX,4900,,8.94,9.12,6.60,3.00,True,pbp_dst,True,5.94,6.12,1.00
+10,11,136490,Classic,2026-11-15,KC@ATL,Kansas City Chiefs,DST,KC,4700,,7.95,6.75,5.70,11.00,True,pbp_dst,True,3.05,4.25,1.00
+10,11,136490,Classic,2026-11-15,SEA@LV,Las Vegas Raiders,DST,LV,3800,,5.60,5.56,5.40,7.00,True,pbp_dst,True,1.40,1.44,1.00
+10,11,136490,Classic,2026-11-15,LA@ARI,Los Angeles Rams,DST,LA,4500,,9.00,5.44,8.90,16.00,True,pbp_dst,True,7.00,10.56,1.00
+10,11,136490,Classic,2026-11-15,MIA@IND,Miami Dolphins,DST,MIA,3300,,5.94,2.88,7.30,12.00,True,pbp_dst,True,6.06,9.12,1.00
+10,11,136490,Classic,2026-11-15,MIN@GB,Minnesota Vikings,DST,MIN,4400,,8.03,10.50,7.00,20.00,True,pbp_dst,True,11.97,9.50,-1.00
+10,11,136490,Classic,2026-11-15,CAR@NO,New Orleans Saints,DST,NO,3900,,6.60,5.25,7.20,4.00,True,pbp_dst,True,2.60,1.25,-1.00
+10,11,136490,Classic,2026-11-15,BUF@NYJ,New York Jets,DST,NYJ,3100,,5.87,4.89,4.40,4.00,True,pbp_dst,True,1.87,0.89,-1.00
+10,11,136490,Classic,2026-11-15,SF@DAL,San Francisco 49ers,DST,SF,4300,,7.57,7.38,5.00,-1.00,True,pbp_dst,True,8.57,8.38,-1.00
+10,11,136490,Classic,2026-11-15,SEA@LV,Seattle Seahawks,DST,SEA,4800,,7.14,7.67,8.80,10.00,True,pbp_dst,True,2.86,2.33,-1.00
+10,11,136490,Classic,2026-11-15,JAX@TEN,Tennessee Titans,DST,TEN,3200,,5.86,6.38,4.20,-1.00,True,pbp_dst,True,6.86,7.38,1.00
+10,11,136490,Classic,2026-11-15,SEA@LV,Adrian Martinez,QB,SEA,6000,,0.00,-0.10,,0.00,False,did_not_play,False,0.00,0.10,1.00
+10,11,136490,Classic,2026-11-15,SEA@LV,Aidan O'Connell,QB,LV,6000,,0.00,0.00,,0.00,False,did_not_play,False,0.00,0.00,0.00
+10,11,136490,Classic,2026-11-15,KC@ATL,Andy Dalton,QB,ATL,6000,,0.00,-1.00,,0.00,False,did_not_play,False,0.00,1.00,1.00
+10,11,136490,Classic,2026-11-15,MIA@IND,Anthony Richardson Sr.,QB,IND,6300,,0.00,0.36,0.20,0.00,False,did_not_play,False,0.00,0.36,1.00
+10,11,136490,Classic,2026-11-15,MIA@IND,Brady Cook,QB,MIA,6000,,0.00,0.00,0.00,0.00,False,did_not_play,False,0.00,0.00,0.00
+10,11,136490,Classic,2026-11-15,SF@DAL,Brock Purdy,QB,SF,8700,,26.53,22.04,22.30,34.66,True,stats,True,8.13,12.62,1.00
+10,11,136490,Classic,2026-11-15,CAR@NO,Bryce Young,QB,CAR,7600,,20.72,19.82,17.30,8.10,True,stats,True,12.62,11.72,-1.00
+10,11,136490,Classic,2026-11-15,HOU@CLE,C.J. Stroud,QB,HOU,7500,,20.08,22.25,18.20,21.44,True,stats,True,1.36,0.81,-1.00
+10,11,136490,Classic,2026-11-15,BUF@NYJ,Cade Klubnik,QB,NYJ,6000,,0.00,0.00,0.30,7.08,True,stats,False,7.08,7.08,0.00
+10,11,136490,Classic,2026-11-15,MIN@GB,Cam Miller,QB,GB,6000,,0.00,,,0.00,False,did_not_play,False,0.00,,
+10,11,136490,Classic,2026-11-15,JAX@TEN,Cam Ward,QB,TEN,6600,,16.73,13.56,14.20,20.14,True,stats,True,3.41,6.58,1.00
+10,11,136490,Classic,2026-11-15,LA@ARI,Carson Beck,QB,ARI,6000,,11.92,0.00,12.60,2.42,True,stats,False,9.50,2.42,-1.00
+10,11,136490,Classic,2026-11-15,MIN@GB,Carson Wentz,QB,MIN,7200,,0.00,6.20,0.00,0.00,False,did_not_play,False,0.00,6.20,1.00
+10,11,136490,Classic,2026-11-15,SF@DAL,Dak Prescott,QB,DAL,7900,,22.42,20.16,19.50,38.42,True,stats,True,16.00,18.26,1.00
+10,11,136490,Classic,2026-11-15,MIA@IND,Daniel Jones,QB,IND,6500,,15.83,10.16,13.00,7.22,True,stats,True,8.61,2.94,-1.00
+10,11,136490,Classic,2026-11-15,HOU@CLE,Davis Mills,QB,HOU,6000,,0.00,0.04,0.30,0.00,False,did_not_play,False,0.00,0.04,1.00
+10,11,136490,Classic,2026-11-15,HOU@CLE,Deshaun Watson,QB,CLE,6800,,22.69,15.87,14.80,25.38,True,stats,True,2.69,9.51,1.00
+10,11,136490,Classic,2026-11-15,HOU@CLE,Dillon Gabriel,QB,CLE,6000,,0.00,7.21,,0.00,False,did_not_play,False,0.00,7.21,1.00
+10,11,136490,Classic,2026-11-15,SEA@LV,Drew Lock,QB,SEA,7000,,13.60,11.69,14.40,15.60,True,stats,True,2.00,3.91,1.00
+10,11,136490,Classic,2026-11-15,SEA@LV,Fernando Mendoza,QB,LV,6300,,0.81,1.11,13.30,13.92,True,stats,True,13.11,12.81,-1.00
+10,11,136490,Classic,2026-11-15,LA@ARI,Gardner Minshew II,QB,ARI,6500,IR,0.00,8.85,0.00,0.00,False,did_not_play,False,0.00,8.85,1.00
+10,11,136490,Classic,2026-11-15,KC@ATL,Garrett Nussmeier,QB,KC,6000,,0.00,0.00,0.00,0.00,False,did_not_play,False,0.00,0.00,0.00
+10,11,136490,Classic,2026-11-15,BUF@NYJ,Geno Smith,QB,NYJ,6600,,15.77,15.17,16.90,5.92,True,stats,True,9.85,9.25,-1.00
+10,11,136490,Classic,2026-11-15,HOU@CLE,Graham Mertz,QB,HOU,6000,IR,0.00,,0.00,0.00,False,did_not_play,False,0.00,,
+10,11,136490,Classic,2026-11-15,CAR@NO,Haynes King,QB,CAR,6000,,0.00,0.00,0.00,0.00,False,did_not_play,False,0.00,0.00,0.00
+10,11,136490,Classic,2026-11-15,JAX@TEN,Hendon Hooker,QB,TEN,6000,,0.00,,,0.00,False,did_not_play,False,0.00,,
+10,11,136490,Classic,2026-11-15,KC@ATL,Jack Strand,QB,ATL,6000,,0.00,0.48,0.00,0.00,False,did_not_play,False,0.00,0.48,1.00
+10,11,136490,Classic,2026-11-15,SEA@LV,Jalen Milroe,QB,SEA,6400,,0.00,0.00,0.00,0.00,False,did_not_play,False,0.00,0.00,0.00
+10,11,136490,Classic,2026-11-15,LA@ARI,Joey Aguilar,QB,ARI,6000,,0.00,,,0.00,False,did_not_play,False,0.00,,
+10,11,136490,Classic,2026-11-15,MIN@GB,Jordan Love,QB,GB,8100,,16.05,22.56,18.30,11.80,True,stats,True,4.25,10.76,1.00
+10,11,136490,Classic,2026-11-15,BUF@NYJ,Josh Allen,QB,BUF,9500,,26.93,26.52,23.60,23.34,True,stats,True,3.59,3.18,-1.00
+10,11,136490,Classic,2026-11-15,KC@ATL,Justin Fields,QB,KC,6300,,0.00,-1.05,0.00,0.00,True,stats,False,0.00,1.05,1.00
+10,11,136490,Classic,2026-11-15,CAR@NO,Kenny Pickett,QB,CAR,6000,,0.00,1.35,0.00,0.00,False,did_not_play,False,0.00,1.35,1.00
+10,11,136490,Classic,2026-11-15,MIN@GB,Kirk Cousins,QB,MIN,7100,,19.40,20.70,14.60,16.38,True,stats,True,3.02,4.32,1.00
+10,11,136490,Classic,2026-11-15,SF@DAL,Kurtis Rourke,QB,SF,6000,,0.00,0.00,0.00,0.00,False,did_not_play,False,0.00,0.00,0.00
+10,11,136490,Classic,2026-11-15,BUF@NYJ,Kyle Allen,QB,BUF,6400,,0.00,-0.13,0.00,-0.20,True,stats,False,0.20,0.07,-1.00
+10,11,136490,Classic,2026-11-15,MIA@IND,Kyle McCord,QB,MIA,6000,,13.07,0.00,10.40,12.76,True,stats,False,0.31,12.76,1.00
+10,11,136490,Classic,2026-11-15,SF@DAL,Kyle Trask,QB,DAL,6000,,0.00,,,0.00,False,did_not_play,False,0.00,,
+10,11,136490,Classic,2026-11-15,MIN@GB,Kyler Murray,QB,MIN,7200,O,0.00,12.76,0.00,0.00,False,did_not_play,False,0.00,12.76,1.00
+10,11,136490,Classic,2026-11-15,SF@DAL,Mac Jones,QB,SF,6000,,0.00,-0.17,0.00,0.00,False,did_not_play,False,0.00,0.17,1.00
+10,11,136490,Classic,2026-11-15,MIA@IND,Malik Willis,QB,MIA,6700,IR,0.00,13.88,0.80,0.00,False,did_not_play,False,0.00,13.88,1.00
+10,11,136490,Classic,2026-11-15,LA@ARI,Matthew Caldwell,QB,LA,6000,IR,0.00,,0.00,0.00,False,did_not_play,False,0.00,,
+10,11,136490,Classic,2026-11-15,LA@ARI,Matthew Stafford,QB,LA,7400,,20.30,18.21,16.10,20.76,True,stats,True,0.46,2.55,1.00
+10,11,136490,Classic,2026-11-15,MIN@GB,Max Brosmer,QB,MIN,6400,,0.00,2.32,,0.00,False,did_not_play,False,0.00,2.32,1.00
+10,11,136490,Classic,2026-11-15,KC@ATL,Michael Penix Jr.,QB,ATL,6900,,15.74,14.61,13.50,13.34,True,stats,True,2.40,1.27,-1.00
+10,11,136490,Classic,2026-11-15,JAX@TEN,Mitchell Trubisky,QB,TEN,6000,,0.00,0.00,0.30,0.00,False,did_not_play,False,0.00,0.00,0.00
+10,11,136490,Classic,2026-11-15,JAX@TEN,Nick Mullens,QB,JAX,6000,,0.00,-0.30,,0.00,False,did_not_play,False,0.00,0.30,1.00
+10,11,136490,Classic,2026-11-15,KC@ATL,Patrick Mahomes,QB,KC,7800,,20.74,19.00,19.40,38.42,True,stats,True,17.68,19.42,1.00
+10,11,136490,Classic,2026-11-15,JAX@TEN,Quinn Ewers,QB,JAX,6000,,0.00,0.16,0.00,0.00,False,did_not_play,False,0.00,0.16,1.00
+10,11,136490,Classic,2026-11-15,MIA@IND,Riley Leonard,QB,IND,6000,,0.00,0.00,0.00,0.00,False,did_not_play,False,0.00,0.00,0.00
+10,11,136490,Classic,2026-11-15,SEA@LV,Sam Darnold,QB,SEA,7000,O,0.00,14.90,0.00,0.00,False,did_not_play,False,0.00,14.90,1.00
+10,11,136490,Classic,2026-11-15,SF@DAL,Sam Howell,QB,DAL,6000,,0.00,0.00,0.00,0.00,False,did_not_play,False,0.00,0.00,0.00
+10,11,136490,Classic,2026-11-15,BUF@NYJ,Shane Buechele,QB,BUF,6000,,0.00,3.92,,0.00,False,did_not_play,False,0.00,3.92,1.00
+10,11,136490,Classic,2026-11-15,HOU@CLE,Shedeur Sanders,QB,CLE,6800,,0.00,7.59,0.20,0.00,False,did_not_play,False,0.00,7.59,1.00
+10,11,136490,Classic,2026-11-15,CAR@NO,Spencer Rattler,QB,NO,6000,,0.00,0.00,0.00,0.00,False,did_not_play,False,0.00,0.00,0.00
+10,11,136490,Classic,2026-11-15,LA@ARI,Stetson Bennett IV,QB,LA,6000,,0.00,0.71,0.00,0.00,False,did_not_play,False,0.00,0.71,1.00
+10,11,136490,Classic,2026-11-15,HOU@CLE,Taylen Green,QB,CLE,6000,,0.00,0.00,0.00,0.00,False,did_not_play,False,0.00,0.00,0.00
+10,11,136490,Classic,2026-11-15,JAX@TEN,Trevor Lawrence,QB,JAX,7700,,22.31,19.65,19.60,30.78,True,stats,True,8.47,11.13,1.00
+10,11,136490,Classic,2026-11-15,KC@ATL,Tua Tagovailoa,QB,ATL,6300,,0.00,0.18,0.00,0.00,False,did_not_play,False,0.00,0.18,1.00
+10,11,136490,Classic,2026-11-15,LA@ARI,Ty Simpson,QB,LA,6000,,0.00,0.00,0.00,0.00,False,did_not_play,False,0.00,0.00,0.00
+10,11,136490,Classic,2026-11-15,CAR@NO,Tyler Shough,QB,NO,7300,,26.64,19.33,19.40,10.98,True,stats,True,15.66,8.35,-1.00
+10,11,136490,Classic,2026-11-15,MIN@GB,Tyrod Taylor,QB,GB,6000,,0.00,-0.10,0.00,0.12,True,stats,False,0.12,0.22,1.00
+10,11,136490,Classic,2026-11-15,BUF@NYJ,Will Levis,QB,NYJ,6000,,0.00,,,0.00,False,did_not_play,False,0.00,,
+10,11,136490,Classic,2026-11-15,CAR@NO,Zach Wilson,QB,NO,6000,,0.00,0.00,0.00,0.00,False,did_not_play,False,0.00,0.00,0.00
+10,11,136490,Classic,2026-11-15,CAR@NO,AJ Dillon,RB,CAR,4100,,0.70,1.40,0.00,0.00,False,did_not_play,False,0.70,1.40,1.00
+10,11,136490,Classic,2026-11-15,MIN@GB,Aaron Jones Sr.,RB,MIN,5700,,10.75,10.11,8.00,12.00,True,stats,True,1.25,1.89,1.00
+10,11,136490,Classic,2026-11-15,CAR@NO,Ahmani Marshall,RB,CAR,4000,,0.05,,0.00,0.00,False,did_not_play,False,0.05,,
+10,11,136490,Classic,2026-11-15,BUF@NYJ,Al-Jay Henderson,RB,NYJ,4000,,0.06,,0.00,0.00,False,did_not_play,False,0.06,,
+10,11,136490,Classic,2026-11-15,CAR@NO,Alvin Kamara,RB,NO,5600,,9.71,8.74,7.70,14.90,True,stats,True,5.19,6.16,1.00
+10,11,136490,Classic,2026-11-15,JAX@TEN,Ameer Abdullah,RB,JAX,4600,,0.93,1.25,1.70,0.00,False,did_not_play,False,0.93,1.25,1.00
+10,11,136490,Classic,2026-11-15,CAR@NO,Anthony Tyus III,RB,CAR,4000,,0.14,1.66,0.40,0.00,True,stats,True,0.14,1.66,1.00
+10,11,136490,Classic,2026-11-15,SEA@LV,Ashton Jeanty,RB,LV,6100,,15.47,13.48,11.30,8.40,True,stats,True,7.07,5.08,-1.00
+10,11,136490,Classic,2026-11-15,CAR@NO,Audric Estime,RB,NO,5700,,8.08,11.05,2.10,1.60,True,stats,True,6.48,9.45,1.00
+10,11,136490,Classic,2026-11-15,LA@ARI,Bam Knight,RB,ARI,5000,,2.75,3.68,,1.90,True,stats,True,0.85,1.78,1.00
+10,11,136490,Classic,2026-11-15,JAX@TEN,Bhayshul Tuten,RB,JAX,6800,,13.55,15.34,14.80,18.80,True,stats,True,5.25,3.46,-1.00
+10,11,136490,Classic,2026-11-15,KC@ATL,Bijan Robinson,RB,ATL,8800,,24.27,19.28,22.40,15.70,True,stats,True,8.57,3.58,-1.00
+10,11,136490,Classic,2026-11-15,LA@ARI,Blake Corum,RB,LA,5900,,8.03,9.96,8.10,22.40,True,stats,True,14.37,12.44,-1.00
+10,11,136490,Classic,2026-11-15,BUF@NYJ,Braelon Allen,RB,NYJ,5800,,9.09,11.61,6.70,5.10,True,stats,True,3.99,6.51,1.00
+10,11,136490,Classic,2026-11-15,KC@ATL,Brashard Smith,RB,KC,4000,IR,0.00,0.45,0.00,0.00,False,did_not_play,False,0.00,0.45,1.00
+10,11,136490,Classic,2026-11-15,BUF@NYJ,Breece Hall,RB,NYJ,7000,,13.23,12.68,13.30,12.80,True,stats,True,0.43,0.12,-1.00
+10,11,136490,Classic,2026-11-15,KC@ATL,Brian Robinson Jr.,RB,ATL,4000,IR,0.00,8.43,0.00,15.70,True,stats_lastname,False,15.70,7.27,-1.00
+10,11,136490,Classic,2026-11-15,HOU@CLE,British Brooks,RB,HOU,4000,IR,0.00,0.00,0.00,0.00,False,did_not_play,False,0.00,0.00,0.00
+10,11,136490,Classic,2026-11-15,BUF@NYJ,Brock Lampe,RB,BUF,4000,,0.06,,0.00,0.00,False,did_not_play,False,0.06,,
+10,11,136490,Classic,2026-11-15,CAR@NO,CJ Donaldson,RB,NO,4800,O,0.00,1.52,0.00,0.00,False,did_not_play,False,0.00,1.52,1.00
+10,11,136490,Classic,2026-11-15,MIA@IND,Carlos Washington Jr.,RB,MIA,4000,,0.38,1.30,,0.00,False,did_not_play,False,0.38,1.30,1.00
+10,11,136490,Classic,2026-11-15,BUF@NYJ,Chip Trayanum,RB,NYJ,4000,IR,0.00,,0.00,0.00,False,did_not_play,False,0.00,,
+10,11,136490,Classic,2026-11-15,MIN@GB,Chris Brooks,RB,GB,4500,Q,1.17,2.72,0.00,0.80,True,stats,True,0.37,1.92,1.00
+10,11,136490,Classic,2026-11-15,SEA@LV,Chris Collier,RB,LV,4000,Q,0.04,,,0.00,False,did_not_play,False,0.04,,
+10,11,136490,Classic,2026-11-15,JAX@TEN,Chris Rodriguez Jr.,RB,JAX,5500,,5.60,6.55,6.00,0.50,True,stats,True,5.10,6.05,1.00
+10,11,136490,Classic,2026-11-15,SF@DAL,Christian McCaffrey,RB,SF,9000,,23.03,18.59,18.00,47.30,True,stats,True,24.27,28.71,1.00
+10,11,136490,Classic,2026-11-15,CAR@NO,Chuba Hubbard,RB,CAR,7200,,17.83,17.45,16.10,31.70,True,stats,True,13.87,14.25,1.00
+10,11,136490,Classic,2026-11-15,MIA@IND,DJ Giddens,RB,IND,4400,,0.87,2.15,0.30,0.00,False,did_not_play,False,0.87,2.15,1.00
+10,11,136490,Classic,2026-11-15,MIA@IND,DJ Herman,RB,MIA,4000,,1.23,1.15,0.00,1.50,True,stats,True,0.27,0.35,1.00
+10,11,136490,Classic,2026-11-15,HOU@CLE,Dare Ogunbowale,RB,HOU,4100,,0.27,0.40,0.00,2.00,True,stats,True,1.73,1.60,-1.00
+10,11,136490,Classic,2026-11-15,HOU@CLE,David Montgomery,RB,HOU,6200,O,0.00,8.40,1.60,0.00,False,did_not_play,False,0.00,8.40,1.00
+10,11,136490,Classic,2026-11-15,MIA@IND,Davon Booth,RB,IND,4000,,0.04,,0.00,0.00,False,did_not_play,False,0.04,,
+10,11,136490,Classic,2026-11-15,MIA@IND,De'Von Achane,RB,MIA,4000,IR,0.00,7.03,,0.00,False,did_not_play,False,0.00,7.03,1.00
+10,11,136490,Classic,2026-11-15,LA@ARI,Dean Connors,RB,LA,4000,IR,0.00,0.00,0.00,0.00,False,did_not_play,False,0.00,0.00,0.00
+10,11,136490,Classic,2026-11-15,MIN@GB,DeeJay Dallas,RB,MIN,4700,,0.22,0.94,0.30,0.00,True,stats,True,0.22,0.94,1.00
+10,11,136490,Classic,2026-11-15,MIN@GB,Demond Claiborne,RB,MIN,4300,IR,0.00,0.77,0.80,0.00,False,did_not_play,False,0.00,0.77,1.00
+10,11,136490,Classic,2026-11-15,SEA@LV,Dylan Laube,RB,LV,4300,,0.17,1.60,0.20,0.00,True,stats,True,0.17,1.60,1.00
+10,11,136490,Classic,2026-11-15,HOU@CLE,Dylan Sampson,RB,CLE,5200,,5.37,6.35,7.10,5.70,True,stats,True,0.33,0.65,1.00
+10,11,136490,Classic,2026-11-15,SEA@LV,Emanuel Wilson,RB,SEA,4800,,7.01,10.69,0.40,0.00,False,did_not_play,False,7.01,10.69,1.00
+10,11,136490,Classic,2026-11-15,HOU@CLE,Emari Demercado,RB,HOU,4400,,2.58,1.10,3.70,2.00,True,stats,True,0.58,0.90,1.00
+10,11,136490,Classic,2026-11-15,KC@ATL,Emmett Johnson,RB,KC,5100,,5.38,7.10,4.70,35.10,True,stats,True,29.72,28.00,-1.00
+10,11,136490,Classic,2026-11-15,LA@ARI,Evan Hull,RB,ARI,4000,,0.11,0.00,0.50,0.00,False,did_not_play,False,0.11,0.00,-1.00
+10,11,136490,Classic,2026-11-15,BUF@NYJ,Frank Gore Jr.,RB,BUF,4900,,0.44,0.30,,0.00,False,did_not_play,False,0.44,0.30,-1.00
+10,11,136490,Classic,2026-11-15,SEA@LV,George Holani,RB,SEA,4600,,1.25,3.39,1.00,0.00,False,did_not_play,False,1.25,3.39,1.00
+10,11,136490,Classic,2026-11-15,HOU@CLE,Hassan Haskins,RB,CLE,4000,,0.05,0.73,,0.00,False,did_not_play,False,0.05,0.73,1.00
+10,11,136490,Classic,2026-11-15,SF@DAL,Hunter Luepke,RB,DAL,4200,,0.22,0.59,0.40,2.00,True,stats,True,1.78,1.41,-1.00
+10,11,136490,Classic,2026-11-15,BUF@NYJ,Isaiah Davis,RB,NYJ,4600,,0.37,1.71,0.50,0.00,True,stats,True,0.37,1.71,1.00
+10,11,136490,Classic,2026-11-15,SF@DAL,Israel Abanikanda,RB,DAL,4000,,0.09,,,1.50,True,stats,True,1.41,,
+10,11,136490,Classic,2026-11-15,JAX@TEN,J'Mari Taylor,RB,JAX,4000,,0.12,,0.00,0.00,False,did_not_play,False,0.12,,
+10,11,136490,Classic,2026-11-15,SEA@LV,Jadarian Price,RB,SEA,5300,,7.41,5.30,9.20,10.90,True,stats,True,3.49,5.60,1.00
+10,11,136490,Classic,2026-11-15,HOU@CLE,Jaleel McLaughlin,RB,CLE,4400,,0.74,2.77,1.10,0.00,False,did_not_play,False,0.74,2.77,1.00
+10,11,136490,Classic,2026-11-15,KC@ATL,Jam Miller,RB,ATL,4000,,0.06,,0.00,0.00,False,did_not_play,False,0.06,,
+10,11,136490,Classic,2026-11-15,LA@ARI,James Conner,RB,ARI,5000,IR,0.00,9.77,0.00,0.00,False,did_not_play,False,0.00,9.77,1.00
+10,11,136490,Classic,2026-11-15,BUF@NYJ,James Cook III,RB,BUF,8400,,27.11,19.30,18.10,24.70,True,stats,True,2.41,5.40,1.00
+10,11,136490,Classic,2026-11-15,CAR@NO,Jarquez Hunter,RB,NO,4000,,0.13,0.00,,0.00,False,did_not_play,False,0.13,0.00,-1.00
+10,11,136490,Classic,2026-11-15,SF@DAL,Jashaun Corbin,RB,DAL,4000,,0.10,,,0.00,False,did_not_play,False,0.10,,
+10,11,136490,Classic,2026-11-15,SF@DAL,Javonte Williams,RB,DAL,7700,,17.11,17.07,15.10,7.20,True,stats,True,9.91,9.87,-1.00
+10,11,136490,Classic,2026-11-15,KC@ATL,Jaydn Ott,RB,KC,4000,Q,0.00,0.95,0.00,0.00,False,did_not_play,False,0.00,0.95,1.00
+10,11,136490,Classic,2026-11-15,MIA@IND,Jaylen Wright,RB,MIA,4700,,0.75,0.59,3.00,2.50,True,stats,True,1.75,1.91,1.00
+10,11,136490,Classic,2026-11-15,LA@ARI,Jeremiyah Love,RB,ARI,4000,IR,0.00,7.98,0.00,0.00,False,did_not_play,False,0.00,7.98,1.00
+10,11,136490,Classic,2026-11-15,LA@ARI,Jermar Jefferson,RB,ARI,4000,,0.14,,,0.00,False,did_not_play,False,0.14,,
+10,11,136490,Classic,2026-11-15,LA@ARI,Jerome Ford,RB,ARI,4000,,0.13,2.35,,0.00,False,did_not_play,False,0.13,2.35,1.00
+10,11,136490,Classic,2026-11-15,MIA@IND,Jonathan Taylor,RB,IND,8100,,20.44,15.62,16.80,11.30,True,stats,True,9.14,4.32,-1.00
+10,11,136490,Classic,2026-11-15,CAR@NO,Jonathon Brooks,RB,CAR,5000,IR,0.00,4.15,0.00,0.00,False,did_not_play,False,0.00,4.15,1.00
+10,11,136490,Classic,2026-11-15,SF@DAL,Jordan James,RB,SF,4500,,0.52,0.80,0.50,0.00,True,stats,True,0.52,0.80,1.00
+10,11,136490,Classic,2026-11-15,MIN@GB,Jordan Mason,RB,MIN,5900,,6.99,6.47,10.30,5.90,True,stats,True,1.09,0.57,-1.00
+10,11,136490,Classic,2026-11-15,LA@ARI,Jordan Waters,RB,LA,4000,,0.04,,0.00,0.00,False,did_not_play,False,0.04,,
+10,11,136490,Classic,2026-11-15,MIN@GB,Josh Jacobs,RB,GB,6900,O,0.00,9.57,0.00,0.00,False,did_not_play,False,0.00,9.57,1.00
+10,11,136490,Classic,2026-11-15,HOU@CLE,Joshua Pitsenberger,RB,HOU,4000,,0.11,,,0.00,False,did_not_play,False,0.11,,
+10,11,136490,Classic,2026-11-15,JAX@TEN,Julius Chestnut,RB,TEN,4000,,0.04,0.00,0.50,0.00,False,did_not_play,False,0.04,0.00,-1.00
+10,11,136490,Classic,2026-11-15,SF@DAL,Kaelon Black,RB,SF,5400,,5.85,4.53,6.30,13.60,True,stats,True,7.75,9.07,1.00
+10,11,136490,Classic,2026-11-15,MIN@GB,Kaleb Johnson,RB,GB,5800,,3.20,3.24,6.50,4.20,True,stats,True,1.00,0.96,-1.00
+10,11,136490,Classic,2026-11-15,JAX@TEN,Kalel Mullings,RB,TEN,4000,,0.04,0.30,,0.00,False,did_not_play,False,0.04,0.30,1.00
+10,11,136490,Classic,2026-11-15,MIA@IND,Kaytron Allen,RB,MIA,4400,,0.85,1.52,,0.10,True,stats,True,0.75,1.42,1.00
+10,11,136490,Classic,2026-11-15,BUF@NYJ,Kene Nwangwu,RB,NYJ,4000,,0.02,0.00,0.00,0.00,True,stats,False,0.02,0.00,-1.00
+10,11,136490,Classic,2026-11-15,KC@ATL,Kenneth Walker III,RB,KC,9800,O,0.00,24.80,18.40,0.00,False,did_not_play,False,0.00,24.80,1.00
+10,11,136490,Classic,2026-11-15,KC@ATL,Khalil Herbert,RB,ATL,4900,,0.96,2.40,3.30,1.70,True,stats,True,0.74,0.70,-1.00
+10,11,136490,Classic,2026-11-15,SF@DAL,Kyle Juszczyk,RB,SF,4200,,1.27,4.00,2.50,0.00,False,did_not_play,False,1.27,4.00,1.00
+10,11,136490,Classic,2026-11-15,LA@ARI,Kyren Williams,RB,LA,7300,,19.10,15.68,14.10,4.20,True,stats,True,14.90,11.48,-1.00
+10,11,136490,Classic,2026-11-15,JAX@TEN,LeQuint Allen Jr.,RB,JAX,4200,,0.24,0.29,1.30,0.00,True,stats,True,0.24,0.29,1.00
+10,11,136490,Classic,2026-11-15,SF@DAL,Malik Davis,RB,DAL,4000,IR,0.00,4.73,0.00,0.00,False,did_not_play,False,0.00,4.73,1.00
+10,11,136490,Classic,2026-11-15,MIN@GB,MarShawn Lloyd,RB,GB,5200,,4.37,5.66,4.10,5.40,True,stats,True,1.03,0.26,-1.00
+10,11,136490,Classic,2026-11-15,MIN@GB,Max Bredeson,RB,MIN,4000,,0.50,0.00,0.00,0.00,True,stats,False,0.50,0.00,-1.00
+10,11,136490,Classic,2026-11-15,HOU@CLE,Michael Burton,RB,CLE,4000,IR,0.00,0.07,1.40,0.00,False,did_not_play,False,0.00,0.07,1.00
+10,11,136490,Classic,2026-11-15,JAX@TEN,Michael Carter,RB,TEN,4300,,0.15,0.95,,0.00,False,did_not_play,False,0.15,0.95,1.00
+10,11,136490,Classic,2026-11-15,SEA@LV,Mike Washington Jr.,RB,LV,5300,,3.61,4.01,5.50,3.20,True,stats,True,0.41,0.81,1.00
+10,11,136490,Classic,2026-11-15,KC@ATL,Nate Carter,RB,KC,4000,,2.68,2.00,,0.60,True,stats,True,2.08,1.40,-1.00
+10,11,136490,Classic,2026-11-15,JAX@TEN,Nick Singleton,RB,TEN,4000,,0.05,0.40,,0.00,False,did_not_play,False,0.05,0.40,1.00
+10,11,136490,Classic,2026-11-15,MIA@IND,Ollie Gordon II,RB,MIA,6400,,11.61,11.73,14.90,13.50,True,stats,True,1.89,1.77,-1.00
+10,11,136490,Classic,2026-11-15,SEA@LV,Owen Wright,RB,LV,4000,,0.05,0.30,,0.00,False,did_not_play,False,0.05,0.30,1.00
+10,11,136490,Classic,2026-11-15,MIN@GB,Pierre Strong Jr.,RB,GB,5400,,0.00,4.25,2.80,0.00,False,did_not_play,False,0.00,4.25,1.00
+10,11,136490,Classic,2026-11-15,HOU@CLE,Quinshon Judkins,RB,CLE,6300,,13.99,10.14,9.90,14.60,True,stats,True,0.61,4.46,1.00
+10,11,136490,Classic,2026-11-15,HOU@CLE,Raheim Sanders,RB,CLE,4500,IR,0.00,3.44,0.00,0.00,False,did_not_play,False,0.00,3.44,1.00
+10,11,136490,Classic,2026-11-15,BUF@NYJ,Ray Davis,RB,BUF,5100,,0.82,1.24,1.00,0.80,True,stats,True,0.02,0.44,1.00
+10,11,136490,Classic,2026-11-15,SEA@LV,Roman Hemby,RB,LV,4000,,0.07,,,0.00,False,did_not_play,False,0.07,,
+10,11,136490,Classic,2026-11-15,LA@ARI,Ronnie Rivers,RB,LA,4200,,0.17,1.45,,8.10,True,stats,True,7.93,6.65,-1.00
+10,11,136490,Classic,2026-11-15,MIA@IND,Seth McGowan,RB,IND,6000,,2.42,3.36,4.60,13.70,True,stats,True,11.28,10.34,-1.00
+10,11,136490,Classic,2026-11-15,SF@DAL,Sincere McCormick,RB,SF,4000,,0.11,,,0.00,False,did_not_play,False,0.11,,
+10,11,136490,Classic,2026-11-15,JAX@TEN,Tony Pollard,RB,TEN,6500,,14.55,14.44,8.40,19.90,True,stats,True,5.35,5.46,1.00
+10,11,136490,Classic,2026-11-15,CAR@NO,Travis Etienne Jr.,RB,NO,6000,Q,12.25,8.47,10.70,4.90,True,stats,True,7.35,3.57,-1.00
+10,11,136490,Classic,2026-11-15,CAR@NO,Trevor Etienne,RB,CAR,4600,,0.39,1.05,2.30,2.00,True,stats,True,1.61,0.95,-1.00
+10,11,136490,Classic,2026-11-15,LA@ARI,Trey Benson,RB,ARI,4000,IR,0.00,7.22,,0.00,False,did_not_play,False,0.00,7.22,1.00
+10,11,136490,Classic,2026-11-15,KC@ATL,Trey Sermon,RB,ATL,4000,IR,0.00,0.00,,0.00,False,did_not_play,False,0.00,0.00,0.00
+10,11,136490,Classic,2026-11-15,CAR@NO,Ty Chandler,RB,NO,4000,IR,0.00,2.43,0.00,0.00,False,did_not_play,False,0.00,2.43,1.00
+10,11,136490,Classic,2026-11-15,BUF@NYJ,Ty Johnson,RB,BUF,5500,,2.90,5.10,5.60,0.90,True,stats,True,2.00,4.20,1.00
+10,11,136490,Classic,2026-11-15,JAX@TEN,Tyjae Spears,RB,TEN,4800,Q,2.32,3.27,4.90,3.30,True,stats,True,0.98,0.03,-1.00
+10,11,136490,Classic,2026-11-15,LA@ARI,Tyler Allgeier,RB,ARI,5800,,7.69,9.13,10.20,1.40,True,stats,True,6.29,7.73,1.00
+10,11,136490,Classic,2026-11-15,SF@DAL,Tyler Goodson,RB,DAL,5000,IR,0.00,3.43,0.00,0.00,False,did_not_play,False,0.00,3.43,1.00
+10,11,136490,Classic,2026-11-15,HOU@CLE,Woody Marks,RB,HOU,6200,,12.29,7.93,12.20,7.00,True,stats,True,5.29,0.93,-1.00
+10,11,136490,Classic,2026-11-15,SEA@LV,Zach Charbonnet,RB,SEA,6700,,8.12,6.75,13.10,9.40,True,stats,True,1.28,2.65,1.00
+10,11,136490,Classic,2026-11-15,CAR@NO,Zamir White,RB,NO,4200,,0.20,0.50,,0.00,False,did_not_play,False,0.20,0.50,1.00
+10,11,136490,Classic,2026-11-15,SEA@LV,AJ Barner,TE,SEA,5000,,4.62,5.70,5.40,3.40,True,stats,True,1.22,2.30,1.00
+10,11,136490,Classic,2026-11-15,BUF@NYJ,Andrew Beck,TE,NYJ,4000,,0.03,-0.02,0.10,0.20,True,stats,False,0.17,0.22,1.00
+10,11,136490,Classic,2026-11-15,MIN@GB,Andrew DePaola,TE,MIN,4000,,0.07,0.00,,0.00,False,did_not_play,False,0.07,0.00,-1.00
+10,11,136490,Classic,2026-11-15,KC@ATL,Austin Hooper,TE,ATL,4400,,0.57,3.02,1.50,1.30,True,stats,True,0.73,1.72,1.00
+10,11,136490,Classic,2026-11-15,SEA@LV,Ben Sims,TE,SEA,4200,,0.04,1.50,,0.00,False,did_not_play,False,0.04,1.50,1.00
+10,11,136490,Classic,2026-11-15,MIN@GB,Ben Yurosek,TE,MIN,4200,,0.46,1.47,3.50,1.20,True,stats,True,0.74,0.27,-1.00
+10,11,136490,Classic,2026-11-15,MIA@IND,Bernhard Raimann,TE,IND,4000,,0.08,0.00,,0.00,False,did_not_play,False,0.08,0.00,-1.00
+10,11,136490,Classic,2026-11-15,HOU@CLE,Blake Whiteheart,TE,CLE,4200,,0.10,1.83,0.90,0.00,True,stats,True,0.10,1.83,1.00
+10,11,136490,Classic,2026-11-15,SEA@LV,Brady Russell,TE,SEA,4000,,0.03,0.92,0.30,0.00,False,did_not_play,False,0.03,0.92,1.00
+10,11,136490,Classic,2026-11-15,SF@DAL,Brayden Willis,TE,SF,4000,,0.04,0.00,0.10,0.00,True,stats,False,0.04,0.00,-1.00
+10,11,136490,Classic,2026-11-15,JAX@TEN,Brenden Bates,TE,JAX,4000,,0.05,1.36,,0.00,False,did_not_play,False,0.05,1.36,1.00
+10,11,136490,Classic,2026-11-15,JAX@TEN,Brenton Strange,TE,JAX,5000,,7.63,7.07,8.30,7.90,True,stats,True,0.27,0.83,1.00
+10,11,136490,Classic,2026-11-15,HOU@CLE,Brevin Jordan,TE,HOU,4000,O,0.00,0.37,0.60,0.00,False,did_not_play,False,0.00,0.37,1.00
+10,11,136490,Classic,2026-11-15,SF@DAL,Brevyn Spann-Ford,TE,DAL,4500,,1.37,2.28,6.10,3.10,True,stats,True,1.73,0.82,-1.00
+10,11,136490,Classic,2026-11-15,SEA@LV,Brock Bowers,TE,LV,8000,,21.69,18.71,12.10,2.80,True,stats,True,18.89,15.91,-1.00
+10,11,136490,Classic,2026-11-15,HOU@CLE,Cade Stover,TE,HOU,4100,,0.40,0.95,0.40,0.00,True,stats,True,0.40,0.95,1.00
+10,11,136490,Classic,2026-11-15,HOU@CLE,Carsen Ryan,TE,CLE,4000,,0.02,0.00,0.10,0.00,False,did_not_play,False,0.02,0.00,-1.00
+10,11,136490,Classic,2026-11-15,MIA@IND,Carson Towt,TE,IND,4000,IR,0.00,,0.00,0.00,False,did_not_play,False,0.00,,
+10,11,136490,Classic,2026-11-15,SEA@LV,Carter Runyon,TE,LV,4000,,0.03,0.27,0.00,0.00,False,did_not_play,False,0.03,0.27,1.00
+10,11,136490,Classic,2026-11-15,MIA@IND,Charlie Heck,TE,IND,4000,,0.03,,,0.00,False,did_not_play,False,0.03,,
+10,11,136490,Classic,2026-11-15,KC@ATL,Charlie Woerner,TE,ATL,4100,,0.39,1.44,1.50,0.00,True,stats,True,0.39,1.44,1.00
+10,11,136490,Classic,2026-11-15,LA@ARI,Colby Parkinson,TE,LA,4900,,3.00,3.80,8.60,2.10,True,stats,True,0.90,1.70,1.00
+10,11,136490,Classic,2026-11-15,MIA@IND,Cole Turner,TE,MIA,4000,IR,0.00,,,0.00,False,did_not_play,False,0.00,,
+10,11,136490,Classic,2026-11-15,SEA@LV,Connor Heyward,TE,LV,4000,,0.16,0.43,0.00,1.60,True,stats,True,1.44,1.17,-1.00
+10,11,136490,Classic,2026-11-15,BUF@NYJ,Dalton Kincaid,TE,BUF,5600,,6.73,9.11,9.80,6.80,True,stats,True,0.07,2.31,1.00
+10,11,136490,Classic,2026-11-15,HOU@CLE,Dalton Schultz,TE,HOU,5000,,6.73,7.11,6.30,7.60,True,stats,True,0.87,0.49,-1.00
+10,11,136490,Classic,2026-11-15,LA@ARI,Dan Villari,TE,LA,4000,,0.05,,,0.00,False,did_not_play,False,0.05,,
+10,11,136490,Classic,2026-11-15,JAX@TEN,Daniel Bellinger,TE,TEN,4200,,0.81,1.44,2.30,7.60,True,stats,True,6.79,6.16,-1.00
+10,11,136490,Classic,2026-11-15,CAR@NO,Darren Waller,TE,CAR,5300,,4.91,8.18,6.10,3.40,True,stats,True,1.51,4.78,1.00
+10,11,136490,Classic,2026-11-15,JAX@TEN,David Martin-Robinson,TE,TEN,4000,,0.03,0.00,0.90,0.00,False,did_not_play,False,0.03,0.00,-1.00
+10,11,136490,Classic,2026-11-15,LA@ARI,Davis Allen,TE,LA,4200,Q,1.25,3.39,5.70,8.40,True,stats,True,7.15,5.01,-1.00
+10,11,136490,Classic,2026-11-15,BUF@NYJ,Dawson Knox,TE,BUF,4900,,1.66,2.55,4.30,1.20,True,stats,True,0.46,1.35,1.00
+10,11,136490,Classic,2026-11-15,MIN@GB,Devin Culp,TE,MIN,4000,,0.10,3.55,,0.00,False,did_not_play,False,0.10,3.55,1.00
+10,11,136490,Classic,2026-11-15,MIN@GB,Drake Dabney,TE,GB,4000,,0.03,0.80,0.00,0.00,False,did_not_play,False,0.03,0.80,1.00
+10,11,136490,Classic,2026-11-15,MIA@IND,Drew Ogletree,TE,IND,4100,,0.04,0.52,,1.00,True,stats_lastname,True,0.96,0.48,-1.00
+10,11,136490,Classic,2026-11-15,KC@ATL,E.J. Jenkins,TE,ATL,4000,,0.08,0.00,,0.00,False,did_not_play,False,0.08,0.00,-1.00
+10,11,136490,Classic,2026-11-15,SEA@LV,Elijah Arroyo,TE,SEA,4000,IR,0.00,0.73,0.00,0.00,False,did_not_play,False,0.00,0.73,1.00
+10,11,136490,Classic,2026-11-15,LA@ARI,Elijah Higgins,TE,ARI,4400,,1.50,3.90,3.80,0.00,False,did_not_play,False,1.50,3.90,1.00
+10,11,136490,Classic,2026-11-15,SEA@LV,Eric Saubert,TE,SEA,4100,,0.16,1.36,0.80,0.00,False,did_not_play,False,0.16,1.36,1.00
+10,11,136490,Classic,2026-11-15,CAR@NO,Feleipe Franks,TE,CAR,4000,,0.03,0.00,0.00,0.00,True,stats,False,0.03,0.00,-1.00
+10,11,136490,Classic,2026-11-15,HOU@CLE,Foster Moreau,TE,HOU,4300,,0.69,5.12,2.50,0.00,False,did_not_play,False,0.69,5.12,1.00
+10,11,136490,Classic,2026-11-15,MIN@GB,Gavin Bartholomew,TE,MIN,4300,,1.39,2.22,4.20,11.10,True,stats,True,9.71,8.88,-1.00
+10,11,136490,Classic,2026-11-15,SF@DAL,George Kittle,TE,SF,6600,,14.72,11.91,16.00,10.40,True,stats,True,4.32,1.51,-1.00
+10,11,136490,Classic,2026-11-15,MIA@IND,Greg Dulcich,TE,MIA,4800,,4.58,5.86,5.30,0.00,True,stats,True,4.58,5.86,1.00
+10,11,136490,Classic,2026-11-15,JAX@TEN,Gunnar Helm,TE,TEN,4700,,2.48,4.07,6.10,4.30,True,stats,True,1.82,0.23,-1.00
+10,11,136490,Classic,2026-11-15,HOU@CLE,Harold Fannin Jr.,TE,CLE,5700,,8.01,9.64,7.00,12.60,True,stats,True,4.59,2.96,-1.00
+10,11,136490,Classic,2026-11-15,LA@ARI,Hunter Long,TE,ARI,4100,Q,0.28,0.83,0.00,1.20,True,stats,True,0.92,0.37,-1.00
+10,11,136490,Classic,2026-11-15,SEA@LV,Ian Thomas,TE,LV,4000,,0.44,2.42,0.30,1.80,True,stats,True,1.36,0.62,-1.00
+10,11,136490,Classic,2026-11-15,CAR@NO,Ja'Tavion Sanders,TE,CAR,4000,,0.00,0.00,0.00,0.00,False,did_not_play,False,0.00,0.00,0.00
+10,11,136490,Classic,2026-11-15,SF@DAL,Jack Stoll,TE,SF,4000,,0.05,1.70,,0.00,False,did_not_play,False,0.05,1.70,1.00
+10,11,136490,Classic,2026-11-15,BUF@NYJ,Jackson Hawes,TE,BUF,4500,,0.75,0.62,1.30,0.00,True,stats,True,0.75,0.62,-1.00
+10,11,136490,Classic,2026-11-15,KC@ATL,Jake Briningstool,TE,KC,4100,,0.21,0.66,0.00,2.50,True,stats,True,2.29,1.84,-1.00
+10,11,136490,Classic,2026-11-15,SF@DAL,Jake Ferguson,TE,DAL,5200,O,0.00,5.64,0.00,0.00,False,did_not_play,False,0.00,5.64,1.00
+10,11,136490,Classic,2026-11-15,SF@DAL,Jake Tonges,TE,SF,4000,IR,0.00,7.05,,0.00,False,did_not_play,False,0.00,7.05,1.00
+10,11,136490,Classic,2026-11-15,SF@DAL,James Mitchell,TE,DAL,4000,,0.45,6.00,,0.00,False,did_not_play,False,0.45,6.00,1.00
+10,11,136490,Classic,2026-11-15,KC@ATL,James Winchester,TE,KC,4000,,0.02,0.00,,0.00,False,did_not_play,False,0.02,0.00,-1.00
+10,11,136490,Classic,2026-11-15,KC@ATL,Jared Wiley,TE,KC,4000,,0.01,0.00,0.00,0.00,False,did_not_play,False,0.01,0.00,-1.00
+10,11,136490,Classic,2026-11-15,JAX@TEN,Jaren Kanak,TE,TEN,4000,IR,0.00,,,0.00,False,did_not_play,False,0.00,,
+10,11,136490,Classic,2026-11-15,BUF@NYJ,Jelani Woods,TE,NYJ,4000,,0.00,1.18,0.80,0.00,False,did_not_play,False,0.00,1.18,1.00
+10,11,136490,Classic,2026-11-15,BUF@NYJ,Jeremy Ruckert,TE,NYJ,4100,,0.30,3.70,0.70,0.00,True,stats,True,0.30,3.70,1.00
+10,11,136490,Classic,2026-11-15,JAX@TEN,Joel Wilson,TE,TEN,4000,,0.04,,,0.00,False,did_not_play,False,0.04,,
+10,11,136490,Classic,2026-11-15,HOU@CLE,John FitzPatrick,TE,CLE,4000,,0.02,1.92,,0.00,False,did_not_play,False,0.02,1.92,1.00
+10,11,136490,Classic,2026-11-15,KC@ATL,John Michael Gyllenborg,TE,KC,4000,IR,0.00,,0.00,0.00,False,did_not_play,False,0.00,,
+10,11,136490,Classic,2026-11-15,MIN@GB,Jonnu Smith,TE,GB,4200,,0.94,3.10,0.00,0.00,False,did_not_play,False,0.94,3.10,1.00
+10,11,136490,Classic,2026-11-15,MIN@GB,Josh Oliver,TE,MIN,4000,IR,0.00,2.03,0.00,0.00,False,did_not_play,False,0.00,2.03,1.00
+10,11,136490,Classic,2026-11-15,MIN@GB,Josh Whyle,TE,GB,4000,IR,0.00,0.00,0.00,0.00,False,did_not_play,False,0.00,0.00,0.00
+10,11,136490,Classic,2026-11-15,MIA@IND,Justin Joly,TE,MIA,4000,,0.00,0.00,0.00,0.00,False,did_not_play,False,0.00,0.00,0.00
+10,11,136490,Classic,2026-11-15,CAR@NO,Juwan Johnson,TE,NO,5100,,6.35,8.11,6.50,3.80,True,stats,True,2.55,4.31,1.00
+10,11,136490,Classic,2026-11-15,BUF@NYJ,Keleki Latu,TE,BUF,4300,,0.22,1.29,0.00,0.00,True,stats,True,0.22,1.29,1.00
+10,11,136490,Classic,2026-11-15,BUF@NYJ,Kenyon Sadiq,TE,NYJ,4800,,3.12,5.26,5.10,0.80,True,stats,True,2.32,4.46,1.00
+10,11,136490,Classic,2026-11-15,SF@DAL,Khalil Dinkins,TE,SF,4000,,0.05,,,0.00,False,did_not_play,False,0.05,,
+10,11,136490,Classic,2026-11-15,KC@ATL,Kyle Pitts Sr.,TE,ATL,5100,,4.64,6.50,6.90,5.00,True,stats,True,0.36,1.50,1.00
+10,11,136490,Classic,2026-11-15,JAX@TEN,Kylen Granson,TE,TEN,4000,,0.05,0.00,0.80,0.00,False,did_not_play,False,0.05,0.00,-1.00
+10,11,136490,Classic,2026-11-15,SF@DAL,Luke Farrell,TE,SF,4400,,0.42,0.69,1.20,0.00,False,did_not_play,False,0.42,0.69,1.00
+10,11,136490,Classic,2026-11-15,SF@DAL,Luke Schoonmaker,TE,DAL,4200,,0.49,1.50,1.80,1.70,True,stats,True,1.21,0.20,-1.00
+10,11,136490,Classic,2026-11-15,MIN@GB,Mark Redman,TE,GB,4000,,0.38,1.30,1.40,-1.00,True,stats,True,1.38,2.30,1.00
+10,11,136490,Classic,2026-11-15,HOU@CLE,Marlin Klein,TE,HOU,4000,,0.90,1.05,0.40,0.00,False,did_not_play,False,0.90,1.05,1.00
+10,11,136490,Classic,2026-11-15,BUF@NYJ,Mason Taylor,TE,NYJ,4700,,3.47,5.39,5.70,4.00,True,stats,True,0.53,1.39,1.00
+10,11,136490,Classic,2026-11-15,MIN@GB,Matt Orzech,TE,GB,4000,,0.03,0.00,,0.00,False,did_not_play,False,0.03,0.00,-1.00
+10,11,136490,Classic,2026-11-15,LA@ARI,Max Klare,TE,LA,4000,,0.06,0.00,0.00,0.00,False,did_not_play,False,0.06,0.00,-1.00
+10,11,136490,Classic,2026-11-15,SEA@LV,Michael Mayer,TE,LV,4600,,5.50,6.92,5.80,2.80,True,stats,True,2.70,4.12,1.00
+10,11,136490,Classic,2026-11-15,SF@DAL,Michael Trigg,TE,DAL,4000,,0.29,,,0.00,False,did_not_play,False,0.29,,
+10,11,136490,Classic,2026-11-15,CAR@NO,Mitchell Evans,TE,CAR,4200,,0.87,2.60,2.70,0.00,True,stats,True,0.87,2.60,1.00
+10,11,136490,Classic,2026-11-15,MIA@IND,Mo Alie-Cox,TE,IND,4200,IR,0.00,2.78,1.80,0.00,False,did_not_play,False,0.00,2.78,1.00
+10,11,136490,Classic,2026-11-15,CAR@NO,Moliki Matavao,TE,NO,4000,IR,0.00,2.00,0.00,0.00,False,did_not_play,False,0.00,2.00,1.00
+10,11,136490,Classic,2026-11-15,JAX@TEN,Nate Boerkircher,TE,JAX,4300,,1.16,4.41,3.70,1.70,True,stats,True,0.54,2.71,1.00
+10,11,136490,Classic,2026-11-15,SEA@LV,Nick Kallerup,TE,SEA,4000,,0.03,0.00,0.40,0.00,False,did_not_play,False,0.03,0.00,-1.00
+10,11,136490,Classic,2026-11-15,KC@ATL,Nick Muse,TE,ATL,4000,,0.07,1.03,0.00,0.00,False,did_not_play,False,0.07,1.03,1.00
+10,11,136490,Classic,2026-11-15,CAR@NO,Noah Fant,TE,NO,4500,,1.61,5.60,2.50,0.00,True,stats,True,1.61,5.60,1.00
+10,11,136490,Classic,2026-11-15,KC@ATL,Noah Gray,TE,KC,4300,,1.31,3.99,4.10,1.10,True,stats,True,0.21,2.89,1.00
+10,11,136490,Classic,2026-11-15,CAR@NO,Oscar Delp,TE,NO,4100,,0.46,0.57,1.20,0.00,False,did_not_play,False,0.46,0.57,1.00
+10,11,136490,Classic,2026-11-15,SEA@LV,Patrick Gurd,TE,LV,4000,,0.04,,,0.00,False,did_not_play,False,0.04,,
+10,11,136490,Classic,2026-11-15,MIA@IND,Pharaoh Brown,TE,IND,4000,,0.27,1.20,,0.00,False,did_not_play,False,0.27,1.20,1.00
+10,11,136490,Classic,2026-11-15,SF@DAL,Princeton Fant,TE,DAL,4000,IR,0.00,,,0.00,False,did_not_play,False,0.00,,
+10,11,136490,Classic,2026-11-15,JAX@TEN,Quintin Morris,TE,JAX,4000,,0.07,0.17,0.40,0.00,True,stats,True,0.07,0.17,1.00
+10,11,136490,Classic,2026-11-15,LA@ARI,Rivaldo Fairweather,TE,ARI,4000,,0.04,,,0.00,False,did_not_play,False,0.04,,
+10,11,136490,Classic,2026-11-15,SEA@LV,Robbie Ouzts,TE,SEA,4000,IR,0.00,0.00,0.00,0.00,False,did_not_play,False,0.00,0.00,0.00
+10,11,136490,Classic,2026-11-15,MIA@IND,Seydou Traore,TE,MIA,4000,,0.16,0.00,0.20,0.00,True,stats,False,0.16,0.00,-1.00
+10,11,136490,Classic,2026-11-15,LA@ARI,Shawn Bowman,TE,ARI,4000,,0.04,,,0.00,False,did_not_play,False,0.04,,
+10,11,136490,Classic,2026-11-15,CAR@NO,Stone Smartt,TE,NO,4000,O,0.00,1.74,,0.00,False,did_not_play,False,0.00,1.74,1.00
+10,11,136490,Classic,2026-11-15,MIN@GB,T.J. Hockenson,TE,MIN,5200,O,0.00,8.91,4.00,0.00,False,did_not_play,False,0.00,8.91,1.00
+10,11,136490,Classic,2026-11-15,JAX@TEN,Tanner Koziol,TE,JAX,4000,,0.67,1.27,1.40,1.30,True,stats,True,0.63,0.03,-1.00
+10,11,136490,Classic,2026-11-15,LA@ARI,Teagan Quitoriano,TE,ARI,4200,,0.66,7.90,1.70,0.00,False,did_not_play,False,0.66,7.90,1.00
+10,11,136490,Classic,2026-11-15,LA@ARI,Terrance Ferguson,TE,LA,4800,IR,0.00,5.27,0.00,0.00,False,did_not_play,False,0.00,5.27,1.00
+10,11,136490,Classic,2026-11-15,KC@ATL,Thomas Odukoya,TE,KC,4000,,0.01,,,0.00,False,did_not_play,False,0.01,,
+10,11,136490,Classic,2026-11-15,MIN@GB,Thomas Yassmin,TE,GB,4000,IR,0.00,,0.00,0.00,False,did_not_play,False,0.00,,
+10,11,136490,Classic,2026-11-15,CAR@NO,Tommy Tremble,TE,CAR,4500,,2.77,5.80,4.70,6.80,True,stats,True,4.03,1.00,-1.00
+10,11,136490,Classic,2026-11-15,KC@ATL,Travis Kelce,TE,KC,5500,,8.50,10.73,10.90,4.00,True,stats,True,4.50,6.73,1.00
+10,11,136490,Classic,2026-11-15,MIA@IND,Tre Watson,TE,MIA,4000,,0.05,,,0.00,False,did_not_play,False,0.05,,
+10,11,136490,Classic,2026-11-15,LA@ARI,Trey McBride,TE,ARI,7400,,20.44,14.37,10.10,6.20,True,stats,True,14.24,8.17,-1.00
+10,11,136490,Classic,2026-11-15,MIN@GB,Tucker Kraft,TE,GB,5400,,8.73,8.04,10.50,2.40,True,stats,True,6.33,5.64,-1.00
+10,11,136490,Classic,2026-11-15,LA@ARI,Tyler Higbee,TE,LA,4600,,6.28,5.59,6.60,9.20,True,stats,True,2.92,3.61,1.00
+10,11,136490,Classic,2026-11-15,MIA@IND,Tyler Warren,TE,IND,5300,,11.22,9.30,11.40,1.40,True,stats,True,9.82,7.90,-1.00
+10,11,136490,Classic,2026-11-15,MIA@IND,Will Kacmarek,TE,MIA,4100,,0.38,0.71,1.50,1.00,True,stats,True,0.62,0.29,-1.00
+10,11,136490,Classic,2026-11-15,MIA@IND,Will Mallory,TE,IND,4100,O,0.00,1.50,0.00,0.00,False,did_not_play,False,0.00,1.50,1.00
+10,11,136490,Classic,2026-11-15,MIA@IND,AJ Henning,WR,MIA,4000,,0.06,,,0.00,False,did_not_play,False,0.06,,
+10,11,136490,Classic,2026-11-15,BUF@NYJ,Adonai Mitchell,WR,NYJ,5500,Q,9.48,7.25,7.60,7.40,True,stats,True,2.08,0.15,-1.00
+10,11,136490,Classic,2026-11-15,MIA@IND,Alec Pierce,WR,IND,5400,IR,0.00,4.85,0.00,0.00,False,did_not_play,False,0.00,4.85,1.00
+10,11,136490,Classic,2026-11-15,LA@ARI,Alex Bachman,WR,LA,4100,,0.10,0.00,,0.00,False,did_not_play,False,0.10,0.00,-1.00
+10,11,136490,Classic,2026-11-15,KC@ATL,Andrew Armstrong,WR,KC,4000,,0.52,0.65,0.00,10.80,True,stats,True,10.28,10.15,-1.00
+10,11,136490,Classic,2026-11-15,MIA@IND,Anthony Gould,WR,IND,4200,,0.02,0.42,3.60,3.80,True,stats,True,3.78,3.38,-1.00
+10,11,136490,Classic,2026-11-15,SF@DAL,Anthony Smith,WR,DAL,4000,,0.05,,,0.00,False,did_not_play,False,0.05,,
+10,11,136490,Classic,2026-11-15,KC@ATL,Antwane Wells Jr.,WR,ATL,4000,,0.05,,,0.00,False,did_not_play,False,0.05,,
+10,11,136490,Classic,2026-11-15,BUF@NYJ,Arian Smith,WR,NYJ,4000,IR,0.00,0.00,0.00,0.00,False,did_not_play,False,0.00,0.00,0.00
+10,11,136490,Classic,2026-11-15,MIA@IND,Ashton Dulin,WR,IND,4400,,0.66,2.83,3.50,3.50,True,stats,True,2.84,0.67,-1.00
+10,11,136490,Classic,2026-11-15,JAX@TEN,Austin Trammell,WR,JAX,4000,,0.04,1.02,,0.00,False,did_not_play,False,0.04,1.02,1.00
+10,11,136490,Classic,2026-11-15,CAR@NO,Barion Brown,WR,NO,4700,,0.53,1.46,0.20,0.00,True,stats,True,0.53,1.46,1.00
+10,11,136490,Classic,2026-11-15,KC@ATL,Beaux Collins,WR,ATL,4000,,0.04,1.17,,0.00,True,stats,True,0.04,1.17,1.00
+10,11,136490,Classic,2026-11-15,MIN@GB,Bo Melton,WR,GB,4200,,0.31,0.66,0.00,0.00,True,stats,True,0.31,0.66,1.00
+10,11,136490,Classic,2026-11-15,SF@DAL,Brandin Cooks,WR,SF,5100,,2.03,2.86,0.00,0.00,False,did_not_play,False,2.03,2.86,1.00
+10,11,136490,Classic,2026-11-15,LA@ARI,Brennan Presley,WR,LA,4000,,0.50,,0.00,0.00,True,stats,True,0.50,,
+10,11,136490,Classic,2026-11-15,JAX@TEN,Brian Thomas Jr.,WR,JAX,5000,,3.88,4.10,5.00,4.40,True,stats,True,0.52,0.30,-1.00
+10,11,136490,Classic,2026-11-15,CAR@NO,Bryce Lance,WR,NO,4400,,1.91,2.29,1.80,0.00,True,stats,True,1.91,2.29,1.00
+10,11,136490,Classic,2026-11-15,HOU@CLE,Bryce Oliver,WR,HOU,4000,,0.06,1.30,,0.00,False,did_not_play,False,0.06,1.30,1.00
+10,11,136490,Classic,2026-11-15,CAR@NO,Brycen Tremayne,WR,CAR,4400,,0.60,2.01,1.10,0.00,True,stats,True,0.60,2.01,1.00
+10,11,136490,Classic,2026-11-15,KC@ATL,Bub Means,WR,KC,4000,,0.04,,,0.00,False,did_not_play,False,0.04,,
+10,11,136490,Classic,2026-11-15,LA@ARI,CJ Daniels,WR,LA,4000,,0.56,0.00,3.00,2.70,True,stats,False,2.14,2.70,1.00
+10,11,136490,Classic,2026-11-15,JAX@TEN,CJ Williams,WR,JAX,4000,,0.00,0.00,0.00,0.00,False,did_not_play,False,0.00,0.00,0.00
+10,11,136490,Classic,2026-11-15,MIA@IND,Caleb Douglas,WR,MIA,5400,,9.00,8.52,7.90,8.60,True,stats,True,0.40,0.08,-1.00
+10,11,136490,Classic,2026-11-15,JAX@TEN,Calvin Ridley,WR,TEN,4600,,2.53,2.02,4.30,0.00,False,did_not_play,False,2.53,2.02,-1.00
+10,11,136490,Classic,2026-11-15,SF@DAL,Camden Brown,WR,DAL,4000,,0.46,0.00,2.00,0.00,True,stats,False,0.46,0.00,-1.00
+10,11,136490,Classic,2026-11-15,JAX@TEN,Carnell Tate,WR,TEN,5800,O,0.00,9.04,0.00,0.00,False,did_not_play,False,0.00,9.04,1.00
+10,11,136490,Classic,2026-11-15,CAR@NO,Casey Washington,WR,CAR,4000,,0.02,2.48,0.00,0.00,False,did_not_play,False,0.02,2.48,1.00
+10,11,136490,Classic,2026-11-15,CAR@NO,Cedric Tillman,WR,NO,4000,,0.07,4.12,,0.00,False,did_not_play,False,0.07,4.12,1.00
+10,11,136490,Classic,2026-11-15,SF@DAL,CeeDee Lamb,WR,DAL,9000,,24.56,19.87,16.40,16.70,True,stats,True,7.86,3.17,-1.00
+10,11,136490,Classic,2026-11-15,JAX@TEN,Chimere Dike,WR,TEN,4900,,2.55,2.49,4.70,3.10,True,stats,True,0.55,0.61,1.00
+10,11,136490,Classic,2026-11-15,MIA@IND,Chris Bell,WR,MIA,4500,D,0.00,2.90,0.00,0.00,False,did_not_play,False,0.00,2.90,1.00
+10,11,136490,Classic,2026-11-15,KC@ATL,Chris Blair,WR,ATL,4200,,0.32,0.44,1.70,3.10,True,stats,True,2.78,2.66,-1.00
+10,11,136490,Classic,2026-11-15,CAR@NO,Chris Brazzell II,WR,CAR,4000,IR,0.00,,0.00,0.00,False,did_not_play,False,0.00,,
+10,11,136490,Classic,2026-11-15,CAR@NO,Chris Olave,WR,NO,7900,,24.81,15.30,14.10,4.50,True,stats,True,20.31,10.80,-1.00
+10,11,136490,Classic,2026-11-15,SF@DAL,Christian Kirk,WR,SF,4000,IR,0.00,6.18,0.00,0.00,False,did_not_play,False,0.00,6.18,1.00
+10,11,136490,Classic,2026-11-15,MIN@GB,Christian Watson,WR,GB,7600,,13.95,18.27,14.00,5.20,True,stats,True,8.75,13.07,1.00
+10,11,136490,Classic,2026-11-15,SEA@LV,Cody White,WR,LV,4300,,1.13,5.03,0.80,2.70,True,stats,True,1.57,2.33,1.00
+10,11,136490,Classic,2026-11-15,MIN@GB,Coleman Owen,WR,GB,4000,,0.05,-0.67,,0.00,False,did_not_play,False,0.05,0.67,1.00
+10,11,136490,Classic,2026-11-15,SEA@LV,Cooper Kupp,WR,SEA,5300,,3.49,5.20,4.90,9.90,True,stats,True,6.41,4.70,-1.00
+10,11,136490,Classic,2026-11-15,KC@ATL,Cyrus Allen,WR,KC,4600,,1.57,1.29,3.10,11.40,True,stats,True,9.83,10.11,1.00
+10,11,136490,Classic,2026-11-15,MIA@IND,D.J. Montgomery,WR,IND,4000,IR,0.00,,,0.00,False,did_not_play,False,0.00,,
+10,11,136490,Classic,2026-11-15,BUF@NYJ,DJ Moore,WR,BUF,6700,,9.69,8.83,9.30,17.40,True,stats,True,7.71,8.57,1.00
+10,11,136490,Classic,2026-11-15,HOU@CLE,Daniel Sobkowicz,WR,HOU,4000,,0.07,,,0.00,False,did_not_play,False,0.07,,
+10,11,136490,Classic,2026-11-15,SEA@LV,Dareke Young,WR,LV,4000,,0.07,0.43,0.10,0.00,True,stats,True,0.07,0.43,1.00
+10,11,136490,Classic,2026-11-15,LA@ARI,Davante Adams,WR,LA,4000,IR,0.00,15.50,0.00,0.00,False,did_not_play,False,0.00,15.50,1.00
+10,11,136490,Classic,2026-11-15,CAR@NO,David Moore,WR,CAR,4100,,0.13,0.24,0.00,0.00,False,did_not_play,False,0.13,0.24,1.00
+10,11,136490,Classic,2026-11-15,SF@DAL,De'Zhaun Stribling,WR,SF,4000,IR,0.00,,0.00,0.00,False,did_not_play,False,0.00,,
+10,11,136490,Classic,2026-11-15,SF@DAL,Deebo Samuel Sr.,WR,SF,6500,,9.18,10.48,6.90,24.40,True,stats,True,15.22,13.92,-1.00
+10,11,136490,Classic,2026-11-15,MIA@IND,Deion Burks,WR,IND,4200,,0.77,1.39,3.40,0.00,True,stats,True,0.77,1.39,1.00
+10,11,136490,Classic,2026-11-15,SF@DAL,Demarcus Robinson,WR,SF,5400,,3.53,6.87,7.00,0.00,False,did_not_play,False,3.53,6.87,1.00
+10,11,136490,Classic,2026-11-15,HOU@CLE,Denzel Boston,WR,CLE,5500,Q,11.80,9.63,8.90,2.10,True,stats,True,9.70,7.53,-1.00
+10,11,136490,Classic,2026-11-15,CAR@NO,Devaughn Vele,WR,NO,5600,,10.10,9.00,6.40,2.40,True,stats,True,7.70,6.60,-1.00
+10,11,136490,Classic,2026-11-15,SEA@LV,Deven Thompkins,WR,LV,4000,,0.18,1.30,,0.00,False,did_not_play,False,0.18,1.30,1.00
+10,11,136490,Classic,2026-11-15,LA@ARI,Devin Duvernay,WR,ARI,4800,,0.53,0.47,2.40,4.50,True,stats,True,3.97,4.03,1.00
+10,11,136490,Classic,2026-11-15,MIN@GB,Dillon Bell,WR,MIN,4000,,0.05,,0.00,0.00,False,did_not_play,False,0.05,,
+10,11,136490,Classic,2026-11-15,HOU@CLE,Dominique Robinson,WR,HOU,4000,,0.04,0.00,,0.00,True,stats,False,0.04,0.00,-1.00
+10,11,136490,Classic,2026-11-15,SEA@LV,Dont'e Thornton Jr.,WR,LV,4100,Q,0.03,1.68,0.00,0.00,False,did_not_play,False,0.03,1.68,1.00
+10,11,136490,Classic,2026-11-15,KC@ATL,Drake London,WR,ATL,7700,,16.69,11.73,13.50,16.90,True,stats,True,0.21,5.17,1.00
+10,11,136490,Classic,2026-11-15,KC@ATL,Dylan Drummond,WR,ATL,4000,,0.02,1.54,,0.00,False,did_not_play,False,0.02,1.54,1.00
+10,11,136490,Classic,2026-11-15,JAX@TEN,Elic Ayomanor,WR,TEN,4700,,4.28,4.20,5.30,10.40,True,stats,True,6.12,6.20,1.00
+10,11,136490,Classic,2026-11-15,SEA@LV,Emmanuel Henderson Jr.,WR,SEA,4000,,0.04,,,0.00,False,did_not_play,False,0.04,,
+10,11,136490,Classic,2026-11-15,BUF@NYJ,Garrett Wilson,WR,NYJ,7200,Q,13.68,12.27,10.40,15.10,True,stats,True,1.42,2.83,1.00
+10,11,136490,Classic,2026-11-15,SF@DAL,George Pickens,WR,DAL,7000,,13.00,10.98,9.70,41.00,True,stats,True,28.00,30.02,1.00
+10,11,136490,Classic,2026-11-15,BUF@NYJ,Greg Dortch,WR,BUF,4500,,0.13,0.00,,0.00,True,stats,False,0.13,0.00,-1.00
+10,11,136490,Classic,2026-11-15,LA@ARI,Harrison Wallace III,WR,ARI,4000,,1.79,,2.50,1.40,True,stats,True,0.39,,
+10,11,136490,Classic,2026-11-15,CAR@NO,Ihmir Smith-Marsette,WR,CAR,4000,O,0.00,,,0.00,False,did_not_play,False,0.00,,
+10,11,136490,Classic,2026-11-15,SEA@LV,Irvin Charles,WR,SEA,4000,,0.03,0.00,,0.00,True,stats,False,0.03,0.00,-1.00
+10,11,136490,Classic,2026-11-15,HOU@CLE,Isaiah Bond,WR,CLE,4300,,0.65,1.85,0.40,0.00,True,stats,True,0.65,1.85,1.00
+10,11,136490,Classic,2026-11-15,MIN@GB,Isaiah Neyor,WR,GB,4000,,0.04,,,0.00,False,did_not_play,False,0.04,,
+10,11,136490,Classic,2026-11-15,BUF@NYJ,Isaiah Williams,WR,NYJ,4600,,1.37,4.16,1.40,4.40,True,stats,True,3.03,0.24,-1.00
+10,11,136490,Classic,2026-11-15,MIN@GB,J. Michael Sturdivant,WR,GB,4400,,0.22,0.73,0.00,8.70,True,stats,True,8.48,7.97,-1.00
+10,11,136490,Classic,2026-11-15,BUF@NYJ,Ja'Mori Maclin,WR,BUF,4000,,0.04,,,0.00,False,did_not_play,False,0.04,,
+10,11,136490,Classic,2026-11-15,CAR@NO,Ja'seem Reed,WR,CAR,4000,,0.22,0.00,0.00,0.00,False,did_not_play,False,0.22,0.00,-1.00
+10,11,136490,Classic,2026-11-15,SEA@LV,Jack Bech,WR,LV,4500,,1.47,3.67,2.30,2.00,True,stats,True,0.53,1.67,1.00
+10,11,136490,Classic,2026-11-15,SF@DAL,Jacob Cowing,WR,SF,5300,,1.27,0.86,0.50,0.00,True,stats,True,1.27,0.86,-1.00
+10,11,136490,Classic,2026-11-15,KC@ATL,Jacob De Jesus,WR,KC,4000,,0.07,,,0.00,True,stats,True,0.07,,
+10,11,136490,Classic,2026-11-15,KC@ATL,Jahan Dotson,WR,ATL,5100,,4.14,6.14,5.80,7.80,True,stats,True,3.66,1.66,-1.00
+10,11,136490,Classic,2026-11-15,SEA@LV,Jake Bobo,WR,SEA,4000,IR,0.00,1.90,,0.00,False,did_not_play,False,0.00,1.90,1.00
+10,11,136490,Classic,2026-11-15,JAX@TEN,Jakobi Meyers,WR,JAX,5800,,7.18,7.82,8.50,4.90,True,stats,True,2.28,2.92,1.00
+10,11,136490,Classic,2026-11-15,LA@ARI,Jalen Brooks,WR,ARI,4000,IR,0.00,1.77,0.00,0.00,False,did_not_play,False,0.00,1.77,1.00
+10,11,136490,Classic,2026-11-15,CAR@NO,Jalen Coker,WR,CAR,5600,,9.85,10.50,8.40,0.30,True,stats,True,9.55,10.20,1.00
+10,11,136490,Classic,2026-11-15,CAR@NO,Jalen Cropper,WR,NO,4000,,0.07,0.00,,0.00,False,did_not_play,False,0.07,0.00,-1.00
+10,11,136490,Classic,2026-11-15,SEA@LV,Jalen Nailor,WR,LV,4900,,3.28,3.60,4.50,0.40,True,stats,True,2.88,3.20,1.00
+10,11,136490,Classic,2026-11-15,MIA@IND,Jalen Reagor,WR,MIA,4000,,0.06,,,0.00,True,stats,True,0.06,,
+10,11,136490,Classic,2026-11-15,KC@ATL,Jalen Royals,WR,KC,4700,,1.07,2.04,1.00,0.00,True,stats,True,1.07,2.04,1.00
+10,11,136490,Classic,2026-11-15,MIA@IND,Jalen Tolbert,WR,MIA,4200,,0.57,1.00,1.60,11.90,True,stats,True,11.33,10.90,-1.00
+10,11,136490,Classic,2026-11-15,BUF@NYJ,Jamaal Pritchett,WR,NYJ,4000,,0.06,0.00,0.00,0.00,False,did_not_play,False,0.06,0.00,-1.00
+10,11,136490,Classic,2026-11-15,LA@ARI,James Proche II,WR,ARI,4200,,1.38,1.58,,0.00,False,did_not_play,False,1.38,1.58,1.00
+10,11,136490,Classic,2026-11-15,MIA@IND,Jared Wayne,WR,MIA,4200,O,0.00,2.83,1.30,0.00,False,did_not_play,False,0.00,2.83,1.00
+10,11,136490,Classic,2026-11-15,MIN@GB,Jauan Jennings,WR,MIN,5100,O,0.00,1.40,0.00,0.00,False,did_not_play,False,0.00,1.40,1.00
+10,11,136490,Classic,2026-11-15,SEA@LV,Jaxon Smith-Njigba,WR,SEA,9500,,24.42,24.17,15.90,30.10,True,stats,True,5.68,5.93,1.00
+10,11,136490,Classic,2026-11-15,HOU@CLE,Jayden Higgins,WR,HOU,4000,IR,0.00,6.49,,0.00,False,did_not_play,False,0.00,6.49,1.00
+10,11,136490,Classic,2026-11-15,MIN@GB,Jayden Reed,WR,GB,4000,IR,0.00,1.47,0.00,0.00,False,did_not_play,False,0.00,1.47,1.00
+10,11,136490,Classic,2026-11-15,HOU@CLE,Jaylin Noel,WR,HOU,4000,IR,0.00,8.60,0.00,0.00,False,did_not_play,False,0.00,8.60,1.00
+10,11,136490,Classic,2026-11-15,KC@ATL,Jeff Caldwell,WR,KC,4000,IR,0.00,,0.00,0.00,False,did_not_play,False,0.00,,
+10,11,136490,Classic,2026-11-15,HOU@CLE,Jerry Jeudy,WR,CLE,4900,,3.75,3.31,3.00,8.40,True,stats,True,4.65,5.09,1.00
+10,11,136490,Classic,2026-11-15,MIN@GB,Jeshaun Jones,WR,MIN,4000,,0.45,1.85,0.00,0.00,True,stats,True,0.45,1.85,1.00
+10,11,136490,Classic,2026-11-15,KC@ATL,Jimmy Holiday,WR,KC,4000,IR,0.00,,,0.00,False,did_not_play,False,0.00,,
+10,11,136490,Classic,2026-11-15,HOU@CLE,Jimmy Horn Jr.,WR,CLE,4000,,0.44,-2.00,0.00,0.00,False,did_not_play,False,0.44,2.00,1.00
+10,11,136490,Classic,2026-11-15,CAR@NO,John Metchie III,WR,CAR,4600,,2.85,4.06,2.50,0.90,True,stats,True,1.95,3.16,1.00
+10,11,136490,Classic,2026-11-15,MIN@GB,John Saunders Jr.,WR,GB,4000,,0.04,,,0.00,False,did_not_play,False,0.04,,
+10,11,136490,Classic,2026-11-15,SF@DAL,Jonathan Mingo,WR,DAL,4300,O,0.00,0.91,1.30,0.00,False,did_not_play,False,0.00,0.91,1.00
+10,11,136490,Classic,2026-11-15,MIN@GB,Jordan Addison,WR,MIN,5700,Q,0.00,6.41,8.90,0.00,False,did_not_play,False,0.00,6.41,1.00
+10,11,136490,Classic,2026-11-15,SF@DAL,Jordan Hudson,WR,DAL,4000,,0.08,0.00,0.00,0.00,False,did_not_play,False,0.08,0.00,-1.00
+10,11,136490,Classic,2026-11-15,SF@DAL,Jordan Watkins,WR,SF,6100,,4.70,8.35,2.90,5.90,True,stats,True,1.20,2.45,1.00
+10,11,136490,Classic,2026-11-15,LA@ARI,Jordan Whittington,WR,LA,4700,IR,0.00,0.31,0.10,0.00,False,did_not_play,False,0.00,0.31,1.00
+10,11,136490,Classic,2026-11-15,CAR@NO,Jordyn Tyson,WR,NO,4900,,3.47,3.00,5.60,13.50,True,stats,True,10.03,10.50,1.00
+10,11,136490,Classic,2026-11-15,BUF@NYJ,Joseph Manjack,WR,NYJ,4000,,0.05,,,0.00,False,did_not_play,False,0.05,,
+10,11,136490,Classic,2026-11-15,JAX@TEN,Josh Cameron,WR,JAX,4900,,1.79,3.60,2.00,14.20,True,stats,True,12.41,10.60,-1.00
+10,11,136490,Classic,2026-11-15,KC@ATL,Josh Downs,WR,KC,5900,,10.19,6.51,5.50,13.30,True,stats,True,3.11,6.79,1.00
+10,11,136490,Classic,2026-11-15,HOU@CLE,Josh Kelly,WR,HOU,4000,,0.07,,,0.00,False,did_not_play,False,0.07,,
+10,11,136490,Classic,2026-11-15,BUF@NYJ,Joshua Palmer,WR,BUF,4900,IR,0.00,4.28,,0.00,False,did_not_play,False,0.00,4.28,1.00
+10,11,136490,Classic,2026-11-15,MIN@GB,Justin Jefferson,WR,MIN,8100,,11.47,11.39,11.40,11.90,True,stats,True,0.43,0.51,1.00
+10,11,136490,Classic,2026-11-15,KC@ATL,Justin Watson,WR,KC,4000,,0.31,1.20,,0.00,False,did_not_play,False,0.31,1.20,1.00
+10,11,136490,Classic,2026-11-15,JAX@TEN,K.J. Osborn,WR,TEN,4000,,0.06,,,0.00,False,did_not_play,False,0.06,,
+10,11,136490,Classic,2026-11-15,HOU@CLE,KC Concepcion Jr.,WR,CLE,5700,,11.19,8.10,8.40,10.20,True,stats,True,0.99,2.10,1.00
+10,11,136490,Classic,2026-11-15,SF@DAL,KaVontae Turpin,WR,DAL,4500,,0.52,1.82,4.20,2.40,True,stats,True,1.88,0.58,-1.00
+10,11,136490,Classic,2026-11-15,HOU@CLE,Kayshon Boutte,WR,HOU,5300,,3.14,7.05,5.10,0.00,True,stats,True,3.14,7.05,1.00
+10,11,136490,Classic,2026-11-15,SF@DAL,Keenan Allen,WR,SF,6000,,15.12,7.64,5.30,8.60,True,stats,True,6.52,0.96,-1.00
+10,11,136490,Classic,2026-11-15,LA@ARI,Kendrick Bourne,WR,ARI,4000,IR,0.00,5.61,0.00,0.00,False,did_not_play,False,0.00,5.61,1.00
+10,11,136490,Classic,2026-11-15,BUF@NYJ,Keon Coleman,WR,BUF,5600,,5.26,7.86,7.10,1.60,True,stats,True,3.66,6.26,1.00
+10,11,136490,Classic,2026-11-15,CAR@NO,Kevin Austin Jr.,WR,NO,4300,,0.78,0.60,0.00,0.00,False,did_not_play,False,0.78,0.60,-1.00
+10,11,136490,Classic,2026-11-15,MIA@IND,Kevin Coleman Jr.,WR,MIA,4600,,2.04,3.69,4.20,1.10,True,stats,True,0.94,2.59,1.00
+10,11,136490,Classic,2026-11-15,SF@DAL,KhaDarel Hodge,WR,SF,4100,,0.43,1.12,,0.00,False,did_not_play,False,0.43,1.12,1.00
+10,11,136490,Classic,2026-11-15,BUF@NYJ,Khalil Shakir,WR,BUF,5900,,7.66,7.59,9.20,6.50,True,stats,True,1.16,1.09,-1.00
+10,11,136490,Classic,2026-11-15,LA@ARI,Konata Mumpfield,WR,LA,5700,,3.25,3.46,5.50,9.60,True,stats,True,6.35,6.14,-1.00
+10,11,136490,Classic,2026-11-15,MIA@IND,Laquon Treadwell,WR,IND,4500,,1.86,3.28,4.70,9.90,True,stats,True,8.04,6.62,-1.00
+10,11,136490,Classic,2026-11-15,HOU@CLE,Lewis Bond,WR,HOU,4000,,0.46,0.00,0.00,0.00,False,did_not_play,False,0.46,0.00,-1.00
+10,11,136490,Classic,2026-11-15,HOU@CLE,Malachi Corley,WR,CLE,4100,,0.04,-0.22,0.30,5.20,True,stats,False,5.16,5.42,1.00
+10,11,136490,Classic,2026-11-15,SEA@LV,Malik Benson,WR,LV,4000,,0.21,0.23,0.40,0.00,False,did_not_play,False,0.21,0.23,1.00
+10,11,136490,Classic,2026-11-15,BUF@NYJ,Malik McClain,WR,NYJ,4000,,0.06,0.00,0.00,0.00,True,stats,False,0.06,0.00,-1.00
+10,11,136490,Classic,2026-11-15,MIA@IND,Malik Washington,WR,MIA,5600,,10.68,7.41,5.80,11.86,True,stats,True,1.18,4.45,1.00
+10,11,136490,Classic,2026-11-15,HOU@CLE,Marvin Harrison Jr.,WR,HOU,5200,O,0.00,4.57,5.30,0.00,False,did_not_play,False,0.00,4.57,1.00
+10,11,136490,Classic,2026-11-15,MIN@GB,Matthew Golden,WR,GB,7300,,19.02,16.60,13.50,9.50,True,stats,True,9.52,7.10,-1.00
+10,11,136490,Classic,2026-11-15,MIA@IND,Mecole Hardman Jr.,WR,IND,4000,,0.02,1.63,,0.00,False,did_not_play,False,0.02,1.63,1.00
+10,11,136490,Classic,2026-11-15,LA@ARI,Michael Wilson,WR,ARI,6300,IR,0.00,10.91,,0.00,False,did_not_play,False,0.00,10.91,1.00
+10,11,136490,Classic,2026-11-15,JAX@TEN,Michael Wortham,WR,JAX,4000,,0.06,,,0.00,False,did_not_play,False,0.06,,
+10,11,136490,Classic,2026-11-15,SF@DAL,Mike Evans,WR,SF,7400,O,0.00,13.08,0.00,0.00,False,did_not_play,False,0.00,13.08,1.00
+10,11,136490,Classic,2026-11-15,SEA@LV,Montorie Foster Jr.,WR,SEA,4000,,0.08,0.00,0.00,0.00,False,did_not_play,False,0.08,0.00,-1.00
+10,11,136490,Classic,2026-11-15,MIN@GB,Myles Price,WR,MIN,4700,,0.64,1.30,2.70,14.10,True,stats,True,13.46,12.80,-1.00
+10,11,136490,Classic,2026-11-15,MIA@IND,Nick Westbrook-Ikhine,WR,IND,4000,,0.06,0.00,,0.00,True,stats,False,0.06,0.00,-1.00
+10,11,136490,Classic,2026-11-15,HOU@CLE,Nico Collins,WR,HOU,7500,,12.98,11.51,9.60,19.90,True,stats,True,6.92,8.39,1.00
+10,11,136490,Classic,2026-11-15,HOU@CLE,Nikko Remigio,WR,HOU,4200,,0.03,-0.25,,0.00,True,stats,False,0.03,0.25,1.00
+10,11,136490,Classic,2026-11-15,MIN@GB,Odell Beckham Jr.,WR,MIN,4400,,0.17,0.00,,0.00,False,did_not_play,False,0.17,0.00,-1.00
+10,11,136490,Classic,2026-11-15,KC@ATL,Olamide Zaccheaus,WR,ATL,4800,,1.37,0.70,2.70,2.70,True,stats,True,1.33,2.00,1.00
+10,11,136490,Classic,2026-11-15,BUF@NYJ,Omar Cooper Jr.,WR,NYJ,6200,Q,10.68,14.65,5.60,0.00,False,did_not_play,False,10.68,14.65,1.00
+10,11,136490,Classic,2026-11-15,KC@ATL,Omari Evans,WR,KC,4000,,0.06,,,0.00,False,did_not_play,False,0.06,,
+10,11,136490,Classic,2026-11-15,JAX@TEN,Parker Washington,WR,JAX,6800,,12.40,12.26,13.00,27.70,True,stats,True,15.30,15.44,1.00
+10,11,136490,Classic,2026-11-15,LA@ARI,Puka Nacua,WR,LA,9300,IR,0.00,18.45,2.40,0.00,False,did_not_play,False,0.00,18.45,1.00
+10,11,136490,Classic,2026-11-15,MIA@IND,Quez Watkins,WR,IND,4000,,0.02,,,0.00,False,did_not_play,False,0.02,,
+10,11,136490,Classic,2026-11-15,MIN@GB,Quincy Skinner Jr.,WR,GB,4000,,0.04,,,0.00,False,did_not_play,False,0.04,,
+10,11,136490,Classic,2026-11-15,KC@ATL,Rashee Rice,WR,KC,6900,,11.91,10.74,9.60,10.70,True,stats,True,1.21,0.04,-1.00
+10,11,136490,Classic,2026-11-15,SEA@LV,Rashid Shaheed,WR,SEA,5200,,3.79,4.89,3.80,1.30,True,stats,True,2.49,3.59,1.00
+10,11,136490,Classic,2026-11-15,LA@ARI,Reggie Virgil,WR,ARI,4300,,4.16,1.73,6.60,0.00,False,did_not_play,False,4.16,1.73,-1.00
+10,11,136490,Classic,2026-11-15,SF@DAL,Ricky Pearsall,WR,SF,4000,IR,0.00,7.66,,0.00,False,did_not_play,False,0.00,7.66,1.00
+10,11,136490,Classic,2026-11-15,SEA@LV,Ricky White III,WR,SEA,4000,,0.04,,0.00,0.00,False,did_not_play,False,0.04,,
+10,11,136490,Classic,2026-11-15,SF@DAL,Ryan Flournoy,WR,DAL,5500,,6.78,7.53,7.00,16.10,True,stats,True,9.32,8.57,-1.00
+10,11,136490,Classic,2026-11-15,MIN@GB,Savion Williams,WR,GB,4700,,2.54,6.70,5.10,3.70,True,stats,True,1.16,3.00,1.00
+10,11,136490,Classic,2026-11-15,LA@ARI,Shedrick Jackson,WR,ARI,4000,,2.98,4.63,,0.00,False,did_not_play,False,2.98,4.63,1.00
+10,11,136490,Classic,2026-11-15,LA@ARI,Simi Fehoko,WR,ARI,4000,,0.31,0.31,3.10,2.60,True,stats,True,2.29,2.29,-1.00
+10,11,136490,Classic,2026-11-15,BUF@NYJ,Skyler Bell,WR,BUF,4600,,0.66,0.00,0.00,0.00,False,did_not_play,False,0.66,0.00,-1.00
+10,11,136490,Classic,2026-11-15,MIN@GB,Skyy Moore,WR,GB,4500,Q,0.76,1.40,0.00,0.00,True,stats,True,0.76,1.40,1.00
+10,11,136490,Classic,2026-11-15,BUF@NYJ,Stephen Gosnell,WR,BUF,4000,,0.07,,,0.00,False,did_not_play,False,0.07,,
+10,11,136490,Classic,2026-11-15,BUF@NYJ,Sterling Shepard,WR,NYJ,4200,,1.42,1.40,,0.00,False,did_not_play,False,1.42,1.40,-1.00
+10,11,136490,Classic,2026-11-15,MIN@GB,Tai Felton,WR,MIN,4300,,0.39,1.40,0.50,4.80,True,stats,True,4.41,3.40,-1.00
+10,11,136490,Classic,2026-11-15,HOU@CLE,Tank Dell,WR,HOU,5800,,6.44,13.25,5.60,3.60,True,stats,True,2.84,9.65,1.00
+10,11,136490,Classic,2026-11-15,CAR@NO,Tetairoa McMillan,WR,CAR,7100,,17.67,13.44,11.00,5.00,True,stats,True,12.67,8.44,-1.00
+10,11,136490,Classic,2026-11-15,JAX@TEN,Tim Jones,WR,JAX,4000,,0.05,1.00,,0.00,False,did_not_play,False,0.05,1.00,1.00
+10,11,136490,Classic,2026-11-15,BUF@NYJ,Tim Patrick,WR,NYJ,4300,,0.00,2.80,0.20,0.00,False,did_not_play,False,0.00,2.80,1.00
+10,11,136490,Classic,2026-11-15,SEA@LV,Tory Horton,WR,SEA,5000,,3.61,4.08,1.80,0.00,False,did_not_play,False,3.61,4.08,1.00
+10,11,136490,Classic,2026-11-15,JAX@TEN,Travis Hunter,WR,JAX,4500,,1.14,1.98,0.00,2.90,True,stats,True,1.76,0.92,-1.00
+10,11,136490,Classic,2026-11-15,SEA@LV,Tre Tucker,WR,LV,5600,,8.45,10.98,5.70,1.40,True,stats,True,7.05,9.58,1.00
+10,11,136490,Classic,2026-11-15,JAX@TEN,Trebor Pena,WR,JAX,4000,,0.06,,,0.00,False,did_not_play,False,0.06,,
+10,11,136490,Classic,2026-11-15,BUF@NYJ,Trent Sherfield Sr.,WR,BUF,4000,,0.10,0.00,,0.00,False,did_not_play,False,0.10,0.00,-1.00
+10,11,136490,Classic,2026-11-15,LA@ARI,Tutu Atwell,WR,LA,5500,,3.05,2.23,7.60,3.60,True,stats,True,0.55,1.37,1.00
+10,11,136490,Classic,2026-11-15,HOU@CLE,Tylan Wallace,WR,CLE,4200,,0.21,0.90,0.00,1.90,True,stats,True,1.69,1.00,-1.00
+10,11,136490,Classic,2026-11-15,KC@ATL,Tyquan Thornton,WR,KC,4000,IR,0.00,10.60,,0.00,False,did_not_play,False,0.00,10.60,1.00
+10,11,136490,Classic,2026-11-15,JAX@TEN,Tyren Montgomery,WR,TEN,4000,,0.06,,,0.00,False,did_not_play,False,0.06,,
+10,11,136490,Classic,2026-11-15,SEA@LV,Velus Jones Jr.,WR,SEA,4000,,0.53,0.80,0.00,0.00,False,did_not_play,False,0.53,0.80,1.00
+10,11,136490,Classic,2026-11-15,KC@ATL,Vinny Anthony II,WR,ATL,4000,,0.05,,,0.00,False,did_not_play,False,0.05,,
+10,11,136490,Classic,2026-11-15,JAX@TEN,Wan'Dale Robinson,WR,TEN,5200,,12.91,7.47,8.30,2.50,True,stats,True,10.41,4.97,-1.00
+10,11,136490,Classic,2026-11-15,SF@DAL,Wesley Grimes,WR,SF,4000,,0.11,,,0.00,False,did_not_play,False,0.11,,
+10,11,136490,Classic,2026-11-15,SF@DAL,Will Pauling,WR,SF,4000,,0.09,,,0.00,False,did_not_play,False,0.09,,
+10,11,136490,Classic,2026-11-15,MIA@IND,Will Sheppard,WR,MIA,4000,,0.06,,,0.00,False,did_not_play,False,0.06,,
+10,11,136490,Classic,2026-11-15,HOU@CLE,Xavier Guillory,WR,CLE,4000,,0.04,,,0.00,False,did_not_play,False,0.04,,
+10,11,136490,Classic,2026-11-15,HOU@CLE,Xavier Hutchinson,WR,HOU,5500,,8.33,6.79,6.70,13.80,True,stats,True,5.47,7.01,1.00
+10,11,136490,Classic,2026-11-15,CAR@NO,Xavier Legette,WR,CAR,4700,Q,2.29,2.47,2.50,0.00,False,did_not_play,False,2.29,2.47,1.00
+10,11,136490,Classic,2026-11-15,JAX@TEN,Xavier Restrepo,WR,TEN,4000,,0.09,0.00,0.00,4.60,True,stats,False,4.51,4.60,1.00
+10,11,136490,Classic,2026-11-15,LA@ARI,Xavier Smith,WR,LA,4200,,0.82,0.00,,11.00,True,stats,False,10.18,11.00,1.00
+10,11,136490,Classic,2026-11-15,KC@ATL,Xavier Worthy,WR,KC,5700,,8.17,6.29,7.60,0.00,True,stats,True,8.17,6.29,-1.00
+10,11,136490,Classic,2026-11-15,KC@ATL,Zachariah Branch,WR,ATL,4800,O,0.00,1.27,0.00,0.00,False,did_not_play,False,0.00,1.27,1.00
+10,11,136490,Classic,2026-11-15,LA@ARI,Zay Jones,WR,ARI,4000,,2.41,4.05,,0.00,True,stats,True,2.41,4.05,1.00
+10,11,136525,Classic,2026-11-15,LA@ARI,Arizona Cardinals,DST,ARI,3400,,4.55,3.11,5.20,3.00,True,pbp_dst,True,1.55,0.11,-1.00
+10,11,136525,Classic,2026-11-15,SF@DAL,Dallas Cowboys,DST,DAL,3500,,4.50,3.33,3.70,1.00,True,pbp_dst,True,3.50,2.33,-1.00
+10,11,136525,Classic,2026-11-15,SEA@LV,Las Vegas Raiders,DST,LV,3800,,5.59,5.56,5.40,7.00,True,pbp_dst,True,1.41,1.44,1.00
+10,11,136525,Classic,2026-11-15,LA@ARI,Los Angeles Rams,DST,LA,4500,,8.98,5.44,8.90,16.00,True,pbp_dst,True,7.02,10.56,1.00
+10,11,136525,Classic,2026-11-15,SF@DAL,San Francisco 49ers,DST,SF,4300,,7.73,7.38,5.00,-1.00,True,pbp_dst,True,8.73,8.38,-1.00
+10,11,136525,Classic,2026-11-15,SEA@LV,Seattle Seahawks,DST,SEA,4800,,7.58,7.67,8.80,10.00,True,pbp_dst,True,2.42,2.33,-1.00
+10,11,136525,Classic,2026-11-15,SEA@LV,Adrian Martinez,QB,SEA,6000,,0.00,-0.10,,0.00,False,did_not_play,False,0.00,0.10,1.00
+10,11,136525,Classic,2026-11-15,SEA@LV,Aidan O'Connell,QB,LV,6000,,0.00,0.00,,0.00,False,did_not_play,False,0.00,0.00,0.00
+10,11,136525,Classic,2026-11-15,SF@DAL,Brock Purdy,QB,SF,8700,,26.68,22.04,22.30,34.66,True,stats,True,7.98,12.62,1.00
+10,11,136525,Classic,2026-11-15,LA@ARI,Carson Beck,QB,ARI,6000,,12.56,0.00,12.60,2.42,True,stats,False,10.14,2.42,-1.00
+10,11,136525,Classic,2026-11-15,SF@DAL,Dak Prescott,QB,DAL,7900,,24.85,20.16,19.50,38.42,True,stats,True,13.57,18.26,1.00
+10,11,136525,Classic,2026-11-15,SEA@LV,Drew Lock,QB,SEA,7000,,14.03,11.69,14.40,15.60,True,stats,True,1.57,3.91,1.00
+10,11,136525,Classic,2026-11-15,SEA@LV,Fernando Mendoza,QB,LV,6300,,14.14,1.11,13.30,13.92,True,stats,True,0.22,12.81,1.00
+10,11,136525,Classic,2026-11-15,LA@ARI,Gardner Minshew II,QB,ARI,6500,IR,0.00,8.85,0.00,0.00,False,did_not_play,False,0.00,8.85,1.00
+10,11,136525,Classic,2026-11-15,SEA@LV,Jalen Milroe,QB,SEA,6400,,0.00,0.00,0.00,0.00,False,did_not_play,False,0.00,0.00,0.00
+10,11,136525,Classic,2026-11-15,SF@DAL,Kurtis Rourke,QB,SF,6000,,0.00,0.00,0.00,0.00,False,did_not_play,False,0.00,0.00,0.00
+10,11,136525,Classic,2026-11-15,SF@DAL,Kyle Trask,QB,DAL,6000,,0.00,,,0.00,False,did_not_play,False,0.00,,
+10,11,136525,Classic,2026-11-15,SF@DAL,Mac Jones,QB,SF,6000,,0.00,-0.17,0.00,0.00,False,did_not_play,False,0.00,0.17,1.00
+10,11,136525,Classic,2026-11-15,LA@ARI,Matthew Caldwell,QB,LA,6000,IR,0.00,,0.00,0.00,False,did_not_play,False,0.00,,
+10,11,136525,Classic,2026-11-15,LA@ARI,Matthew Stafford,QB,LA,7400,,23.41,18.21,16.10,20.76,True,stats,True,2.65,2.55,-1.00
+10,11,136525,Classic,2026-11-15,SEA@LV,Sam Darnold,QB,SEA,7000,O,0.00,14.90,0.00,0.00,False,did_not_play,False,0.00,14.90,1.00
+10,11,136525,Classic,2026-11-15,SF@DAL,Sam Howell,QB,DAL,6000,,0.00,0.00,0.00,0.00,False,did_not_play,False,0.00,0.00,0.00
+10,11,136525,Classic,2026-11-15,LA@ARI,Stetson Bennett IV,QB,LA,6000,,0.00,0.71,0.00,0.00,False,did_not_play,False,0.00,0.71,1.00
+10,11,136525,Classic,2026-11-15,LA@ARI,Ty Simpson,QB,LA,6000,,0.00,0.00,0.00,0.00,False,did_not_play,False,0.00,0.00,0.00
+10,11,136525,Classic,2026-11-15,SEA@LV,Ashton Jeanty,RB,LV,6100,,15.18,13.48,11.30,8.40,True,stats,True,6.78,5.08,-1.00
+10,11,136525,Classic,2026-11-15,LA@ARI,Bam Knight,RB,ARI,5000,,2.88,3.68,,1.90,True,stats,True,0.98,1.78,1.00
+10,11,136525,Classic,2026-11-15,LA@ARI,Blake Corum,RB,LA,5900,,8.15,9.96,8.10,22.40,True,stats,True,14.25,12.44,-1.00
+10,11,136525,Classic,2026-11-15,SEA@LV,Chris Collier,RB,LV,4000,Q,0.04,,,0.00,False,did_not_play,False,0.04,,
+10,11,136525,Classic,2026-11-15,SF@DAL,Christian McCaffrey,RB,SF,9000,,22.95,18.59,18.00,47.30,True,stats,True,24.35,28.71,1.00
+10,11,136525,Classic,2026-11-15,LA@ARI,Dean Connors,RB,LA,4000,IR,0.00,0.00,0.00,0.00,False,did_not_play,False,0.00,0.00,0.00
+10,11,136525,Classic,2026-11-15,SEA@LV,Dylan Laube,RB,LV,4300,,0.14,1.60,0.20,0.00,True,stats,True,0.14,1.60,1.00
+10,11,136525,Classic,2026-11-15,SEA@LV,Emanuel Wilson,RB,SEA,4800,,6.86,10.69,0.40,0.00,False,did_not_play,False,6.86,10.69,1.00
+10,11,136525,Classic,2026-11-15,LA@ARI,Evan Hull,RB,ARI,4000,,0.13,0.00,0.50,0.00,False,did_not_play,False,0.13,0.00,-1.00
+10,11,136525,Classic,2026-11-15,SEA@LV,George Holani,RB,SEA,4600,,1.05,3.39,1.00,0.00,False,did_not_play,False,1.05,3.39,1.00
+10,11,136525,Classic,2026-11-15,SF@DAL,Hunter Luepke,RB,DAL,4200,,0.26,0.59,0.40,2.00,True,stats,True,1.74,1.41,-1.00
+10,11,136525,Classic,2026-11-15,SF@DAL,Israel Abanikanda,RB,DAL,4000,,0.23,,,1.50,True,stats,True,1.27,,
+10,11,136525,Classic,2026-11-15,SEA@LV,Jadarian Price,RB,SEA,5300,,7.17,5.30,9.20,10.90,True,stats,True,3.73,5.60,1.00
+10,11,136525,Classic,2026-11-15,LA@ARI,James Conner,RB,ARI,5000,IR,0.00,9.77,0.00,0.00,False,did_not_play,False,0.00,9.77,1.00
+10,11,136525,Classic,2026-11-15,SF@DAL,Jashaun Corbin,RB,DAL,4000,,0.23,,,0.00,False,did_not_play,False,0.23,,
+10,11,136525,Classic,2026-11-15,SF@DAL,Javonte Williams,RB,DAL,7700,,17.82,17.07,15.10,7.20,True,stats,True,10.62,9.87,-1.00
+10,11,136525,Classic,2026-11-15,LA@ARI,Jeremiyah Love,RB,ARI,4000,IR,0.00,7.98,0.00,0.00,False,did_not_play,False,0.00,7.98,1.00
+10,11,136525,Classic,2026-11-15,LA@ARI,Jermar Jefferson,RB,ARI,4000,,0.17,,,0.00,False,did_not_play,False,0.17,,
+10,11,136525,Classic,2026-11-15,LA@ARI,Jerome Ford,RB,ARI,4000,,0.14,2.35,,0.00,False,did_not_play,False,0.14,2.35,1.00
+10,11,136525,Classic,2026-11-15,SF@DAL,Jordan James,RB,SF,4500,,0.48,0.80,0.50,0.00,True,stats,True,0.48,0.80,1.00
+10,11,136525,Classic,2026-11-15,LA@ARI,Jordan Waters,RB,LA,4000,,0.06,,0.00,0.00,False,did_not_play,False,0.06,,
+10,11,136525,Classic,2026-11-15,SF@DAL,Kaelon Black,RB,SF,5400,,5.59,4.53,6.30,13.60,True,stats,True,8.01,9.07,1.00
+10,11,136525,Classic,2026-11-15,SF@DAL,Kyle Juszczyk,RB,SF,4200,,1.05,4.00,2.50,0.00,False,did_not_play,False,1.05,4.00,1.00
+10,11,136525,Classic,2026-11-15,LA@ARI,Kyren Williams,RB,LA,7300,,19.88,15.68,14.10,4.20,True,stats,True,15.68,11.48,-1.00
+10,11,136525,Classic,2026-11-15,SF@DAL,Malik Davis,RB,DAL,4000,IR,0.00,4.73,0.00,0.00,False,did_not_play,False,0.00,4.73,1.00
+10,11,136525,Classic,2026-11-15,SEA@LV,Mike Washington Jr.,RB,LV,5300,,3.42,4.01,5.50,3.20,True,stats,True,0.22,0.81,1.00
+10,11,136525,Classic,2026-11-15,SEA@LV,Owen Wright,RB,LV,4000,,0.05,0.30,,0.00,False,did_not_play,False,0.05,0.30,1.00
+10,11,136525,Classic,2026-11-15,SEA@LV,Roman Hemby,RB,LV,4000,,0.07,,,0.00,False,did_not_play,False,0.07,,
+10,11,136525,Classic,2026-11-15,LA@ARI,Ronnie Rivers,RB,LA,4200,,0.17,1.45,,8.10,True,stats,True,7.93,6.65,-1.00
+10,11,136525,Classic,2026-11-15,SF@DAL,Sincere McCormick,RB,SF,4000,,0.11,,,0.00,False,did_not_play,False,0.11,,
+10,11,136525,Classic,2026-11-15,LA@ARI,Trey Benson,RB,ARI,4000,IR,0.00,7.22,,0.00,False,did_not_play,False,0.00,7.22,1.00
+10,11,136525,Classic,2026-11-15,LA@ARI,Tyler Allgeier,RB,ARI,5800,,7.84,9.13,10.20,1.40,True,stats,True,6.44,7.73,1.00
+10,11,136525,Classic,2026-11-15,SF@DAL,Tyler Goodson,RB,DAL,5000,IR,0.00,3.43,0.00,0.00,False,did_not_play,False,0.00,3.43,1.00
+10,11,136525,Classic,2026-11-15,SEA@LV,Zach Charbonnet,RB,SEA,6700,,8.08,6.75,13.10,9.40,True,stats,True,1.32,2.65,1.00
+10,11,136525,Classic,2026-11-15,SEA@LV,AJ Barner,TE,SEA,5000,,3.97,5.70,5.40,3.40,True,stats,True,0.57,2.30,1.00
+10,11,136525,Classic,2026-11-15,SEA@LV,Ben Sims,TE,SEA,4200,,0.02,1.50,,0.00,False,did_not_play,False,0.02,1.50,1.00
+10,11,136525,Classic,2026-11-15,SEA@LV,Brady Russell,TE,SEA,4000,,0.00,0.92,0.30,0.00,False,did_not_play,False,0.00,0.92,1.00
+10,11,136525,Classic,2026-11-15,SF@DAL,Brayden Willis,TE,SF,4000,,0.02,0.00,0.10,0.00,True,stats,False,0.02,0.00,-1.00
+10,11,136525,Classic,2026-11-15,SF@DAL,Brevyn Spann-Ford,TE,DAL,4500,,1.10,2.28,6.10,3.10,True,stats,True,2.00,0.82,-1.00
+10,11,136525,Classic,2026-11-15,SEA@LV,Brock Bowers,TE,LV,8000,,19.16,18.71,12.10,2.80,True,stats,True,16.36,15.91,-1.00
+10,11,136525,Classic,2026-11-15,SEA@LV,Carter Runyon,TE,LV,4000,,0.02,0.27,0.00,0.00,False,did_not_play,False,0.02,0.27,1.00
+10,11,136525,Classic,2026-11-15,LA@ARI,Colby Parkinson,TE,LA,4900,,2.53,3.80,8.60,2.10,True,stats,True,0.43,1.70,1.00
+10,11,136525,Classic,2026-11-15,SEA@LV,Connor Heyward,TE,LV,4000,,0.11,0.43,0.00,1.60,True,stats,True,1.49,1.17,-1.00
+10,11,136525,Classic,2026-11-15,LA@ARI,Dan Villari,TE,LA,4000,,0.03,,,0.00,False,did_not_play,False,0.03,,
+10,11,136525,Classic,2026-11-15,LA@ARI,Davis Allen,TE,LA,4200,Q,1.04,3.39,5.70,8.40,True,stats,True,7.36,5.01,-1.00
+10,11,136525,Classic,2026-11-15,SEA@LV,Elijah Arroyo,TE,SEA,4000,IR,0.00,0.73,0.00,0.00,False,did_not_play,False,0.00,0.73,1.00
+10,11,136525,Classic,2026-11-15,LA@ARI,Elijah Higgins,TE,ARI,4400,,1.30,3.90,3.80,0.00,False,did_not_play,False,1.30,3.90,1.00
+10,11,136525,Classic,2026-11-15,SEA@LV,Eric Saubert,TE,SEA,4100,,0.08,1.36,0.80,0.00,False,did_not_play,False,0.08,1.36,1.00
+10,11,136525,Classic,2026-11-15,SF@DAL,George Kittle,TE,SF,6600,,11.63,11.91,16.00,10.40,True,stats,True,1.23,1.51,1.00
+10,11,136525,Classic,2026-11-15,LA@ARI,Hunter Long,TE,ARI,4100,Q,0.21,0.83,0.00,1.20,True,stats,True,0.99,0.37,-1.00
+10,11,136525,Classic,2026-11-15,SEA@LV,Ian Thomas,TE,LV,4000,,0.27,2.42,0.30,1.80,True,stats,True,1.53,0.62,-1.00
+10,11,136525,Classic,2026-11-15,SF@DAL,Jack Stoll,TE,SF,4000,,0.03,1.70,,0.00,False,did_not_play,False,0.03,1.70,1.00
+10,11,136525,Classic,2026-11-15,SF@DAL,Jake Ferguson,TE,DAL,5200,O,0.00,5.64,0.00,0.00,False,did_not_play,False,0.00,5.64,1.00
+10,11,136525,Classic,2026-11-15,SF@DAL,Jake Tonges,TE,SF,4000,IR,0.00,7.05,,0.00,False,did_not_play,False,0.00,7.05,1.00
+10,11,136525,Classic,2026-11-15,SF@DAL,James Mitchell,TE,DAL,4000,,0.27,6.00,,0.00,False,did_not_play,False,0.27,6.00,1.00
+10,11,136525,Classic,2026-11-15,SF@DAL,Khalil Dinkins,TE,SF,4000,,0.02,,,0.00,False,did_not_play,False,0.02,,
+10,11,136525,Classic,2026-11-15,SF@DAL,Luke Farrell,TE,SF,4400,,0.29,0.69,1.20,0.00,False,did_not_play,False,0.29,0.69,1.00
+10,11,136525,Classic,2026-11-15,SF@DAL,Luke Schoonmaker,TE,DAL,4200,,0.31,1.50,1.80,1.70,True,stats,True,1.39,0.20,-1.00
+10,11,136525,Classic,2026-11-15,LA@ARI,Max Klare,TE,LA,4000,,0.04,0.00,0.00,0.00,False,did_not_play,False,0.04,0.00,-1.00
+10,11,136525,Classic,2026-11-15,SEA@LV,Michael Mayer,TE,LV,4600,,4.61,6.92,5.80,2.80,True,stats,True,1.81,4.12,1.00
+10,11,136525,Classic,2026-11-15,SF@DAL,Michael Trigg,TE,DAL,4000,,0.18,,,0.00,False,did_not_play,False,0.18,,
+10,11,136525,Classic,2026-11-15,SEA@LV,Nick Kallerup,TE,SEA,4000,,0.02,0.00,0.40,0.00,False,did_not_play,False,0.02,0.00,-1.00
+10,11,136525,Classic,2026-11-15,SEA@LV,Patrick Gurd,TE,LV,4000,,0.03,,,0.00,False,did_not_play,False,0.03,,
+10,11,136525,Classic,2026-11-15,SF@DAL,Princeton Fant,TE,DAL,4000,IR,0.00,,,0.00,False,did_not_play,False,0.00,,
+10,11,136525,Classic,2026-11-15,LA@ARI,Rivaldo Fairweather,TE,ARI,4000,,0.02,,,0.00,False,did_not_play,False,0.02,,
+10,11,136525,Classic,2026-11-15,SEA@LV,Robbie Ouzts,TE,SEA,4000,IR,0.00,0.00,0.00,0.00,False,did_not_play,False,0.00,0.00,0.00
+10,11,136525,Classic,2026-11-15,LA@ARI,Shawn Bowman,TE,ARI,4000,,0.02,,,0.00,False,did_not_play,False,0.02,,
+10,11,136525,Classic,2026-11-15,LA@ARI,Teagan Quitoriano,TE,ARI,4200,,0.48,7.90,1.70,0.00,False,did_not_play,False,0.48,7.90,1.00
+10,11,136525,Classic,2026-11-15,LA@ARI,Terrance Ferguson,TE,LA,4800,IR,0.00,5.27,0.00,0.00,False,did_not_play,False,0.00,5.27,1.00
+10,11,136525,Classic,2026-11-15,LA@ARI,Trey McBride,TE,ARI,7400,,17.48,14.37,10.10,6.20,True,stats,True,11.28,8.17,-1.00
+10,11,136525,Classic,2026-11-15,LA@ARI,Tyler Higbee,TE,LA,4600,,4.97,5.59,6.60,9.20,True,stats,True,4.23,3.61,-1.00
+10,11,136525,Classic,2026-11-15,LA@ARI,Alex Bachman,WR,LA,4100,,0.13,0.00,,0.00,False,did_not_play,False,0.13,0.00,-1.00
+10,11,136525,Classic,2026-11-15,SF@DAL,Anthony Smith,WR,DAL,4000,,0.09,,,0.00,False,did_not_play,False,0.09,,
+10,11,136525,Classic,2026-11-15,SF@DAL,Brandin Cooks,WR,SF,5100,,2.41,2.86,0.00,0.00,False,did_not_play,False,2.41,2.86,1.00
+10,11,136525,Classic,2026-11-15,LA@ARI,Brennan Presley,WR,LA,4000,,0.54,,0.00,0.00,True,stats,True,0.54,,
+10,11,136525,Classic,2026-11-15,LA@ARI,CJ Daniels,WR,LA,4000,,0.63,0.00,3.00,2.70,True,stats,False,2.07,2.70,1.00
+10,11,136525,Classic,2026-11-15,SF@DAL,Camden Brown,WR,DAL,4000,,0.73,0.00,2.00,0.00,True,stats,False,0.73,0.00,-1.00
+10,11,136525,Classic,2026-11-15,SF@DAL,CeeDee Lamb,WR,DAL,9000,,24.08,19.87,16.40,16.70,True,stats,True,7.38,3.17,-1.00
+10,11,136525,Classic,2026-11-15,SF@DAL,Christian Kirk,WR,SF,4000,IR,0.00,6.18,0.00,0.00,False,did_not_play,False,0.00,6.18,1.00
+10,11,136525,Classic,2026-11-15,SEA@LV,Cody White,WR,LV,4300,,1.41,5.03,0.80,2.70,True,stats,True,1.29,2.33,1.00
+10,11,136525,Classic,2026-11-15,SEA@LV,Cooper Kupp,WR,SEA,5300,,3.81,5.20,4.90,9.90,True,stats,True,6.09,4.70,-1.00
+10,11,136525,Classic,2026-11-15,SEA@LV,Dareke Young,WR,LV,4000,,0.10,0.43,0.10,0.00,True,stats,True,0.10,0.43,1.00
+10,11,136525,Classic,2026-11-15,LA@ARI,Davante Adams,WR,LA,4000,IR,0.00,15.50,0.00,0.00,False,did_not_play,False,0.00,15.50,1.00
+10,11,136525,Classic,2026-11-15,SF@DAL,De'Zhaun Stribling,WR,SF,4000,IR,0.00,,0.00,0.00,False,did_not_play,False,0.00,,
+10,11,136525,Classic,2026-11-15,SF@DAL,Deebo Samuel Sr.,WR,SF,6500,,9.04,10.48,6.90,24.40,True,stats,True,15.36,13.92,-1.00
+10,11,136525,Classic,2026-11-15,SF@DAL,Demarcus Robinson,WR,SF,5400,,3.81,6.87,7.00,0.00,False,did_not_play,False,3.81,6.87,1.00
+10,11,136525,Classic,2026-11-15,SEA@LV,Deven Thompkins,WR,LV,4000,,0.30,1.30,,0.00,False,did_not_play,False,0.30,1.30,1.00
+10,11,136525,Classic,2026-11-15,LA@ARI,Devin Duvernay,WR,ARI,4800,,0.52,0.47,2.40,4.50,True,stats,True,3.98,4.03,1.00
+10,11,136525,Classic,2026-11-15,SEA@LV,Dont'e Thornton Jr.,WR,LV,4100,Q,0.03,1.68,0.00,0.00,False,did_not_play,False,0.03,1.68,1.00
+10,11,136525,Classic,2026-11-15,SEA@LV,Emmanuel Henderson Jr.,WR,SEA,4000,,0.08,,,0.00,False,did_not_play,False,0.08,,
+10,11,136525,Classic,2026-11-15,SF@DAL,George Pickens,WR,DAL,7000,,12.96,10.98,9.70,41.00,True,stats,True,28.04,30.02,1.00
+10,11,136525,Classic,2026-11-15,LA@ARI,Harrison Wallace III,WR,ARI,4000,,1.77,,2.50,1.40,True,stats,True,0.37,,
+10,11,136525,Classic,2026-11-15,SEA@LV,Irvin Charles,WR,SEA,4000,,0.04,0.00,,0.00,True,stats,False,0.04,0.00,-1.00
+10,11,136525,Classic,2026-11-15,SEA@LV,Jack Bech,WR,LV,4500,,1.93,3.67,2.30,2.00,True,stats,True,0.07,1.67,1.00
+10,11,136525,Classic,2026-11-15,SF@DAL,Jacob Cowing,WR,SF,5300,,1.65,0.86,0.50,0.00,True,stats,True,1.65,0.86,-1.00
+10,11,136525,Classic,2026-11-15,SEA@LV,Jake Bobo,WR,SEA,4000,IR,0.00,1.90,,0.00,False,did_not_play,False,0.00,1.90,1.00
+10,11,136525,Classic,2026-11-15,LA@ARI,Jalen Brooks,WR,ARI,4000,IR,0.00,1.77,0.00,0.00,False,did_not_play,False,0.00,1.77,1.00
+10,11,136525,Classic,2026-11-15,SEA@LV,Jalen Nailor,WR,LV,4900,,3.39,3.60,4.50,0.40,True,stats,True,2.99,3.20,1.00
+10,11,136525,Classic,2026-11-15,LA@ARI,James Proche II,WR,ARI,4200,,1.30,1.58,,0.00,False,did_not_play,False,1.30,1.58,1.00
+10,11,136525,Classic,2026-11-15,SEA@LV,Jaxon Smith-Njigba,WR,SEA,9500,,24.85,24.17,15.90,30.10,True,stats,True,5.25,5.93,1.00
+10,11,136525,Classic,2026-11-15,SF@DAL,Jonathan Mingo,WR,DAL,4300,O,0.00,0.91,1.30,0.00,False,did_not_play,False,0.00,0.91,1.00
+10,11,136525,Classic,2026-11-15,SF@DAL,Jordan Hudson,WR,DAL,4000,,0.13,0.00,0.00,0.00,False,did_not_play,False,0.13,0.00,-1.00
+10,11,136525,Classic,2026-11-15,SF@DAL,Jordan Watkins,WR,SF,6100,,5.21,8.35,2.90,5.90,True,stats,True,0.69,2.45,1.00
+10,11,136525,Classic,2026-11-15,LA@ARI,Jordan Whittington,WR,LA,4700,IR,0.00,0.31,0.10,0.00,False,did_not_play,False,0.00,0.31,1.00
+10,11,136525,Classic,2026-11-15,SF@DAL,KaVontae Turpin,WR,DAL,4500,,0.71,1.82,4.20,2.40,True,stats,True,1.69,0.58,-1.00
+10,11,136525,Classic,2026-11-15,LA@ARI,Kendrick Bourne,WR,ARI,4000,IR,0.00,5.61,0.00,0.00,False,did_not_play,False,0.00,5.61,1.00
+10,11,136525,Classic,2026-11-15,SF@DAL,KhaDarel Hodge,WR,SF,4100,,0.58,1.12,,0.00,False,did_not_play,False,0.58,1.12,1.00
+10,11,136525,Classic,2026-11-15,LA@ARI,Konata Mumpfield,WR,LA,5700,,3.58,3.46,5.50,9.60,True,stats,True,6.02,6.14,1.00
+10,11,136525,Classic,2026-11-15,SEA@LV,Malik Benson,WR,LV,4000,,0.26,0.23,0.40,0.00,False,did_not_play,False,0.26,0.23,-1.00
+10,11,136525,Classic,2026-11-15,LA@ARI,Michael Wilson,WR,ARI,6300,IR,0.00,10.91,,0.00,False,did_not_play,False,0.00,10.91,1.00
+10,11,136525,Classic,2026-11-15,SF@DAL,Mike Evans,WR,SF,7400,O,0.00,13.08,0.00,0.00,False,did_not_play,False,0.00,13.08,1.00
+10,11,136525,Classic,2026-11-15,SEA@LV,Montorie Foster Jr.,WR,SEA,4000,,0.14,0.00,0.00,0.00,False,did_not_play,False,0.14,0.00,-1.00
+10,11,136525,Classic,2026-11-15,LA@ARI,Puka Nacua,WR,LA,9300,IR,0.00,18.45,2.40,0.00,False,did_not_play,False,0.00,18.45,1.00
+10,11,136525,Classic,2026-11-15,SEA@LV,Rashid Shaheed,WR,SEA,5200,,4.08,4.89,3.80,1.30,True,stats,True,2.78,3.59,1.00
+10,11,136525,Classic,2026-11-15,LA@ARI,Reggie Virgil,WR,ARI,4300,,4.46,1.73,6.60,0.00,False,did_not_play,False,4.46,1.73,-1.00
+10,11,136525,Classic,2026-11-15,SF@DAL,Ricky Pearsall,WR,SF,4000,IR,0.00,7.66,,0.00,False,did_not_play,False,0.00,7.66,1.00
+10,11,136525,Classic,2026-11-15,SEA@LV,Ricky White III,WR,SEA,4000,,0.08,,0.00,0.00,False,did_not_play,False,0.08,,
+10,11,136525,Classic,2026-11-15,SF@DAL,Ryan Flournoy,WR,DAL,5500,,7.12,7.53,7.00,16.10,True,stats,True,8.98,8.57,-1.00
+10,11,136525,Classic,2026-11-15,LA@ARI,Shedrick Jackson,WR,ARI,4000,,3.52,4.63,,0.00,False,did_not_play,False,3.52,4.63,1.00
+10,11,136525,Classic,2026-11-15,LA@ARI,Simi Fehoko,WR,ARI,4000,,0.34,0.31,3.10,2.60,True,stats,True,2.26,2.29,1.00
+10,11,136525,Classic,2026-11-15,SEA@LV,Tory Horton,WR,SEA,5000,,4.09,4.08,1.80,0.00,False,did_not_play,False,4.09,4.08,-1.00
+10,11,136525,Classic,2026-11-15,SEA@LV,Tre Tucker,WR,LV,5600,,8.35,10.98,5.70,1.40,True,stats,True,6.95,9.58,1.00
+10,11,136525,Classic,2026-11-15,LA@ARI,Tutu Atwell,WR,LA,5500,,3.19,2.23,7.60,3.60,True,stats,True,0.41,1.37,1.00
+10,11,136525,Classic,2026-11-15,SEA@LV,Velus Jones Jr.,WR,SEA,4000,,0.58,0.80,0.00,0.00,False,did_not_play,False,0.58,0.80,1.00
+10,11,136525,Classic,2026-11-15,SF@DAL,Wesley Grimes,WR,SF,4000,,0.14,,,0.00,False,did_not_play,False,0.14,,
+10,11,136525,Classic,2026-11-15,SF@DAL,Will Pauling,WR,SF,4000,,0.11,,,0.00,False,did_not_play,False,0.11,,
+10,11,136525,Classic,2026-11-15,LA@ARI,Xavier Smith,WR,LA,4200,,0.91,0.00,,11.00,True,stats,False,10.09,11.00,1.00
+10,11,136525,Classic,2026-11-15,LA@ARI,Zay Jones,WR,ARI,4000,,2.46,4.05,,0.00,True,stats,True,2.46,4.05,1.00
 10,11,136634,Showdown,2026-11-15,NE@DET,Detroit Lions,DST,DET,6400,,7.21,5.62,6.40,11.00,True,pbp_dst,True,3.79,5.38,1.00
 10,11,136634,Showdown,2026-11-15,NE@DET,New England Patriots,DST,NE,6200,,5.47,5.78,5.10,2.00,True,pbp_dst,True,3.47,3.78,1.00
 10,11,136634,Showdown,2026-11-15,NE@DET,Andy Borregales,K,NE,6600,,7.68,6.44,7.10,4.00,True,stats,True,3.68,2.44,-1.00

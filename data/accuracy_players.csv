@@ -1565,7 +1565,7 @@ nfl_week,board_week,slate,slate_type,gameday,game,player,pos,team,salary,injury_
 10,11,136490,Classic,2026-11-15,CAR@NO,Ahmani Marshall,RB,CAR,4000,,0.05,,0.00,0.00,False,did_not_play,False,0.05,,
 10,11,136490,Classic,2026-11-15,BUF@NYJ,Al-Jay Henderson,RB,NYJ,4000,,0.06,,0.00,0.00,False,did_not_play,False,0.06,,
 10,11,136490,Classic,2026-11-15,CAR@NO,Alvin Kamara,RB,NO,5600,,9.71,8.74,7.70,14.90,True,stats,True,5.19,6.16,1.00
-10,11,136490,Classic,2026-11-15,JAX@TEN,Ameer Abdullah,RB,JAX,4600,,0.93,1.25,1.70,0.00,False,did_not_play,False,0.93,1.25,1.00
+10,11,136490,Classic,2026-11-15,JAX@TEN,Ameer Abdullah,RB,JAX,4600,,0.93,1.25,1.70,0.00,True,snaps_no_stats,True,0.93,1.25,1.00
 10,11,136490,Classic,2026-11-15,CAR@NO,Anthony Tyus III,RB,CAR,4000,,0.14,1.66,0.40,0.00,True,stats,True,0.14,1.66,1.00
 10,11,136490,Classic,2026-11-15,SEA@LV,Ashton Jeanty,RB,LV,6100,,15.47,13.48,11.30,8.40,True,stats,True,7.07,5.08,-1.00
 10,11,136490,Classic,2026-11-15,CAR@NO,Audric Estime,RB,NO,5700,,8.08,11.05,2.10,1.60,True,stats,True,6.48,9.45,1.00
@@ -1587,7 +1587,7 @@ nfl_week,board_week,slate,slate_type,gameday,game,player,pos,team,salary,injury_
 10,11,136490,Classic,2026-11-15,JAX@TEN,Chris Rodriguez Jr.,RB,JAX,5500,,5.60,6.55,6.00,0.50,True,stats,True,5.10,6.05,1.00
 10,11,136490,Classic,2026-11-15,SF@DAL,Christian McCaffrey,RB,SF,9000,,23.03,18.59,18.00,47.30,True,stats,True,24.27,28.71,1.00
 10,11,136490,Classic,2026-11-15,CAR@NO,Chuba Hubbard,RB,CAR,7200,,17.83,17.45,16.10,31.70,True,stats,True,13.87,14.25,1.00
-10,11,136490,Classic,2026-11-15,MIA@IND,DJ Giddens,RB,IND,4400,,0.87,2.15,0.30,0.00,False,did_not_play,False,0.87,2.15,1.00
+10,11,136490,Classic,2026-11-15,MIA@IND,DJ Giddens,RB,IND,4400,,0.87,2.15,0.30,0.00,True,snaps_no_stats,True,0.87,2.15,1.00
 10,11,136490,Classic,2026-11-15,MIA@IND,DJ Herman,RB,MIA,4000,,1.23,1.15,0.00,1.50,True,stats,True,0.27,0.35,1.00
 10,11,136490,Classic,2026-11-15,HOU@CLE,Dare Ogunbowale,RB,HOU,4100,,0.27,0.40,0.00,2.00,True,stats,True,1.73,1.60,-1.00
 10,11,136490,Classic,2026-11-15,HOU@CLE,David Montgomery,RB,HOU,6200,O,0.00,8.40,1.60,0.00,False,did_not_play,False,0.00,8.40,1.00
@@ -1601,16 +1601,16 @@ nfl_week,board_week,slate,slate_type,gameday,game,player,pos,team,salary,injury_
 10,11,136490,Classic,2026-11-15,SEA@LV,Emanuel Wilson,RB,SEA,4800,,7.01,10.69,0.40,0.00,False,did_not_play,False,7.01,10.69,1.00
 10,11,136490,Classic,2026-11-15,HOU@CLE,Emari Demercado,RB,HOU,4400,,2.58,1.10,3.70,2.00,True,stats,True,0.58,0.90,1.00
 10,11,136490,Classic,2026-11-15,KC@ATL,Emmett Johnson,RB,KC,5100,,5.38,7.10,4.70,35.10,True,stats,True,29.72,28.00,-1.00
-10,11,136490,Classic,2026-11-15,LA@ARI,Evan Hull,RB,ARI,4000,,0.11,0.00,0.50,0.00,False,did_not_play,False,0.11,0.00,-1.00
+10,11,136490,Classic,2026-11-15,LA@ARI,Evan Hull,RB,ARI,4000,,0.11,0.00,0.50,0.00,True,snaps_no_stats,False,0.11,0.00,-1.00
 10,11,136490,Classic,2026-11-15,BUF@NYJ,Frank Gore Jr.,RB,BUF,4900,,0.44,0.30,,0.00,False,did_not_play,False,0.44,0.30,-1.00
-10,11,136490,Classic,2026-11-15,SEA@LV,George Holani,RB,SEA,4600,,1.25,3.39,1.00,0.00,False,did_not_play,False,1.25,3.39,1.00
+10,11,136490,Classic,2026-11-15,SEA@LV,George Holani,RB,SEA,4600,,1.25,3.39,1.00,0.00,True,snaps_no_stats,True,1.25,3.39,1.00
 10,11,136490,Classic,2026-11-15,HOU@CLE,Hassan Haskins,RB,CLE,4000,,0.05,0.73,,0.00,False,did_not_play,False,0.05,0.73,1.00
 10,11,136490,Classic,2026-11-15,SF@DAL,Hunter Luepke,RB,DAL,4200,,0.22,0.59,0.40,2.00,True,stats,True,1.78,1.41,-1.00
 10,11,136490,Classic,2026-11-15,BUF@NYJ,Isaiah Davis,RB,NYJ,4600,,0.37,1.71,0.50,0.00,True,stats,True,0.37,1.71,1.00
 10,11,136490,Classic,2026-11-15,SF@DAL,Israel Abanikanda,RB,DAL,4000,,0.09,,,1.50,True,stats,True,1.41,,
 10,11,136490,Classic,2026-11-15,JAX@TEN,J'Mari Taylor,RB,JAX,4000,,0.12,,0.00,0.00,False,did_not_play,False,0.12,,
 10,11,136490,Classic,2026-11-15,SEA@LV,Jadarian Price,RB,SEA,5300,,7.41,5.30,9.20,10.90,True,stats,True,3.49,5.60,1.00
-10,11,136490,Classic,2026-11-15,HOU@CLE,Jaleel McLaughlin,RB,CLE,4400,,0.74,2.77,1.10,0.00,False,did_not_play,False,0.74,2.77,1.00
+10,11,136490,Classic,2026-11-15,HOU@CLE,Jaleel McLaughlin,RB,CLE,4400,,0.74,2.77,1.10,0.00,True,snaps_no_stats,True,0.74,2.77,1.00
 10,11,136490,Classic,2026-11-15,KC@ATL,Jam Miller,RB,ATL,4000,,0.06,,0.00,0.00,False,did_not_play,False,0.06,,
 10,11,136490,Classic,2026-11-15,LA@ARI,James Conner,RB,ARI,5000,IR,0.00,9.77,0.00,0.00,False,did_not_play,False,0.00,9.77,1.00
 10,11,136490,Classic,2026-11-15,BUF@NYJ,James Cook III,RB,BUF,8400,,27.11,19.30,18.10,24.70,True,stats,True,2.41,5.40,1.00
@@ -1629,7 +1629,7 @@ nfl_week,board_week,slate,slate_type,gameday,game,player,pos,team,salary,injury_
 10,11,136490,Classic,2026-11-15,LA@ARI,Jordan Waters,RB,LA,4000,,0.04,,0.00,0.00,False,did_not_play,False,0.04,,
 10,11,136490,Classic,2026-11-15,MIN@GB,Josh Jacobs,RB,GB,6900,O,0.00,9.57,0.00,0.00,False,did_not_play,False,0.00,9.57,1.00
 10,11,136490,Classic,2026-11-15,HOU@CLE,Joshua Pitsenberger,RB,HOU,4000,,0.11,,,0.00,False,did_not_play,False,0.11,,
-10,11,136490,Classic,2026-11-15,JAX@TEN,Julius Chestnut,RB,TEN,4000,,0.04,0.00,0.50,0.00,False,did_not_play,False,0.04,0.00,-1.00
+10,11,136490,Classic,2026-11-15,JAX@TEN,Julius Chestnut,RB,TEN,4000,,0.04,0.00,0.50,0.00,True,snaps_no_stats,False,0.04,0.00,-1.00
 10,11,136490,Classic,2026-11-15,SF@DAL,Kaelon Black,RB,SF,5400,,5.85,4.53,6.30,13.60,True,stats,True,7.75,9.07,1.00
 10,11,136490,Classic,2026-11-15,MIN@GB,Kaleb Johnson,RB,GB,5800,,3.20,3.24,6.50,4.20,True,stats,True,1.00,0.96,-1.00
 10,11,136490,Classic,2026-11-15,JAX@TEN,Kalel Mullings,RB,TEN,4000,,0.04,0.30,,0.00,False,did_not_play,False,0.04,0.30,1.00
@@ -1637,7 +1637,7 @@ nfl_week,board_week,slate,slate_type,gameday,game,player,pos,team,salary,injury_
 10,11,136490,Classic,2026-11-15,BUF@NYJ,Kene Nwangwu,RB,NYJ,4000,,0.02,0.00,0.00,0.00,True,stats,False,0.02,0.00,-1.00
 10,11,136490,Classic,2026-11-15,KC@ATL,Kenneth Walker III,RB,KC,9800,O,0.00,24.80,18.40,0.00,False,did_not_play,False,0.00,24.80,1.00
 10,11,136490,Classic,2026-11-15,KC@ATL,Khalil Herbert,RB,ATL,4900,,0.96,2.40,3.30,1.70,True,stats,True,0.74,0.70,-1.00
-10,11,136490,Classic,2026-11-15,SF@DAL,Kyle Juszczyk,RB,SF,4200,,1.27,4.00,2.50,0.00,False,did_not_play,False,1.27,4.00,1.00
+10,11,136490,Classic,2026-11-15,SF@DAL,Kyle Juszczyk,RB,SF,4200,,1.27,4.00,2.50,0.00,True,snaps_no_stats,True,1.27,4.00,1.00
 10,11,136490,Classic,2026-11-15,LA@ARI,Kyren Williams,RB,LA,7300,,19.10,15.68,14.10,4.20,True,stats,True,14.90,11.48,-1.00
 10,11,136490,Classic,2026-11-15,JAX@TEN,LeQuint Allen Jr.,RB,JAX,4200,,0.24,0.29,1.30,0.00,True,stats,True,0.24,0.29,1.00
 10,11,136490,Classic,2026-11-15,SF@DAL,Malik Davis,RB,DAL,4000,IR,0.00,4.73,0.00,0.00,False,did_not_play,False,0.00,4.73,1.00
@@ -1673,13 +1673,13 @@ nfl_week,board_week,slate,slate_type,gameday,game,player,pos,team,salary,injury_
 10,11,136490,Classic,2026-11-15,CAR@NO,Zamir White,RB,NO,4200,,0.20,0.50,,0.00,False,did_not_play,False,0.20,0.50,1.00
 10,11,136490,Classic,2026-11-15,SEA@LV,AJ Barner,TE,SEA,5000,,4.62,5.70,5.40,3.40,True,stats,True,1.22,2.30,1.00
 10,11,136490,Classic,2026-11-15,BUF@NYJ,Andrew Beck,TE,NYJ,4000,,0.03,-0.02,0.10,0.20,True,stats,False,0.17,0.22,1.00
-10,11,136490,Classic,2026-11-15,MIN@GB,Andrew DePaola,TE,MIN,4000,,0.07,0.00,,0.00,False,did_not_play,False,0.07,0.00,-1.00
+10,11,136490,Classic,2026-11-15,MIN@GB,Andrew DePaola,TE,MIN,4000,,0.07,0.00,,0.00,True,snaps_no_stats,False,0.07,0.00,-1.00
 10,11,136490,Classic,2026-11-15,KC@ATL,Austin Hooper,TE,ATL,4400,,0.57,3.02,1.50,1.30,True,stats,True,0.73,1.72,1.00
 10,11,136490,Classic,2026-11-15,SEA@LV,Ben Sims,TE,SEA,4200,,0.04,1.50,,0.00,False,did_not_play,False,0.04,1.50,1.00
 10,11,136490,Classic,2026-11-15,MIN@GB,Ben Yurosek,TE,MIN,4200,,0.46,1.47,3.50,1.20,True,stats,True,0.74,0.27,-1.00
-10,11,136490,Classic,2026-11-15,MIA@IND,Bernhard Raimann,TE,IND,4000,,0.08,0.00,,0.00,False,did_not_play,False,0.08,0.00,-1.00
+10,11,136490,Classic,2026-11-15,MIA@IND,Bernhard Raimann,TE,IND,4000,,0.08,0.00,,0.00,True,snaps_no_stats,False,0.08,0.00,-1.00
 10,11,136490,Classic,2026-11-15,HOU@CLE,Blake Whiteheart,TE,CLE,4200,,0.10,1.83,0.90,0.00,True,stats,True,0.10,1.83,1.00
-10,11,136490,Classic,2026-11-15,SEA@LV,Brady Russell,TE,SEA,4000,,0.03,0.92,0.30,0.00,False,did_not_play,False,0.03,0.92,1.00
+10,11,136490,Classic,2026-11-15,SEA@LV,Brady Russell,TE,SEA,4000,,0.03,0.92,0.30,0.00,True,snaps_no_stats,True,0.03,0.92,1.00
 10,11,136490,Classic,2026-11-15,SF@DAL,Brayden Willis,TE,SF,4000,,0.04,0.00,0.10,0.00,True,stats,False,0.04,0.00,-1.00
 10,11,136490,Classic,2026-11-15,JAX@TEN,Brenden Bates,TE,JAX,4000,,0.05,1.36,,0.00,False,did_not_play,False,0.05,1.36,1.00
 10,11,136490,Classic,2026-11-15,JAX@TEN,Brenton Strange,TE,JAX,5000,,7.63,7.07,8.30,7.90,True,stats,True,0.27,0.83,1.00
@@ -1687,9 +1687,9 @@ nfl_week,board_week,slate,slate_type,gameday,game,player,pos,team,salary,injury_
 10,11,136490,Classic,2026-11-15,SF@DAL,Brevyn Spann-Ford,TE,DAL,4500,,1.37,2.28,6.10,3.10,True,stats,True,1.73,0.82,-1.00
 10,11,136490,Classic,2026-11-15,SEA@LV,Brock Bowers,TE,LV,8000,,21.69,18.71,12.10,2.80,True,stats,True,18.89,15.91,-1.00
 10,11,136490,Classic,2026-11-15,HOU@CLE,Cade Stover,TE,HOU,4100,,0.40,0.95,0.40,0.00,True,stats,True,0.40,0.95,1.00
-10,11,136490,Classic,2026-11-15,HOU@CLE,Carsen Ryan,TE,CLE,4000,,0.02,0.00,0.10,0.00,False,did_not_play,False,0.02,0.00,-1.00
+10,11,136490,Classic,2026-11-15,HOU@CLE,Carsen Ryan,TE,CLE,4000,,0.02,0.00,0.10,0.00,True,snaps_no_stats,False,0.02,0.00,-1.00
 10,11,136490,Classic,2026-11-15,MIA@IND,Carson Towt,TE,IND,4000,IR,0.00,,0.00,0.00,False,did_not_play,False,0.00,,
-10,11,136490,Classic,2026-11-15,SEA@LV,Carter Runyon,TE,LV,4000,,0.03,0.27,0.00,0.00,False,did_not_play,False,0.03,0.27,1.00
+10,11,136490,Classic,2026-11-15,SEA@LV,Carter Runyon,TE,LV,4000,,0.03,0.27,0.00,0.00,True,snaps_no_stats,True,0.03,0.27,1.00
 10,11,136490,Classic,2026-11-15,MIA@IND,Charlie Heck,TE,IND,4000,,0.03,,,0.00,False,did_not_play,False,0.03,,
 10,11,136490,Classic,2026-11-15,KC@ATL,Charlie Woerner,TE,ATL,4100,,0.39,1.44,1.50,0.00,True,stats,True,0.39,1.44,1.00
 10,11,136490,Classic,2026-11-15,LA@ARI,Colby Parkinson,TE,LA,4900,,3.00,3.80,8.60,2.10,True,stats,True,0.90,1.70,1.00
@@ -1700,18 +1700,18 @@ nfl_week,board_week,slate,slate_type,gameday,game,player,pos,team,salary,injury_
 10,11,136490,Classic,2026-11-15,LA@ARI,Dan Villari,TE,LA,4000,,0.05,,,0.00,False,did_not_play,False,0.05,,
 10,11,136490,Classic,2026-11-15,JAX@TEN,Daniel Bellinger,TE,TEN,4200,,0.81,1.44,2.30,7.60,True,stats,True,6.79,6.16,-1.00
 10,11,136490,Classic,2026-11-15,CAR@NO,Darren Waller,TE,CAR,5300,,4.91,8.18,6.10,3.40,True,stats,True,1.51,4.78,1.00
-10,11,136490,Classic,2026-11-15,JAX@TEN,David Martin-Robinson,TE,TEN,4000,,0.03,0.00,0.90,0.00,False,did_not_play,False,0.03,0.00,-1.00
+10,11,136490,Classic,2026-11-15,JAX@TEN,David Martin-Robinson,TE,TEN,4000,,0.03,0.00,0.90,0.00,True,snaps_no_stats,False,0.03,0.00,-1.00
 10,11,136490,Classic,2026-11-15,LA@ARI,Davis Allen,TE,LA,4200,Q,1.25,3.39,5.70,8.40,True,stats,True,7.15,5.01,-1.00
 10,11,136490,Classic,2026-11-15,BUF@NYJ,Dawson Knox,TE,BUF,4900,,1.66,2.55,4.30,1.20,True,stats,True,0.46,1.35,1.00
-10,11,136490,Classic,2026-11-15,MIN@GB,Devin Culp,TE,MIN,4000,,0.10,3.55,,0.00,False,did_not_play,False,0.10,3.55,1.00
-10,11,136490,Classic,2026-11-15,MIN@GB,Drake Dabney,TE,GB,4000,,0.03,0.80,0.00,0.00,False,did_not_play,False,0.03,0.80,1.00
+10,11,136490,Classic,2026-11-15,MIN@GB,Devin Culp,TE,MIN,4000,,0.10,3.55,,0.00,True,snaps_no_stats,True,0.10,3.55,1.00
+10,11,136490,Classic,2026-11-15,MIN@GB,Drake Dabney,TE,GB,4000,,0.03,0.80,0.00,0.00,True,snaps_no_stats,True,0.03,0.80,1.00
 10,11,136490,Classic,2026-11-15,MIA@IND,Drew Ogletree,TE,IND,4100,,0.04,0.52,,1.00,True,stats_lastname,True,0.96,0.48,-1.00
 10,11,136490,Classic,2026-11-15,KC@ATL,E.J. Jenkins,TE,ATL,4000,,0.08,0.00,,0.00,False,did_not_play,False,0.08,0.00,-1.00
 10,11,136490,Classic,2026-11-15,SEA@LV,Elijah Arroyo,TE,SEA,4000,IR,0.00,0.73,0.00,0.00,False,did_not_play,False,0.00,0.73,1.00
-10,11,136490,Classic,2026-11-15,LA@ARI,Elijah Higgins,TE,ARI,4400,,1.50,3.90,3.80,0.00,False,did_not_play,False,1.50,3.90,1.00
-10,11,136490,Classic,2026-11-15,SEA@LV,Eric Saubert,TE,SEA,4100,,0.16,1.36,0.80,0.00,False,did_not_play,False,0.16,1.36,1.00
+10,11,136490,Classic,2026-11-15,LA@ARI,Elijah Higgins,TE,ARI,4400,,1.50,3.90,3.80,0.00,True,snaps_no_stats,True,1.50,3.90,1.00
+10,11,136490,Classic,2026-11-15,SEA@LV,Eric Saubert,TE,SEA,4100,,0.16,1.36,0.80,0.00,True,snaps_no_stats,True,0.16,1.36,1.00
 10,11,136490,Classic,2026-11-15,CAR@NO,Feleipe Franks,TE,CAR,4000,,0.03,0.00,0.00,0.00,True,stats,False,0.03,0.00,-1.00
-10,11,136490,Classic,2026-11-15,HOU@CLE,Foster Moreau,TE,HOU,4300,,0.69,5.12,2.50,0.00,False,did_not_play,False,0.69,5.12,1.00
+10,11,136490,Classic,2026-11-15,HOU@CLE,Foster Moreau,TE,HOU,4300,,0.69,5.12,2.50,0.00,True,snaps_no_stats,True,0.69,5.12,1.00
 10,11,136490,Classic,2026-11-15,MIN@GB,Gavin Bartholomew,TE,MIN,4300,,1.39,2.22,4.20,11.10,True,stats,True,9.71,8.88,-1.00
 10,11,136490,Classic,2026-11-15,SF@DAL,George Kittle,TE,SF,6600,,14.72,11.91,16.00,10.40,True,stats,True,4.32,1.51,-1.00
 10,11,136490,Classic,2026-11-15,MIA@IND,Greg Dulcich,TE,MIA,4800,,4.58,5.86,5.30,0.00,True,stats,True,4.58,5.86,1.00
@@ -1725,16 +1725,16 @@ nfl_week,board_week,slate,slate_type,gameday,game,player,pos,team,salary,injury_
 10,11,136490,Classic,2026-11-15,KC@ATL,Jake Briningstool,TE,KC,4100,,0.21,0.66,0.00,2.50,True,stats,True,2.29,1.84,-1.00
 10,11,136490,Classic,2026-11-15,SF@DAL,Jake Ferguson,TE,DAL,5200,O,0.00,5.64,0.00,0.00,False,did_not_play,False,0.00,5.64,1.00
 10,11,136490,Classic,2026-11-15,SF@DAL,Jake Tonges,TE,SF,4000,IR,0.00,7.05,,0.00,False,did_not_play,False,0.00,7.05,1.00
-10,11,136490,Classic,2026-11-15,SF@DAL,James Mitchell,TE,DAL,4000,,0.45,6.00,,0.00,False,did_not_play,False,0.45,6.00,1.00
-10,11,136490,Classic,2026-11-15,KC@ATL,James Winchester,TE,KC,4000,,0.02,0.00,,0.00,False,did_not_play,False,0.02,0.00,-1.00
-10,11,136490,Classic,2026-11-15,KC@ATL,Jared Wiley,TE,KC,4000,,0.01,0.00,0.00,0.00,False,did_not_play,False,0.01,0.00,-1.00
+10,11,136490,Classic,2026-11-15,SF@DAL,James Mitchell,TE,DAL,4000,,0.45,6.00,,0.00,True,snaps_no_stats,True,0.45,6.00,1.00
+10,11,136490,Classic,2026-11-15,KC@ATL,James Winchester,TE,KC,4000,,0.02,0.00,,0.00,True,snaps_no_stats,False,0.02,0.00,-1.00
+10,11,136490,Classic,2026-11-15,KC@ATL,Jared Wiley,TE,KC,4000,,0.01,0.00,0.00,0.00,True,snaps_no_stats,False,0.01,0.00,-1.00
 10,11,136490,Classic,2026-11-15,JAX@TEN,Jaren Kanak,TE,TEN,4000,IR,0.00,,,0.00,False,did_not_play,False,0.00,,
 10,11,136490,Classic,2026-11-15,BUF@NYJ,Jelani Woods,TE,NYJ,4000,,0.00,1.18,0.80,0.00,False,did_not_play,False,0.00,1.18,1.00
 10,11,136490,Classic,2026-11-15,BUF@NYJ,Jeremy Ruckert,TE,NYJ,4100,,0.30,3.70,0.70,0.00,True,stats,True,0.30,3.70,1.00
 10,11,136490,Classic,2026-11-15,JAX@TEN,Joel Wilson,TE,TEN,4000,,0.04,,,0.00,False,did_not_play,False,0.04,,
 10,11,136490,Classic,2026-11-15,HOU@CLE,John FitzPatrick,TE,CLE,4000,,0.02,1.92,,0.00,False,did_not_play,False,0.02,1.92,1.00
 10,11,136490,Classic,2026-11-15,KC@ATL,John Michael Gyllenborg,TE,KC,4000,IR,0.00,,0.00,0.00,False,did_not_play,False,0.00,,
-10,11,136490,Classic,2026-11-15,MIN@GB,Jonnu Smith,TE,GB,4200,,0.94,3.10,0.00,0.00,False,did_not_play,False,0.94,3.10,1.00
+10,11,136490,Classic,2026-11-15,MIN@GB,Jonnu Smith,TE,GB,4200,,0.94,3.10,0.00,0.00,True,snaps_no_stats,True,0.94,3.10,1.00
 10,11,136490,Classic,2026-11-15,MIN@GB,Josh Oliver,TE,MIN,4000,IR,0.00,2.03,0.00,0.00,False,did_not_play,False,0.00,2.03,1.00
 10,11,136490,Classic,2026-11-15,MIN@GB,Josh Whyle,TE,GB,4000,IR,0.00,0.00,0.00,0.00,False,did_not_play,False,0.00,0.00,0.00
 10,11,136490,Classic,2026-11-15,MIA@IND,Justin Joly,TE,MIA,4000,,0.00,0.00,0.00,0.00,False,did_not_play,False,0.00,0.00,0.00
@@ -1743,27 +1743,27 @@ nfl_week,board_week,slate,slate_type,gameday,game,player,pos,team,salary,injury_
 10,11,136490,Classic,2026-11-15,BUF@NYJ,Kenyon Sadiq,TE,NYJ,4800,,3.12,5.26,5.10,0.80,True,stats,True,2.32,4.46,1.00
 10,11,136490,Classic,2026-11-15,SF@DAL,Khalil Dinkins,TE,SF,4000,,0.05,,,0.00,False,did_not_play,False,0.05,,
 10,11,136490,Classic,2026-11-15,KC@ATL,Kyle Pitts Sr.,TE,ATL,5100,,4.64,6.50,6.90,5.00,True,stats,True,0.36,1.50,1.00
-10,11,136490,Classic,2026-11-15,JAX@TEN,Kylen Granson,TE,TEN,4000,,0.05,0.00,0.80,0.00,False,did_not_play,False,0.05,0.00,-1.00
-10,11,136490,Classic,2026-11-15,SF@DAL,Luke Farrell,TE,SF,4400,,0.42,0.69,1.20,0.00,False,did_not_play,False,0.42,0.69,1.00
+10,11,136490,Classic,2026-11-15,JAX@TEN,Kylen Granson,TE,TEN,4000,,0.05,0.00,0.80,0.00,True,snaps_no_stats,False,0.05,0.00,-1.00
+10,11,136490,Classic,2026-11-15,SF@DAL,Luke Farrell,TE,SF,4400,,0.42,0.69,1.20,0.00,True,snaps_no_stats,True,0.42,0.69,1.00
 10,11,136490,Classic,2026-11-15,SF@DAL,Luke Schoonmaker,TE,DAL,4200,,0.49,1.50,1.80,1.70,True,stats,True,1.21,0.20,-1.00
 10,11,136490,Classic,2026-11-15,MIN@GB,Mark Redman,TE,GB,4000,,0.38,1.30,1.40,-1.00,True,stats,True,1.38,2.30,1.00
-10,11,136490,Classic,2026-11-15,HOU@CLE,Marlin Klein,TE,HOU,4000,,0.90,1.05,0.40,0.00,False,did_not_play,False,0.90,1.05,1.00
+10,11,136490,Classic,2026-11-15,HOU@CLE,Marlin Klein,TE,HOU,4000,,0.90,1.05,0.40,0.00,True,snaps_no_stats,True,0.90,1.05,1.00
 10,11,136490,Classic,2026-11-15,BUF@NYJ,Mason Taylor,TE,NYJ,4700,,3.47,5.39,5.70,4.00,True,stats,True,0.53,1.39,1.00
 10,11,136490,Classic,2026-11-15,MIN@GB,Matt Orzech,TE,GB,4000,,0.03,0.00,,0.00,False,did_not_play,False,0.03,0.00,-1.00
-10,11,136490,Classic,2026-11-15,LA@ARI,Max Klare,TE,LA,4000,,0.06,0.00,0.00,0.00,False,did_not_play,False,0.06,0.00,-1.00
+10,11,136490,Classic,2026-11-15,LA@ARI,Max Klare,TE,LA,4000,,0.06,0.00,0.00,0.00,True,snaps_no_stats,False,0.06,0.00,-1.00
 10,11,136490,Classic,2026-11-15,SEA@LV,Michael Mayer,TE,LV,4600,,5.50,6.92,5.80,2.80,True,stats,True,2.70,4.12,1.00
 10,11,136490,Classic,2026-11-15,SF@DAL,Michael Trigg,TE,DAL,4000,,0.29,,,0.00,False,did_not_play,False,0.29,,
 10,11,136490,Classic,2026-11-15,CAR@NO,Mitchell Evans,TE,CAR,4200,,0.87,2.60,2.70,0.00,True,stats,True,0.87,2.60,1.00
 10,11,136490,Classic,2026-11-15,MIA@IND,Mo Alie-Cox,TE,IND,4200,IR,0.00,2.78,1.80,0.00,False,did_not_play,False,0.00,2.78,1.00
 10,11,136490,Classic,2026-11-15,CAR@NO,Moliki Matavao,TE,NO,4000,IR,0.00,2.00,0.00,0.00,False,did_not_play,False,0.00,2.00,1.00
 10,11,136490,Classic,2026-11-15,JAX@TEN,Nate Boerkircher,TE,JAX,4300,,1.16,4.41,3.70,1.70,True,stats,True,0.54,2.71,1.00
-10,11,136490,Classic,2026-11-15,SEA@LV,Nick Kallerup,TE,SEA,4000,,0.03,0.00,0.40,0.00,False,did_not_play,False,0.03,0.00,-1.00
-10,11,136490,Classic,2026-11-15,KC@ATL,Nick Muse,TE,ATL,4000,,0.07,1.03,0.00,0.00,False,did_not_play,False,0.07,1.03,1.00
+10,11,136490,Classic,2026-11-15,SEA@LV,Nick Kallerup,TE,SEA,4000,,0.03,0.00,0.40,0.00,True,snaps_no_stats,False,0.03,0.00,-1.00
+10,11,136490,Classic,2026-11-15,KC@ATL,Nick Muse,TE,ATL,4000,,0.07,1.03,0.00,0.00,True,snaps_no_stats,True,0.07,1.03,1.00
 10,11,136490,Classic,2026-11-15,CAR@NO,Noah Fant,TE,NO,4500,,1.61,5.60,2.50,0.00,True,stats,True,1.61,5.60,1.00
 10,11,136490,Classic,2026-11-15,KC@ATL,Noah Gray,TE,KC,4300,,1.31,3.99,4.10,1.10,True,stats,True,0.21,2.89,1.00
-10,11,136490,Classic,2026-11-15,CAR@NO,Oscar Delp,TE,NO,4100,,0.46,0.57,1.20,0.00,False,did_not_play,False,0.46,0.57,1.00
+10,11,136490,Classic,2026-11-15,CAR@NO,Oscar Delp,TE,NO,4100,,0.46,0.57,1.20,0.00,True,snaps_no_stats,True,0.46,0.57,1.00
 10,11,136490,Classic,2026-11-15,SEA@LV,Patrick Gurd,TE,LV,4000,,0.04,,,0.00,False,did_not_play,False,0.04,,
-10,11,136490,Classic,2026-11-15,MIA@IND,Pharaoh Brown,TE,IND,4000,,0.27,1.20,,0.00,False,did_not_play,False,0.27,1.20,1.00
+10,11,136490,Classic,2026-11-15,MIA@IND,Pharaoh Brown,TE,IND,4000,,0.27,1.20,,0.00,True,snaps_no_stats,True,0.27,1.20,1.00
 10,11,136490,Classic,2026-11-15,SF@DAL,Princeton Fant,TE,DAL,4000,IR,0.00,,,0.00,False,did_not_play,False,0.00,,
 10,11,136490,Classic,2026-11-15,JAX@TEN,Quintin Morris,TE,JAX,4000,,0.07,0.17,0.40,0.00,True,stats,True,0.07,0.17,1.00
 10,11,136490,Classic,2026-11-15,LA@ARI,Rivaldo Fairweather,TE,ARI,4000,,0.04,,,0.00,False,did_not_play,False,0.04,,
@@ -1773,7 +1773,7 @@ nfl_week,board_week,slate,slate_type,gameday,game,player,pos,team,salary,injury_
 10,11,136490,Classic,2026-11-15,CAR@NO,Stone Smartt,TE,NO,4000,O,0.00,1.74,,0.00,False,did_not_play,False,0.00,1.74,1.00
 10,11,136490,Classic,2026-11-15,MIN@GB,T.J. Hockenson,TE,MIN,5200,O,0.00,8.91,4.00,0.00,False,did_not_play,False,0.00,8.91,1.00
 10,11,136490,Classic,2026-11-15,JAX@TEN,Tanner Koziol,TE,JAX,4000,,0.67,1.27,1.40,1.30,True,stats,True,0.63,0.03,-1.00
-10,11,136490,Classic,2026-11-15,LA@ARI,Teagan Quitoriano,TE,ARI,4200,,0.66,7.90,1.70,0.00,False,did_not_play,False,0.66,7.90,1.00
+10,11,136490,Classic,2026-11-15,LA@ARI,Teagan Quitoriano,TE,ARI,4200,,0.66,7.90,1.70,0.00,True,snaps_no_stats,True,0.66,7.90,1.00
 10,11,136490,Classic,2026-11-15,LA@ARI,Terrance Ferguson,TE,LA,4800,IR,0.00,5.27,0.00,0.00,False,did_not_play,False,0.00,5.27,1.00
 10,11,136490,Classic,2026-11-15,KC@ATL,Thomas Odukoya,TE,KC,4000,,0.01,,,0.00,False,did_not_play,False,0.01,,
 10,11,136490,Classic,2026-11-15,MIN@GB,Thomas Yassmin,TE,GB,4000,IR,0.00,,0.00,0.00,False,did_not_play,False,0.00,,
@@ -1810,7 +1810,7 @@ nfl_week,board_week,slate,slate_type,gameday,game,player,pos,team,salary,injury_
 10,11,136490,Classic,2026-11-15,LA@ARI,CJ Daniels,WR,LA,4000,,0.56,0.00,3.00,2.70,True,stats,False,2.14,2.70,1.00
 10,11,136490,Classic,2026-11-15,JAX@TEN,CJ Williams,WR,JAX,4000,,0.00,0.00,0.00,0.00,False,did_not_play,False,0.00,0.00,0.00
 10,11,136490,Classic,2026-11-15,MIA@IND,Caleb Douglas,WR,MIA,5400,,9.00,8.52,7.90,8.60,True,stats,True,0.40,0.08,-1.00
-10,11,136490,Classic,2026-11-15,JAX@TEN,Calvin Ridley,WR,TEN,4600,,2.53,2.02,4.30,0.00,False,did_not_play,False,2.53,2.02,-1.00
+10,11,136490,Classic,2026-11-15,JAX@TEN,Calvin Ridley,WR,TEN,4600,,2.53,2.02,4.30,0.00,True,snaps_no_stats,True,2.53,2.02,-1.00
 10,11,136490,Classic,2026-11-15,SF@DAL,Camden Brown,WR,DAL,4000,,0.46,0.00,2.00,0.00,True,stats,False,0.46,0.00,-1.00
 10,11,136490,Classic,2026-11-15,JAX@TEN,Carnell Tate,WR,TEN,5800,O,0.00,9.04,0.00,0.00,False,did_not_play,False,0.00,9.04,1.00
 10,11,136490,Classic,2026-11-15,CAR@NO,Casey Washington,WR,CAR,4000,,0.02,2.48,0.00,0.00,False,did_not_play,False,0.02,2.48,1.00
@@ -1836,7 +1836,7 @@ nfl_week,board_week,slate,slate_type,gameday,game,player,pos,team,salary,injury_
 10,11,136490,Classic,2026-11-15,SF@DAL,De'Zhaun Stribling,WR,SF,4000,IR,0.00,,0.00,0.00,False,did_not_play,False,0.00,,
 10,11,136490,Classic,2026-11-15,SF@DAL,Deebo Samuel Sr.,WR,SF,6500,,9.18,10.48,6.90,24.40,True,stats,True,15.22,13.92,-1.00
 10,11,136490,Classic,2026-11-15,MIA@IND,Deion Burks,WR,IND,4200,,0.77,1.39,3.40,0.00,True,stats,True,0.77,1.39,1.00
-10,11,136490,Classic,2026-11-15,SF@DAL,Demarcus Robinson,WR,SF,5400,,3.53,6.87,7.00,0.00,False,did_not_play,False,3.53,6.87,1.00
+10,11,136490,Classic,2026-11-15,SF@DAL,Demarcus Robinson,WR,SF,5400,,3.53,6.87,7.00,0.00,True,snaps_no_stats,True,3.53,6.87,1.00
 10,11,136490,Classic,2026-11-15,HOU@CLE,Denzel Boston,WR,CLE,5500,Q,11.80,9.63,8.90,2.10,True,stats,True,9.70,7.53,-1.00
 10,11,136490,Classic,2026-11-15,CAR@NO,Devaughn Vele,WR,NO,5600,,10.10,9.00,6.40,2.40,True,stats,True,7.70,6.60,-1.00
 10,11,136490,Classic,2026-11-15,SEA@LV,Deven Thompkins,WR,LV,4000,,0.18,1.30,,0.00,False,did_not_play,False,0.18,1.30,1.00
@@ -1932,7 +1932,7 @@ nfl_week,board_week,slate,slate_type,gameday,game,player,pos,team,salary,injury_
 10,11,136490,Classic,2026-11-15,HOU@CLE,Nikko Remigio,WR,HOU,4200,,0.03,-0.25,,0.00,True,stats,False,0.03,0.25,1.00
 10,11,136490,Classic,2026-11-15,MIN@GB,Odell Beckham Jr.,WR,MIN,4400,,0.17,0.00,,0.00,False,did_not_play,False,0.17,0.00,-1.00
 10,11,136490,Classic,2026-11-15,KC@ATL,Olamide Zaccheaus,WR,ATL,4800,,1.37,0.70,2.70,2.70,True,stats,True,1.33,2.00,1.00
-10,11,136490,Classic,2026-11-15,BUF@NYJ,Omar Cooper Jr.,WR,NYJ,6200,Q,10.68,14.65,5.60,0.00,False,did_not_play,False,10.68,14.65,1.00
+10,11,136490,Classic,2026-11-15,BUF@NYJ,Omar Cooper Jr.,WR,NYJ,6200,Q,10.68,14.65,5.60,0.00,True,snaps_no_stats,True,10.68,14.65,1.00
 10,11,136490,Classic,2026-11-15,KC@ATL,Omari Evans,WR,KC,4000,,0.06,,,0.00,False,did_not_play,False,0.06,,
 10,11,136490,Classic,2026-11-15,JAX@TEN,Parker Washington,WR,JAX,6800,,12.40,12.26,13.00,27.70,True,stats,True,15.30,15.44,1.00
 10,11,136490,Classic,2026-11-15,LA@ARI,Puka Nacua,WR,LA,9300,IR,0.00,18.45,2.40,0.00,False,did_not_play,False,0.00,18.45,1.00
@@ -1940,14 +1940,14 @@ nfl_week,board_week,slate,slate_type,gameday,game,player,pos,team,salary,injury_
 10,11,136490,Classic,2026-11-15,MIN@GB,Quincy Skinner Jr.,WR,GB,4000,,0.04,,,0.00,False,did_not_play,False,0.04,,
 10,11,136490,Classic,2026-11-15,KC@ATL,Rashee Rice,WR,KC,6900,,11.91,10.74,9.60,10.70,True,stats,True,1.21,0.04,-1.00
 10,11,136490,Classic,2026-11-15,SEA@LV,Rashid Shaheed,WR,SEA,5200,,3.79,4.89,3.80,1.30,True,stats,True,2.49,3.59,1.00
-10,11,136490,Classic,2026-11-15,LA@ARI,Reggie Virgil,WR,ARI,4300,,4.16,1.73,6.60,0.00,False,did_not_play,False,4.16,1.73,-1.00
+10,11,136490,Classic,2026-11-15,LA@ARI,Reggie Virgil,WR,ARI,4300,,4.16,1.73,6.60,0.00,True,snaps_no_stats,True,4.16,1.73,-1.00
 10,11,136490,Classic,2026-11-15,SF@DAL,Ricky Pearsall,WR,SF,4000,IR,0.00,7.66,,0.00,False,did_not_play,False,0.00,7.66,1.00
 10,11,136490,Classic,2026-11-15,SEA@LV,Ricky White III,WR,SEA,4000,,0.04,,0.00,0.00,False,did_not_play,False,0.04,,
 10,11,136490,Classic,2026-11-15,SF@DAL,Ryan Flournoy,WR,DAL,5500,,6.78,7.53,7.00,16.10,True,stats,True,9.32,8.57,-1.00
 10,11,136490,Classic,2026-11-15,MIN@GB,Savion Williams,WR,GB,4700,,2.54,6.70,5.10,3.70,True,stats,True,1.16,3.00,1.00
 10,11,136490,Classic,2026-11-15,LA@ARI,Shedrick Jackson,WR,ARI,4000,,2.98,4.63,,0.00,False,did_not_play,False,2.98,4.63,1.00
 10,11,136490,Classic,2026-11-15,LA@ARI,Simi Fehoko,WR,ARI,4000,,0.31,0.31,3.10,2.60,True,stats,True,2.29,2.29,-1.00
-10,11,136490,Classic,2026-11-15,BUF@NYJ,Skyler Bell,WR,BUF,4600,,0.66,0.00,0.00,0.00,False,did_not_play,False,0.66,0.00,-1.00
+10,11,136490,Classic,2026-11-15,BUF@NYJ,Skyler Bell,WR,BUF,4600,,0.66,0.00,0.00,0.00,True,snaps_no_stats,False,0.66,0.00,-1.00
 10,11,136490,Classic,2026-11-15,MIN@GB,Skyy Moore,WR,GB,4500,Q,0.76,1.40,0.00,0.00,True,stats,True,0.76,1.40,1.00
 10,11,136490,Classic,2026-11-15,BUF@NYJ,Stephen Gosnell,WR,BUF,4000,,0.07,,,0.00,False,did_not_play,False,0.07,,
 10,11,136490,Classic,2026-11-15,BUF@NYJ,Sterling Shepard,WR,NYJ,4200,,1.42,1.40,,0.00,False,did_not_play,False,1.42,1.40,-1.00
@@ -1956,7 +1956,7 @@ nfl_week,board_week,slate,slate_type,gameday,game,player,pos,team,salary,injury_
 10,11,136490,Classic,2026-11-15,CAR@NO,Tetairoa McMillan,WR,CAR,7100,,17.67,13.44,11.00,5.00,True,stats,True,12.67,8.44,-1.00
 10,11,136490,Classic,2026-11-15,JAX@TEN,Tim Jones,WR,JAX,4000,,0.05,1.00,,0.00,False,did_not_play,False,0.05,1.00,1.00
 10,11,136490,Classic,2026-11-15,BUF@NYJ,Tim Patrick,WR,NYJ,4300,,0.00,2.80,0.20,0.00,False,did_not_play,False,0.00,2.80,1.00
-10,11,136490,Classic,2026-11-15,SEA@LV,Tory Horton,WR,SEA,5000,,3.61,4.08,1.80,0.00,False,did_not_play,False,3.61,4.08,1.00
+10,11,136490,Classic,2026-11-15,SEA@LV,Tory Horton,WR,SEA,5000,,3.61,4.08,1.80,0.00,True,snaps_no_stats,True,3.61,4.08,1.00
 10,11,136490,Classic,2026-11-15,JAX@TEN,Travis Hunter,WR,JAX,4500,,1.14,1.98,0.00,2.90,True,stats,True,1.76,0.92,-1.00
 10,11,136490,Classic,2026-11-15,SEA@LV,Tre Tucker,WR,LV,5600,,8.45,10.98,5.70,1.40,True,stats,True,7.05,9.58,1.00
 10,11,136490,Classic,2026-11-15,JAX@TEN,Trebor Pena,WR,JAX,4000,,0.06,,,0.00,False,did_not_play,False,0.06,,
@@ -1973,7 +1973,7 @@ nfl_week,board_week,slate,slate_type,gameday,game,player,pos,team,salary,injury_
 10,11,136490,Classic,2026-11-15,MIA@IND,Will Sheppard,WR,MIA,4000,,0.06,,,0.00,False,did_not_play,False,0.06,,
 10,11,136490,Classic,2026-11-15,HOU@CLE,Xavier Guillory,WR,CLE,4000,,0.04,,,0.00,False,did_not_play,False,0.04,,
 10,11,136490,Classic,2026-11-15,HOU@CLE,Xavier Hutchinson,WR,HOU,5500,,8.33,6.79,6.70,13.80,True,stats,True,5.47,7.01,1.00
-10,11,136490,Classic,2026-11-15,CAR@NO,Xavier Legette,WR,CAR,4700,Q,2.29,2.47,2.50,0.00,False,did_not_play,False,2.29,2.47,1.00
+10,11,136490,Classic,2026-11-15,CAR@NO,Xavier Legette,WR,CAR,4700,Q,2.29,2.47,2.50,0.00,True,snaps_no_stats,True,2.29,2.47,1.00
 10,11,136490,Classic,2026-11-15,JAX@TEN,Xavier Restrepo,WR,TEN,4000,,0.09,0.00,0.00,4.60,True,stats,False,4.51,4.60,1.00
 10,11,136490,Classic,2026-11-15,LA@ARI,Xavier Smith,WR,LA,4200,,0.82,0.00,,11.00,True,stats,False,10.18,11.00,1.00
 10,11,136490,Classic,2026-11-15,KC@ATL,Xavier Worthy,WR,KC,5700,,8.17,6.29,7.60,0.00,True,stats,True,8.17,6.29,-1.00
@@ -2011,8 +2011,8 @@ nfl_week,board_week,slate,slate_type,gameday,game,player,pos,team,salary,injury_
 10,11,136525,Classic,2026-11-15,LA@ARI,Dean Connors,RB,LA,4000,IR,0.00,0.00,0.00,0.00,False,did_not_play,False,0.00,0.00,0.00
 10,11,136525,Classic,2026-11-15,SEA@LV,Dylan Laube,RB,LV,4300,,0.14,1.60,0.20,0.00,True,stats,True,0.14,1.60,1.00
 10,11,136525,Classic,2026-11-15,SEA@LV,Emanuel Wilson,RB,SEA,4800,,6.86,10.69,0.40,0.00,False,did_not_play,False,6.86,10.69,1.00
-10,11,136525,Classic,2026-11-15,LA@ARI,Evan Hull,RB,ARI,4000,,0.13,0.00,0.50,0.00,False,did_not_play,False,0.13,0.00,-1.00
-10,11,136525,Classic,2026-11-15,SEA@LV,George Holani,RB,SEA,4600,,1.05,3.39,1.00,0.00,False,did_not_play,False,1.05,3.39,1.00
+10,11,136525,Classic,2026-11-15,LA@ARI,Evan Hull,RB,ARI,4000,,0.13,0.00,0.50,0.00,True,snaps_no_stats,False,0.13,0.00,-1.00
+10,11,136525,Classic,2026-11-15,SEA@LV,George Holani,RB,SEA,4600,,1.05,3.39,1.00,0.00,True,snaps_no_stats,True,1.05,3.39,1.00
 10,11,136525,Classic,2026-11-15,SF@DAL,Hunter Luepke,RB,DAL,4200,,0.26,0.59,0.40,2.00,True,stats,True,1.74,1.41,-1.00
 10,11,136525,Classic,2026-11-15,SF@DAL,Israel Abanikanda,RB,DAL,4000,,0.23,,,1.50,True,stats,True,1.27,,
 10,11,136525,Classic,2026-11-15,SEA@LV,Jadarian Price,RB,SEA,5300,,7.17,5.30,9.20,10.90,True,stats,True,3.73,5.60,1.00
@@ -2025,7 +2025,7 @@ nfl_week,board_week,slate,slate_type,gameday,game,player,pos,team,salary,injury_
 10,11,136525,Classic,2026-11-15,SF@DAL,Jordan James,RB,SF,4500,,0.48,0.80,0.50,0.00,True,stats,True,0.48,0.80,1.00
 10,11,136525,Classic,2026-11-15,LA@ARI,Jordan Waters,RB,LA,4000,,0.06,,0.00,0.00,False,did_not_play,False,0.06,,
 10,11,136525,Classic,2026-11-15,SF@DAL,Kaelon Black,RB,SF,5400,,5.59,4.53,6.30,13.60,True,stats,True,8.01,9.07,1.00
-10,11,136525,Classic,2026-11-15,SF@DAL,Kyle Juszczyk,RB,SF,4200,,1.05,4.00,2.50,0.00,False,did_not_play,False,1.05,4.00,1.00
+10,11,136525,Classic,2026-11-15,SF@DAL,Kyle Juszczyk,RB,SF,4200,,1.05,4.00,2.50,0.00,True,snaps_no_stats,True,1.05,4.00,1.00
 10,11,136525,Classic,2026-11-15,LA@ARI,Kyren Williams,RB,LA,7300,,19.88,15.68,14.10,4.20,True,stats,True,15.68,11.48,-1.00
 10,11,136525,Classic,2026-11-15,SF@DAL,Malik Davis,RB,DAL,4000,IR,0.00,4.73,0.00,0.00,False,did_not_play,False,0.00,4.73,1.00
 10,11,136525,Classic,2026-11-15,SEA@LV,Mike Washington Jr.,RB,LV,5300,,3.42,4.01,5.50,3.20,True,stats,True,0.22,0.81,1.00
@@ -2039,38 +2039,38 @@ nfl_week,board_week,slate,slate_type,gameday,game,player,pos,team,salary,injury_
 10,11,136525,Classic,2026-11-15,SEA@LV,Zach Charbonnet,RB,SEA,6700,,8.08,6.75,13.10,9.40,True,stats,True,1.32,2.65,1.00
 10,11,136525,Classic,2026-11-15,SEA@LV,AJ Barner,TE,SEA,5000,,3.97,5.70,5.40,3.40,True,stats,True,0.57,2.30,1.00
 10,11,136525,Classic,2026-11-15,SEA@LV,Ben Sims,TE,SEA,4200,,0.02,1.50,,0.00,False,did_not_play,False,0.02,1.50,1.00
-10,11,136525,Classic,2026-11-15,SEA@LV,Brady Russell,TE,SEA,4000,,0.00,0.92,0.30,0.00,False,did_not_play,False,0.00,0.92,1.00
+10,11,136525,Classic,2026-11-15,SEA@LV,Brady Russell,TE,SEA,4000,,0.00,0.92,0.30,0.00,True,snaps_no_stats,False,0.00,0.92,1.00
 10,11,136525,Classic,2026-11-15,SF@DAL,Brayden Willis,TE,SF,4000,,0.02,0.00,0.10,0.00,True,stats,False,0.02,0.00,-1.00
 10,11,136525,Classic,2026-11-15,SF@DAL,Brevyn Spann-Ford,TE,DAL,4500,,1.10,2.28,6.10,3.10,True,stats,True,2.00,0.82,-1.00
 10,11,136525,Classic,2026-11-15,SEA@LV,Brock Bowers,TE,LV,8000,,19.16,18.71,12.10,2.80,True,stats,True,16.36,15.91,-1.00
-10,11,136525,Classic,2026-11-15,SEA@LV,Carter Runyon,TE,LV,4000,,0.02,0.27,0.00,0.00,False,did_not_play,False,0.02,0.27,1.00
+10,11,136525,Classic,2026-11-15,SEA@LV,Carter Runyon,TE,LV,4000,,0.02,0.27,0.00,0.00,True,snaps_no_stats,True,0.02,0.27,1.00
 10,11,136525,Classic,2026-11-15,LA@ARI,Colby Parkinson,TE,LA,4900,,2.53,3.80,8.60,2.10,True,stats,True,0.43,1.70,1.00
 10,11,136525,Classic,2026-11-15,SEA@LV,Connor Heyward,TE,LV,4000,,0.11,0.43,0.00,1.60,True,stats,True,1.49,1.17,-1.00
 10,11,136525,Classic,2026-11-15,LA@ARI,Dan Villari,TE,LA,4000,,0.03,,,0.00,False,did_not_play,False,0.03,,
 10,11,136525,Classic,2026-11-15,LA@ARI,Davis Allen,TE,LA,4200,Q,1.04,3.39,5.70,8.40,True,stats,True,7.36,5.01,-1.00
 10,11,136525,Classic,2026-11-15,SEA@LV,Elijah Arroyo,TE,SEA,4000,IR,0.00,0.73,0.00,0.00,False,did_not_play,False,0.00,0.73,1.00
-10,11,136525,Classic,2026-11-15,LA@ARI,Elijah Higgins,TE,ARI,4400,,1.30,3.90,3.80,0.00,False,did_not_play,False,1.30,3.90,1.00
-10,11,136525,Classic,2026-11-15,SEA@LV,Eric Saubert,TE,SEA,4100,,0.08,1.36,0.80,0.00,False,did_not_play,False,0.08,1.36,1.00
+10,11,136525,Classic,2026-11-15,LA@ARI,Elijah Higgins,TE,ARI,4400,,1.30,3.90,3.80,0.00,True,snaps_no_stats,True,1.30,3.90,1.00
+10,11,136525,Classic,2026-11-15,SEA@LV,Eric Saubert,TE,SEA,4100,,0.08,1.36,0.80,0.00,True,snaps_no_stats,True,0.08,1.36,1.00
 10,11,136525,Classic,2026-11-15,SF@DAL,George Kittle,TE,SF,6600,,11.63,11.91,16.00,10.40,True,stats,True,1.23,1.51,1.00
 10,11,136525,Classic,2026-11-15,LA@ARI,Hunter Long,TE,ARI,4100,Q,0.21,0.83,0.00,1.20,True,stats,True,0.99,0.37,-1.00
 10,11,136525,Classic,2026-11-15,SEA@LV,Ian Thomas,TE,LV,4000,,0.27,2.42,0.30,1.80,True,stats,True,1.53,0.62,-1.00
 10,11,136525,Classic,2026-11-15,SF@DAL,Jack Stoll,TE,SF,4000,,0.03,1.70,,0.00,False,did_not_play,False,0.03,1.70,1.00
 10,11,136525,Classic,2026-11-15,SF@DAL,Jake Ferguson,TE,DAL,5200,O,0.00,5.64,0.00,0.00,False,did_not_play,False,0.00,5.64,1.00
 10,11,136525,Classic,2026-11-15,SF@DAL,Jake Tonges,TE,SF,4000,IR,0.00,7.05,,0.00,False,did_not_play,False,0.00,7.05,1.00
-10,11,136525,Classic,2026-11-15,SF@DAL,James Mitchell,TE,DAL,4000,,0.27,6.00,,0.00,False,did_not_play,False,0.27,6.00,1.00
+10,11,136525,Classic,2026-11-15,SF@DAL,James Mitchell,TE,DAL,4000,,0.27,6.00,,0.00,True,snaps_no_stats,True,0.27,6.00,1.00
 10,11,136525,Classic,2026-11-15,SF@DAL,Khalil Dinkins,TE,SF,4000,,0.02,,,0.00,False,did_not_play,False,0.02,,
-10,11,136525,Classic,2026-11-15,SF@DAL,Luke Farrell,TE,SF,4400,,0.29,0.69,1.20,0.00,False,did_not_play,False,0.29,0.69,1.00
+10,11,136525,Classic,2026-11-15,SF@DAL,Luke Farrell,TE,SF,4400,,0.29,0.69,1.20,0.00,True,snaps_no_stats,True,0.29,0.69,1.00
 10,11,136525,Classic,2026-11-15,SF@DAL,Luke Schoonmaker,TE,DAL,4200,,0.31,1.50,1.80,1.70,True,stats,True,1.39,0.20,-1.00
-10,11,136525,Classic,2026-11-15,LA@ARI,Max Klare,TE,LA,4000,,0.04,0.00,0.00,0.00,False,did_not_play,False,0.04,0.00,-1.00
+10,11,136525,Classic,2026-11-15,LA@ARI,Max Klare,TE,LA,4000,,0.04,0.00,0.00,0.00,True,snaps_no_stats,False,0.04,0.00,-1.00
 10,11,136525,Classic,2026-11-15,SEA@LV,Michael Mayer,TE,LV,4600,,4.61,6.92,5.80,2.80,True,stats,True,1.81,4.12,1.00
 10,11,136525,Classic,2026-11-15,SF@DAL,Michael Trigg,TE,DAL,4000,,0.18,,,0.00,False,did_not_play,False,0.18,,
-10,11,136525,Classic,2026-11-15,SEA@LV,Nick Kallerup,TE,SEA,4000,,0.02,0.00,0.40,0.00,False,did_not_play,False,0.02,0.00,-1.00
+10,11,136525,Classic,2026-11-15,SEA@LV,Nick Kallerup,TE,SEA,4000,,0.02,0.00,0.40,0.00,True,snaps_no_stats,False,0.02,0.00,-1.00
 10,11,136525,Classic,2026-11-15,SEA@LV,Patrick Gurd,TE,LV,4000,,0.03,,,0.00,False,did_not_play,False,0.03,,
 10,11,136525,Classic,2026-11-15,SF@DAL,Princeton Fant,TE,DAL,4000,IR,0.00,,,0.00,False,did_not_play,False,0.00,,
 10,11,136525,Classic,2026-11-15,LA@ARI,Rivaldo Fairweather,TE,ARI,4000,,0.02,,,0.00,False,did_not_play,False,0.02,,
 10,11,136525,Classic,2026-11-15,SEA@LV,Robbie Ouzts,TE,SEA,4000,IR,0.00,0.00,0.00,0.00,False,did_not_play,False,0.00,0.00,0.00
 10,11,136525,Classic,2026-11-15,LA@ARI,Shawn Bowman,TE,ARI,4000,,0.02,,,0.00,False,did_not_play,False,0.02,,
-10,11,136525,Classic,2026-11-15,LA@ARI,Teagan Quitoriano,TE,ARI,4200,,0.48,7.90,1.70,0.00,False,did_not_play,False,0.48,7.90,1.00
+10,11,136525,Classic,2026-11-15,LA@ARI,Teagan Quitoriano,TE,ARI,4200,,0.48,7.90,1.70,0.00,True,snaps_no_stats,True,0.48,7.90,1.00
 10,11,136525,Classic,2026-11-15,LA@ARI,Terrance Ferguson,TE,LA,4800,IR,0.00,5.27,0.00,0.00,False,did_not_play,False,0.00,5.27,1.00
 10,11,136525,Classic,2026-11-15,LA@ARI,Trey McBride,TE,ARI,7400,,17.48,14.37,10.10,6.20,True,stats,True,11.28,8.17,-1.00
 10,11,136525,Classic,2026-11-15,LA@ARI,Tyler Higbee,TE,LA,4600,,4.97,5.59,6.60,9.20,True,stats,True,4.23,3.61,-1.00
@@ -2088,7 +2088,7 @@ nfl_week,board_week,slate,slate_type,gameday,game,player,pos,team,salary,injury_
 10,11,136525,Classic,2026-11-15,LA@ARI,Davante Adams,WR,LA,4000,IR,0.00,15.50,0.00,0.00,False,did_not_play,False,0.00,15.50,1.00
 10,11,136525,Classic,2026-11-15,SF@DAL,De'Zhaun Stribling,WR,SF,4000,IR,0.00,,0.00,0.00,False,did_not_play,False,0.00,,
 10,11,136525,Classic,2026-11-15,SF@DAL,Deebo Samuel Sr.,WR,SF,6500,,9.04,10.48,6.90,24.40,True,stats,True,15.36,13.92,-1.00
-10,11,136525,Classic,2026-11-15,SF@DAL,Demarcus Robinson,WR,SF,5400,,3.81,6.87,7.00,0.00,False,did_not_play,False,3.81,6.87,1.00
+10,11,136525,Classic,2026-11-15,SF@DAL,Demarcus Robinson,WR,SF,5400,,3.81,6.87,7.00,0.00,True,snaps_no_stats,True,3.81,6.87,1.00
 10,11,136525,Classic,2026-11-15,SEA@LV,Deven Thompkins,WR,LV,4000,,0.30,1.30,,0.00,False,did_not_play,False,0.30,1.30,1.00
 10,11,136525,Classic,2026-11-15,LA@ARI,Devin Duvernay,WR,ARI,4800,,0.52,0.47,2.40,4.50,True,stats,True,3.98,4.03,1.00
 10,11,136525,Classic,2026-11-15,SEA@LV,Dont'e Thornton Jr.,WR,LV,4100,Q,0.03,1.68,0.00,0.00,False,did_not_play,False,0.03,1.68,1.00
@@ -2117,13 +2117,13 @@ nfl_week,board_week,slate,slate_type,gameday,game,player,pos,team,salary,injury_
 10,11,136525,Classic,2026-11-15,SEA@LV,Montorie Foster Jr.,WR,SEA,4000,,0.14,0.00,0.00,0.00,False,did_not_play,False,0.14,0.00,-1.00
 10,11,136525,Classic,2026-11-15,LA@ARI,Puka Nacua,WR,LA,9300,IR,0.00,18.45,2.40,0.00,False,did_not_play,False,0.00,18.45,1.00
 10,11,136525,Classic,2026-11-15,SEA@LV,Rashid Shaheed,WR,SEA,5200,,4.08,4.89,3.80,1.30,True,stats,True,2.78,3.59,1.00
-10,11,136525,Classic,2026-11-15,LA@ARI,Reggie Virgil,WR,ARI,4300,,4.46,1.73,6.60,0.00,False,did_not_play,False,4.46,1.73,-1.00
+10,11,136525,Classic,2026-11-15,LA@ARI,Reggie Virgil,WR,ARI,4300,,4.46,1.73,6.60,0.00,True,snaps_no_stats,True,4.46,1.73,-1.00
 10,11,136525,Classic,2026-11-15,SF@DAL,Ricky Pearsall,WR,SF,4000,IR,0.00,7.66,,0.00,False,did_not_play,False,0.00,7.66,1.00
 10,11,136525,Classic,2026-11-15,SEA@LV,Ricky White III,WR,SEA,4000,,0.08,,0.00,0.00,False,did_not_play,False,0.08,,
 10,11,136525,Classic,2026-11-15,SF@DAL,Ryan Flournoy,WR,DAL,5500,,7.12,7.53,7.00,16.10,True,stats,True,8.98,8.57,-1.00
 10,11,136525,Classic,2026-11-15,LA@ARI,Shedrick Jackson,WR,ARI,4000,,3.52,4.63,,0.00,False,did_not_play,False,3.52,4.63,1.00
 10,11,136525,Classic,2026-11-15,LA@ARI,Simi Fehoko,WR,ARI,4000,,0.34,0.31,3.10,2.60,True,stats,True,2.26,2.29,1.00
-10,11,136525,Classic,2026-11-15,SEA@LV,Tory Horton,WR,SEA,5000,,4.09,4.08,1.80,0.00,False,did_not_play,False,4.09,4.08,-1.00
+10,11,136525,Classic,2026-11-15,SEA@LV,Tory Horton,WR,SEA,5000,,4.09,4.08,1.80,0.00,True,snaps_no_stats,True,4.09,4.08,-1.00
 10,11,136525,Classic,2026-11-15,SEA@LV,Tre Tucker,WR,LV,5600,,8.35,10.98,5.70,1.40,True,stats,True,6.95,9.58,1.00
 10,11,136525,Classic,2026-11-15,LA@ARI,Tutu Atwell,WR,LA,5500,,3.19,2.23,7.60,3.60,True,stats,True,0.41,1.37,1.00
 10,11,136525,Classic,2026-11-15,SEA@LV,Velus Jones Jr.,WR,SEA,4000,,0.58,0.80,0.00,0.00,False,did_not_play,False,0.58,0.80,1.00
@@ -2138,7 +2138,7 @@ nfl_week,board_week,slate,slate_type,gameday,game,player,pos,team,salary,injury_
 10,11,136633,Showdown,2026-11-15,PIT@CIN,Aaron Rodgers,QB,PIT,10600,,16.69,15.39,17.10,15.62,True,stats,True,1.07,0.23,-1.00
 10,11,136633,Showdown,2026-11-15,PIT@CIN,Drew Allar,QB,PIT,1000,,0.00,0.00,0.00,0.00,False,did_not_play,False,0.00,0.00,0.00
 10,11,136633,Showdown,2026-11-15,PIT@CIN,Joe Burrow,QB,CIN,13200,,25.33,26.39,22.00,36.16,True,stats,True,10.83,9.77,-1.00
-10,11,136633,Showdown,2026-11-15,PIT@CIN,Joe Flacco,QB,CIN,8000,,0.00,0.00,0.00,0.00,False,did_not_play,False,0.00,0.00,0.00
+10,11,136633,Showdown,2026-11-15,PIT@CIN,Joe Flacco,QB,CIN,8000,,0.00,0.00,0.00,0.00,True,snaps_no_stats,False,0.00,0.00,0.00
 10,11,136633,Showdown,2026-11-15,PIT@CIN,Mason Rudolph,QB,PIT,8000,,0.00,0.03,0.00,0.98,True,stats,False,0.98,0.95,-1.00
 10,11,136633,Showdown,2026-11-15,PIT@CIN,Sean Clifford,QB,CIN,1000,,0.00,,,0.00,False,did_not_play,False,0.00,,
 10,11,136633,Showdown,2026-11-15,PIT@CIN,Will Howard,QB,PIT,1000,,0.00,0.00,0.00,0.00,False,did_not_play,False,0.00,0.00,0.00
@@ -2153,7 +2153,7 @@ nfl_week,board_week,slate,slate_type,gameday,game,player,pos,team,salary,injury_
 10,11,136633,Showdown,2026-11-15,PIT@CIN,Tahj Brooks,RB,CIN,1000,,0.03,0.10,0.20,1.20,True,stats,True,1.17,1.10,-1.00
 10,11,136633,Showdown,2026-11-15,PIT@CIN,Travis Homer,RB,PIT,1200,,0.08,0.30,0.50,0.00,True,stats,True,0.08,0.30,1.00
 10,11,136633,Showdown,2026-11-15,PIT@CIN,Caden Prieskorn,TE,CIN,1000,,0.07,,,0.00,False,did_not_play,False,0.07,,
-10,11,136633,Showdown,2026-11-15,PIT@CIN,Cam Grandy,TE,CIN,1000,,0.06,0.85,0.00,0.00,False,did_not_play,False,0.06,0.85,1.00
+10,11,136633,Showdown,2026-11-15,PIT@CIN,Cam Grandy,TE,CIN,1000,,0.06,0.85,0.00,0.00,True,snaps_no_stats,True,0.06,0.85,1.00
 10,11,136633,Showdown,2026-11-15,PIT@CIN,Darnell Washington,TE,PIT,4400,,4.31,6.61,5.40,1.00,True,stats,True,3.31,5.61,1.00
 10,11,136633,Showdown,2026-11-15,PIT@CIN,Drew Sample,TE,CIN,1600,,1.10,3.58,0.90,9.00,True,stats,True,7.90,5.42,-1.00
 10,11,136633,Showdown,2026-11-15,PIT@CIN,Erick All Jr.,TE,CIN,1000,IR,0.00,2.40,0.00,0.00,False,did_not_play,False,0.00,2.40,1.00
@@ -2162,15 +2162,15 @@ nfl_week,board_week,slate,slate_type,gameday,game,player,pos,team,salary,injury_
 10,11,136633,Showdown,2026-11-15,PIT@CIN,Lake McRee,TE,PIT,1000,,0.04,,,0.00,False,did_not_play,False,0.04,,
 10,11,136633,Showdown,2026-11-15,PIT@CIN,Mike Gesicki,TE,CIN,5600,,4.98,10.10,5.90,1.40,True,stats,True,3.58,8.70,1.00
 10,11,136633,Showdown,2026-11-15,PIT@CIN,Pat Freiermuth,TE,PIT,4800,Q,6.12,8.31,7.00,10.50,True,stats,True,4.38,2.19,-1.00
-10,11,136633,Showdown,2026-11-15,PIT@CIN,Riley Nowakowski,TE,PIT,1000,,0.14,0.00,0.00,0.00,False,did_not_play,False,0.14,0.00,-1.00
+10,11,136633,Showdown,2026-11-15,PIT@CIN,Riley Nowakowski,TE,PIT,1000,,0.14,0.00,0.00,0.00,True,snaps_no_stats,False,0.14,0.00,-1.00
 10,11,136633,Showdown,2026-11-15,PIT@CIN,Robert Tonyan,TE,PIT,1000,,0.16,0.70,0.20,0.00,True,stats,True,0.16,0.70,1.00
 10,11,136633,Showdown,2026-11-15,PIT@CIN,Tanner Hudson,TE,CIN,1400,IR,0.00,3.20,0.00,0.00,False,did_not_play,False,0.00,3.20,1.00
-10,11,136633,Showdown,2026-11-15,PIT@CIN,William Wagner,TE,CIN,1000,,0.04,0.00,,0.00,False,did_not_play,False,0.04,0.00,-1.00
+10,11,136633,Showdown,2026-11-15,PIT@CIN,William Wagner,TE,CIN,1000,,0.04,0.00,,0.00,True,snaps_no_stats,False,0.04,0.00,-1.00
 10,11,136633,Showdown,2026-11-15,PIT@CIN,Andrei Iosivas,WR,CIN,1800,IR,0.00,1.70,0.00,0.00,False,did_not_play,False,0.00,1.70,1.00
 10,11,136633,Showdown,2026-11-15,PIT@CIN,Ben Skowronek,WR,PIT,1200,,0.44,3.57,1.30,0.50,True,stats,True,0.06,3.07,1.00
 10,11,136633,Showdown,2026-11-15,PIT@CIN,Brandon Johnson,WR,PIT,1000,,0.29,1.40,,0.00,False,did_not_play,False,0.29,1.40,1.00
 10,11,136633,Showdown,2026-11-15,PIT@CIN,Brandon Smith,WR,PIT,1000,,0.76,1.70,,2.50,True,stats,True,1.74,0.80,-1.00
-10,11,136633,Showdown,2026-11-15,PIT@CIN,Colbie Young,WR,CIN,1000,,0.75,0.95,1.20,0.00,False,did_not_play,False,0.75,0.95,1.00
+10,11,136633,Showdown,2026-11-15,PIT@CIN,Colbie Young,WR,CIN,1000,,0.75,0.95,1.20,0.00,True,snaps_no_stats,True,0.75,0.95,1.00
 10,11,136633,Showdown,2026-11-15,PIT@CIN,Cole Burgess,WR,PIT,1000,IR,0.00,,0.00,0.00,False,did_not_play,False,0.00,,
 10,11,136633,Showdown,2026-11-15,PIT@CIN,DK Metcalf,WR,PIT,8800,,19.38,8.05,11.10,14.40,True,stats,True,4.98,6.35,1.00
 10,11,136633,Showdown,2026-11-15,PIT@CIN,Dohnte Meyers,WR,CIN,3000,,4.81,4.22,5.30,9.00,True,stats,True,4.19,4.78,1.00
@@ -2209,7 +2209,7 @@ nfl_week,board_week,slate,slate_type,gameday,game,player,pos,team,salary,injury_
 10,11,136634,Showdown,2026-11-15,NE@DET,Terrell Jennings,RB,NE,2200,,0.05,2.45,,0.00,False,did_not_play,False,0.05,2.45,1.00
 10,11,136634,Showdown,2026-11-15,NE@DET,TreVeyon Henderson,RB,NE,1000,O,0.00,5.22,0.00,0.00,False,did_not_play,False,0.00,5.22,1.00
 10,11,136634,Showdown,2026-11-15,NE@DET,Brock Wright,TE,DET,1800,,0.75,1.12,1.50,2.10,True,stats,True,1.35,0.98,-1.00
-10,11,136634,Showdown,2026-11-15,NE@DET,Cameron Latu,TE,NE,1000,Q,0.04,0.00,0.00,0.00,False,did_not_play,False,0.04,0.00,-1.00
+10,11,136634,Showdown,2026-11-15,NE@DET,Cameron Latu,TE,NE,1000,Q,0.04,0.00,0.00,0.00,True,snaps_no_stats,False,0.04,0.00,-1.00
 10,11,136634,Showdown,2026-11-15,NE@DET,Eli Raridon,TE,NE,4600,,4.00,4.72,8.30,1.10,True,stats,True,2.90,3.62,1.00
 10,11,136634,Showdown,2026-11-15,NE@DET,Hunter Henry,TE,NE,5800,Q,7.47,7.12,8.90,3.20,True,stats,True,4.27,3.92,-1.00
 10,11,136634,Showdown,2026-11-15,NE@DET,Julian Hill,TE,NE,1000,IR,0.00,2.14,0.00,0.00,False,did_not_play,False,0.00,2.14,1.00
@@ -2218,7 +2218,7 @@ nfl_week,board_week,slate,slate_type,gameday,game,player,pos,team,salary,injury_
 10,11,136634,Showdown,2026-11-15,NE@DET,Sam LaPorta,TE,DET,7200,,11.06,9.45,9.30,2.10,True,stats,True,8.96,7.35,-1.00
 10,11,136634,Showdown,2026-11-15,NE@DET,Tanner Conner,TE,NE,1000,,0.05,1.94,,0.00,False,did_not_play,False,0.05,1.94,1.00
 10,11,136634,Showdown,2026-11-15,NE@DET,Thomas Gordon,TE,DET,1000,,0.04,,,0.00,False,did_not_play,False,0.04,,
-10,11,136634,Showdown,2026-11-15,NE@DET,Tyler Conklin,TE,DET,1400,,0.50,0.52,0.30,0.00,False,did_not_play,False,0.50,0.52,1.00
+10,11,136634,Showdown,2026-11-15,NE@DET,Tyler Conklin,TE,DET,1400,,0.50,0.52,0.30,0.00,True,snaps_no_stats,True,0.50,0.52,1.00
 10,11,136634,Showdown,2026-11-15,NE@DET,A.J. Brown,WR,NE,9600,Q,21.72,4.87,3.40,3.70,True,stats,True,18.02,1.17,-1.00
 10,11,136634,Showdown,2026-11-15,NE@DET,Amon-Ra St. Brown,WR,DET,11600,Q,27.17,16.64,16.20,23.80,True,stats,True,3.37,7.16,1.00
 10,11,136634,Showdown,2026-11-15,NE@DET,Chandler Brayboy,WR,NE,1000,,0.11,,,0.00,False,did_not_play,False,0.11,,

@@ -1,14 +1,14 @@
 key,value
-title,Week 11 Pre-MNF Lock (LAC@BAL #136757) • Sunday + SNF Graded
+title,Week 11 MNF LAC@BAL Graded (LAC 23-20 Final)
 active_week,11
 slate_id,WK11-MNF-136757
-contest_name,"Week 11 MNF LAC@BAL Showdown Board (Featured Optimal OPT-WK11-MNF-1: 151.57 v9 pts • $59,900 • MVP Jacoby Brissett • LIVE FD Showdown #136757)"
-lock_time,Week 11 through SNF Final • MNF LAC@BAL Mon Nov 16 8:15 PM ET PRE-LOCK
+contest_name,"Week 11 MNF OPT-WK11-MNF-1 actual 65.96 vs 151.57 proj • $59,900 • MVP Jacoby Brissett 1.5x • LIVE FD Showdown #136757"
+lock_time,"TNF WAS@NYG Final Thu Nov 12 (WAS 24-21) • London NE@DET Final Sun Nov 15 (DET 35-10) • Sun Main 1:00 PM ET games final • Late LAR 34-6 ARI, SEA 21-13 LV, SF 46-40 DAL final • SNF PIT@CIN Final Sun Nov 15 (CIN 38-18) • MNF LAC@BAL Final Mon Nov 16 (LAC 23-20) • Week 11 complete"
 salary_cap,60000
 roster_slots,9
 active_version,v9 LOCKED (15 SIGNALS + TEAM-OWNED STADIUM/WX + STRATEGY EXCHANGE)
-generated_at,"Mon Nov 16, 2026 7:36 PM ET (Build 20261116-193604 • PRE-MNF LOCK LAC@BAL on live build 20261116-094550: deterministic morning pool kept (LIVE FD Showdown #136757 salaries 09:02 ET, baseline 09:04 ET); ESPN 401873065 injury report Out designations zeroed on board: Elijah Sarratt (WR BAL, was ACTIVE 1.07); Kedon Slovis (QB BAL, was ACTIVE 0.0); Brenen Thompson (WR LAC, was D 0.0); other Outs not on Showdown board: Aeneas Peebles (BAL); Chandler Rivers (BAL); Jaylinn Hawkins (BAL); Emery Jones Jr. (BAL); Justin Eboigbe (LAC); Isas Waxter (LAC); Kendall Williamson (LAC); re-solved OPT-WK11-MNF-1 151.57 pts $59,900 MVP Jacoby Brissett; all other game rows + historic prefixes unchanged)"
-build_id,20261116-193604
+generated_at,"Tue Nov 17, 2026 12:26 AM ET (Build 20261117-002604 • Post-MNF grade: LAC 23-20 BAL (ESPN 401873065) • Showdown #136757 • calculated actuals via fdscore.py • 24 boxed / 31 no-box-line excluded • pregame copied exactly from lock 20261116-193604 • MNF and all pregame projections unchanged • historic append only)"
+build_id,20261117-002604
 updater_bot,@fd-board-updater
 updater_bot_id,7f63a5f1-23e8-4a34-b1c8-fd8b0a4d2026
 middleman_bot,@fd-strategy-exchange
@@ -17,7 +17,7 @@ weather_bot,@fd-stadium-weather
 weather_bot_id,53977200-89b4-45e7-8791-b8a378bbc2d3
 pregame_schedule,Thu 9AM (TNF) • Fri 9AM (Sun Main/SNF) • Mon 9AM (MNF) • Refresh 3h Pre-Kickoff
 postgame_schedule,Tue 9AM Weekly Wrap (Finalize Wk8 Actuals vs Projections + Seed Wk9 Board)
-historic_weeks_covered,"Weeks 3–10 and prior Week 11 rows unchanged; SNF window appended (28 boxed players, no-box-line excluded)"
+historic_weeks_covered,"Weeks 3–10 and prior Week 11 rows unchanged; MNF LAC@BAL window appended (24 boxed players, no-box-line excluded)"
 overall_our_rho,0.6518
 overall_fd_rho,0.4492
 overall_rho_gain,+0.2026
@@ -48,17 +48,17 @@ wk10_all_games_optimal_pts,176.70
 wk10_salary_source,LIVE FD Classic #136184 (11 Sun games)
 wk10_player_count,770
 wk10_game_count,15
-pregame_snapshot_build,20261115-190835
-pregame_snapshot_provenance,"SNF PIT@CIN our_proj_pregame/fd_proj_pregame copied exactly from pre-SNF lock build 20261115-190835 (Eli Heidenreich, Will Howard, Drew Allar already O/0). Sunday Main/late pregame remain 20261115-151840. London remains 151840 / FDR 8:54 AM ET. TNF remains 20261112-171645. MNF current_players rows were not modified."
-model_limitations,"MNF LAC@BAL uses LIVE FD Showdown #136757 salaries (morning 09:02 ET pull) and this-morning baseline (games total 38.5, spread BAL -4.5; nflverse week 10). Official O/IR/D only are zeroed: Ladd McConkey (O, Back); Brenen Thompson (D, Hamstring); IR: Lamar Jackson, Tyler Huntley, Skylar Thompson, Tyler Loop, Adam Randall, Durham Smythe, Danny Pinter, Trey Lance, Alec Ingold, David Njoku. FD tags were complete; no nflverse O/IR/D overlays were required. Confirmed-starter gate (depth chart 2026-11-16 07:02 UTC) keeps Jacoby Brissett (BAL) and Justin Herbert (LAC) and zeros Joe Fagnano, Kedon Slovis, DJ Uiagalelei, and Jake Browning. No official inactives yet (Monday afternoon/evening game-status still pending). Sunday Main/late/London/SNF/TNF current_players and all_games Classic optimals were not recomputed. fd_proj is historical FPPG from the live salary file (or synthetic proxy), not a FanDuel Research vendor forecast. Weather/strategy signals from baseline.py; no new Week 11 strategy-exchange packets required for this MNF overlay. Jacoby Brissett's raw EB base is large (new BAL starter after the Arizona trade); adjusted projection is the unedited deterministic baseline.py output, not a discretionary cut."
-fd_projection_column_provenance,"MNF fd_proj = historical FPPG from LIVE FD Showdown #136757 salary file (09:02 ET pull), or a synthetic proxy when FPPG is missing; O/IR/D forced to 0. Prior SNF/Main/London/TNF fd_proj_pregame values were not altered in this morning prep."
-actuals_source,"ESPN final summary box scores 401873053 (NE@DET), 401873054 (BUF@NYJ), 401873055 (CAR@NO), 401873056 (HOU@CLE), 401873057 (JAX@TEN), 401873058 (KC@ATL), 401873059 (MIA@IND), 401873060 (MIN@GB) + fdscore.py; CALCULATED actuals NOT reconciled against official FanDuel results; plus ESPN final summaries 401873061 (LAR@ARI), 401873062 (SEA@LV), 401873063 (SF@DAL) + fdscore.py; CALCULATED actuals NOT reconciled against official FanDuel results; plus ESPN final summary 401873064 (PIT@CIN) + fdscore.py; CALCULATED actuals NOT reconciled against official FanDuel results"
+pregame_snapshot_build,20261116-193604
+pregame_snapshot_provenance,"MNF LAC@BAL our_proj_pregame/fd_proj_pregame copied exactly from pre-MNF lock build 20261116-193604 (Elijah Sarratt, Kedon Slovis, Brenen Thompson already O/0). SNF remains 20261115-190835; Sunday Main/late 20261115-151840; London 151840; TNF 20261112-171645. current_players rows were not modified."
+model_limitations,"MNF LAC@BAL graded from locked build 20261116-193604. Official O/IR/D were already zeroed pregame. No-box-line players excluded from metrics, not zeroed. MNF fd_proj_pregame is the 09:02 ET Showdown FPPG proxy, not an FDR capture. Calculated ESPN-box actuals, not official FanDuel results. OPT-WK11-MNF-1 actual applies the 1.5x MVP multiplier to Jacoby Brissett."
+fd_projection_column_provenance,"MNF fd_proj_pregame = LIVE FD Showdown #136757 FPPG proxy (09:02 ET pull), copied byte-exact from locked current_players build 20261116-193604. Pregame values were not altered in this post-game append. Week 11 is now fully graded."
+actuals_source,"ESPN final summary box scores 401873053 (NE@DET), 401873054 (BUF@NYJ), 401873055 (CAR@NO), 401873056 (HOU@CLE), 401873057 (JAX@TEN), 401873058 (KC@ATL), 401873059 (MIA@IND), 401873060 (MIN@GB) + fdscore.py; CALCULATED actuals NOT reconciled against official FanDuel results; plus ESPN final summaries 401873061 (LAR@ARI), 401873062 (SEA@LV), 401873063 (SF@DAL) + fdscore.py; CALCULATED actuals NOT reconciled against official FanDuel results; plus ESPN final summary 401873064 (PIT@CIN) + fdscore.py; CALCULATED actuals NOT reconciled against official FanDuel results; plus ESPN final summary 401873065 (LAC@BAL) + fdscore.py; CALCULATED actuals NOT reconciled against official FanDuel results"
 actuals_verification_status,PROVISIONAL ESPN-derived calculated grading; FanDuel reconciliation outstanding; scoring-rule verification outstanding
-no_box_line_policy,"27 Week 11 SNF snapshot players with no ESPN box line excluded from actuals/metrics; NOT assigned zero or presumed inactive. Excluded: Marquez Valdes-Scantling (WR PIT, ACTIVE); Colbie Young (WR CIN, ACTIVE); Brandon Johnson (WR PIT, ACTIVE); Mitch Tinsley (WR CIN, ACTIVE); Riley Nowakowski (TE PIT, ACTIVE); Kentrel Bullock (RB CIN, ACTIVE); Noah Thomas (WR CIN, ACTIVE); Jordan Moore (WR CIN, ACTIVE); Isaiah Hodgins (WR PIT, ACTIVE); Kendall Milton (RB CIN, ACTIVE); Caden Prieskorn (TE CIN, ACTIVE); Cam Grandy (TE CIN, ACTIVE); William Wagner (TE CIN, ACTIVE); Ke'Shawn Williams (WR CIN, ACTIVE); Eli Heidenreich (RB PIT, O); Lake McRee (TE PIT, ACTIVE); Joe Flacco (QB CIN, ACTIVE); Sean Clifford (QB CIN, ACTIVE); Tanner Hudson (TE CIN, IR); Erick All Jr. (TE CIN, IR); Andrei Iosivas (WR CIN, IR); Will Howard (QB PIT, O); Drew Allar (QB PIT, O); Jack Driscoll (TE PIT, IR); Roman Wilson (WR PIT, IR); Cole Burgess (WR PIT, IR); Michael Pittman Jr. (WR PIT, IR). Existing Week 10 and earlier Week 11 exclusion lists retained untouched."
+no_box_line_policy,"31 Week 11 MNF snapshot players with no ESPN box line excluded from actuals/metrics; NOT assigned zero or presumed inactive. Excluded: Harrison Mevis (K BAL, ACTIVE); KeAndre Lambert-Smith (WR LAC, ACTIVE); Devontez Walker (WR BAL, ACTIVE); Elijah Sarratt (WR BAL, O); Luke Grimm (WR LAC, ACTIVE); Tejhaun Palmer (WR LAC, ACTIVE); Rasheen Ali (RB BAL, ACTIVE); Patrick Herbert (TE LAC, ACTIVE); Matt Hibner (TE BAL, ACTIVE); Daniel Brunskill (TE LAC, ACTIVE); Lucas Scott (RB BAL, ACTIVE); Gage Larvadain (WR BAL, ACTIVE); Amar Johnson (RB LAC, ACTIVE); Nick Vannett (TE BAL, ACTIVE); Ladd McConkey (WR LAC, O); Joe Fagnano (QB BAL, ACTIVE); DJ Uiagalelei (QB LAC, ACTIVE); David Njoku (TE LAC, IR); Tyler Loop (K BAL, IR); Lamar Jackson (QB BAL, IR); Kedon Slovis (QB BAL, O); Tyler Huntley (QB BAL, IR); Skylar Thompson (QB BAL, IR); Adam Randall (RB BAL, IR); Durham Smythe (TE BAL, IR); Ty Pezza (TE BAL, ACTIVE); Danny Pinter (TE BAL, IR); Jake Browning (QB LAC, ACTIVE); Trey Lance (QB LAC, IR); Alec Ingold (RB LAC, IR); Brenen Thompson (WR LAC, O). Existing Week 10 and earlier Week 11 exclusion lists retained untouched."
 wk10_summary_scope,"TNF legacy rows (incl. legacy zero policy) + London/early/afternoon/SNF/MNF matched box lines only; unresolved excluded; heterogeneous zero policies/selection bias. Week 10 now complete. Non-W10/ALL summaries unchanged, not recomputed."
-headline_status,"Week 11 PRE-MNF LOCK; OPT-WK11-MNF-1 151.57 pts $59,900 MVP Jacoby Brissett; ESPN 401873065 Out designations applied"
+headline_status,Week 11 MNF LAC@BAL GRADED (LAC 23-20); OPT-WK11-MNF-1 actual 65.96 vs 151.57; full week final
 london_provenance,"CIN@ATL standalone 9:30 AM ET, not #136184; Friday early-issued forecast, estimated Classic salaries; preserved from early draft"
-publish_status,LOCAL DRAFT staged; awaiting GitHub Pages data/*.csv upload
+publish_status,LOCAL DRAFT staged at /workspace/fd-upload-postmnf-20261117/; awaiting GitHub Pages data/*.csv upload
 wk10_our_mae,3.671
 wk10_historical_synthetic_proxy_mae,4.01
 afternoon_finals,HOU@LAC 44-22; GB@NE 45-27; LV@SF 17-38; ARI@SEA 3-17 (ESPN 401873046/049/047/048). SNF TB@CHI FINAL CHI 27-24 (ESPN 401873050). MNF BUF@MIN FINAL BUF 23-6 (ESPN 401873051) graded this run.
@@ -163,12 +163,12 @@ wk11_main_full_our_rho,0.6811
 wk11_main_full_fd_rho,0.6307
 wk11_main_full_beat_fd_pct,53.7%
 wk11_main_full_n_graded,246
-wk11_todate_our_mae,4.377
-wk11_todate_fd_mae,4.368
-wk11_todate_our_rho,0.6687
-wk11_todate_fd_rho,0.6217
-wk11_todate_beat_fd_pct,53.2%
-wk11_todate_n_graded,329
+wk11_todate_our_mae,4.429
+wk11_todate_fd_mae,4.292
+wk11_todate_our_rho,0.6715
+wk11_todate_fd_rho,0.6256
+wk11_todate_beat_fd_pct,53.3%
+wk11_todate_n_graded,353
 wk11_late_finals,LAR 34-6 ARI (401873061); SEA 21-13 LV (401873062); SF 46-40 DAL (401873063)
 wk11_snf_featured_optimal_id,OPT-WK11-SNF-1
 wk11_snf_featured_optimal_pts,135.93
@@ -189,3 +189,13 @@ wk11_mnf_featured_optimal_pts,151.57
 wk11_mnf_featured_optimal_salary,59900
 wk11_mnf_lock_inactives,"ESPN 401873065 injury report (Out): BAL Kedon Slovis, Elijah Sarratt, Aeneas Peebles, Chandler Rivers, Jaylinn Hawkins, Emery Jones Jr.; LAC Ladd McConkey (Back), Brenen Thompson (Hamstring), Justin Eboigbe, Isas Waxter, Kendall Williamson; plus IR. Zeroed/status O on board: Elijah Sarratt (WR BAL, was ACTIVE 1.07); Kedon Slovis (QB BAL, was ACTIVE 0.0); Brenen Thompson (WR LAC, was D 0.0). Already O/IR at 0: McConkey, Lamar Jackson and other IR. Not on FD Showdown board: Aeneas Peebles (BAL); Chandler Rivers (BAL); Jaylinn Hawkins (BAL); Emery Jones Jr. (BAL); Justin Eboigbe (LAC); Isas Waxter (LAC); Kendall Williamson (LAC)."
 wk11_mnf_qb_starters,"Jacoby Brissett (BAL, depth chart QB1 2026-11-16 07:02 UTC; HC Jesse Minter expected starter); Justin Herbert (LAC, depth chart QB1)"
+wk11_mnf_featured_optimal_actual,65.96
+wk11_mnf_hindsight_optimal_note,"Hindsight Showdown optimal (box-matched only, MVP 1.5x salary/points, $60,000 cap) scored 94.76 on $59900: MVP Omarion Hampton + Derrick Henry, Justin Herbert, Jacoby Brissett, Cameron Dicker, Josh Cuevas."
+wk11_mnf_our_mae,5.146
+wk11_mnf_fd_mae,3.239
+wk11_mnf_our_rho,0.7560
+wk11_mnf_fd_rho,0.7148
+wk11_mnf_beat_fd_pct,54.2%
+wk11_mnf_n_graded,24
+wk11_mnf_n_excluded,31
+wk11_mnf_final,"LAC@BAL FINAL LAC 23, BAL 20 (ESPN 401873065); graded from PRE-LOCK live Showdown #136757 snapshot 20261116-193604; CALCULATED ESPN-box actuals"

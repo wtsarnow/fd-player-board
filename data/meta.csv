@@ -1,14 +1,14 @@
 key,value
-title,Week 12 Thursday Night Football Board (IND@HOU Thu Nov 19 8:15 PM ET) • LIVE FD Showdown #136793
+title,Week 12 Pre-TNF Lock (IND@HOU #136793)
 active_week,12
 slate_id,WK12-TNF-136793
 contest_name,"Week 12 TNF IND@HOU Showdown Board (Featured Optimal OPT-WK12-TNF-1: 110.85 v9 pts • $57,800 • MVP C.J. Stroud • LIVE FD Showdown #136793)"
-lock_time,TNF IND@HOU Thu Nov 19 8:15 PM ET • Sun Main Nov 22 1:00 PM ET • SNF MIN@SF • MNF CIN@WAS Mon Nov 23
+lock_time,TNF IND@HOU Thu Nov 19 8:15 PM ET PRE-LOCK • Sun Main Nov 22 1:00 PM ET • SNF MIN@SF • MNF CIN@WAS Mon Nov 23
 salary_cap,60000
 roster_slots,9
 active_version,v9 LOCKED (15 SIGNALS + TEAM-OWNED STADIUM/WX + STRATEGY EXCHANGE)
-generated_at,"Thu Nov 19, 2026 9:02 AM ET (Build 20261119-090201 • Thu TNF morning prep: deterministic IND@HOU baseline + PuLP Showdown; salaries LIVE FD Showdown #136793 morning 08:59 ET (54 players, FLEX; MVP 1.5x by ILP); official O/IR/D -> 0 (Woody Marks (O), Marvin Harrison Jr. (O), Brevin Jordan (O), Will Mallory (O), Bernhard Raimann (O); IR: Alec Pierce, Carson Towt, Mo Alie-Cox, D.J. Montgomery (IND); Graham Mertz, Jaylin Noel, British Brooks, Jayden Higgins (HOU)); Gould Q left ACTIVE; David Montgomery cleared/ACTIVE; QB starters Stroud / Jones; total 43.5 (was 44.5), HOU -12.5; historic rows byte-preserved; other Week 12 games remain Tuesday-seed ESTIMATED Classic; morning prep, not a pre-lock)"
-build_id,20261119-090201
+generated_at,"Thu Nov 19, 2026 7:31 PM ET (Build 20261119-193149 • PRE-TNF LOCK IND@HOU on live build 20261119-090201: deterministic morning pool kept (LIVE FD Showdown #136793 salaries 08:59 ET); ESPN 401873066 injury report Out designations zeroed on board: Riley Leonard (QB IND, was ACTIVE 0.0); other Outs not on Showdown board: Wyatt Teller (HOU); Nate Thomas (HOU); Jake Andrews (HOU); Sauce Gardner (IND); Jerry Tillery (IND); Jalen Travis (IND); re-solved OPT-WK12-TNF-1 110.85 pts $57,800 MVP C.J. Stroud; all other game rows + historic prefixes unchanged)"
+build_id,20261119-193149
 updater_bot,@fd-board-updater
 updater_bot_id,7f63a5f1-23e8-4a34-b1c8-fd8b0a4d2026
 middleman_bot,@fd-strategy-exchange
@@ -56,9 +56,9 @@ actuals_source,"ESPN final summary box scores 401873053 (NE@DET), 401873054 (BUF
 actuals_verification_status,PROVISIONAL ESPN-derived calculated grading; FanDuel reconciliation outstanding; scoring-rule verification outstanding
 no_box_line_policy,"31 Week 11 MNF snapshot players with no ESPN box line excluded from actuals/metrics; NOT assigned zero or presumed inactive. Excluded: Harrison Mevis (K BAL, ACTIVE); KeAndre Lambert-Smith (WR LAC, ACTIVE); Devontez Walker (WR BAL, ACTIVE); Elijah Sarratt (WR BAL, O); Luke Grimm (WR LAC, ACTIVE); Tejhaun Palmer (WR LAC, ACTIVE); Rasheen Ali (RB BAL, ACTIVE); Patrick Herbert (TE LAC, ACTIVE); Matt Hibner (TE BAL, ACTIVE); Daniel Brunskill (TE LAC, ACTIVE); Lucas Scott (RB BAL, ACTIVE); Gage Larvadain (WR BAL, ACTIVE); Amar Johnson (RB LAC, ACTIVE); Nick Vannett (TE BAL, ACTIVE); Ladd McConkey (WR LAC, O); Joe Fagnano (QB BAL, ACTIVE); DJ Uiagalelei (QB LAC, ACTIVE); David Njoku (TE LAC, IR); Tyler Loop (K BAL, IR); Lamar Jackson (QB BAL, IR); Kedon Slovis (QB BAL, O); Tyler Huntley (QB BAL, IR); Skylar Thompson (QB BAL, IR); Adam Randall (RB BAL, IR); Durham Smythe (TE BAL, IR); Ty Pezza (TE BAL, ACTIVE); Danny Pinter (TE BAL, IR); Jake Browning (QB LAC, ACTIVE); Trey Lance (QB LAC, IR); Alec Ingold (RB LAC, IR); Brenen Thompson (WR LAC, O). Existing Week 10 and earlier Week 11 exclusion lists retained untouched."
 wk10_summary_scope,"TNF legacy rows (incl. legacy zero policy) + London/early/afternoon/SNF/MNF matched box lines only; unresolved excluded; heterogeneous zero policies/selection bias. Week 10 now complete. Non-W10/ALL summaries unchanged, not recomputed."
-headline_status,Week 12 TNF morning prep; LIVE FD Showdown #136793; not a pre-lock entry
+headline_status,"Week 12 PRE-TNF LOCK; OPT-WK12-TNF-1 110.85 pts $57,800 MVP C.J. Stroud; ESPN 401873066 Out designations applied"
 london_provenance,"CIN@ATL standalone 9:30 AM ET, not #136184; Friday early-issued forecast, estimated Classic salaries; preserved from early draft"
-publish_status,LOCAL DRAFT pending GitHub data/*.csv publish
+publish_status,LOCAL DRAFT staged; awaiting GitHub Pages data/*.csv upload
 wk10_our_mae,3.671
 wk10_historical_synthetic_proxy_mae,4.01
 afternoon_finals,HOU@LAC 44-22; GB@NE 45-27; LV@SF 17-38; ARI@SEA 3-17 (ESPN 401873046/049/047/048). SNF TB@CHI FINAL CHI 27-24 (ESPN 401873050). MNF BUF@MIN FINAL BUF 23-6 (ESPN 401873051) graded this run.
@@ -227,3 +227,4 @@ wk12_tnf_salary_source,"LIVE FD Showdown #136793 (54 players, morning 08:59 ET p
 wk12_tnf_featured_optimal_id,OPT-WK12-TNF-1
 wk12_tnf_featured_optimal_pts,110.85
 wk12_tnf_featured_optimal_salary,57800
+wk12_tnf_lock_inactives,"ESPN 401873066 injury report (Out/INACTIVE): HOU Wyatt Teller, Nate Thomas, Woody Marks, Marvin Harrison Jr., Jake Andrews; IND Riley Leonard, Sauce Gardner, Bernhard Raimann, Jerry Tillery, Jalen Travis. Zeroed on board: Riley Leonard (QB IND, was ACTIVE 0.0); already O at 0: Marks, M. Harrison Jr., Raimann. Not on FD board: Wyatt Teller (HOU); Nate Thomas (HOU); Jake Andrews (HOU); Sauce Gardner (IND); Jerry Tillery (IND); Jalen Travis (IND). Gould/Heck not listed Out, left ACTIVE-Q."

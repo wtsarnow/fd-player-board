@@ -2292,3 +2292,57 @@ nfl_week,board_week,slate,slate_type,gameday,game,player,pos,team,salary,injury_
 10,11,136757,Showdown,2026-11-16,LAC@BAL,Theo Wease Jr.,WR,LAC,1200,,2.35,2.60,,0.00,True,stats,True,2.35,2.60,1.00
 10,11,136757,Showdown,2026-11-16,LAC@BAL,Tre' Harris,WR,LAC,8800,,7.86,5.24,6.60,11.10,True,stats,True,3.24,5.86,1.00
 10,11,136757,Showdown,2026-11-16,LAC@BAL,Zay Flowers,WR,BAL,10800,,17.40,14.38,12.10,8.40,True,stats,True,9.00,5.97,-1.00
+11,12,136793,Showdown,2026-11-19,IND@HOU,Houston Texans,DST,HOU,7000,,9.68,6.22,8.80,15.00,True,pbp_dst,True,5.32,8.78,1.00
+11,12,136793,Showdown,2026-11-19,IND@HOU,Indianapolis Colts,DST,IND,6200,,4.00,4.20,4.00,3.00,True,pbp_dst,True,1.00,1.20,1.00
+11,12,136793,Showdown,2026-11-19,IND@HOU,Ka'imi Fairbairn,K,HOU,6800,,12.66,11.11,9.10,6.00,True,stats,True,6.66,5.11,-1.00
+11,12,136793,Showdown,2026-11-19,IND@HOU,Spencer Shrader,K,IND,6600,,7.72,11.40,7.60,3.00,True,stats,True,4.72,8.40,1.00
+11,12,136793,Showdown,2026-11-19,IND@HOU,Anthony Richardson Sr.,QB,IND,8000,,0.00,0.36,0.20,0.20,True,stats,False,0.20,0.16,-1.00
+11,12,136793,Showdown,2026-11-19,IND@HOU,C.J. Stroud,QB,HOU,12400,,26.16,22.16,19.50,21.46,True,stats,True,4.70,0.70,-1.00
+11,12,136793,Showdown,2026-11-19,IND@HOU,Daniel Jones,QB,IND,10800,,13.71,9.87,12.10,5.06,True,stats,True,8.65,4.81,-1.00
+11,12,136793,Showdown,2026-11-19,IND@HOU,Davis Mills,QB,HOU,8000,,0.00,0.04,0.30,0.00,False,did_not_play,False,0.00,0.04,1.00
+11,12,136793,Showdown,2026-11-19,IND@HOU,Graham Mertz,QB,HOU,1000,IR,0.00,,0.00,0.00,False,did_not_play,False,0.00,,
+11,12,136793,Showdown,2026-11-19,IND@HOU,Riley Leonard,QB,IND,1000,,0.00,0.00,0.00,0.00,False,did_not_play,False,0.00,0.00,0.00
+11,12,136793,Showdown,2026-11-19,IND@HOU,British Brooks,RB,HOU,1000,IR,0.00,0.00,0.00,0.00,False,did_not_play,False,0.00,0.00,0.00
+11,12,136793,Showdown,2026-11-19,IND@HOU,DJ Giddens,RB,IND,2600,,0.79,2.15,0.30,2.10,True,stats,True,1.31,0.05,-1.00
+11,12,136793,Showdown,2026-11-19,IND@HOU,Dare Ogunbowale,RB,HOU,3400,,1.23,0.93,0.00,0.00,False,did_not_play,False,1.23,0.93,-1.00
+11,12,136793,Showdown,2026-11-19,IND@HOU,David Montgomery,RB,HOU,10200,,8.44,8.40,9.80,16.90,True,stats,True,8.46,8.50,1.00
+11,12,136793,Showdown,2026-11-19,IND@HOU,Davon Booth,RB,IND,1000,,0.07,,0.00,0.00,False,did_not_play,False,0.07,,
+11,12,136793,Showdown,2026-11-19,IND@HOU,Emari Demercado,RB,HOU,3800,,4.25,1.28,,3.90,True,stats,True,0.35,2.62,1.00
+11,12,136793,Showdown,2026-11-19,IND@HOU,Jonathan Taylor,RB,IND,11800,,16.83,15.19,15.80,4.70,True,stats,True,12.13,10.49,-1.00
+11,12,136793,Showdown,2026-11-19,IND@HOU,Joshua Pitsenberger,RB,HOU,1000,,0.28,,,0.00,False,did_not_play,False,0.28,,
+11,12,136793,Showdown,2026-11-19,IND@HOU,Seth McGowan,RB,IND,8400,,2.87,4.39,2.50,1.30,True,stats,True,1.57,3.09,1.00
+11,12,136793,Showdown,2026-11-19,IND@HOU,Woody Marks,RB,HOU,10200,O,0.00,7.82,9.70,0.00,False,did_not_play,False,0.00,7.82,1.00
+11,12,136793,Showdown,2026-11-19,IND@HOU,Bernhard Raimann,TE,IND,1000,O,0.00,0.00,,0.00,False,did_not_play,False,0.00,0.00,0.00
+11,12,136793,Showdown,2026-11-19,IND@HOU,Brevin Jordan,TE,HOU,1000,O,0.00,0.37,0.00,0.00,False,did_not_play,False,0.00,0.37,1.00
+11,12,136793,Showdown,2026-11-19,IND@HOU,Cade Stover,TE,HOU,1800,,0.56,0.81,0.70,0.00,True,snaps_no_stats,True,0.56,0.81,1.00
+11,12,136793,Showdown,2026-11-19,IND@HOU,Carson Towt,TE,IND,1000,IR,0.00,,0.00,0.00,False,did_not_play,False,0.00,,
+11,12,136793,Showdown,2026-11-19,IND@HOU,Charlie Heck,TE,IND,1000,,0.06,,,0.00,False,did_not_play,False,0.06,,
+11,12,136793,Showdown,2026-11-19,IND@HOU,Dalton Schultz,TE,HOU,6400,,11.68,7.17,7.20,1.60,True,stats,True,10.08,5.57,-1.00
+11,12,136793,Showdown,2026-11-19,IND@HOU,Drew Ogletree,TE,IND,1000,,0.19,0.59,,0.00,True,stats_lastname,True,0.19,0.59,1.00
+11,12,136793,Showdown,2026-11-19,IND@HOU,Foster Moreau,TE,HOU,2000,,2.01,5.12,2.40,1.30,True,stats,True,0.71,3.82,1.00
+11,12,136793,Showdown,2026-11-19,IND@HOU,Marlin Klein,TE,HOU,1000,,0.88,1.05,0.00,10.40,True,stats,True,9.52,9.35,-1.00
+11,12,136793,Showdown,2026-11-19,IND@HOU,Mo Alie-Cox,TE,IND,1000,IR,0.00,2.78,0.80,0.00,False,did_not_play,False,0.00,2.78,1.00
+11,12,136793,Showdown,2026-11-19,IND@HOU,Pharaoh Brown,TE,IND,1000,,0.34,1.20,,0.00,True,snaps_no_stats,True,0.34,1.20,1.00
+11,12,136793,Showdown,2026-11-19,IND@HOU,Tyler Warren,TE,IND,8800,,16.26,8.31,13.10,2.70,True,stats,True,13.56,5.61,-1.00
+11,12,136793,Showdown,2026-11-19,IND@HOU,Will Mallory,TE,IND,1000,O,0.00,1.50,0.00,0.00,False,did_not_play,False,0.00,1.50,1.00
+11,12,136793,Showdown,2026-11-19,IND@HOU,Alec Pierce,WR,IND,7800,IR,0.00,4.85,0.00,0.00,False,did_not_play,False,0.00,4.85,1.00
+11,12,136793,Showdown,2026-11-19,IND@HOU,Anthony Gould,WR,IND,4000,Q,0.83,0.98,,5.80,True,stats,True,4.97,4.82,-1.00
+11,12,136793,Showdown,2026-11-19,IND@HOU,Ashton Dulin,WR,IND,5200,,1.84,2.93,2.10,4.00,True,stats,True,2.16,1.07,-1.00
+11,12,136793,Showdown,2026-11-19,IND@HOU,Bryce Oliver,WR,HOU,1000,,0.04,1.30,,0.00,False,did_not_play,False,0.04,1.30,1.00
+11,12,136793,Showdown,2026-11-19,IND@HOU,D.J. Montgomery,WR,IND,1000,IR,0.00,,,0.00,False,did_not_play,False,0.00,,
+11,12,136793,Showdown,2026-11-19,IND@HOU,Deion Burks,WR,IND,2800,,1.48,1.23,0.40,0.00,True,stats,True,1.48,1.23,-1.00
+11,12,136793,Showdown,2026-11-19,IND@HOU,Dominique Robinson,WR,HOU,1000,,0.04,0.00,,0.00,True,stats,False,0.04,0.00,-1.00
+11,12,136793,Showdown,2026-11-19,IND@HOU,Jayden Higgins,WR,HOU,1000,IR,0.00,6.49,,0.00,False,did_not_play,False,0.00,6.49,1.00
+11,12,136793,Showdown,2026-11-19,IND@HOU,Jaylin Noel,WR,HOU,1000,IR,0.00,8.60,0.00,0.00,False,did_not_play,False,0.00,8.60,1.00
+11,12,136793,Showdown,2026-11-19,IND@HOU,Josh Kelly,WR,HOU,1000,,0.04,,,0.00,False,did_not_play,False,0.04,,
+11,12,136793,Showdown,2026-11-19,IND@HOU,Kayshon Boutte,WR,HOU,4600,,4.19,6.27,7.20,11.00,True,stats,True,6.81,4.73,-1.00
+11,12,136793,Showdown,2026-11-19,IND@HOU,Laquon Treadwell,WR,IND,7400,,3.76,3.94,14.00,0.00,True,stats,True,3.76,3.94,1.00
+11,12,136793,Showdown,2026-11-19,IND@HOU,Lewis Bond,WR,HOU,1000,,0.33,0.00,0.40,0.00,False,did_not_play,False,0.33,0.00,-1.00
+11,12,136793,Showdown,2026-11-19,IND@HOU,Marvin Harrison Jr.,WR,HOU,6000,O,0.00,4.57,5.10,0.00,False,did_not_play,False,0.00,4.57,1.00
+11,12,136793,Showdown,2026-11-19,IND@HOU,Mecole Hardman Jr.,WR,IND,1400,,0.14,1.63,,0.00,False,did_not_play,False,0.14,1.63,1.00
+11,12,136793,Showdown,2026-11-19,IND@HOU,Nick Westbrook-Ikhine,WR,IND,1600,,0.36,0.00,,0.00,True,snaps_no_stats,False,0.36,0.00,-1.00
+11,12,136793,Showdown,2026-11-19,IND@HOU,Nico Collins,WR,HOU,11400,,20.65,12.56,16.00,13.30,True,stats,True,7.35,0.74,-1.00
+11,12,136793,Showdown,2026-11-19,IND@HOU,Nikko Remigio,WR,HOU,2200,,0.03,-0.22,,0.00,True,stats,False,0.03,0.22,1.00
+11,12,136793,Showdown,2026-11-19,IND@HOU,Quez Watkins,WR,IND,1000,,0.16,,,3.10,True,stats,True,2.94,,
+11,12,136793,Showdown,2026-11-19,IND@HOU,Tank Dell,WR,HOU,9600,,8.64,10.03,0.00,4.20,True,stats,True,4.44,5.83,1.00
+11,12,136793,Showdown,2026-11-19,IND@HOU,Xavier Hutchinson,WR,HOU,5800,,10.36,7.57,4.70,2.30,True,stats,True,8.06,5.27,-1.00

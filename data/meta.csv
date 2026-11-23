@@ -1,5 +1,5 @@
 key,value
-title,Week 12 Pre-SNF Lock (MIN@SF #136969) • Sunday Main/Late Locked • MNF Pending
+title,Week 12 Sunday Main + Late Graded • SNF Locked (MIN@SF) • MNF Pending
 active_week,12
 slate_id,WK12-SUNMAIN-136799
 contest_name,"Week 12 Sunday Main Classic PRE-LOCK Board (Featured Optimal OPT-WK12-MAIN-1: 181.88 v9 pts • $59,900 • LIVE FD Classic #136799 salaries, Fri 2026-11-20 ~9:03 AM ET)"
@@ -7,8 +7,8 @@ lock_time,Sun Main PRE-LOCK 1:00 PM ET Nov 22 (1pm games locked; 4pm games unloc
 salary_cap,60000
 roster_slots,9
 active_version,v9 LOCKED (15 SIGNALS + TEAM-OWNED STADIUM/WX + STRATEGY EXCHANGE)
-generated_at,"Sun Nov 22, 2026 7:37 PM ET (Build 20261122-193725 • Pre-SNF lock: fd-manager 7:17 PM ET baseline/136969-snf-lock.csv with official Nov 22 inactives; salaries LIVE #136969 (Fri Nov 20 9:03 AM ET pull, identical in lock baseline); OPT-WK12-SNF-1 108.14 pts $60,000 MVP Brock Purdy; only MIN@SF rows changed; all other pregame + historic/accuracy CSVs byte-preserved)"
-build_id,20261122-193725
+generated_at,"Sun Nov 22, 2026 8:01 PM ET (Build 20261122-200101 • Post-late grade: NYG 23-18 JAX (401873069); NYJ 27-24 LAC (401873074); DEN 38-24 LV (401873075) • calculated actuals via fdscore.py • 75 boxed / 76 no-box-line excluded • pregame copied exactly from locks • SNF pre-game lock and all pregame projections unchanged • historic append only)"
+build_id,20261122-200101
 updater_bot,@fd-board-updater
 updater_bot_id,7f63a5f1-23e8-4a34-b1c8-fd8b0a4d2026
 middleman_bot,@fd-strategy-exchange
@@ -17,7 +17,7 @@ weather_bot,@fd-stadium-weather
 weather_bot_id,53977200-89b4-45e7-8791-b8a378bbc2d3
 pregame_schedule,Thu 9AM (TNF) • Fri 9AM (Sun Main/SNF) • Mon 9AM (MNF) • Refresh 3h Pre-Kickoff
 postgame_schedule,Tue 9AM Weekly Wrap (Finalize Wk8 Actuals vs Projections + Seed Wk9 Board)
-historic_weeks_covered,"Weeks 3–11 unchanged; Week 12 TNF IND@HOU row preserved; 7 Sunday 1pm games appended (168 boxed players, no-box-line excluded)"
+historic_weeks_covered,"Weeks 3–11 and earlier Week 12 rows unchanged; late window appended (75 boxed players, no-box-line excluded)"
 overall_our_rho,0.6518
 overall_fd_rho,0.4492
 overall_rho_gain,+0.2026
@@ -52,11 +52,11 @@ pregame_snapshot_build,20261122-193725
 pregame_snapshot_provenance,Sun Nov 22 pre-SNF lock build 20261122-193725: MIN@SF our_proj/fd_proj locked; 1pm + late games remain locked at earlier builds; MNF unlocked; TNF snapshot 20261119-193149 unchanged.
 model_limitations,"TNF IND@HOU graded from locked build 20261119-193149. Official O/IR/D were already zeroed pregame. No-box-line players excluded from metrics, not zeroed. fd_proj_pregame is FPPG/synthetic proxy. Sunday Main current_players and OPT-WK12-MAIN-1 use LIVE FD Classic #136799 salaries (Fri 2026-11-20 ~9:03 AM ET). SNF MIN@SF uses LIVE Showdown #136969. MNF CIN@WAS remains ESTIMATED Classic (Showdown not posted). This Friday prep is not a pre-game lock. Calculated ESPN-box actuals for TNF, not official FanDuel results."
 fd_projection_column_provenance,"All fd_proj/fd_proj_pregame and fd_* comparison fields mean historical FPPG or synthetic fallback PROXY, NOT a FanDuel vendor forecast. No claim of beating FanDuel predictions."
-actuals_source,"ESPN final summary box scores 401873053 (NE@DET), 401873054 (BUF@NYJ), 401873055 (CAR@NO), 401873056 (HOU@CLE), 401873057 (JAX@TEN), 401873058 (KC@ATL), 401873059 (MIA@IND), 401873060 (MIN@GB) + fdscore.py; CALCULATED actuals NOT reconciled against official FanDuel results; plus ESPN final summaries 401873061 (LAR@ARI), 401873062 (SEA@LV), 401873063 (SF@DAL) + fdscore.py; CALCULATED actuals NOT reconciled against official FanDuel results; plus ESPN final summary 401873064 (PIT@CIN) + fdscore.py; CALCULATED actuals NOT reconciled against official FanDuel results; plus ESPN final summary 401873065 (LAC@BAL) + fdscore.py; CALCULATED actuals NOT reconciled against official FanDuel results; plus ESPN final summary 401873066 (IND@HOU) + fdscore.py; CALCULATED actuals NOT reconciled against official FanDuel results; plus ESPN final summaries 401873067/068/070/071/072/073/076 (Sunday 1pm) + fdscore.py; CALCULATED actuals NOT reconciled against official FanDuel results"
+actuals_source,"ESPN final summary box scores 401873053 (NE@DET), 401873054 (BUF@NYJ), 401873055 (CAR@NO), 401873056 (HOU@CLE), 401873057 (JAX@TEN), 401873058 (KC@ATL), 401873059 (MIA@IND), 401873060 (MIN@GB) + fdscore.py; CALCULATED actuals NOT reconciled against official FanDuel results; plus ESPN final summaries 401873061 (LAR@ARI), 401873062 (SEA@LV), 401873063 (SF@DAL) + fdscore.py; CALCULATED actuals NOT reconciled against official FanDuel results; plus ESPN final summary 401873064 (PIT@CIN) + fdscore.py; CALCULATED actuals NOT reconciled against official FanDuel results; plus ESPN final summary 401873065 (LAC@BAL) + fdscore.py; CALCULATED actuals NOT reconciled against official FanDuel results; plus ESPN final summary 401873066 (IND@HOU) + fdscore.py; CALCULATED actuals NOT reconciled against official FanDuel results; plus ESPN final summaries 401873067/068/070/071/072/073/076 (Sunday 1pm) + fdscore.py; CALCULATED actuals NOT reconciled against official FanDuel results; plus ESPN final summaries 401873069/074/075 (Sunday late) + fdscore.py; CALCULATED actuals NOT reconciled against official FanDuel results"
 actuals_verification_status,PROVISIONAL ESPN-derived calculated grading; FanDuel reconciliation outstanding; scoring-rule verification outstanding
 no_box_line_policy,"26 Week 12 TNF snapshot players with no ESPN box line excluded from actuals/metrics; NOT assigned zero or presumed inactive. Excluded: Dare Ogunbowale (RB HOU), Cade Stover (TE HOU), Nick Westbrook-Ikhine (WR IND), Pharaoh Brown (TE IND), Lewis Bond (WR HOU), Joshua Pitsenberger (RB HOU), Mecole Hardman Jr. (WR IND), Davon Booth (RB IND), Charlie Heck (TE IND), Bryce Oliver (WR HOU), Josh Kelly (WR HOU), Woody Marks (RB HOU), Davis Mills (QB HOU), Alec Pierce (WR IND), Marvin Harrison Jr. (WR HOU), Graham Mertz (QB HOU), British Brooks (RB HOU), Brevin Jordan (TE HOU), Jaylin Noel (WR HOU), Jayden Higgins (WR HOU), Riley Leonard (QB IND), Carson Towt (TE IND), Will Mallory (TE IND), Mo Alie-Cox (TE IND), Bernhard Raimann (TE IND), D.J. Montgomery (WR IND). Existing Week 10/11 exclusion lists and TNF legacy zero policy retained untouched."
 wk10_summary_scope,"TNF legacy rows (incl. legacy zero policy) + London/early/afternoon/SNF/MNF matched box lines only; unresolved excluded; heterogeneous zero policies/selection bias. Week 10 now complete. Non-W10/ALL summaries unchanged, not recomputed."
-headline_status,"Week 12 pre-SNF lock; OPT-WK12-SNF-1 108.14 pts $60,000 MVP Brock Purdy; MNF pending"
+headline_status,Week 12 Sunday Main GRADED (10 games; MAE ours 3.887 vs FPPG proxy 4.002); late MAE 4.007 vs 4.333; OPT-WK12-MAIN-1 126.04 vs 181.88; OPT-WK12-LATE-1 108.94 vs 146.98; SNF locked; MNF pending
 london_provenance,"CIN@ATL standalone 9:30 AM ET, not #136184; Friday early-issued forecast, estimated Classic salaries; preserved from early draft"
 publish_status,LOCAL DRAFT staged; awaiting GitHub Pages data/*.csv upload
 wk10_our_mae,3.671
@@ -259,3 +259,28 @@ wk12_snf_optimal_id,OPT-WK12-SNF-1
 wk12_snf_optimal_pts,108.14
 wk12_snf_optimal_salary,60000
 wk12_snf_lock_inactives,"Official/ESPN Nov 22: SF Demarcus Robinson, Kurtis Rourke (inactive), Brandin Cooks (waived); MIN Kyler Murray (Out), Jordan Addison (Out), Max Brosmer (inactive); plus IR players at 0. ESPN Out non-skill: Greenlaw, Kareem, Cruz, Ward, Rodgers. Changed rows: Christian McCaffrey (ACTIVE->ACTIVE); Kirk Cousins (ACTIVE->ACTIVE); George Kittle (ACTIVE->ACTIVE); Justin Jefferson (ACTIVE->ACTIVE); Mike Evans (Q->Q); Keenan Allen (ACTIVE->ACTIVE); T.J. Hockenson (Q->ACTIVE); Jordan Mason (ACTIVE->ACTIVE); Deebo Samuel Sr. (ACTIVE->ACTIVE); Kaelon Black (ACTIVE->ACTIVE); Gavin Bartholomew (ACTIVE->ACTIVE); Jordan Watkins (ACTIVE->ACTIVE); Demarcus Robinson (ACTIVE->O); Jauan Jennings (ACTIVE->ACTIVE); Kyle Juszczyk (ACTIVE->ACTIVE); Tai Felton (ACTIVE->ACTIVE); Brandin Cooks (ACTIVE->O); Myles Price (ACTIVE->ACTIVE); Jacob Cowing (ACTIVE->ACTIVE); Ben Yurosek (ACTIVE->ACTIVE); Luke Farrell (ACTIVE->ACTIVE); Jordan James (Q->Q); Jeshaun Jones (Q->ACTIVE); KhaDarel Hodge (ACTIVE->ACTIVE); Devin Culp (ACTIVE->ACTIVE); Jack Stoll (ACTIVE->ACTIVE); Khalil Dinkins (ACTIVE->ACTIVE); Wesley Grimes (ACTIVE->ACTIVE); Will Pauling (ACTIVE->ACTIVE); Max Brosmer (ACTIVE->O); Kurtis Rourke (ACTIVE->O)"
+wk12_late_finals,NYG 23-18 JAX (401873069); NYJ 27-24 LAC (401873074); DEN 38-24 LV (401873075)
+wk12_late_our_mae,4.007
+wk12_late_fd_mae,4.333
+wk12_late_our_rho,0.6339
+wk12_late_fd_rho,0.5841
+wk12_late_beat_fd_pct,50.7%
+wk12_late_n_graded,75
+wk12_late_n_excluded,76
+wk12_main_full_our_mae,3.887
+wk12_main_full_fd_mae,4.002
+wk12_main_full_our_rho,0.6835
+wk12_main_full_fd_rho,0.6263
+wk12_main_full_beat_fd_pct,47.3%
+wk12_main_full_n_graded,243
+wk12_todate_our_mae,3.969
+wk12_todate_fd_mae,4.004
+wk12_todate_beat_fd_pct,46.9%
+wk12_todate_n_graded,271
+wk12_main_featured_optimal_actual,126.04
+wk12_main_featured_optimal_proj,181.88
+wk12_late_featured_optimal_actual,108.94
+wk12_late_featured_optimal_proj,146.98
+wk12_main_hindsight_optimal_note,"Hindsight Classic optimal (box-matched 10-game Main #136799, $60,000 cap) scored 238.70 on $59200: QB Dak Prescott, RB1 Chuba Hubbard, RB2 Ashton Jeanty, WR1 CeeDee Lamb, WR2 George Pickens, WR3 Ted Hurst III, TE Travis Kelce, FLEX Jonah Coleman, DEF Chicago Bears."
+wk12_late_hindsight_optimal_note,"Hindsight Classic optimal (box-matched late 3 games, $60,000 cap) scored 180.38 on $53600: QB Fernando Mendoza, RB1 Breece Hall, RB2 Ashton Jeanty, WR1 Parker Washington, WR2 Ladd McConkey, WR3 Jack Bech, TE Evan Engram, FLEX Jonah Coleman, DEF Denver Broncos."
+wk12_late_no_box_line_policy,"76 late-window snapshot players with no ESPN box line excluded, NOT zeroed. Excluded: Brock Bowers (TE LV, LV@DEN, Q); Omar Cooper Jr. (WR NYJ, NYJ@LAC, O); Oronde Gadsden II (TE LAC, NYJ@LAC, ACTIVE); KeAndre Lambert-Smith (WR LAC, NYJ@LAC, O); Nate Boerkircher (TE JAX, JAX@NYG, ACTIVE); Isaiah Williams (WR NYJ, NYJ@LAC, O); Cody White (WR LV, LV@DEN, ACTIVE); Theo Wease Jr. (WR LAC, NYJ@LAC, ACTIVE); Brenen Thompson (WR LAC, NYJ@LAC, O); Tanner Koziol (TE JAX, JAX@NYG, ACTIVE); Lil'Jordan Humphrey (WR DEN, LV@DEN, O); Jeremy Ruckert (TE NYJ, NYJ@LAC, ACTIVE); Patrick Ricard (RB NYG, JAX@NYG, ACTIVE); Malik Benson (WR LV, LV@DEN, ACTIVE); Deven Thompkins (WR LV, LV@DEN, ACTIVE); Thomas Fidone II (TE NYG, JAX@NYG, ACTIVE); Gregory Desrosiers (RB NYG, JAX@NYG, ACTIVE); Charlie Jones (WR NYG, JAX@NYG, ACTIVE); J'Mari Taylor (RB JAX, JAX@NYG, ACTIVE); Jaret Patterson (RB DEN, LV@DEN, ACTIVE); Quintin Morris (TE JAX, JAX@NYG, ACTIVE); Dareke Young (WR LV, LV@DEN, ACTIVE); Patrick Herbert (TE LAC, NYJ@LAC, ACTIVE); Roman Hemby (RB LV, LV@DEN, ACTIVE); Grant Finley (RB NYG, JAX@NYG, ACTIVE); Brenden Bates (TE JAX, JAX@NYG, ACTIVE); CJ Williams (WR JAX, JAX@NYG, O); Michael Wortham (WR JAX, JAX@NYG, ACTIVE); Trebor Pena (WR JAX, JAX@NYG, ACTIVE); Patrick Gurd (TE LV, LV@DEN, ACTIVE); Phil Mafah (RB NYG, JAX@NYG, ACTIVE); Al-Jay Henderson (RB NYJ, NYJ@LAC, ACTIVE); Jelani Woods (TE NYJ, NYJ@LAC, O); Tim Jones (WR JAX, JAX@NYG, ACTIVE); Amar Johnson (RB LAC, NYJ@LAC, ACTIVE); Daniel Brunskill (TE LAC, NYJ@LAC, ACTIVE); Owen Wright (RB LV, LV@DEN, ACTIVE); Eric Gray (RB NYG, JAX@NYG, ACTIVE); Dontae Fleming (WR NYG, JAX@NYG, ACTIVE); Jamaal Pritchett (WR NYJ, NYJ@LAC, ACTIVE); Dont'e Thornton Jr. (WR LV, LV@DEN, O); Lucas Krull (TE DEN, LV@DEN, ACTIVE); Dallen Bentley (TE DEN, LV@DEN, ACTIVE); Dane Key (WR DEN, LV@DEN, ACTIVE); Austin Trammell (WR JAX, JAX@NYG, ACTIVE); Tejhaun Palmer (WR LAC, NYJ@LAC, ACTIVE); Luke Grimm (WR LAC, NYJ@LAC, ACTIVE); Joseph Manjack (WR NYJ, NYJ@LAC, ACTIVE); Mitchell Fraboni (TE DEN, LV@DEN, ACTIVE); Michael Bandy (WR DEN, LV@DEN, ACTIVE); Kolbe Katsis (WR DEN, LV@DEN, ACTIVE); Dalen Cambre (WR NYG, JAX@NYG, ACTIVE); Malik McClain (WR NYJ, NYJ@LAC, ACTIVE); Ben Mann (TE NYG, JAX@NYG, ACTIVE); DJ Uiagalelei (QB LAC, NYJ@LAC, ACTIVE); Cade Klubnik (QB NYJ, NYJ@LAC, ACTIVE); Sam Ehlinger (QB DEN, LV@DEN, O); Jarrett Stidham (QB DEN, LV@DEN, ACTIVE); Quinn Ewers (QB JAX, JAX@NYG, ACTIVE); Nick Mullens (QB JAX, JAX@NYG, ACTIVE); Trey Lance (QB LAC, NYJ@LAC, IR); Jake Browning (QB LAC, NYJ@LAC, ACTIVE); Aidan O'Connell (QB LV, LV@DEN, ACTIVE); Jaxson Dart (QB NYG, JAX@NYG, IR); Jake Haener (QB NYG, JAX@NYG, ACTIVE); Will Levis (QB NYJ, NYJ@LAC, ACTIVE); Tyler Badie (RB DEN, LV@DEN, IR); RJ Harvey (RB DEN, LV@DEN, IR); Caleb Lohner (TE DEN, LV@DEN, IR); Alec Ingold (RB LAC, NYJ@LAC, IR); Tyrone Tracy Jr. (RB NYG, JAX@NYG, IR); Gunner Olszewski (WR NYG, JAX@NYG, IR); Braxton Berrios (WR NYG, JAX@NYG, IR); Calvin Austin III (WR NYG, JAX@NYG, IR); Chip Trayanum (RB NYJ, NYJ@LAC, IR); Arian Smith (WR NYJ, NYJ@LAC, IR)"

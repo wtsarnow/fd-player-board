@@ -8,7 +8,7 @@ win_rate_note,share of head-to-head players where |model - actual| < |FPPG - act
 caveat,"Four head-to-head weeks so far (Board Weeks 9, 10, 11, 12). Past slates were projected with older model versions (v10 weights + QB-gate/OUT-list fix + yardage bonuses, v9 weights); current model is v10 weights + QB-gate/OUT-list fix + yardage bonuses."
 season,2026
 source_generated_by,tools/build_accuracy.py
-source_built_at,2026-11-22 05:09 PM ET
+source_built_at,2026-11-22 08:01 PM ET
 source_weekly_sha256,7aa76dad0d31845cea201b8a8d2b9581ff02621d04f4fdf27e2e0fcb645ee779
 source_players_sha256,a4e492e27cd1335301efc79906d05c016b0a457ebc54f4b1184468c521863588
 slates_included_count,15

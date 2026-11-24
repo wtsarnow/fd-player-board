@@ -1,5 +1,5 @@
 key,value
-title,Week 12 Pre-MNF Lock (CIN@WAS #136970) • TNF/Sunday/SNF Graded
+title,Week 12 FULL WEEK FINAL (TNF + Sunday + SNF + MNF) Graded (WAS 22-20 CIN Final) • Week 12 Complete • Post-MNF grade
 active_week,12
 slate_id,WK12-MNF-136970
 contest_name,"Week 12 MNF CIN@WAS Showdown Board (Featured Optimal OPT-WK12-MNF-1: 136.50 v9 pts • $59,200 • MVP Chase Brown • LIVE FD Showdown #136970 • PRE-LOCK)"
@@ -7,8 +7,8 @@ lock_time,MNF CIN@WAS Mon Nov 23 8:15 PM ET
 salary_cap,60000
 roster_slots,9
 active_version,v9 LOCKED (15 SIGNALS + TEAM-OWNED STADIUM/WX + STRATEGY EXCHANGE)
-generated_at,"Mon Nov 23, 2026 7:39 PM ET (Build 20261123-193905 • PRE-MNF LOCK CIN@WAS on build 20261123-091100: morning LIVE FD Showdown #136970 salaries and projections kept; ESPN 401873078 official inactives zeroed on board: Robert Henry Jr. (RB WAS, was ACTIVE 0.3); Athan Kaliakmanis (QB WAS, was ACTIVE 0.0); Cam Grandy (TE CIN, was ACTIVE 0.06); Outs not on board: Amik Robertson (WAS CB); Tanoa Togiai (WAS G); Ricky Barber (WAS DT); Kyle Dugger (CIN S); Dalton Risner (CIN G); Landon Robinson (CIN DT); Jalen Davis (CIN CB, IR); Rachaad White not on injury report, ACTIVE; re-solved OPT-WK12-MNF-1 136.50 pts $59,200 MVP Chase Brown; all other rows + historic/accuracy byte-preserved)"
-build_id,20261123-193905
+generated_at,"Tue Nov 24, 2026 12:24 AM ET (Build 20261124-002438 • Post-MNF grade: WAS 22-20 CIN (ESPN 401873078) • Showdown #136970 • calculated actuals via fdscore.py • 26 boxed / 32 no-box-line excluded • pregame copied exactly from lock 20261123-193905 • MNF and all pregame projections unchanged • historic append only)"
+build_id,20261124-002438
 updater_bot,@fd-board-updater
 updater_bot_id,7f63a5f1-23e8-4a34-b1c8-fd8b0a4d2026
 middleman_bot,@fd-strategy-exchange
@@ -17,7 +17,7 @@ weather_bot,@fd-stadium-weather
 weather_bot_id,53977200-89b4-45e7-8791-b8a378bbc2d3
 pregame_schedule,Thu 9AM (TNF) • Fri 9AM (Sun Main/SNF) • Mon 9AM (MNF) • Refresh 3h Pre-Kickoff
 postgame_schedule,Tue 9AM Weekly Wrap (Finalize Wk8 Actuals vs Projections + Seed Wk9 Board)
-historic_weeks_covered,"Weeks 3-11 and prior Week 12 rows unchanged; SNF window appended (30 boxed players, no-box-line excluded)"
+historic_weeks_covered,"Weeks 3-11 and prior Week 12 rows unchanged; MNF window appended (26 boxed players, no-box-line excluded)"
 overall_our_rho,0.6518
 overall_fd_rho,0.4492
 overall_rho_gain,+0.2026
@@ -52,11 +52,11 @@ pregame_snapshot_build,20261123-193905
 pregame_snapshot_provenance,Mon Nov 23 pre-MNF lock build 20261123-193905: CIN@WAS our_proj/fd_proj locked before 8:15 PM ET kickoff; earlier windows unchanged.
 model_limitations,"TNF IND@HOU graded from locked build 20261119-193149. Official O/IR/D were already zeroed pregame. No-box-line players excluded from metrics, not zeroed. fd_proj_pregame is FPPG/synthetic proxy. Sunday Main current_players and OPT-WK12-MAIN-1 use LIVE FD Classic #136799 salaries (Fri 2026-11-20 ~9:03 AM ET). SNF MIN@SF uses LIVE Showdown #136969. MNF CIN@WAS remains ESTIMATED Classic (Showdown not posted). This Friday prep is not a pre-game lock. Calculated ESPN-box actuals for TNF, not official FanDuel results."
 fd_projection_column_provenance,"All fd_proj/fd_proj_pregame and fd_* comparison fields mean historical FPPG or synthetic fallback PROXY, NOT a FanDuel vendor forecast. No claim of beating FanDuel predictions."
-actuals_source,"ESPN final summary box scores 401873053 (NE@DET), 401873054 (BUF@NYJ), 401873055 (CAR@NO), 401873056 (HOU@CLE), 401873057 (JAX@TEN), 401873058 (KC@ATL), 401873059 (MIA@IND), 401873060 (MIN@GB) + fdscore.py; CALCULATED actuals NOT reconciled against official FanDuel results; plus ESPN final summaries 401873061 (LAR@ARI), 401873062 (SEA@LV), 401873063 (SF@DAL) + fdscore.py; CALCULATED actuals NOT reconciled against official FanDuel results; plus ESPN final summary 401873064 (PIT@CIN) + fdscore.py; CALCULATED actuals NOT reconciled against official FanDuel results; plus ESPN final summary 401873065 (LAC@BAL) + fdscore.py; CALCULATED actuals NOT reconciled against official FanDuel results; plus ESPN final summary 401873066 (IND@HOU) + fdscore.py; CALCULATED actuals NOT reconciled against official FanDuel results; plus ESPN final summaries 401873067/068/070/071/072/073/076 (Sunday 1pm) + fdscore.py; CALCULATED actuals NOT reconciled against official FanDuel results; plus ESPN final summaries 401873069/074/075 (Sunday late) + fdscore.py; CALCULATED actuals NOT reconciled against official FanDuel results; plus ESPN final summary 401873077 (MIN@SF) + fdscore.py; CALCULATED actuals NOT reconciled against official FanDuel results"
+actuals_source,"ESPN final summary box scores 401873053 (NE@DET), 401873054 (BUF@NYJ), 401873055 (CAR@NO), 401873056 (HOU@CLE), 401873057 (JAX@TEN), 401873058 (KC@ATL), 401873059 (MIA@IND), 401873060 (MIN@GB) + fdscore.py; CALCULATED actuals NOT reconciled against official FanDuel results; plus ESPN final summaries 401873061 (LAR@ARI), 401873062 (SEA@LV), 401873063 (SF@DAL) + fdscore.py; CALCULATED actuals NOT reconciled against official FanDuel results; plus ESPN final summary 401873064 (PIT@CIN) + fdscore.py; CALCULATED actuals NOT reconciled against official FanDuel results; plus ESPN final summary 401873065 (LAC@BAL) + fdscore.py; CALCULATED actuals NOT reconciled against official FanDuel results; plus ESPN final summary 401873066 (IND@HOU) + fdscore.py; CALCULATED actuals NOT reconciled against official FanDuel results; plus ESPN final summaries 401873067/068/070/071/072/073/076 (Sunday 1pm) + fdscore.py; CALCULATED actuals NOT reconciled against official FanDuel results; plus ESPN final summaries 401873069/074/075 (Sunday late) + fdscore.py; CALCULATED actuals NOT reconciled against official FanDuel results; plus ESPN final summary 401873077 (MIN@SF) + fdscore.py; CALCULATED actuals NOT reconciled against official FanDuel results; plus ESPN final summary 401873078 (CIN@WAS) + fdscore.py; CALCULATED actuals NOT reconciled against official FanDuel results"
 actuals_verification_status,PROVISIONAL ESPN-derived calculated grading; FanDuel reconciliation outstanding; scoring-rule verification outstanding
 no_box_line_policy,"26 Week 12 TNF snapshot players with no ESPN box line excluded from actuals/metrics; NOT assigned zero or presumed inactive. Excluded: Dare Ogunbowale (RB HOU), Cade Stover (TE HOU), Nick Westbrook-Ikhine (WR IND), Pharaoh Brown (TE IND), Lewis Bond (WR HOU), Joshua Pitsenberger (RB HOU), Mecole Hardman Jr. (WR IND), Davon Booth (RB IND), Charlie Heck (TE IND), Bryce Oliver (WR HOU), Josh Kelly (WR HOU), Woody Marks (RB HOU), Davis Mills (QB HOU), Alec Pierce (WR IND), Marvin Harrison Jr. (WR HOU), Graham Mertz (QB HOU), British Brooks (RB HOU), Brevin Jordan (TE HOU), Jaylin Noel (WR HOU), Jayden Higgins (WR HOU), Riley Leonard (QB IND), Carson Towt (TE IND), Will Mallory (TE IND), Mo Alie-Cox (TE IND), Bernhard Raimann (TE IND), D.J. Montgomery (WR IND). Existing Week 10/11 exclusion lists and TNF legacy zero policy retained untouched."
 wk10_summary_scope,"TNF legacy rows (incl. legacy zero policy) + London/early/afternoon/SNF/MNF matched box lines only; unresolved excluded; heterogeneous zero policies/selection bias. Week 10 now complete. Non-W10/ALL summaries unchanged, not recomputed."
-headline_status,"Week 12 PRE-MNF LOCK; OPT-WK12-MNF-1 136.50 pts $59,200 MVP Chase Brown"
+headline_status,Week 12 MNF CIN@WAS GRADED (WAS 22-20); MNF MAE ours 6.121 vs 4.864; OPT-WK12-MNF-1 actual 63.31 vs 108.14; Week 12 complete
 london_provenance,"CIN@ATL standalone 9:30 AM ET, not #136184; Friday early-issued forecast, estimated Classic salaries; preserved from early draft"
 publish_status,LOCAL DRAFT staged; awaiting GitHub Pages data/*.csv upload
 wk10_our_mae,3.671
@@ -273,10 +273,10 @@ wk12_main_full_our_rho,0.6835
 wk12_main_full_fd_rho,0.6263
 wk12_main_full_beat_fd_pct,47.3%
 wk12_main_full_n_graded,243
-wk12_todate_our_mae,3.914
-wk12_todate_fd_mae,3.965
-wk12_todate_beat_fd_pct,47.2%
-wk12_todate_n_graded,301
+wk12_todate_our_mae,4.089
+wk12_todate_fd_mae,4.037
+wk12_todate_beat_fd_pct,47.1%
+wk12_todate_n_graded,327
 wk12_main_featured_optimal_actual,126.04
 wk12_main_featured_optimal_proj,181.88
 wk12_late_featured_optimal_actual,108.94
@@ -301,3 +301,15 @@ wk12_mnf_featured_optimal_id,OPT-WK12-MNF-1
 wk12_mnf_featured_optimal_pts,136.50
 wk12_mnf_featured_optimal_salary,59200
 wk12_mnf_lock_inactives,"ESPN 401873078 Out: WAS Robert Henry Jr., Athan Kaliakmanis, Amik Robertson, Tanoa Togiai, Ricky Barber; CIN Cam Grandy, Landon Robinson, Kyle Dugger, Dalton Risner, Jalen Davis (IR). Zeroed on board: Robert Henry Jr. (RB WAS, was ACTIVE 0.3); Athan Kaliakmanis (QB WAS, was ACTIVE 0.0); Cam Grandy (TE CIN, was ACTIVE 0.06)"
+wk12_mnf_featured_optimal_actual,63.31
+wk12_mnf_featured_optimal_proj,136.50
+wk12_mnf_hindsight_optimal_note,"Hindsight Showdown optimal (box-matched only, MVP 1.5x salary/points, $60,000 cap) scored 112.11 on $58700: MVP Joe Burrow + Antonio Williams, Drew Stevens, Jayden Daniels, Samaje Perine, Tee Higgins."
+wk12_mnf_our_mae,6.121
+wk12_mnf_fd_mae,4.864
+wk12_mnf_our_rho,0.4770
+wk12_mnf_fd_rho,0.4478
+wk12_mnf_beat_fd_pct,46.2%
+wk12_mnf_n_graded,26
+wk12_mnf_n_excluded,32
+wk12_mnf_final,"CIN@WAS FINAL WAS 22, CIN 20 (ESPN 401873078); graded from PRE-LOCK live Showdown #136970 snapshot 20261123-193905; CALCULATED ESPN-box actuals"
+wk12_mnf_no_box_line_policy,"32 MNF snapshot players with no ESPN box line excluded, NOT zeroed. Excluded: Ben Sinnott (TE WAS, ACTIVE); Jaden Bradley (WR WAS, ACTIVE); John Bates (TE WAS, ACTIVE); Robert Henry Jr. (RB WAS, O); Craig Reynolds (RB WAS, ACTIVE); Devin Neal (RB WAS, ACTIVE); Kentrel Bullock (RB CIN, ACTIVE); Mitch Tinsley (WR CIN, ACTIVE); Kendall Milton (RB CIN, ACTIVE); Caden Prieskorn (TE CIN, ACTIVE); Cam Grandy (TE CIN, O); Quentin Moore (TE WAS, ACTIVE); William Wagner (TE CIN, ACTIVE); Noah Thomas (WR CIN, ACTIVE); Jordan Moore (WR CIN, ACTIVE); Malik Heath (WR WAS, ACTIVE); Ke'Shawn Williams (WR CIN, ACTIVE); Tyler Ott (TE WAS, ACTIVE); Jack Westover (TE WAS, ACTIVE); Nick DeGennaro (WR WAS, ACTIVE); Joe Flacco (QB CIN, ACTIVE); Marcus Mariota (QB WAS, ACTIVE); Andrei Iosivas (WR CIN, IR); Tanner Hudson (TE CIN, IR); Sean Clifford (QB CIN, ACTIVE); Erick All Jr. (TE CIN, IR); Sam Hartman (QB WAS, ACTIVE); Athan Kaliakmanis (QB WAS, O); Jeremy McNichols (RB WAS, IR); Terry McLaurin (WR WAS, IR); Jaylin Lane (WR WAS, IR); Dyami Brown (WR WAS, IR)"

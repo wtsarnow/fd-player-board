@@ -1,14 +1,14 @@
 key,value
-title,Week 13 Pre-Game Player Selection Board (ESTIMATED salaries) • Week 12 Final
+title,Week 13 Thanksgiving Thursday Board (CHI@DET / PHI@DAL / KC@BUF) • LIVE FD Classic #137123 • GB@LAR Graded (LAR 26-13)
 active_week,13
-slate_id,WK13-SEED-ESTIMATED
-contest_name,"Week 13 Sunday Main Classic Board (Featured Optimal OPT-WK13-MAIN-1: 183.37 v9 pts • $59,500 • ESTIMATED salaries — no live FanDuel Week 13 slate posted)"
-lock_time,Wed GB@LAR Nov 25 8:00 PM ET • Thanksgiving CHI@DET 1:00 PM / PHI@DAL 4:30 PM / KC@BUF 8:20 PM ET Thu Nov 26 • DEN@PIT Fri Nov 27 3:00 PM ET • Sun Main 1:00 PM ET Nov 29 • SNF LV@CLE 8:20 PM ET • MNF CAR@TB Mon Nov 30 8:15 PM ET (Week 13 ESTIMATED seed)
+slate_id,WK13-THU-137123
+contest_name,"Week 13 Thanksgiving Thursday Classic Board (Featured Optimal OPT-WK13-THU-1: 153.35 v9 pts • $59,900 • LIVE FD Classic #137123)"
+lock_time,Thanksgiving CHI@DET 1:00 PM / PHI@DAL 4:30 PM / KC@BUF 8:20 PM ET Thu Nov 26 • DEN@PIT Fri Nov 27 3:00 PM ET • Sun Main 1:00 PM ET Nov 29 • SNF LV@CLE 8:20 PM ET • MNF CAR@TB Mon Nov 30 8:15 PM ET
 salary_cap,60000
 roster_slots,9
 active_version,v9 LOCKED (15 SIGNALS + TEAM-OWNED STADIUM/WX + STRATEGY EXCHANGE)
-generated_at,"Tue Nov 24, 2026 9:29 AM ET (Build 20261124-092934 • Tue weekly wrap: Week 12 finalized incl. MNF CIN@WAS 22-20 WAS; Week 13 seed from deterministic wk13-seed baseline + PuLP Classic; ALL salaries ESTIMATED from Week 12 live Classic #136799/#136836 and prior verified Classic boards; no live FD Week 13 slate; local commit only)"
-build_id,20261124-092934
+generated_at,"Thu Nov 26, 2026 9:19 AM ET (Build 20261126-091920 • Thu Thanksgiving morning prep: deterministic Classic #137123 + Showdowns #137142/#137143/#137144 baselines + PuLP ILP; salaries LIVE FD Classic pull Thu Nov 26 9:11 AM ET (byte-identical to Wed 6:24 PM ET pull) and Showdowns Thu Nov 26 7:45 AM ET; nflverse week 12 injuries now posted + refreshed games/snaps/stats 9:10 AM ET (CHI@DET total 56.5 (was 55.5), CHI -1.5 / implied CHI 29.0 DET 27.5; PHI@DAL total 49.5 (was 47.5), DAL -8.5 / implied DAL 29.0 PHI 20.5; KC@BUF total 45.5 (was 47.5), BUF -3.0 / implied BUF 24.25 KC 21.25); official O/IR/D -> 0 (Kenneth Walker III (O, groin), Roschon Johnson (O, ankle), Jake Ferguson (O, knee), Jonathan Mingo (O, ankle); 22 Classic IR incl. Jalen Hurts); Dalton Kincaid (Q, thumb) and Noah Gray (Q, ribs) left ACTIVE; QB starters Caleb Williams / Jared Goff / Joe Milton III / Dak Prescott / Patrick Mahomes / Josh Allen; historic/accuracy rows byte-preserved; Wed GB@LAR grade retained; Sun/Fri/SNF/MNF remain ESTIMATED; morning prep, not a pre-lock)"
+build_id,20261126-091920
 updater_bot,@fd-board-updater
 updater_bot_id,7f63a5f1-23e8-4a34-b1c8-fd8b0a4d2026
 middleman_bot,@fd-strategy-exchange
@@ -17,7 +17,7 @@ weather_bot,@fd-stadium-weather
 weather_bot_id,53977200-89b4-45e7-8791-b8a378bbc2d3
 pregame_schedule,Thu 9AM (TNF) • Fri 9AM (Sun Main/SNF) • Mon 9AM (MNF) • Refresh 3h Pre-Kickoff
 postgame_schedule,Tue 9AM Weekly Wrap (Finalize Wk8 Actuals vs Projections + Seed Wk9 Board)
-historic_weeks_covered,Weeks 3-11 and all Week 12 rows unchanged (historic_*.csv byte-preserved); Week 12 accuracy finalized in accuracy_*.csv
+historic_weeks_covered,"Weeks 3-12 rows unchanged; Week 13 Wed GB@LAR window appended (22 boxed players, no-box-line excluded)"
 overall_our_rho,0.6518
 overall_fd_rho,0.4492
 overall_rho_gain,+0.2026
@@ -50,26 +50,26 @@ wk10_player_count,770
 wk10_game_count,15
 pregame_snapshot_build,20261123-193905
 pregame_snapshot_provenance,Mon Nov 23 pre-MNF lock build 20261123-193905: CIN@WAS our_proj/fd_proj locked before 8:15 PM ET kickoff; earlier windows unchanged.
-model_limitations,Week 13 seed: nflverse Week 13 (nflverse week 12) injury reports not posted yet (Tuesday); tags are last official FanDuel statuses (Week 12 live slates) plus IR carry-forward. Prior-team stale rows dropped using the latest nflverse weekly roster. QB starters come from data/qb_starters.csv overrides (week 12) else the nflverse depth-chart gate (refreshed 2026-11-24). No Week 13 strategy-exchange packets so strategy signals are neutral unless exchange packets exist; weather defaults. All 32 teams play in Week 13 (no byes); Wed GB@LAR and Thanksgiving/Friday games are seeded as per-game Showdown optimals only; the featured headline is the Sunday Main pure max-points ILP.
+model_limitations,"Thanksgiving Thursday games use LIVE FD Classic #137123 salaries on the player board and LIVE FD Showdowns #137142/#137143/#137144 for per-game Showdown presets. nflverse week 12 injuries posted; official O/IR/D only are zeroed: Kenneth Walker III (O, groin), Roschon Johnson (O, ankle), Jake Ferguson (O, knee), Jonathan Mingo (O, ankle); 22 Classic IR including Jalen Hurts (calf). Dalton Kincaid (Q, thumb) and Noah Gray (Q, ribs) left ACTIVE. QB starters from data/qb_starters.csv week-12 overrides: Caleb Williams, Jared Goff, Joe Milton III, Dak Prescott, Patrick Mahomes, Josh Allen. Refreshed nflverse lines 9:10 AM ET: CHI@DET total 56.5 (was 55.5), CHI -1.5 / implied CHI 29.0 DET 27.5; PHI@DAL total 49.5 (was 47.5), DAL -8.5 / implied DAL 29.0 PHI 20.5; KC@BUF total 45.5 (was 47.5), BUF -3.0 / implied BUF 24.25 KC 21.25. Sunday Main / Black Friday / SNF / MNF rows and all_games Classic optimals remain Tuesday-seed ESTIMATED salaries. Wed GB@LAR remains the this-morning graded window. fd_proj is FPPG or synthetic proxy, not a FanDuel vendor forecast. Morning prep, not a pre-lock."
 fd_projection_column_provenance,"All fd_proj/fd_proj_pregame and fd_* comparison fields mean historical FPPG or synthetic fallback PROXY, NOT a FanDuel vendor forecast. No claim of beating FanDuel predictions."
-actuals_source,"ESPN final summary box scores 401873053 (NE@DET), 401873054 (BUF@NYJ), 401873055 (CAR@NO), 401873056 (HOU@CLE), 401873057 (JAX@TEN), 401873058 (KC@ATL), 401873059 (MIA@IND), 401873060 (MIN@GB) + fdscore.py; CALCULATED actuals NOT reconciled against official FanDuel results; plus ESPN final summaries 401873061 (LAR@ARI), 401873062 (SEA@LV), 401873063 (SF@DAL) + fdscore.py; CALCULATED actuals NOT reconciled against official FanDuel results; plus ESPN final summary 401873064 (PIT@CIN) + fdscore.py; CALCULATED actuals NOT reconciled against official FanDuel results; plus ESPN final summary 401873065 (LAC@BAL) + fdscore.py; CALCULATED actuals NOT reconciled against official FanDuel results; plus ESPN final summary 401873066 (IND@HOU) + fdscore.py; CALCULATED actuals NOT reconciled against official FanDuel results; plus ESPN final summaries 401873067/068/070/071/072/073/076 (Sunday 1pm) + fdscore.py; CALCULATED actuals NOT reconciled against official FanDuel results; plus ESPN final summaries 401873069/074/075 (Sunday late) + fdscore.py; CALCULATED actuals NOT reconciled against official FanDuel results; plus ESPN final summary 401873077 (MIN@SF) + fdscore.py; CALCULATED actuals NOT reconciled against official FanDuel results; plus ESPN final summary 401873078 (CIN@WAS) + fdscore.py; CALCULATED actuals NOT reconciled against official FanDuel results"
+actuals_source,"ESPN final summary box scores 401873053 (NE@DET), 401873054 (BUF@NYJ), 401873055 (CAR@NO), 401873056 (HOU@CLE), 401873057 (JAX@TEN), 401873058 (KC@ATL), 401873059 (MIA@IND), 401873060 (MIN@GB) + fdscore.py; CALCULATED actuals NOT reconciled against official FanDuel results; plus ESPN final summaries 401873061 (LAR@ARI), 401873062 (SEA@LV), 401873063 (SF@DAL) + fdscore.py; CALCULATED actuals NOT reconciled against official FanDuel results; plus ESPN final summary 401873064 (PIT@CIN) + fdscore.py; CALCULATED actuals NOT reconciled against official FanDuel results; plus ESPN final summary 401873065 (LAC@BAL) + fdscore.py; CALCULATED actuals NOT reconciled against official FanDuel results; plus ESPN final summary 401873066 (IND@HOU) + fdscore.py; CALCULATED actuals NOT reconciled against official FanDuel results; plus ESPN final summaries 401873067/068/070/071/072/073/076 (Sunday 1pm) + fdscore.py; CALCULATED actuals NOT reconciled against official FanDuel results; plus ESPN final summaries 401873069/074/075 (Sunday late) + fdscore.py; CALCULATED actuals NOT reconciled against official FanDuel results; plus ESPN final summary 401873077 (MIN@SF) + fdscore.py; CALCULATED actuals NOT reconciled against official FanDuel results; plus ESPN final summary 401873078 (CIN@WAS) + fdscore.py; CALCULATED actuals NOT reconciled against official FanDuel results; plus ESPN final summary 401873079 (GB@LAR) + fdscore.py; CALCULATED actuals NOT reconciled against official FanDuel results"
 actuals_verification_status,PROVISIONAL ESPN-derived calculated grading; FanDuel reconciliation outstanding; scoring-rule verification outstanding
 no_box_line_policy,"26 Week 12 TNF snapshot players with no ESPN box line excluded from actuals/metrics; NOT assigned zero or presumed inactive. Excluded: Dare Ogunbowale (RB HOU), Cade Stover (TE HOU), Nick Westbrook-Ikhine (WR IND), Pharaoh Brown (TE IND), Lewis Bond (WR HOU), Joshua Pitsenberger (RB HOU), Mecole Hardman Jr. (WR IND), Davon Booth (RB IND), Charlie Heck (TE IND), Bryce Oliver (WR HOU), Josh Kelly (WR HOU), Woody Marks (RB HOU), Davis Mills (QB HOU), Alec Pierce (WR IND), Marvin Harrison Jr. (WR HOU), Graham Mertz (QB HOU), British Brooks (RB HOU), Brevin Jordan (TE HOU), Jaylin Noel (WR HOU), Jayden Higgins (WR HOU), Riley Leonard (QB IND), Carson Towt (TE IND), Will Mallory (TE IND), Mo Alie-Cox (TE IND), Bernhard Raimann (TE IND), D.J. Montgomery (WR IND). Existing Week 10/11 exclusion lists and TNF legacy zero policy retained untouched."
 wk10_summary_scope,"TNF legacy rows (incl. legacy zero policy) + London/early/afternoon/SNF/MNF matched box lines only; unresolved excluded; heterogeneous zero policies/selection bias. Week 10 now complete. Non-W10/ALL summaries unchanged, not recomputed."
-headline_status,Week 13 Tuesday seed; ESTIMATED salaries pending live FanDuel; not a pre-lock entry
+headline_status,"Week 13 Thanksgiving morning prep; LIVE FD Classic #137123 featured OPT-WK13-THU-1 153.35/$59,900; Wed GB@LAR GRADED (LAR 26-13); not a pre-lock"
 london_provenance,"CIN@ATL standalone 9:30 AM ET, not #136184; Friday early-issued forecast, estimated Classic salaries; preserved from early draft"
-publish_status,"LOCAL ONLY (committed locally, NOT pushed/published)"
+publish_status,LOCAL DRAFT pending GitHub data/*.csv publish
 wk10_our_mae,3.671
 wk10_historical_synthetic_proxy_mae,4.01
 afternoon_finals,HOU@LAC 44-22; GB@NE 45-27; LV@SF 17-38; ARI@SEA 3-17 (ESPN 401873046/049/047/048). SNF TB@CHI FINAL CHI 27-24 (ESPN 401873050). MNF BUF@MIN FINAL BUF 23-6 (ESPN 401873051) graded this run.
 early_draft_preserved,Unpublished early draft build 20261108-170406 and afternoon draft build 20261108-200626 historic bytes preserved as prefix; SNF append-only
 snf_final,"TB@CHI FINAL CHI 27, TB 24 (ESPN 401873050); graded with Friday Classic-price forecasts only; provisional 136321-review baseline/mock NOT used"
 snf_stale_seed_lineup_note,"Friday OPT-WK10-SNF-1 seed (Classic salaries, NOT live Showdown) MVP Caleb Williams + Swift/Irving/Burden III/Mayfield/Odunze scored 95.66 Showdown pts (MVP 1.5x). STALE Friday Classic-price seed — NOT a valid pre-lock."
-salary_source,ESTIMATED (no live FanDuel Week 13 slate posted)
-player_count,868
-featured_optimal_id,OPT-WK13-MAIN-1
-featured_optimal_pts,183.37
-featured_optimal_salary,59500
+salary_source,"LIVE FD Classic #137123 (153 players, Thu Nov 26 9:11 AM ET (byte-identical to Wed 6:24 PM ET pull)) + LIVE FD Showdowns #137142 CHI@DET (53), #137143 PHI@DAL (53), #137144 KC@BUF (54) (Thu Nov 26 7:45 AM ET)"
+player_count,862
+featured_optimal_id,OPT-WK13-THU-1
+featured_optimal_pts,153.35
+featured_optimal_salary,59900
 mnf_final,"BUF@MIN FINAL BUF 23, MIN 6 (ESPN 401873051); graded from PRE-LOCK live Showdown #136436 snapshot 20261109-175813; CALCULATED ESPN-box actuals"
 mnf_featured_seed_lineup_note,"OPT-WK10-MNF-1 (LIVE Showdown #136436, proj 101.56, $59,800) MVP Josh Allen + Cook/DJ Moore/Addison/Hockenson/K. Coleman scored 57.89 Showdown pts (MVP 1.5x). Calculated actuals, not official FanDuel results."
 mnf_hindsight_optimal_note,"Hindsight Showdown optimal (box-matched only, MVP 1.5x salary/points, $60,000 cap) scored 89.41 on $51900: MVP James Cook III + Buffalo Bills, Josh Allen, Tyler Bass, Will Reichard, Keleki Latu."
@@ -328,3 +328,35 @@ wk12_final_beat_fd_pct_nflverse,52.8%
 wk12_final_n_head_to_head_nflverse,582
 wk12_final_slates_nflverse,136793 TNF IND@HOU; 136799/136836/136837 Sunday Main/early/late; 136969 SNF MIN@SF; 136970 MNF CIN@WAS
 wk12_final_note,Final Week 12 (board week 12 = nflverse week 11) from accuracy_weekly.csv after nflverse refresh 2026-11-24 09:24 ET incl. MNF CIN@WAS 22-20 WAS; nflverse-based metrics (no-box players with snaps and 0 stats count as played); distinct from wk12_todate_* ESPN-box metrics.
+wk13_gblar_featured_optimal_id,OPT-WK13-WED-1
+wk13_gblar_featured_optimal_pts,109.41
+wk13_gblar_featured_optimal_salary,47250
+wk13_gblar_featured_optimal_actual,81.32
+wk13_gblar_featured_optimal_proj,109.41
+wk13_gblar_hindsight_optimal_note,"Hindsight Showdown optimal (box-matched only, MVP 1.5x salary/points, $60,000 cap, ESTIMATED salaries) scored 105.27 on $42050: MVP Blake Corum + Kyren Williams, Christian Watson, Los Angeles Rams, Jordan Love, Konata Mumpfield."
+wk13_gblar_our_mae,4.591
+wk13_gblar_fd_mae,4.628
+wk13_gblar_our_rho,0.5929
+wk13_gblar_fd_rho,0.5635
+wk13_gblar_beat_fd_pct,54.5%
+wk13_gblar_n_graded,22
+wk13_gblar_n_excluded,30
+wk13_gblar_final,"GB@LAR FINAL LAR 26, GB 13 (ESPN 401873079); graded from Tuesday Week 13 seed snapshot 20261124-092934; ESTIMATED Classic salaries; no live FanDuel Week 13 slate or live-salary pre-lock published before kickoff; CALCULATED ESPN-box actuals; fd_proj is historical FPPG / synthetic proxy, not a FanDuel vendor forecast"
+wk13_gblar_no_box_line_policy,"30 seed players with no ESPN box line excluded, NOT zeroed. Excluded: Pierre Strong Jr. (RB GB, ACTIVE), Tutu Atwell (WR LAR, ACTIVE), CJ Daniels (WR LAR, ACTIVE), Jonnu Smith (TE GB, ACTIVE), Mark Redman (TE GB, ACTIVE), Brennan Presley (WR LAR, ACTIVE), Jordan Waters (RB LAR, ACTIVE), Alex Bachman (WR LAR, ACTIVE), Max Klare (TE LAR, ACTIVE), Dan Villari (TE LAR, ACTIVE), Coleman Owen (WR GB, ACTIVE), Matt Orzech (TE GB, ACTIVE), Isaiah Neyor (WR GB, ACTIVE), John Saunders Jr. (WR GB, ACTIVE), Quincy Skinner Jr. (WR GB, ACTIVE), Drake Dabney (TE GB, ACTIVE), Puka Nacua (WR LAR, IR), Josh Jacobs (RB GB, O), Tyrod Taylor (QB GB, ACTIVE), Cam Miller (QB GB, ACTIVE), Stetson Bennett IV (QB LAR, ACTIVE), Ty Simpson (QB LAR, ACTIVE), Matthew Caldwell (QB LAR, IR), Terrance Ferguson (TE LAR, IR), Jordan Whittington (WR LAR, IR), Thomas Yassmin (TE GB, IR), Josh Whyle (TE GB, IR), Jayden Reed (WR GB, IR), Dean Connors (RB LAR, IR), Davante Adams (WR LAR, IR)"
+wk13_todate_our_mae,4.591
+wk13_todate_fd_mae,4.628
+wk13_todate_beat_fd_pct,54.5%
+wk13_todate_n_graded,22
+wk13_thu_salary_source,"LIVE FD Classic #137123 (153 players, Thu Nov 26 9:11 AM ET (byte-identical to Wed 6:24 PM ET pull)) + LIVE FD Showdowns #137142 CHI@DET (53), #137143 PHI@DAL (53), #137144 KC@BUF (54) (Thu Nov 26 7:45 AM ET)"
+wk13_thu_featured_optimal_id,OPT-WK13-THU-1
+wk13_thu_featured_optimal_pts,153.35
+wk13_thu_featured_optimal_salary,59900
+wk13_thx1_featured_optimal_id,OPT-WK13-THX1-1
+wk13_thx1_featured_optimal_pts,126.97
+wk13_thx1_featured_optimal_salary,60000
+wk13_thx2_featured_optimal_id,OPT-WK13-THX2-1
+wk13_thx2_featured_optimal_pts,127.30
+wk13_thx2_featured_optimal_salary,58900
+wk13_tnf_featured_optimal_id,OPT-WK13-TNF-1
+wk13_tnf_featured_optimal_pts,101.55
+wk13_tnf_featured_optimal_salary,60000

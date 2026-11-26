@@ -7,8 +7,8 @@ lock_time,Thanksgiving CHI@DET 1:00 PM / PHI@DAL 4:30 PM / KC@BUF 8:20 PM ET Thu
 salary_cap,60000
 roster_slots,9
 active_version,v9 LOCKED (15 SIGNALS + TEAM-OWNED STADIUM/WX + STRATEGY EXCHANGE)
-generated_at,"Thu Nov 26, 2026 9:19 AM ET (Build 20261126-091920 • Thu Thanksgiving morning prep: deterministic Classic #137123 + Showdowns #137142/#137143/#137144 baselines + PuLP ILP; salaries LIVE FD Classic pull Thu Nov 26 9:11 AM ET (byte-identical to Wed 6:24 PM ET pull) and Showdowns Thu Nov 26 7:45 AM ET; nflverse week 12 injuries now posted + refreshed games/snaps/stats 9:10 AM ET (CHI@DET total 56.5 (was 55.5), CHI -1.5 / implied CHI 29.0 DET 27.5; PHI@DAL total 49.5 (was 47.5), DAL -8.5 / implied DAL 29.0 PHI 20.5; KC@BUF total 45.5 (was 47.5), BUF -3.0 / implied BUF 24.25 KC 21.25); official O/IR/D -> 0 (Kenneth Walker III (O, groin), Roschon Johnson (O, ankle), Jake Ferguson (O, knee), Jonathan Mingo (O, ankle); 22 Classic IR incl. Jalen Hurts); Dalton Kincaid (Q, thumb) and Noah Gray (Q, ribs) left ACTIVE; QB starters Caleb Williams / Jared Goff / Joe Milton III / Dak Prescott / Patrick Mahomes / Josh Allen; historic/accuracy rows byte-preserved; Wed GB@LAR grade retained; Sun/Fri/SNF/MNF remain ESTIMATED; morning prep, not a pre-lock)"
-build_id,20261126-091920
+generated_at,"Thu Nov 26, 2026 12:43 PM ET (Build 20261126-124312 • PRE-LOCK CHI@DET Showdown #137142 on live build 20261126-091920: fd-manager lock baseline 137142-lock.csv (board re-pulled 11:53 AM ET, salaries unchanged); ESPN 401873081 Out: CHI Case Keenum (QB, Coach's Decision; zeroed on board), Isaac Yiadom, Jayden Loving, Jordan McFadden, Elijah Hicks; DET DJ Wonnum, Chuck Clark, Ennis Rakestraw Jr., Tyrus Wheat, Keith Abney II (not on FD skill board); Roschon Johnson already O; re-solved OPT-WK13-THX1-1 126.97 pts $60,000 MVP Amon-Ra St. Brown; Classic #137123 rows other than Keenum, PHI@DAL, KC@BUF, historic/accuracy CSVs unchanged)"
+build_id,20261126-124312
 updater_bot,@fd-board-updater
 updater_bot_id,7f63a5f1-23e8-4a34-b1c8-fd8b0a4d2026
 middleman_bot,@fd-strategy-exchange
@@ -56,9 +56,9 @@ actuals_source,"ESPN final summary box scores 401873053 (NE@DET), 401873054 (BUF
 actuals_verification_status,PROVISIONAL ESPN-derived calculated grading; FanDuel reconciliation outstanding; scoring-rule verification outstanding
 no_box_line_policy,"26 Week 12 TNF snapshot players with no ESPN box line excluded from actuals/metrics; NOT assigned zero or presumed inactive. Excluded: Dare Ogunbowale (RB HOU), Cade Stover (TE HOU), Nick Westbrook-Ikhine (WR IND), Pharaoh Brown (TE IND), Lewis Bond (WR HOU), Joshua Pitsenberger (RB HOU), Mecole Hardman Jr. (WR IND), Davon Booth (RB IND), Charlie Heck (TE IND), Bryce Oliver (WR HOU), Josh Kelly (WR HOU), Woody Marks (RB HOU), Davis Mills (QB HOU), Alec Pierce (WR IND), Marvin Harrison Jr. (WR HOU), Graham Mertz (QB HOU), British Brooks (RB HOU), Brevin Jordan (TE HOU), Jaylin Noel (WR HOU), Jayden Higgins (WR HOU), Riley Leonard (QB IND), Carson Towt (TE IND), Will Mallory (TE IND), Mo Alie-Cox (TE IND), Bernhard Raimann (TE IND), D.J. Montgomery (WR IND). Existing Week 10/11 exclusion lists and TNF legacy zero policy retained untouched."
 wk10_summary_scope,"TNF legacy rows (incl. legacy zero policy) + London/early/afternoon/SNF/MNF matched box lines only; unresolved excluded; heterogeneous zero policies/selection bias. Week 10 now complete. Non-W10/ALL summaries unchanged, not recomputed."
-headline_status,"Week 13 Thanksgiving morning prep; LIVE FD Classic #137123 featured OPT-WK13-THU-1 153.35/$59,900; Wed GB@LAR GRADED (LAR 26-13); not a pre-lock"
+headline_status,"Week 13 PRE-LOCK CHI@DET Showdown; OPT-WK13-THX1-1 126.97 pts $60,000 MVP Amon-Ra St. Brown; Classic OPT-WK13-THU-1 153.35/$59,900 still listed; ESPN Out designations applied"
 london_provenance,"CIN@ATL standalone 9:30 AM ET, not #136184; Friday early-issued forecast, estimated Classic salaries; preserved from early draft"
-publish_status,LOCAL DRAFT pending GitHub data/*.csv publish
+publish_status,LOCAL DRAFT staged; awaiting GitHub Pages data/*.csv upload
 wk10_our_mae,3.671
 wk10_historical_synthetic_proxy_mae,4.01
 afternoon_finals,HOU@LAC 44-22; GB@NE 45-27; LV@SF 17-38; ARI@SEA 3-17 (ESPN 401873046/049/047/048). SNF TB@CHI FINAL CHI 27-24 (ESPN 401873050). MNF BUF@MIN FINAL BUF 23-6 (ESPN 401873051) graded this run.
@@ -67,9 +67,9 @@ snf_final,"TB@CHI FINAL CHI 27, TB 24 (ESPN 401873050); graded with Friday Class
 snf_stale_seed_lineup_note,"Friday OPT-WK10-SNF-1 seed (Classic salaries, NOT live Showdown) MVP Caleb Williams + Swift/Irving/Burden III/Mayfield/Odunze scored 95.66 Showdown pts (MVP 1.5x). STALE Friday Classic-price seed — NOT a valid pre-lock."
 salary_source,"LIVE FD Classic #137123 (153 players, Thu Nov 26 9:11 AM ET (byte-identical to Wed 6:24 PM ET pull)) + LIVE FD Showdowns #137142 CHI@DET (53), #137143 PHI@DAL (53), #137144 KC@BUF (54) (Thu Nov 26 7:45 AM ET)"
 player_count,862
-featured_optimal_id,OPT-WK13-THU-1
-featured_optimal_pts,153.35
-featured_optimal_salary,59900
+featured_optimal_id,OPT-WK13-THX1-1
+featured_optimal_pts,126.97
+featured_optimal_salary,60000
 mnf_final,"BUF@MIN FINAL BUF 23, MIN 6 (ESPN 401873051); graded from PRE-LOCK live Showdown #136436 snapshot 20261109-175813; CALCULATED ESPN-box actuals"
 mnf_featured_seed_lineup_note,"OPT-WK10-MNF-1 (LIVE Showdown #136436, proj 101.56, $59,800) MVP Josh Allen + Cook/DJ Moore/Addison/Hockenson/K. Coleman scored 57.89 Showdown pts (MVP 1.5x). Calculated actuals, not official FanDuel results."
 mnf_hindsight_optimal_note,"Hindsight Showdown optimal (box-matched only, MVP 1.5x salary/points, $60,000 cap) scored 89.41 on $51900: MVP James Cook III + Buffalo Bills, Josh Allen, Tyler Bass, Will Reichard, Keleki Latu."
@@ -360,3 +360,4 @@ wk13_thx2_featured_optimal_salary,58900
 wk13_tnf_featured_optimal_id,OPT-WK13-TNF-1
 wk13_tnf_featured_optimal_pts,101.55
 wk13_tnf_featured_optimal_salary,60000
+wk13_thx1_lock_inactives,"ESPN 401873081 Out: CHI Case Keenum (QB, Coach's Decision; zeroed on board), Isaac Yiadom, Jayden Loving, Jordan McFadden, Elijah Hicks; DET DJ Wonnum, Chuck Clark, Ennis Rakestraw Jr., Tyrus Wheat, Keith Abney II (not on FD skill board); Roschon Johnson already O"

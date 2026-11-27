@@ -7,8 +7,8 @@ lock_time,Thanksgiving CHI@DET / PHI@DAL / KC@BUF Final Thu Nov 26 • DEN@PIT F
 salary_cap,60000
 roster_slots,9
 active_version,v9 LOCKED (15 SIGNALS + TEAM-OWNED STADIUM/WX + STRATEGY EXCHANGE)
-generated_at,"Fri Nov 27, 2026 2:39 PM ET (Build 20261127-143939 • PRE-LOCK DEN@PIT Showdown #137180 on live build 20261127-093737 (locked/graded Thanksgiving + GB@LAR rows preserved): fd-manager lock baseline 137180-lock.csv (salaries from LIVE FD Showdown #137180 pull Fri 9:07 AM ET; lock baseline written 1:48 PM ET); Official DEN@PIT inactives (NFL.com/steelers.com ~1:30 PM ET): DEN QB Sam Ehlinger, WR Lil'Jordan Humphrey, TE Dallen Bentley (S Rapp, OL Ortega/Casey); PIT WR Kaden Wetjen, QB Drew Allar, RB Eli Heidenreich (CB Murphy-Bunting, LB Holcomb/Highsmith, DE Rubio); all fantasy-relevant inactives already zeroed (O) in fd-manager lock baseline; Mason Rudolph starts at QB; re-solved OPT-WK13-FRI-1 93.72 pts $59,600 MVP Jonah Coleman; all other rows, historic/accuracy CSVs unchanged)"
-build_id,20261127-143939
+generated_at,"Fri Nov 27, 2026 6:47 PM ET (Build 20261127-184733 • Post-Black-Friday grade: PIT 27-5 DEN; ESPN 401873083 via fdscore.py; 28 boxed / 27 no-box-line excluded; pregame rows copied exactly; Sunday rows unchanged; historic append only)"
+build_id,20261127-184733
 updater_bot,@fd-board-updater
 updater_bot_id,7f63a5f1-23e8-4a34-b1c8-fd8b0a4d2026
 middleman_bot,@fd-strategy-exchange
@@ -56,7 +56,7 @@ actuals_source,"ESPN final summary box scores 401873053 (NE@DET), 401873054 (BUF
 actuals_verification_status,PROVISIONAL ESPN-derived calculated grading; FanDuel reconciliation outstanding; scoring-rule verification outstanding
 no_box_line_policy,"26 Week 12 TNF snapshot players with no ESPN box line excluded from actuals/metrics; NOT assigned zero or presumed inactive. Excluded: Dare Ogunbowale (RB HOU), Cade Stover (TE HOU), Nick Westbrook-Ikhine (WR IND), Pharaoh Brown (TE IND), Lewis Bond (WR HOU), Joshua Pitsenberger (RB HOU), Mecole Hardman Jr. (WR IND), Davon Booth (RB IND), Charlie Heck (TE IND), Bryce Oliver (WR HOU), Josh Kelly (WR HOU), Woody Marks (RB HOU), Davis Mills (QB HOU), Alec Pierce (WR IND), Marvin Harrison Jr. (WR HOU), Graham Mertz (QB HOU), British Brooks (RB HOU), Brevin Jordan (TE HOU), Jaylin Noel (WR HOU), Jayden Higgins (WR HOU), Riley Leonard (QB IND), Carson Towt (TE IND), Will Mallory (TE IND), Mo Alie-Cox (TE IND), Bernhard Raimann (TE IND), D.J. Montgomery (WR IND). Existing Week 10/11 exclusion lists and TNF legacy zero policy retained untouched."
 wk10_summary_scope,"TNF legacy rows (incl. legacy zero policy) + London/early/afternoon/SNF/MNF matched box lines only; unresolved excluded; heterogeneous zero policies/selection bias. Week 10 now complete. Non-W10/ALL summaries unchanged, not recomputed."
-headline_status,"Week 13 PRE-LOCK DEN@PIT Showdown; OPT-WK13-FRI-1 93.72 pts $59,600 MVP Jonah Coleman; Sunday Main Classic OPT-WK13-MAIN-1 183.49/$59,800 still listed; official inactives already zeroed"
+headline_status,Week 13 Black Friday DEN@PIT GRADED (PIT 27-5): Showdown OPT-WK13-FRI-1 45.36 vs 93.72 proj; MAE ours 4.132 vs FD 3.948; Sunday Main next
 london_provenance,"CIN@ATL standalone 9:30 AM ET, not #136184; Friday early-issued forecast, estimated Classic salaries; preserved from early draft"
 publish_status,LOCAL DRAFT staged; awaiting GitHub Pages data/*.csv upload
 wk10_our_mae,3.671
@@ -343,10 +343,10 @@ wk13_gblar_n_graded,22
 wk13_gblar_n_excluded,30
 wk13_gblar_final,"GB@LAR FINAL LAR 26, GB 13 (ESPN 401873079); graded from Tuesday Week 13 seed snapshot 20261124-092934; ESTIMATED Classic salaries; no live FanDuel Week 13 slate or live-salary pre-lock published before kickoff; CALCULATED ESPN-box actuals; fd_proj is historical FPPG / synthetic proxy, not a FanDuel vendor forecast"
 wk13_gblar_no_box_line_policy,"30 seed players with no ESPN box line excluded, NOT zeroed. Excluded: Pierre Strong Jr. (RB GB, ACTIVE), Tutu Atwell (WR LAR, ACTIVE), CJ Daniels (WR LAR, ACTIVE), Jonnu Smith (TE GB, ACTIVE), Mark Redman (TE GB, ACTIVE), Brennan Presley (WR LAR, ACTIVE), Jordan Waters (RB LAR, ACTIVE), Alex Bachman (WR LAR, ACTIVE), Max Klare (TE LAR, ACTIVE), Dan Villari (TE LAR, ACTIVE), Coleman Owen (WR GB, ACTIVE), Matt Orzech (TE GB, ACTIVE), Isaiah Neyor (WR GB, ACTIVE), John Saunders Jr. (WR GB, ACTIVE), Quincy Skinner Jr. (WR GB, ACTIVE), Drake Dabney (TE GB, ACTIVE), Puka Nacua (WR LAR, IR), Josh Jacobs (RB GB, O), Tyrod Taylor (QB GB, ACTIVE), Cam Miller (QB GB, ACTIVE), Stetson Bennett IV (QB LAR, ACTIVE), Ty Simpson (QB LAR, ACTIVE), Matthew Caldwell (QB LAR, IR), Terrance Ferguson (TE LAR, IR), Jordan Whittington (WR LAR, IR), Thomas Yassmin (TE GB, IR), Josh Whyle (TE GB, IR), Jayden Reed (WR GB, IR), Dean Connors (RB LAR, IR), Davante Adams (WR LAR, IR)"
-wk13_todate_our_mae,4.575
-wk13_todate_fd_mae,5.125
-wk13_todate_beat_fd_pct,58.9%
-wk13_todate_n_graded,95
+wk13_todate_our_mae,4.474
+wk13_todate_fd_mae,4.857
+wk13_todate_beat_fd_pct,56.1%
+wk13_todate_n_graded,123
 wk13_thu_salary_source,"LIVE FD Classic #137123 (153 players, Thu Nov 26 9:11 AM ET (byte-identical to Wed 6:24 PM ET pull)) + LIVE FD Showdowns #137142 CHI@DET (53), #137143 PHI@DAL (53), #137144 KC@BUF (54) (Thu Nov 26 7:45 AM ET)"
 wk13_thu_featured_optimal_id,OPT-WK13-THU-1
 wk13_thu_featured_optimal_pts,153.35
@@ -393,3 +393,10 @@ wk13_fri_status,LIVE FD Showdown #137180 morning prep (pull Fri Nov 27 9:07 AM E
 wk13_snf_status,SNF LV@CLE Showdown not posted; Tuesday-seed ESTIMATED rows retained
 wk13_mnf_status,MNF CAR@TB Showdown not posted; Tuesday-seed ESTIMATED rows retained
 wk13_fri_lock_inactives,"Official DEN@PIT inactives (NFL.com/steelers.com ~1:30 PM ET): DEN QB Sam Ehlinger, WR Lil'Jordan Humphrey, TE Dallen Bentley (S Rapp, OL Ortega/Casey); PIT WR Kaden Wetjen, QB Drew Allar, RB Eli Heidenreich (CB Murphy-Bunting, LB Holcomb/Highsmith, DE Rubio); all fantasy-relevant inactives already zeroed (O) in fd-manager lock baseline; Mason Rudolph starts at QB"
+wk13_denpit_final,"PIT 27, DEN 5 (ESPN 401873083)"
+wk13_denpit_showdown_opt,OPT-WK13-FRI-1 proj 93.72 actual 45.36 hindsight 82.78 on $55800: MVP Pittsburgh Steelers 33.0; FLEX1 Jonah Coleman 11.2; FLEX2 DK Metcalf 11.1; FLEX3 Chris Boswell 10.0; FLEX4 Mason Rudolph 9.68; FLEX5 Jaylen Waddle 7.8
+wk13_denpit_our_mae,4.132
+wk13_denpit_fd_mae,3.948
+wk13_denpit_beat_fd_pct,46.4%
+wk13_denpit_n,28
+wk13_denpit_n_excluded,27

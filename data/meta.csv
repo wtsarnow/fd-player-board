@@ -7,8 +7,8 @@ lock_time,Thanksgiving CHI@DET / PHI@DAL / KC@BUF Final Thu Nov 26 • DEN@PIT F
 salary_cap,60000
 roster_slots,9
 active_version,v9 LOCKED (15 SIGNALS + TEAM-OWNED STADIUM/WX + STRATEGY EXCHANGE)
-generated_at,"Fri Nov 27, 2026 9:37 AM ET (Build 20261127-093737 • Friday Sunday-Main prep: fd-manager deterministic baselines Classic #137125 (pull Fri Nov 27 9:07 AM ET) + Showdown #137180 (pull Fri Nov 27 9:07 AM ET) + PuLP ILP; featured OPT-WK13-MAIN-1 183.49 pts $59,800; DEN@PIT OPT-WK13-FRI-1 93.68 pts $59,600 MVP Jonah Coleman (morning prep, not the 2:35 PM ET pre-lock); Classic #137125 official O/IR/D zeroed: O Drake Maye (NE QB), Seth McGowan (IND RB); D A.J. Brown (NE WR), Jordan Addison (MIN WR); 60 IR; 32 Q kept live. Showdown #137180: 6 IR, no O/D; 1 Q kept live. Mason Rudolph starter projection 0.21 left as-is (no unapproved starter fix). SNF/MNF Showdowns not posted — Tuesday-seed ESTIMATED rows retained; locked Thanksgiving + Wed pre-game rows byte-preserved except global rank; Board featured OPT-WK13-MAIN-1 is the pure max-points PuLP ILP at 183.49 pts $59,800 (Jacoby Brissett + Cam Skattebo + Breece Hall + Malik Nabers + Chris Olave + Nico Collins + Trey McBride + Carnell Tate + Washington Commanders). fd-manager Classic OPT-1 is 179.91 / $59,600 (Brissett, Hall, Skattebo, Olave, Nabers, Flowers, McBride, Tate, WAS DST) because optimize.py applies weights.json lineup rules stack_qb_with_min_receivers=1 and max_per_team=4; those stacking constraints are not applied to the board headline. historic/accuracy CSVs and index.html/app.js/styles.css untouched; not a pre-lock)"
-build_id,20261127-093737
+generated_at,"Fri Nov 27, 2026 2:39 PM ET (Build 20261127-143939 • PRE-LOCK DEN@PIT Showdown #137180 on live build 20261127-093737 (locked/graded Thanksgiving + GB@LAR rows preserved): fd-manager lock baseline 137180-lock.csv (salaries from LIVE FD Showdown #137180 pull Fri 9:07 AM ET; lock baseline written 1:48 PM ET); Official DEN@PIT inactives (NFL.com/steelers.com ~1:30 PM ET): DEN QB Sam Ehlinger, WR Lil'Jordan Humphrey, TE Dallen Bentley (S Rapp, OL Ortega/Casey); PIT WR Kaden Wetjen, QB Drew Allar, RB Eli Heidenreich (CB Murphy-Bunting, LB Holcomb/Highsmith, DE Rubio); all fantasy-relevant inactives already zeroed (O) in fd-manager lock baseline; Mason Rudolph starts at QB; re-solved OPT-WK13-FRI-1 93.72 pts $59,600 MVP Jonah Coleman; all other rows, historic/accuracy CSVs unchanged)"
+build_id,20261127-143939
 updater_bot,@fd-board-updater
 updater_bot_id,7f63a5f1-23e8-4a34-b1c8-fd8b0a4d2026
 middleman_bot,@fd-strategy-exchange
@@ -56,7 +56,7 @@ actuals_source,"ESPN final summary box scores 401873053 (NE@DET), 401873054 (BUF
 actuals_verification_status,PROVISIONAL ESPN-derived calculated grading; FanDuel reconciliation outstanding; scoring-rule verification outstanding
 no_box_line_policy,"26 Week 12 TNF snapshot players with no ESPN box line excluded from actuals/metrics; NOT assigned zero or presumed inactive. Excluded: Dare Ogunbowale (RB HOU), Cade Stover (TE HOU), Nick Westbrook-Ikhine (WR IND), Pharaoh Brown (TE IND), Lewis Bond (WR HOU), Joshua Pitsenberger (RB HOU), Mecole Hardman Jr. (WR IND), Davon Booth (RB IND), Charlie Heck (TE IND), Bryce Oliver (WR HOU), Josh Kelly (WR HOU), Woody Marks (RB HOU), Davis Mills (QB HOU), Alec Pierce (WR IND), Marvin Harrison Jr. (WR HOU), Graham Mertz (QB HOU), British Brooks (RB HOU), Brevin Jordan (TE HOU), Jaylin Noel (WR HOU), Jayden Higgins (WR HOU), Riley Leonard (QB IND), Carson Towt (TE IND), Will Mallory (TE IND), Mo Alie-Cox (TE IND), Bernhard Raimann (TE IND), D.J. Montgomery (WR IND). Existing Week 10/11 exclusion lists and TNF legacy zero policy retained untouched."
 wk10_summary_scope,"TNF legacy rows (incl. legacy zero policy) + London/early/afternoon/SNF/MNF matched box lines only; unresolved excluded; heterogeneous zero policies/selection bias. Week 10 now complete. Non-W10/ALL summaries unchanged, not recomputed."
-headline_status,"Week 13 Friday Sunday-Main prep; LIVE FD Classic #137125 featured OPT-WK13-MAIN-1 183.49/$59,800; DEN@PIT LIVE #137180 morning (not a pre-lock); SNF/MNF Showdowns not posted (estimated); Thanksgiving + GB@LAR graded; not a pre-lock"
+headline_status,"Week 13 PRE-LOCK DEN@PIT Showdown; OPT-WK13-FRI-1 93.72 pts $59,600 MVP Jonah Coleman; Sunday Main Classic OPT-WK13-MAIN-1 183.49/$59,800 still listed; official inactives already zeroed"
 london_provenance,"CIN@ATL standalone 9:30 AM ET, not #136184; Friday early-issued forecast, estimated Classic salaries; preserved from early draft"
 publish_status,LOCAL DRAFT staged; awaiting GitHub Pages data/*.csv upload
 wk10_our_mae,3.671
@@ -67,9 +67,9 @@ snf_final,"TB@CHI FINAL CHI 27, TB 24 (ESPN 401873050); graded with Friday Class
 snf_stale_seed_lineup_note,"Friday OPT-WK10-SNF-1 seed (Classic salaries, NOT live Showdown) MVP Caleb Williams + Swift/Irving/Burden III/Mayfield/Odunze scored 95.66 Showdown pts (MVP 1.5x). STALE Friday Classic-price seed — NOT a valid pre-lock."
 salary_source,"LIVE FD Classic #137125 Sunday Main (471 players, 9 games, pull Fri Nov 27 9:07 AM ET) + LIVE FD Showdown #137180 DEN@PIT (55 players, pull Fri Nov 27 9:07 AM ET, morning prep not a pre-lock); SNF LV@CLE and MNF CAR@TB Showdowns not posted (Tuesday-seed ESTIMATED rows retained); locked/graded Wed GB@LAR + Thanksgiving CHI@DET / PHI@DAL / KC@BUF rows preserved"
 player_count,831
-featured_optimal_id,OPT-WK13-MAIN-1
-featured_optimal_pts,183.49
-featured_optimal_salary,59800
+featured_optimal_id,OPT-WK13-FRI-1
+featured_optimal_pts,93.72
+featured_optimal_salary,59600
 mnf_final,"BUF@MIN FINAL BUF 23, MIN 6 (ESPN 401873051); graded from PRE-LOCK live Showdown #136436 snapshot 20261109-175813; CALCULATED ESPN-box actuals"
 mnf_featured_seed_lineup_note,"OPT-WK10-MNF-1 (LIVE Showdown #136436, proj 101.56, $59,800) MVP Josh Allen + Cook/DJ Moore/Addison/Hockenson/K. Coleman scored 57.89 Showdown pts (MVP 1.5x). Calculated actuals, not official FanDuel results."
 mnf_hindsight_optimal_note,"Hindsight Showdown optimal (box-matched only, MVP 1.5x salary/points, $60,000 cap) scored 89.41 on $51900: MVP James Cook III + Buffalo Bills, Josh Allen, Tyler Bass, Will Reichard, Keleki Latu."
@@ -387,8 +387,9 @@ wk13_kcbuf_fd_mae,4.551
 wk13_kcbuf_beat_fd_pct,65.4%
 wk13_kcbuf_n,26
 wk13_fri_featured_optimal_id,OPT-WK13-FRI-1
-wk13_fri_featured_optimal_pts,93.68
+wk13_fri_featured_optimal_pts,93.72
 wk13_fri_featured_optimal_salary,59600
 wk13_fri_status,LIVE FD Showdown #137180 morning prep (pull Fri Nov 27 9:07 AM ET); not a pre-lock; 2:35 PM ET lock is a separate run
 wk13_snf_status,SNF LV@CLE Showdown not posted; Tuesday-seed ESTIMATED rows retained
 wk13_mnf_status,MNF CAR@TB Showdown not posted; Tuesday-seed ESTIMATED rows retained
+wk13_fri_lock_inactives,"Official DEN@PIT inactives (NFL.com/steelers.com ~1:30 PM ET): DEN QB Sam Ehlinger, WR Lil'Jordan Humphrey, TE Dallen Bentley (S Rapp, OL Ortega/Casey); PIT WR Kaden Wetjen, QB Drew Allar, RB Eli Heidenreich (CB Murphy-Bunting, LB Holcomb/Highsmith, DE Rubio); all fantasy-relevant inactives already zeroed (O) in fd-manager lock baseline; Mason Rudolph starts at QB"
